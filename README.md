@@ -3,6 +3,15 @@
 Proyecto para programa DLAB - Desafio Latam
 El proyecto consiste en una plataforma online orientada al uso de búsqueda de empleo y reclutamiento del rubro TI. Partiendo del perfil de cada usuario, test técnicos, encuestas, exhibiciones de código y material de apoyo. La web pretende poner en contacto a miles de postulantes y empresas.
 
+## Team
+
+### Technical Leader:
+TL: [José Campos](https://github.com/josecamposhz)
+
+### Frontend
+
+### Backend
+
 ## Available Scripts
 
 In the project directory, you can run:
