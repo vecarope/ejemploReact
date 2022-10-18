@@ -10,6 +10,8 @@ TL: [José Campos](https://github.com/josecamposhz)
 
 ### Frontend
 
+FE: [Felipe Briones](https://github.com/zeed3v)  
+
 ### Backend
 
 ## Available Scripts
