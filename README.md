@@ -11,6 +11,8 @@ TL: [José Campos](https://github.com/josecamposhz)
 ### Frontend
 
 FE: [Felipe Briones](https://github.com/zeed3v)  
+FE: [Javier Archuby](https://github.com/Javier1978A)
+
 
 ### Backend
 
