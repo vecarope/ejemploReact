@@ -15,6 +15,8 @@ FE: [Francisco D. Molina](https://github.com/TheFranciscoMolina)
 
 ### Backend
 
+FS: [Rodrigo Quezada Candia](https://github.com/DarkKapo)
+
 ## Available Scripts
 
 In the project directory, you can run:
