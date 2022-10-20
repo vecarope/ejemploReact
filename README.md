@@ -17,7 +17,8 @@ FE: [Verónica Caro](https://github.com/vecarope)
 
 ### Backend
 
-FS: [Rodrigo Quezada Candia](https://github.com/DarkKapo)
+FS: [Rodrigo Quezada Candia](https://github.com/DarkKapo)  
+FS: [Felipe Gatica L](https://github.com/FelipeGaticaL)
 
 ## Available Scripts
 
