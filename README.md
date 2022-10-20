@@ -15,7 +15,8 @@ FE: [Francisco D. Molina](https://github.com/TheFranciscoMolina)
 
 ### Backend
 
-FS: [Rodrigo Quezada Candia](https://github.com/DarkKapo)
+FS: [Rodrigo Quezada Candia](https://github.com/DarkKapo)  
+FS: [Felipe Gatica L](https://github.com/FelipeGaticaL)
 
 ## Available Scripts
 
