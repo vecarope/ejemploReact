@@ -12,6 +12,7 @@ TL: [José Campos](https://github.com/josecamposhz)
 
 FE: [Felipe Briones](https://github.com/zeed3v)  
 FE: [Francisco D. Molina](https://github.com/TheFranciscoMolina)  
+FE: [Irani Romero](https://github.com/iranimromero) 
 
 ### Backend
 
