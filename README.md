@@ -10,8 +10,9 @@ TL: [José Campos](https://github.com/josecamposhz)
 
 ### Frontend
 
-FE: [Felipe Briones](https://github.com/zeed3v)  
-FE: [Francisco D. Molina](https://github.com/TheFranciscoMolina)  
+FE: [Felipe Briones](https://github.com/zeed3v)   
+FE: [Francisco D. Molina](https://github.com/TheFranciscoMolina)    
+FE: [Eliecer Calderon](https://github.com/eliecergonzalez2021)     
 FE: [Irani Romero](https://github.com/iranimromero) 
 FE: [Verónica Caro](https://github.com/vecarope)  
 
