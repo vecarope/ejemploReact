@@ -11,7 +11,7 @@ TL: [José Campos](https://github.com/josecamposhz)
 ### Frontend
 
 FE: [Felipe Briones](https://github.com/zeed3v)  
-FE: [Francisco D. Molina](https://github.com/TheFranciscoMolina) 
+FE: [Francisco D. Molina](https://github.com/TheFranciscoMolina)  
 FE: [Verónica Caro](https://github.com/vecarope)  
 
 ### Backend
