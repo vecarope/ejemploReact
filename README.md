@@ -14,6 +14,7 @@ FE: [Felipe Briones](https://github.com/zeed3v)
 FE: [Francisco D. Molina](https://github.com/TheFranciscoMolina)  
 
 ### Backend
+BE: [Varonica Caro](https://github.com/vecarope) 
 
 ## Available Scripts
 
