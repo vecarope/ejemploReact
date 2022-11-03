@@ -51,97 +51,148 @@ const Register = () => {
   });
 
   return (
-    <div>
-      <h1 className="mb-5 text-5xl font-bold">Registrate</h1>
-      <Formik
-        initialValues={initialCredentials}
-        validationSchema={validateSchema}
-        onSubmit={async (values) => {
-          await new Promise((res) => setTimeout(res, 1800));
-          /* Guardo las credenciales en LocalStorage para simular un acceso hasta tener las rutas listas */
-          localStorage.setItem('User temp', values);
-          alert(JSON.stringify(values));
-        }}
-      >
-        {({ errors, touched, isSubmitting }) => (
-          <Form className="form-control w-full max-w-xs">
-            <label htmlFor="userName" className="label-text">
-              Nombre:
-            </label>
-            <Field
-              id="userName"
-              name="userName"
-              placeholder="Ingresa tu nombre"
-              type="text"
-              className="input input-bordered input-secondary w-full max-w-xs"
-            />
-            {errors.userName && touched.userName && (
-              <ErrorMessage component="div" name="userName" />
-            )}
-            <label htmlFor="userLastName" className="label-text">
-              Apellido:
-            </label>
-            <Field
-              id="userLastName"
-              name="userLastName"
-              placeholder="Ingresa tu apellido"
-              type="text"
-              className="input input-bordered input-secondary w-full max-w-xs"
-            />
-            {errors.userLastName && touched.userLastName && (
-              <ErrorMessage component="div" name="userLastName" />
-            )}
-            <label htmlFor="userEmail" className="label-text">
-              Tu correo:
-            </label>
-            <Field
-              id="userEmail"
-              name="userEmail"
-              placeholder="tumejoremail@mail.com"
-              type="email"
-              className="input input-bordered input-secondary w-full max-w-xs"
-            />
-            {errors.userEmail && touched.userEmail && (
-              <ErrorMessage component="div" name="userEmail" />
-            )}
-            <label htmlFor="userPassword" className="label-text">
-              Contraseña:
-            </label>
-            <Field
-              id="userPassword"
-              name="userPassword"
-              type="password"
-              placeholder="*****"
-              className="input input-bordered input-secondary w-full max-w-xs"
-            />
-            {errors.userPassword && touched.userPassword && (
-              <ErrorMessage component="div" name="userPassword" />
-            )}
-            <label htmlFor="passwordConfirm" className="label-text">
-              Confirmar contraseña:
-            </label>
-            <Field
-              id="passwordConfirm"
-              name="passwordConfirm"
-              type="password"
-              placeholder="Repite la contraseña para validarla."
-              className="input input-bordered input-secondary w-full max-w-xs"
-            />
-            {errors.passwordConfirm && touched.passwordConfirm && (
-              <ErrorMessage component="div" name="passwordConfirm" />
-            )}
-            <button type="submit" className="btn">
-              Crear cuenta
-            </button>
-            <span>Iniciar sesion</span>
-            {isSubmitting ? (
-              <div>
-                <p>Cargando datos...</p>
+    <div class="flex flex-col items-center">
+      <h1 className="mb-5 py-1.5 text-4xl text-white font-bold text-center font-sans ">
+        Registrate
+      </h1>
+      <section>
+        <Formik
+          initialValues={initialCredentials}
+          validationSchema={validateSchema}
+          onSubmit={async (values) => {
+            await new Promise((res) => setTimeout(res, 1800));
+            /* Guardo las credenciales en LocalStorage para simular un acceso hasta tener las rutas listas */
+            localStorage.setItem('User temp', values);
+            alert(JSON.stringify(values));
+          }}
+        >
+          {({ errors, touched, isSubmitting }) => (
+            <Form className="form-control w-full max-w-xs">
+              <label
+                htmlFor="userName"
+                className="label-text"
+                class="text-white pt-3 font-sans"
+              >
+                Nombre:
+              </label>
+              <Field
+                id="userName"
+                name="userName"
+                placeholder="Ingresa tu nombre"
+                type="text"
+                className="input input-bordered input-secondary w-60 max-w-xs"
+              />
+              {errors.userName && touched.userName && (
+                <ErrorMessage
+                  component="div"
+                  name="userName"
+                  class="text-red-500"
+                />
+              )}
+              <label
+                htmlFor="userLastName"
+                className="label-text"
+                class="text-white pt-3 font-sans"
+              >
+                Apellido:
+              </label>
+              <Field
+                id="userLastName"
+                name="userLastName"
+                placeholder="Ingresa tu apellido"
+                type="text"
+                className="input input-bordered input-secondary w-60 max-w-xs"
+              />
+              {errors.userLastName && touched.userLastName && (
+                <ErrorMessage
+                  component="div"
+                  name="userLastName"
+                  class="text-red-500"
+                />
+              )}
+              <label
+                htmlFor="userEmail"
+                className="label-text"
+                class="text-white pt-3 font-sans"
+              >
+                Tu correo:
+              </label>
+              <Field
+                id="userEmail"
+                name="userEmail"
+                placeholder="tumejoremail@mail.com"
+                type="email"
+                className="input input-bordered input-secondary w-60 max-w-xs"
+              />
+              {errors.userEmail && touched.userEmail && (
+                <ErrorMessage
+                  component="div"
+                  name="userEmail"
+                  class="text-red-500"
+                />
+              )}
+              <label
+                htmlFor="userPassword"
+                className="label-text"
+                class="text-white pt-3 font-sans"
+              >
+                Contraseña:
+              </label>
+              <Field
+                id="userPassword"
+                name="userPassword"
+                type="password"
+                placeholder="*****"
+                className="input input-bordered input-secondary w-60 max-w-xs"
+              />
+              {errors.userPassword && touched.userPassword && (
+                <ErrorMessage
+                  component="div"
+                  name="userPassword"
+                  class="text-red-500"
+                />
+              )}
+              <label
+                htmlFor="passwordConfirm"
+                className="label-text"
+                class="text-white pt-3 font-sans"
+              >
+                Confirmar contraseña:
+              </label>
+              <Field
+                id="passwordConfirm"
+                name="passwordConfirm"
+                type="password"
+                placeholder="Repite la contraseña para validarla."
+                className="input input-bordered input-secondary w-60 max-w-xs"
+              />
+              {errors.passwordConfirm && touched.passwordConfirm && (
+                <ErrorMessage
+                  component="div"
+                  name="passwordConfirm"
+                  class="text-red-500"
+                />
+              )}
+              <div class="flex flex-col py-6 items-center">
+                <button
+                  type="submit"
+                  class="rounded-lg py-1.5  w-2/3 font-medium bg-white hover:bg-transparent text-dark-purple hover:text-white font-sans"
+                >
+                  Crear cuenta
+                </button>
+                <span class=" flex py-3.5 text-xs text-white text-center font-thin font-sans">
+                  Iniciar sesion
+                </span>
+                {isSubmitting ? (
+                  <div>
+                    <p>Cargando datos...</p>
+                  </div>
+                ) : null}
               </div>
-            ) : null}
-          </Form>
-        )}
-      </Formik>
+            </Form>
+          )}
+        </Formik>
+      </section>
     </div>
   );
 };
