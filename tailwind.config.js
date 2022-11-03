@@ -5,10 +5,16 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      sans: ['Roboto', 'sans-serif'],
+      sans: ['Poppins', 'sans-serif'],
       serif: ['Merriweather', 'serif']
     },
-    extend: {}
+    extend: {
+      colors: {
+        'mid-light-blue': '#2738F5 ',
+        'mid-blue': '#1E239A',
+        'dark-purple': '#140B34'
+      }
+    }
   },
   daisyui: {
     themes: [
