@@ -82,7 +82,7 @@ make enter
 ```
 
 ## Features 
-Define Frontend architecture
-Design propose using Figma
-Update Readme file
-Implement WEB and Mobiles views (Landing page, register, ) using Formik, Tallwind
+- Define Frontend architecture
+- Design propose using Figma
+- Update Readme file
+- Implement WEB and Mobiles views (Landing page, register, ) using Formik, Tallwind
