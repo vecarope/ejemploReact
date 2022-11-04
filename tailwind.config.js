@@ -12,7 +12,9 @@ module.exports = {
       colors: {
         'mid-light-blue': '#2738F5 ',
         'mid-blue': '#1E239A',
-        'dark-purple': '#140B34'
+        'dark-purple': '#140B34',
+        'dark-text': '#232323',
+        'fill-light': '#E2F2FE'
       }
     }
   },
