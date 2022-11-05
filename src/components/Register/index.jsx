@@ -8,24 +8,27 @@ const Register = () => {
     userLastName: '',
     userEmail: '',
     userPassword: '',
-    passwordConfirm: '',
-    userId: 1
+    passwordConfirm: ''
+    // userId: 1
   };
+  let validateStrings = /^[A-Za-z#&]+$/;
   let validateAlphanumeric = /^(?=.*\d)(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ]/;
-
-  /*   Criterios:
--Que el correo sea correcto
--Contraseña segura (mínimo 8 caracteres, alfanumérica y que tenga una mayúscula y una minúscula como mínimo)
--Que el rol por defecto sea usuario (no administrador)
--Nombre y Apellido => largo mínimo de 2 caracteres */
 
   const validateSchema = Yup.object().shape({
     userName: Yup.string()
       .required('Debes ingresar un nombre.')
+      .matches(validateStrings, {
+        excludeEmptyString: true,
+        message: 'El nombre debe ser solo texto.'
+      })
       .min(2, 'El nombre debe tener al menos 2 letras.')
       .max(25, 'El nombre debe ser más corto.'),
     userLastName: Yup.string()
       .required('Debes ingresar un apellido.')
+      .matches(validateStrings, {
+        excludeEmptyString: true,
+        message: 'El apellido debe ser solo texto.'
+      })
       .min(2, 'El apellido debe tener al menos 2 letras.')
       .max(30, 'El apellido debe ser más corto.'),
     userEmail: Yup.string()
@@ -52,9 +55,9 @@ const Register = () => {
   });
 
   return (
-    <div class="flex flex-col items-center">
-      <h1 className="mb-5 py-1.5 text-4xl text-white font-bold text-center font-sans ">
-        Registrate
+    <div class="flex flex-col h-screen md:h-auto items-center md:bg-white md:w-9/12 md:rounded-xl md:border-8 md:border-zinc-800 max-w-screen-xl ">
+      <h1 className="mb-5 py-1.5 md:p-8 text-4xl text-white md:text-5xl md:text-dark-purple font-bold text-center font-sans  ">
+        Regístrate
       </h1>
       <div class="container ">
         <img
@@ -63,7 +66,7 @@ const Register = () => {
           class="object-left-top -mx-10 ... opacity-50"
         />
       </div>
-      <section>
+      <section class="md:h-4/6 md:w-full md:justify-center md:flex">
         <Formik
           initialValues={initialCredentials}
           validationSchema={validateSchema}
@@ -75,125 +78,133 @@ const Register = () => {
           }}
         >
           {({ errors, touched, isSubmitting }) => (
-            <Form className="form-control w-full max-w-xs">
-              <div class="flex flex-col">
-                <label
-                  htmlFor="userName"
-                  className="label-text"
-                  class="text-white pt-3 font-sans"
-                >
-                  Nombre:
-                </label>
-                <Field
-                  id="userName"
-                  name="userName"
-                  placeholder="Ingresa tu nombre"
-                  type="text"
-                  className="input input-bordered input-secondary w-60 max-w-xs"
-                />
-                {errors.userName && touched.userName && (
-                  <ErrorMessage
-                    component="div"
+            <Form className="form-control w-full max-w-xs md:justify-center ">
+              <div class="md:contents md:items-center">
+                <div class="flex flex-col md:flex-wrap">
+                  <label
+                    htmlFor="userName"
+                    className="label-text"
+                    class="text-white md:text-dark-text md:text-lg pt-3 font-sans md:pr-4"
+                  >
+                    Nombre:
+                  </label>
+                  <Field
+                    id="userName"
                     name="userName"
-                    class="text-red-500"
+                    placeholder="Ingresa tu nombre"
+                    type="text"
+                    className="input input-bordered input-secondary w-60 max-w-xs md:w-80 md:bg-fill-light md:border-inherit"
                   />
-                )}
-                <label
-                  htmlFor="userLastName"
-                  className="label-text"
-                  class="text-white pt-3 font-sans"
-                >
-                  Apellido:
-                </label>
-                <Field
-                  id="userLastName"
-                  name="userLastName"
-                  placeholder="Ingresa tu apellido"
-                  type="text"
-                  className="input input-bordered input-secondary w-60 max-w-xs"
-                />
-                {errors.userLastName && touched.userLastName && (
-                  <ErrorMessage
-                    component="div"
+                  {errors.userName && touched.userName && (
+                    <ErrorMessage
+                      component="div"
+                      name="userName"
+                      class="text-red-500"
+                    />
+                  )}
+                  <label
+                    htmlFor="userLastName"
+                    className="label-text"
+                    class="text-white md:text-dark-text md:text-lg pt-3 font-sans md:pr-4"
+                  >
+                    Apellido:
+                  </label>
+                  <Field
+                    id="userLastName"
                     name="userLastName"
-                    class="text-red-500"
+                    placeholder="Ingresa tu apellido"
+                    type="text"
+                    className="input input-bordered input-secondary w-60 max-w-xs md:w-80 md:bg-fill-light md:border-inherit"
                   />
-                )}
+                  {errors.userLastName && touched.userLastName && (
+                    <ErrorMessage
+                      component="div"
+                      name="userLastName"
+                      class=" text-red-500 "
+                    />
+                  )}
+                </div>
+                <div class="flex flex-col  md:w-fit md:flex-wrap">
+                  <div class="flex flex-col md:w-fit">
+                    <label
+                      htmlFor="userEmail"
+                      className="label-text"
+                      class="text-white md:text-dark-text md:text-lg pt-3 font-sans md:w-80"
+                    >
+                      Ingresa tu correo:
+                    </label>
+                    <Field
+                      id="userEmail"
+                      name="userEmail"
+                      placeholder="tumejoremail@mail.com"
+                      type="email"
+                      className="input input-bordered input-secondary w-60 max-w-xs md:w-80 md:bg-fill-light md:border-inherit"
+                    />
+                    {errors.userEmail && touched.userEmail && (
+                      <ErrorMessage
+                        component="div"
+                        name="userEmail"
+                        class="text-red-500"
+                      />
+                    )}
+                  </div>
+                  <div class="flex flex-col md:w-fit">
+                    <label
+                      htmlFor="userPassword"
+                      className="label-text"
+                      class="text-white md:text-dark-text md:text-lg pt-3 font-sans md:w-80"
+                    >
+                      Crea tu contraseña:
+                    </label>
+                    <Field
+                      id="userPassword"
+                      name="userPassword"
+                      type="password"
+                      placeholder="*****"
+                      className="input input-bordered input-secondary w-60 max-w-xs md:w-80 md:bg-fill-light md:border-inherit"
+                    />
+                    {errors.userPassword && touched.userPassword && (
+                      <ErrorMessage
+                        component="div"
+                        name="userPassword"
+                        class="text-red-500"
+                      />
+                    )}
+                  </div>
+                  <div class="flex flex-col md:w-fit">
+                    <label
+                      htmlFor="passwordConfirm"
+                      className="label-text"
+                      class="text-white md:text-dark-text md:text-lg pt-3 font-sans md:w-80"
+                    >
+                      Reingresa contraseña:
+                    </label>
+                    <Field
+                      id="passwordConfirm"
+                      name="passwordConfirm"
+                      type="password"
+                      placeholder="Repite la contraseña."
+                      className="input input-bordered input-secondary w-60 max-w-xs md:w-80 md:bg-fill-light md:border-inherit"
+                    />
+                    {errors.passwordConfirm && touched.passwordConfirm && (
+                      <ErrorMessage
+                        component="div"
+                        name="passwordConfirm"
+                        class="text-red-500"
+                      />
+                    )}
+                  </div>
+                </div>
               </div>
-              <div class="flex flex-col">
-                <label
-                  htmlFor="userEmail"
-                  className="label-text"
-                  class="text-white pt-3 font-sans"
-                >
-                  Tu correo:
-                </label>
-                <Field
-                  id="userEmail"
-                  name="userEmail"
-                  placeholder="tumejoremail@mail.com"
-                  type="email"
-                  className="input input-bordered input-secondary w-60 max-w-xs"
-                />
-                {errors.userEmail && touched.userEmail && (
-                  <ErrorMessage
-                    component="div"
-                    name="userEmail"
-                    class="text-red-500"
-                  />
-                )}
-                <label
-                  htmlFor="userPassword"
-                  className="label-text"
-                  class="text-white pt-3 font-sans"
-                >
-                  Contraseña:
-                </label>
-                <Field
-                  id="userPassword"
-                  name="userPassword"
-                  type="password"
-                  placeholder="*****"
-                  className="input input-bordered input-secondary w-60 max-w-xs"
-                />
-                {errors.userPassword && touched.userPassword && (
-                  <ErrorMessage
-                    component="div"
-                    name="userPassword"
-                    class="text-red-500"
-                  />
-                )}
-                <label
-                  htmlFor="passwordConfirm"
-                  className="label-text"
-                  class="text-white pt-3 font-sans"
-                >
-                  Confirmar contraseña:
-                </label>
-                <Field
-                  id="passwordConfirm"
-                  name="passwordConfirm"
-                  type="password"
-                  placeholder="Repite la contraseña."
-                  className="input input-bordered input-secondary w-60 max-w-xs"
-                />
-                {errors.passwordConfirm && touched.passwordConfirm && (
-                  <ErrorMessage
-                    component="div"
-                    name="passwordConfirm"
-                    class="text-red-500"
-                  />
-                )}
-              </div>
-              <div class="flex flex-col py-6 items-center">
+              <div class="flex flex-col py-6 items-center md:justify-center   ">
                 <button
                   type="submit"
-                  class="rounded-lg py-1.5  w-2/3 font-medium bg-white hover:bg-transparent text-dark-purple hover:text-white font-sans"
+                  class="rounded-lg border hover:border text-lg p-2 w-2/3 font-regular bg-white hover:bg-transparent hover:md:bg-mid-blue md:bg-dark-purple hover: text-dark-purple mb:text-white hover:text-white md:text-white font-sans"
                 >
                   Crear cuenta
                 </button>
-                <span class=" flex py-3.5 text-xs text-white text-center font-thin font-sans">
-                  Iniciar sesion
+                <span class=" flex py-3.5 text-sm text-white text-center font-thin  hover:md:text-mid-blue md:text-dark-purple font-sans">
+                  Iniciar sesión
                 </span>
                 {isSubmitting ? (
                   <div>
@@ -205,12 +216,11 @@ const Register = () => {
           )}
         </Formik>
       </section>
-
       <div class="container">
         <img
           src={MoonImage}
           alt="design moon"
-          class="object-left-bottom -mx-8"
+          class="object-left-bottom -mx-8 relative"
         />
       </div>
     </div>
