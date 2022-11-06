@@ -22,9 +22,9 @@ FS: [Rodrigo Quezada Candia](https://github.com/DarkKapo)
 FS: [Felipe Gatica L](https://github.com/FelipeGaticaL)  
 FS: [Benjamin Padros](https://github.com/bpadros)
 
+
 ## Dependencies    
 This project was built mainly whith the following technologies: 
-
           
 ### Backend 
 
