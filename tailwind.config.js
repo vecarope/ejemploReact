@@ -1,14 +1,22 @@
 module.exports = {
   content: [
     './src/**/*.{js,jsx,ts,tsx}',
-    './node_modules/tw-elements/dist/js/**/*.js',
+    './node_modules/tw-elements/dist/js/**/*.js'
   ],
   theme: {
     fontFamily: {
-      sans: ['Roboto', 'sans-serif'],
-      serif: ['Merriweather', 'serif'],
+      sans: ['Poppins', 'sans-serif'],
+      serif: ['Merriweather', 'serif']
     },
-    extend: {},
+    extend: {
+      colors: {
+        'mid-light-blue': '#2738F5 ',
+        'mid-blue': '#1E239A',
+        'dark-purple': '#140B34',
+        'dark-text': '#232323',
+        'fill-light': '#E2F2FE'
+      }
+    }
   },
   daisyui: {
     themes: [
@@ -22,10 +30,10 @@ module.exports = {
           info: '#3ABFF8',
           success: '#36D399',
           warning: '#FBBD23',
-          error: '#F87272',
-        },
-      },
-    ],
+          error: '#F87272'
+        }
+      }
+    ]
   },
-  plugins: [require('daisyui'), require('tw-elements/dist/plugin')],
+  plugins: [require('daisyui'), require('tw-elements/dist/plugin')]
 };
