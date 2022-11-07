@@ -13,6 +13,7 @@ module.exports = {
         'mid-light-blue': '#2738F5 ',
         'mid-blue': '#1E239A',
         'dark-purple': '#140B34',
+        'light-purple': '#2738F5',
         'dark-text': '#232323',
         'fill-light': '#E2F2FE'
       }
