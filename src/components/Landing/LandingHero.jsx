@@ -4,15 +4,15 @@ import React from 'react';
 const LandingHero = () => {
   return (
 
-    <section class="landingHero" id="hero">
+    <section class="bg-gradient-to-b from-mid-light-blue via-mid-blue to-dark-purple min-h-screen flex justify-center items-center h-screen " id="hero">
 
-      <div class="container " >
+      <div class="" >
 
-        <div class="">
+        <div class="text-white">
           <h1 class="">
             <strong>Buscas talento TI?</strong>
           </h1>
-          <hr class="" />
+          
           <h2 class="">
             Contrata <a class="">Talento TI rápido</a>, inteligente y eficiente
           </h2>
@@ -27,8 +27,8 @@ const LandingHero = () => {
         <div class="">
           <button
             type="submit"
-            class="rounded-lg border hover:border text-lg p-2 w-2/3 font-regular bg-white hover:bg-white hover:md:bg-mid-blue md:bg-light-purple hover: text-blue mb:text-blue hover:text-blue md:text-blue font-sans">
-            Quiero contratar
+            class="rounded-lg  bg-white text-center text-mid-light-blue">
+            <strong>Quiero contratar</strong>
           </button>
         </div>
 
