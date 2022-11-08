@@ -17,7 +17,7 @@ FE: [Eliecer Calderon](https://github.com/eliecergonzalez2021)
 FE: [Irani Romero](https://github.com/iranimromero) 
 
 ### Backend
-FS: [Varonica Caro](https://github.com/vecarope)    
+FS: [Veronica Caro](https://github.com/vecarope)    
 FS: [Rodrigo Quezada Candia](https://github.com/DarkKapo)  
 FS: [Felipe Gatica L](https://github.com/FelipeGaticaL)  
 FS: [Benjamin Padros](https://github.com/bpadros) 
