@@ -1,10 +1,11 @@
 import React from 'react';
+import coverImage from '../../assets/design/cover_image.png';
 
 
 const LandingHero = () => {
   return (
 
-    <section class="bg-gradient-to-b from-mid-light-blue via-mid-blue to-dark-purple min-h-screen flex justify-center items-center h-screen " id="hero">
+    <section class="bg-gradient-to-b from-mid-light-blue via-mid-blue to-dark-purple min-h-screen flex justify-center items-center h-screen p-[5rem]" id="hero">
 
       <div class="" >
 
@@ -32,6 +33,9 @@ const LandingHero = () => {
           </button>
         </div>
 
+      </div>
+      <div>
+        <img src={coverImage} alt="video devsafio" />
       </div>
 
     </section>
