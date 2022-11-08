@@ -108,7 +108,7 @@ const Navbar = () => {
       </div>
         
       
-      <div className={!nav ? "fixed left-0 top-0 w-[60%] h-full border-r border-r-blue-900 bg-[#E2F2FE] ease-in-out duration-500" : "ease-in-out duration-500 fixed left-[-100%]"}>
+      <div className={!nav ? "fixed left-0 top-0 z-10 bg-white md:max-w-[50%] w-full border-r border-r-blue-900 bg-[#E2F2FE] ease-in-out duration-500" : "ease-in-out duration-500 fixed left-[-100%]"}>
         <h1 className="w-full text-3x1 font-bold text-[#1E239A] m-4">Menú</h1>
 
         <ul className="pt-12 uppercase text-blue-500 p-4">
