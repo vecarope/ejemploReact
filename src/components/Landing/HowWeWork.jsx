@@ -39,8 +39,13 @@ const HowWeWork = () => {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope picture-in-picture"
             width="640"
             height="360"
+            allowfullscreen
+            frameborder="0"
+            marginwidth="3"
             src="https://www.youtube-nocookie.com/embed/z5NPi7WrViU?controls=0&amp;modestbranding=1&amp;rel=0&amp;showinfo=0&amp;loop=0&amp;hl=en&amp;iv_load_policy=1&amp;wmode=transparent&amp;widget_referrer=https%3A%2F%2Fdevsafio.com%2F&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fdevsafio.com&amp;widgetid=1"
-          ></iframe>
+          >
+            Error al cargar video.
+          </iframe>
         </div>
       </div>
     </section>
