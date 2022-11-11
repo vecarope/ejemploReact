@@ -1,4 +1,4 @@
-import Web from "./Web/Web";
+import Nav from "./Web/Nav";
 //import Mobile from "./Mobile/Mobile";
 
 
@@ -10,7 +10,7 @@ const Header = () => {
     
     <div>
      
-      <Web />
+      <Nav />
       
     </div>
   )
