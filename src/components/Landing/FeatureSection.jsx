@@ -20,6 +20,7 @@ const FeatureSection = () => {
           digital, acá te explicamos cómo:
         </p>
       </header>
+      <div class="m-auto"></div>
     </section>
   );
 };
