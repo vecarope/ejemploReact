@@ -2,7 +2,7 @@ import * as Landing from '../../components/Landing';
 
 const HomePage = () => {
   return (
-    <main className="container mx-auto">
+    <main>
       <Landing.Hero />
       <Landing.HowWeWork />
       <Landing.Features />
