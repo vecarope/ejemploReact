@@ -6,7 +6,7 @@ const LandingHero = () => {
     <section id="hero">
     <div class="bg-gradient-to-b from-mid-light-blue via-mid-blue to-dark-purple min-h-screen flex justify-center items-center h-screen p-[2rem]" >
       <div className='lg:flex '>
-        <div class="justify-center py-3 lg:hidden" >
+        <div class="sm:justify-center py-3 lg:hidden" >
           <img src={coverImage} alt="MujerDev" />
         </div>
         
@@ -24,7 +24,7 @@ const LandingHero = () => {
             <br />
             <button
               type="submit"
-              class="rounded-lg  bg-white text-center text-mid-light-blue p-[1rem] uppercase">
+              class="rounded-full  bg-white text-center text-mid-light-blue p-[1rem] uppercase">
               <strong>Quiero contratar</strong>
             </button>
           </div>
