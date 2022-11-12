@@ -5,8 +5,8 @@ const LandingHero = () => {
   return (
     <section id="hero">
     <div class="bg-gradient-to-b from-mid-light-blue via-mid-blue to-dark-purple min-h-screen flex justify-center items-center h-screen p-[2rem]" >
-      <div className='lg:flex '>
-        <div class="sm:justify-center py-3 lg:hidden" >
+      <div className=' lg:flex '>
+        <div class="md:justify-center py-3 lg:hidden" >
           <img src={coverImage} alt="MujerDev" />
         </div>
         
@@ -32,7 +32,7 @@ const LandingHero = () => {
         
         
       </div>
-      <div class="hidden lg:block -mx-20 -mb-56">
+      <div class="hidden lg:block -mx-8 -mb-40">
           <img src={coverImage2} alt="MujerDev" />
       </div>
     </div>
