@@ -12,9 +12,9 @@ TL: [José Campos](https://github.com/josecamposhz)
 
 FE: [Felipe Briones](https://github.com/zeed3v)  
 FE: [Javier Archuby](https://github.com/Javier1978A)  
-FE: [Francisco D. Molina](https://github.com/TheFranciscoMolina)    
-FE: [Eliecer Calderon](https://github.com/eliecergonzalez2021)   
-FE: [Irani Romero](https://github.com/iranimromero) 
+FE: [Francisco D. Molina](https://github.com/TheFranciscoMolina)  
+FE: [Eliecer Calderon](https://github.com/eliecergonzalez2021)  
+FE: [Irani Romero](https://github.com/iranimromero)  
 
 ### Backend
 
