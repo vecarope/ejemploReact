@@ -3,13 +3,17 @@
 @tailwind utilities;
 
 .btn {
-    @apply py-1 px-4 rounded-[14px];
+    @apply py-1 px-4  rounded-[14px];
 }
 
 .btn-blue {
     @apply bg-mid-light-blue text-white;
 }
 
-.btn-blue:hover {
-    @apply bg-blue-700;
+.btn-white {
+    @apply bg-white text-mid-light-blue;
+}
+
+.btn-gray-hover{
+    @apply hover:bg-gray-200 border border-slate-50;
 }
