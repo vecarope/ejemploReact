@@ -1,5 +1,4 @@
-import React from 'react';
-
+import AllCards from './FeatureCards/AllCards';
 const FeatureSection = () => {
   return (
     <section class="bg-fill-light w-full h-screen ">
@@ -21,7 +20,9 @@ const FeatureSection = () => {
             digital, acá te explicamos cómo:
           </p>
         </header>
-        <div class="m-auto"></div>
+        <div class="m-auto">
+          <AllCards />
+        </div>
       </div>
     </section>
   );
