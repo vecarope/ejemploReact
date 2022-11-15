@@ -11,7 +11,7 @@
 }
 
 .btn-white {
-    @apply bg-white text-mid-light-blue;
+    @apply bg-white text-mid-light-blue ;
 }
 
 .btn-gray-hover{
