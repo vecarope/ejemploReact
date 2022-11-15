@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../assets/componentsCSS/button.css';
 
 const LandingHero = () => {
   return (
