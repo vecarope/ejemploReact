@@ -1,7 +1,7 @@
 import AllCards from './FeatureCards/AllCards';
 const FeatureSection = () => {
   return (
-    <section class="bg-fill-light w-full h-screen ">
+    <section class="bg-fill-light w-full h-screen m-auto items-center">
       <div class="container mx-auto">
         <header class="m-auto text-center py-6">
           <h2 class="font-sans text-2xl pt-4 font-semibold text-dark-purple">
