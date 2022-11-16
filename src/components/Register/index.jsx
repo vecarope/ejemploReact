@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { validateSchema } from '../../validation/validateForm';
 import MoonImage from '../../assets/design/moon_color.png';
@@ -13,8 +14,8 @@ const initialCredentials = {
 
 const Register = () => {
   return (
-    <div class="flex flex-col h-screen md:h-auto items-center md:bg-white md:w-9/12 md:rounded-xl md:border-8 md:border-zinc-800 max-w-screen-xl ">
-      <h1 className="mb-5 py-1.5 md:p-8 text-4xl text-white md:text-5xl md:text-dark-purple font-bold text-center font-sans  ">
+    <div class="flex flex-col items-center md:bg-white md:w-3/5 md:my-11 md:rounded-xl md:border-8 md:border-zinc-800 max-w-screen-xl ">
+      <h1 className=" py-1.5 md:my-4 text-4xl text-white md:text-5xl md:text-dark-purple font-bold text-center font-sans  ">
         Regístrate
       </h1>
       <div class="container ">
@@ -24,7 +25,7 @@ const Register = () => {
           class="object-left-top -mx-10 ... opacity-50"
         />
       </div>
-      <section class="md:h-4/6 md:w-full md:justify-center md:flex">
+      <section class="md:min-w-full md:justify-center md:flex">
         <Formik
           initialValues={initialCredentials}
           validationSchema={validateSchema}
@@ -36,30 +37,32 @@ const Register = () => {
           }}
         >
           {({ errors, touched, isSubmitting }) => (
-            <Form className="form-control w-full max-w-xs md:justify-center ">
+            <Form className="form-control max-w-xs md:justify-center ">
               <div class="md:contents md:items-center">
                 <div class="flex flex-col md:flex-wrap">
-                  <label
-                    htmlFor="userName"
-                    className="label-text"
-                    class="text-white md:text-dark-text md:text-lg pt-3 font-sans md:pr-4"
-                  >
-                    Nombre:
-                  </label>
-                  <Field
-                    id="userName"
-                    name="userName"
-                    placeholder="Ingresa tu nombre"
-                    type="text"
-                    className="input input-bordered input-secondary w-60 max-w-xs md:w-80 md:bg-fill-light md:border-inherit"
-                  />
-                  {errors.userName && touched.userName && (
-                    <ErrorMessage
-                      component="div"
+                  <div class="flex flex-col md:flex-wrap">
+                    <label
+                      htmlFor="userName"
+                      className="label-text"
+                      class="text-white md:text-dark-text md:text-lg pt-3 font-sans md:pr-4"
+                    >
+                      Nombre:
+                    </label>
+                    <Field
+                      id="userName"
                       name="userName"
-                      class="text-red-500"
+                      placeholder="Ingresa tu nombre"
+                      type="text"
+                      className="input input-bordered input-secondary w-60 max-w-xs md:w-80 md:bg-fill-light md:border-inherit"
                     />
-                  )}
+                    {errors.userName && touched.userName && (
+                      <ErrorMessage
+                        component="div"
+                        name="userName"
+                        class="text-red-500"
+                      />
+                    )}
+                  </div>
                   <label
                     htmlFor="userLastName"
                     className="label-text"
@@ -161,9 +164,12 @@ const Register = () => {
                 >
                   Crear cuenta
                 </button>
-                <span class=" flex py-3.5 text-sm text-white text-center font-thin  hover:md:text-mid-blue md:text-dark-purple font-sans">
-                  Iniciar sesión
-                </span>
+                <Link to={'/login'}>
+                  <span class=" flex py-3.5 text-sm text-white text-center font-thin  hover:md:text-mid-blue md:text-dark-purple font-sans">
+                    Iniciar sesión
+                  </span>
+                </Link>
+
                 {isSubmitting ? (
                   <div>
                     <p>Cargando datos...</p>
