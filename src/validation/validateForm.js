@@ -31,7 +31,7 @@ export const validateSchema = Yup.object().shape({
       message:
         'La contraseña debe tener al menos una mayúscula, una minúscula y un número.'
     })
-    .required('Debes crear una contraseña.')
+    .required('Debes ingresar una contraseña.')
     .min(8, 'La contraseña debe tener más de ocho caracteres.')
     .max(20, 'La contraseña debe ser más corta.'),
 
