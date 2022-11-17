@@ -4,6 +4,8 @@ const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'));
 const HomePage = React.lazy(() => import('./views/Home'));
 const RegisterPage = React.lazy(() => import('./views/Register'));
 const LoginPage = React.lazy(() => import(`./views/Login`));
+const ApplicationFormPage = React.lazy(() => import('./views/ApplicationForm'));
+
 
 function App() {
   return (
@@ -13,6 +15,7 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="register" element={<RegisterPage />} />
           <Route path="login" element={<LoginPage />} />
+          <Route path="application" element={<ApplicationFormPage />} />
         </Route>
       </Routes>
     </Suspense>
