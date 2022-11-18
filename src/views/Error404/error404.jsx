@@ -1,10 +1,13 @@
 import React from "react"
-
+import eror404 from '../../assets/design/404error.jpg';
 const Error404 = () => {
   return (
-    <h1>
-      Prueba
-    </h1>
+    <section>
+      <div>
+        <img src={eror404} alt="Pagina no encontrada" />
+        <h1>Oopps</h1>
+      </div>
+    </section>
   );
 };
 
