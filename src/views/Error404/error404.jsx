@@ -1,10 +1,10 @@
-import * as Landing from '../../components/Error404';
+import React from "react"
 
 const Error404 = () => {
   return (
-    <main>
-      <Error404 />
-    </main>
+    <h1>
+      Prueba
+    </h1>
   );
 };
 
