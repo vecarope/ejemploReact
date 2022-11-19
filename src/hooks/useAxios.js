@@ -21,10 +21,6 @@ const useAxios = (url) => {
         getData();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [url])
-
-    if (loading){
-        console.log(`Cargando datos ... `);
-    }
     
     return { dataDb, loading, error }
 }
