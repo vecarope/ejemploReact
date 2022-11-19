@@ -1,3 +1,7 @@
 export const OverviewCard = () => {
-  return <p>OverviewCard</p>;
+  return (
+    <section>
+      <h2>¡POSTULA Y ÚNETE A DEVSAFÍO!</h2>
+    </section>
+  );
 };
