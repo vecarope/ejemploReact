@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { Error404 }  from './views/Error404';
 const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'));
 const HomePage = React.lazy(() => import('./views/Home'));
@@ -14,6 +14,7 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="register" element={<RegisterPage />} />
           <Route path="/404" element={<Error404/>}/>
+          <Route path="*" element={<Navigate to ="/404"/>}/>
         </Route>
       </Routes>
     </Suspense>
