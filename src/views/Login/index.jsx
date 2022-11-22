@@ -1,11 +1,11 @@
-import Register from '../../components/Register';
+import Login from '../../components/Login';
 
-const RegisterPage = () => {
+const LoginPage = () => {
   return (
     <div class="bg-gradient-to-b from-mid-light-blue via-mid-blue to-dark-purple min-h-screen flex justify-center items-center">
-      <Register />
+      <Login />
     </div>
   );
 };
 
-export default RegisterPage;
+export default LoginPage;
