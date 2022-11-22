@@ -19,7 +19,7 @@ const Navbar = () => {
 
       <ul className="hidden md:flex gap-3">
         <li className="p-4">
-          <a href="/logín">Iniciar Sesión</a>
+          <a href="/login">Iniciar Sesión</a>
         </li>
         <li className="p-4">
           <a href="/">Administra la Pagina</a>
