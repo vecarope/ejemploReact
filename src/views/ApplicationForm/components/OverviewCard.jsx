@@ -19,7 +19,7 @@ export const OverviewCard = () => {
         laborales que tenemos junto a importantes empresas en latinoamérica.
       </p>
 
-      <h3 className="py-3 font-bold font-sans text-lg">
+      <h3 className="py-3 font-bold font-sans text-2xl md:text-lg">
         ¿Debo pagar algo por inscribirme y participar?
       </h3>
       <p className="font-extralight font-sans text-lg tracking-wide leading-relaxed py-3">
