@@ -1,6 +1,6 @@
 export const OverviewCard = () => {
   return (
-    <section className="bg-dark-purple min-h-screen  text-white p-9 md:rounded-2xl container flex flex-col align-middle">
+    <section className="bg-dark-purple text-white p-9 md:rounded-2xl container flex flex-col">
       <h2 className="text-4xl font-bold pb-8 font-sans ">
         ¡POSTULA Y ÚNETE A DEVSAFÍO!
       </h2>
@@ -35,7 +35,7 @@ export const OverviewCard = () => {
         posibilidad de ser contratado directamente por la empresa, con sus
         distintos beneficios y remuneración acorde al mercado.
       </p>
-      <p className="font-extralight font-sans text-lg tracking-wide leading-relaxed py-3">
+      <p className="font-extralight font-sans tracking-wide leading-relaxed py-3">
         Si quieres saber más de nosotros y nuestras actividades, nos puedes
         seguir en: https://www.linkedin.com/company/devsafio
       </p>
