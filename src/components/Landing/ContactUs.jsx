@@ -41,7 +41,7 @@ const ContactUs = () => {
         </div>
 
         <div class="card bg-[#140B34] w-auto h-auto md:w-1/2 mx-auto items-center">
-          <form class="md:w-3/4 md:h-64 md:mx-3 flex flex-wrap grid ">
+          <form class="py-5 px-8 flex flex-wrap grid ">
             <h5 className="text-white py-4 px-4 leading-relaxed font-sans text-xl font-medium md:w-6/6 md:mx-auto">
               <b>
                 Si eres empresa y buscas talento TI, déjanos tu información en
@@ -100,77 +100,75 @@ const ContactUs = () => {
               />
             </div>
 
-            <p className="text-white font-sans flex">
+            <p className="text-white font-sans flex px-5">
               Cargo/área de preferencia que buscas contratar *
             </p>
 
             <div className="hover:auto-cols-min">
-              <div className="form-control grow h-auto w-auto m-5 grid grid-cols-1">
-                <label className="label cursor-pointer">
+              <div className="form-control grow h-auto w-auto mx-5 grid grid-cols-1">
+                <label className="label cursor-pointer justify-start gap-4">
                   <input type="checkbox" className="checkbox" />
                   <span className="label-text text-white">Remember tyu</span>
                 </label>
               </div>
 
-              <div className="form-control grow h-auto w-auto m-5 grid grid-cols-1">
-                <label className="label cursor-pointer">
+              <div className="form-control grow h-auto w-auto mx-5 grid grid-cols-1">
+                <label className="label cursor-pointer justify-start gap-4">
                   <input type="checkbox" className="checkbox" />
                   <span className="label-text text-white">Remember tyu</span>
                 </label>
               </div>
 
-              <div className="form-control grow h-auto w-auto m-5 grid grid-cols-1">
-                <label className="label cursor-pointer">
+              <div className="form-control grow h-auto w-auto mx-5 grid grid-cols-1">
+                <label className="label cursor-pointer justify-start gap-4">
                   <input type="checkbox" className="checkbox" />
                   <span className="label-text text-white">Remember tyu</span>
                 </label>
               </div>
 
-              <div className="form-control grow h-auto w-auto m-5 grid grid-cols-1">
-                <label className="label cursor-pointer">
+              <div className="form-control grow h-auto w-auto mx-5 grid grid-cols-1">
+                <label className="label cursor-pointer justify-start gap-4">
                   <input type="checkbox" className="checkbox" />
                   <span className="label-text text-white">Remember tyu</span>
                 </label>
               </div>
 
-              <div className="form-control grow h-auto w-auto m-5 grid grid-cols-1">
-                <label className="label cursor-pointer">
+              <div className="form-control grow h-auto w-auto mx-5 grid grid-cols-1">
+                <label className="label cursor-pointer justify-start gap-4">
                   <input type="checkbox" className="checkbox" />
                   <span className="label-text text-white">Remember tyu</span>
                 </label>
               </div>
 
-              <div className="form-control grow h-auto w-auto m-5 grid grid-cols-1">
-                <label className="label cursor-pointer">
+              <div className="form-control grow h-auto w-auto mx-5 grid grid-cols-1">
+                <label className="label cursor-pointer justify-start gap-4">
                   <input type="checkbox" className="checkbox" />
                   <span className="label-text text-white">Remember tyu</span>
                 </label>
               </div>
 
-              <div className="form-control grow h-auto w-auto m-5 grid grid-cols-1">
-                <label className="label cursor-pointer">
+              <div className="form-control grow h-auto w-auto mx-5 grid grid-cols-1">
+                <label className="label cursor-pointer justify-start gap-4">
                   <input type="checkbox" className="checkbox" />
                   <span className="label-text text-white">Remember tyu</span>
                 </label>
               </div>
             </div>
 
-            <div className="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
-              <div className="px-4 py-2 bg-white rounded-t-lg ">
-                <label for="comment" class="sr-only">
-                  Your comment
-                </label>
-                <textarea
-                  id="comment"
-                  rows="4"
-                  className="w-full px-0 text-sm text-gray-900 bg-white border-0 "
-                  placeholder="Write a comment..."
-                  required
-                ></textarea>
-              </div>
+            <div className="w-full my-5 px-5">
+              <label for="comment" class="sr-only">
+                Your comment
+              </label>
+              <textarea
+                id="comment"
+                rows="4"
+                className="w-full rounded-lg text-sm text-gray-900 bg-white border-0 resize-none"
+                placeholder="Write a comment..."
+                required
+              ></textarea>
             </div>
 
-            <button className="btn btn-active">Button</button>
+            <button className="btn btn-active mx-5">Enviar</button>
           </form>
         </div>
       </div>
