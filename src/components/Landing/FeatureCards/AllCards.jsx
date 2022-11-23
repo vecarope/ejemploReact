@@ -3,7 +3,7 @@ import { featuresData } from '../../../common/featuresData';
 
 const AllCards = () => {
   return (
-    <div class="flex flex-col md:flex-row md:m-auto md:items-center justify-center md:w-9/12">
+    <div className="flex flex-col md:flex-row md:m-auto md:items-center justify-center md:w-9/12">
       {featuresData.map((ele) => (
         <Card
           head={ele.title}

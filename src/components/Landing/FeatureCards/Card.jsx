@@ -6,7 +6,7 @@ const Card = ({ head, pic, text, id }) => {
       <div className="flex justify-center">
         <img src={pic} alt="feature images" />
       </div>
-      <header class="p-6 font-sans text-2xl pt-4 font-semibold text-dark-purple">
+      <header className="p-6 font-sans text-2xl pt-4 font-semibold text-dark-purple">
         {head}
       </header>
       <p className="text-base">{text}</p>
