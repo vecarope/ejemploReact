@@ -57,34 +57,42 @@ const ContactUs = () => {
                   type="display:flex"
                   className="input input-bordered"
                   placeholder="Ingrese Nombre"
+                  required
                 />
               </div>
 
               <div className="flex-initial w-64 m-5 ">
-                <label className="text-white font-sans ">Nombre *</label>
+                <label className="text-white font-sans ">Apellido *</label>
                 <br />
                 <input
                   type="text"
                   className="input input-bordered"
-                  placeholder="Ingrese Nombre"
+                  placeholder="Ingrese Apellido"
+                  required
                 />
               </div>
 
               <div className="flex-initial w-64 m-5 ">
-                <label className="text-white font-sans ">Nombre *</label>
+                <label className="text-white font-sans ">
+                  Email corporativo *
+                </label>
                 <input
-                  type="text"
+                  type="email"
                   className="input input-bordered"
-                  placeholder="Ingrese Nombre"
+                  placeholder="Ingrese Email"
+                  required
                 />
               </div>
 
               <div className="flex-initial w-64 m-5 ">
-                <label className="text-white font-sans ">Nombre *</label>
+                <label className="text-white font-sans ">
+                  Número de teléfono *
+                </label>
                 <input
-                  type="text"
+                  type="tel"
                   className="input input-bordered"
-                  placeholder="Ingrese Nombre"
+                  placeholder="Ingrese teléfono"
+                  required
                 />
               </div>
             </div>
@@ -96,7 +104,8 @@ const ContactUs = () => {
               <input
                 type="text"
                 className="input input-bordered"
-                placeholder="Ingrese Nombre"
+                placeholder="Ingrese aquí"
+                required
               />
             </div>
 
@@ -108,49 +117,55 @@ const ContactUs = () => {
               <div className="form-control grow h-auto w-auto mx-5 grid grid-cols-1">
                 <label className="label cursor-pointer justify-start gap-4">
                   <input type="checkbox" className="checkbox" />
-                  <span className="label-text text-white">Remember tyu</span>
+                  <span className="label-text text-white">
+                    Desarrollador Front End
+                  </span>
                 </label>
               </div>
 
               <div className="form-control grow h-auto w-auto mx-5 grid grid-cols-1">
                 <label className="label cursor-pointer justify-start gap-4">
                   <input type="checkbox" className="checkbox" />
-                  <span className="label-text text-white">Remember tyu</span>
+                  <span className="label-text text-white">
+                    Desarrollador Full Stack / Backend
+                  </span>
                 </label>
               </div>
 
               <div className="form-control grow h-auto w-auto mx-5 grid grid-cols-1">
                 <label className="label cursor-pointer justify-start gap-4">
                   <input type="checkbox" className="checkbox" />
-                  <span className="label-text text-white">Remember tyu</span>
+                  <span className="label-text text-white">Diseñador UX/UI</span>
                 </label>
               </div>
 
               <div className="form-control grow h-auto w-auto mx-5 grid grid-cols-1">
                 <label className="label cursor-pointer justify-start gap-4">
                   <input type="checkbox" className="checkbox" />
-                  <span className="label-text text-white">Remember tyu</span>
+                  <span className="label-text text-white">Analista QA</span>
                 </label>
               </div>
 
               <div className="form-control grow h-auto w-auto mx-5 grid grid-cols-1">
                 <label className="label cursor-pointer justify-start gap-4">
                   <input type="checkbox" className="checkbox" />
-                  <span className="label-text text-white">Remember tyu</span>
+                  <span className="label-text text-white">
+                    Desarrollador Mobile
+                  </span>
                 </label>
               </div>
 
               <div className="form-control grow h-auto w-auto mx-5 grid grid-cols-1">
                 <label className="label cursor-pointer justify-start gap-4">
                   <input type="checkbox" className="checkbox" />
-                  <span className="label-text text-white">Remember tyu</span>
+                  <span className="label-text text-white">Datos</span>
                 </label>
               </div>
 
               <div className="form-control grow h-auto w-auto mx-5 grid grid-cols-1">
                 <label className="label cursor-pointer justify-start gap-4">
                   <input type="checkbox" className="checkbox" />
-                  <span className="label-text text-white">Remember tyu</span>
+                  <span className="label-text text-white">Otra</span>
                 </label>
               </div>
             </div>
@@ -163,8 +178,7 @@ const ContactUs = () => {
                 id="comment"
                 rows="4"
                 className="w-full rounded-lg text-sm text-gray-900 bg-white border-0 resize-none"
-                placeholder="Write a comment..."
-                required
+                placeholder="¿Dudas? Déjalas acá!"
               ></textarea>
             </div>
 
