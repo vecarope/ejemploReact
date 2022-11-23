@@ -1,5 +1,4 @@
 export const PersonalInformation = () => {
-
   const gender = ['Femenino', 'Masculino', 'No binario', 'Otro'];
 
   const workStatus = [
@@ -20,13 +19,13 @@ export const PersonalInformation = () => {
   ];
 
   return (
-    <div class="mt-10  sm:mt-0">
+    <div className="mt-10  sm:mt-0">
       <div className="my-8 ">
         <h3 className="text-2xl ml-16 font-sans font-bold text-[#140B34]">
           INFORMACIÓN PERSONAL
         </h3>
       </div>
-      <div class="md:grid md:grid-cols-2 md:gap-6 ">
+      <div className="md:grid md:grid-cols-2 md:gap-6 ">
         <div className="mt-5 my-4 md:col-span-2 md:mt-0">
           <div className="grid grid-cols-6 mx-40 md:gap-x-40 md:gap-y-6">
             <div className="col-span-6 sm:col-span-3">
