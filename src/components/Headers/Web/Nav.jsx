@@ -19,19 +19,19 @@ const Navbar = () => {
 
       <ul className="hidden md:flex gap-3">
         <li className="p-4">
-          <a href="/login">Iniciar Sesión</a>
+          <Link to="/login">Iniciar Sesión</Link>
         </li>
         <li className="p-4">
-          <a href="/">Administra la Pagina</a>
+          <Link to="/">Administra la Pagina</Link>
         </li>
         <button
           type="button"
           className="p-4 bg-[#E2F2FE]] text-[#E2F2FE] border-2 border-sky-500] rounded-lg ..."
         >
-          <a href="/register">Registrate</a>
+          <Link to="/register">Registrate</Link>
         </button>
         <button className="p-4 bg-[#E2F2FE] text-[#1E239A]  rounded-lg ...">
-          <a href="/contact">Contactanos</a>
+          <Link to="/contact">Contactanos</Link>
         </button>
       </ul>
 
@@ -63,16 +63,16 @@ const Navbar = () => {
 
         <ul className="pt-12 uppercase text-blue-500 p-4 justify-center ...">
           <li className="p-4 border-b border-blue-600">
-            <a href="/">Inicio</a>
+            <Link to="/">Inicio</Link>
           </li>
           <li className="p-4 border-b border-blue-600">
-            <a href="/logín">Logín</a>
+            <Link to="/login">Logín</Link>
           </li>
           <li className="p-4 border-b border-blue-600">
-            <a href="/register">Registro</a>
+            <Link to="/register">Registro</Link>
           </li>
           <li className="p-4">
-            <a href="/contact">Contacto</a>
+            <Link to="/contact">Contacto</Link>
           </li>
         </ul>
       </div>
