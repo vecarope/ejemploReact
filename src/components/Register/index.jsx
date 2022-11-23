@@ -3,12 +3,13 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { validateSchema } from '../../validation/validateForm';
 import MoonImage from '../../assets/design/moon_color.png';
 import OvalBlue from '../../assets/design/oval.png';
+import axios from "axios"
 
 const initialCredentials = {
-  userName: '',
-  userLastName: '',
-  userEmail: '',
-  userPassword: '',
+  firstName: '',
+  lastName: '',
+  email: '',
+  password: '',
   passwordConfirm: ''
 };
 
@@ -34,6 +35,17 @@ const Register = () => {
             /* Guardo las credenciales en LocalStorage para simular un acceso hasta tener las rutas listas */
             localStorage.setItem('User temp', values);
             alert(JSON.stringify(values));
+
+            console.log(values);
+
+            try {
+              const { data } = await axios.post("http://localhost:3001/api/auth/register", values)
+              alert("Te has registrado con éxito")
+              window.location.reload()
+              return data
+            } catch ({ response }) {
+              alert(response.data.error)
+            }
           }}
         >
           {({ errors, touched, isSubmitting }) => (
@@ -42,45 +54,45 @@ const Register = () => {
                 <div class="flex flex-col md:flex-wrap">
                   <div class="flex flex-col md:flex-wrap">
                     <label
-                      htmlFor="userName"
+                      htmlFor="firstName"
                       className="label-text"
                       class="text-white md:text-dark-text md:text-lg pt-3 font-sans md:pr-4"
                     >
                       Nombre:
                     </label>
                     <Field
-                      id="userName"
-                      name="userName"
+                      id="firstName"
+                      name="firstName"
                       placeholder="Ingresa tu nombre"
                       type="text"
                       className="input input-bordered input-secondary w-60 max-w-xs md:w-80 md:bg-fill-light md:border-inherit"
                     />
-                    {errors.userName && touched.userName && (
+                    {errors.firstName && touched.firstName && (
                       <ErrorMessage
                         component="div"
-                        name="userName"
+                        name="firstName"
                         class="text-red-500"
                       />
                     )}
                   </div>
                   <label
-                    htmlFor="userLastName"
+                    htmlFor="lastName"
                     className="label-text"
                     class="text-white md:text-dark-text md:text-lg pt-3 font-sans md:pr-4"
                   >
                     Apellido:
                   </label>
                   <Field
-                    id="userLastName"
-                    name="userLastName"
+                    id="lastName"
+                    name="lastName"
                     placeholder="Ingresa tu apellido"
                     type="text"
                     className="input input-bordered input-secondary w-60 max-w-xs md:w-80 md:bg-fill-light md:border-inherit"
                   />
-                  {errors.userLastName && touched.userLastName && (
+                  {errors.lastName && touched.lastName && (
                     <ErrorMessage
                       component="div"
-                      name="userLastName"
+                      name="lastName"
                       class=" text-red-500 "
                     />
                   )}
@@ -88,46 +100,46 @@ const Register = () => {
                 <div class="flex flex-col  md:w-fit md:flex-wrap">
                   <div class="flex flex-col md:w-fit">
                     <label
-                      htmlFor="userEmail"
+                      htmlFor="email"
                       className="label-text"
                       class="text-white md:text-dark-text md:text-lg pt-3 font-sans md:w-80"
                     >
                       Ingresa tu correo:
                     </label>
                     <Field
-                      id="userEmail"
-                      name="userEmail"
+                      id="email"
+                      name="email"
                       placeholder="tumejoremail@mail.com"
                       type="email"
                       className="input input-bordered input-secondary w-60 max-w-xs md:w-80 md:bg-fill-light md:border-inherit"
                     />
-                    {errors.userEmail && touched.userEmail && (
+                    {errors.email && touched.email && (
                       <ErrorMessage
                         component="div"
-                        name="userEmail"
+                        name="email"
                         class="text-red-500"
                       />
                     )}
                   </div>
                   <div class="flex flex-col md:w-fit">
                     <label
-                      htmlFor="userPassword"
+                      htmlFor="password"
                       className="label-text"
                       class="text-white md:text-dark-text md:text-lg pt-3 font-sans md:w-80"
                     >
                       Crea tu contraseña:
                     </label>
                     <Field
-                      id="userPassword"
-                      name="userPassword"
+                      id="password"
+                      name="password"
                       type="password"
                       placeholder="*****"
                       className="input input-bordered input-secondary w-60 max-w-xs md:w-80 md:bg-fill-light md:border-inherit"
                     />
-                    {errors.userPassword && touched.userPassword && (
+                    {errors.password && touched.password && (
                       <ErrorMessage
                         component="div"
-                        name="userPassword"
+                        name="password"
                         class="text-red-500"
                       />
                     )}
