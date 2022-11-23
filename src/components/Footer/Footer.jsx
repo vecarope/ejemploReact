@@ -4,7 +4,7 @@ import { AiOutlineLinkedin } from 'react-icons/ai';
 
 const Footer = () => {
   return (
-    <footer className="footer items-center p-4 bg-[#1E239A] text-neutral-content text-center">
+    <footer className="footer items-center p-4 bg-[#1E239A] text-neutral-content text-center flex">
       <div className="items-center grid-flow-col">
         <img className="w-40" src={logo} alt="Logo" />
       </div>
@@ -14,7 +14,7 @@ const Footer = () => {
           className="w-40"
           href="https://www.linkedin.com/company/devsafio/"
           target="_blank"
-          rel="noopener         noreferrer"
+          rel="noopener noreferrer"
         >
           <AiOutlineLinkedin
             size="3rem"
