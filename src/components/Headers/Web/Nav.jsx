@@ -14,24 +14,24 @@ const Navbar = () => {
   return (
     <nav className="flex items-center h-20 text-white justify-between px-2 py-3 bg-[#1E239A]">
       <Link to={'/'}>
-        <img class="w-40" src={logo} alt="Logo" />
+        <img className="w-40" src={logo} alt="Logo" />
       </Link>
 
       <ul className="hidden md:flex gap-3">
         <li className="p-4">
-          <a href="/login">Iniciar Sesión</a>
+          <Link to="/login">Iniciar Sesión</Link>
         </li>
         <li className="p-4">
-          <a href="/">Administra la Pagina</a>
+          <Link to="/">Administra la Pagina</Link>
         </li>
         <button
           type="button"
           className="p-4 bg-[#E2F2FE]] text-[#E2F2FE] border-2 border-sky-500] rounded-lg ..."
         >
-          <a href="/register">Registrate</a>
+          <Link to="/register">Registrate</Link>
         </button>
         <button className="p-4 bg-[#E2F2FE] text-[#1E239A]  rounded-lg ...">
-          <a href="/contact">Contactanos</a>
+          <Link to="/contact">Contactanos</Link>
         </button>
       </ul>
 
@@ -49,7 +49,7 @@ const Navbar = () => {
       >
         <div className="flex justify-between items-center">
           <Link to={'/'} className="justify-between px-2 py-3">
-            <img class="w-40" src={logoColor} alt="LogoColor" />
+            <img className="w-40" src={logoColor} alt="LogoColor" />
           </Link>
 
           {
