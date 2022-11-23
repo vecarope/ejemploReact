@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const Card = ({ head, pic, text, id }) => {
+const Card = ({ head, pic, text }) => {
   return (
     <div className="rounded-lg my-4 text-center py-5 px-6 shadow-lg md:shadow-none bg-white md:bg-transparent w-fit md:w-4/12">
       <div className="flex justify-center">
@@ -17,8 +17,7 @@ const Card = ({ head, pic, text, id }) => {
 Card.propTypes = {
   head: PropTypes.string.isRequired,
   pic: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired
+  text: PropTypes.string.isRequired
 };
 
 export default Card;
