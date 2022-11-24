@@ -35,10 +35,10 @@ export const validateSchema = Yup.object().shape({
     .min(8, 'La contraseña debe tener más de ocho caracteres.')
     .max(20, 'La contraseña debe ser más corta.'),
 
-  passwordConfirm: Yup.string().when('userPassword', {
+  passwordConfirm: Yup.string().when('password', {
     is: (value) => (value && value.length > 0 ? true : false),
     then: Yup.string()
-      .oneOf([Yup.ref('userPassword')], 'Las contraseñas no cohinciden.')
+      .oneOf([Yup.ref('password')], 'Las contraseñas no cohinciden.')
       .required('Debes repetir la contraseña.')
   })
 });
