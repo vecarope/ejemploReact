@@ -3,7 +3,7 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { validateSchema } from '../../validation/validateForm';
 import MoonImage from '../../assets/design/moon_color.png';
 import OvalBlue from '../../assets/design/oval.png';
-import axios from "axios";
+import axios from 'axios';
 
 const initialCredentials = {
   firstName: '',
@@ -37,12 +37,15 @@ const Register = () => {
             alert(JSON.stringify(values));
 
             try {
-              const {data} = await axios.post('http://localhost:3001/api/auth/register', values)
+              const { data } = await axios.post(
+                'http://localhost:3001/api/auth/register',
+                values
+              );
               alert(data.message);
-              window.location.reload()
-              return data.message
+              window.location.replace('/');
+              return data.message;
             } catch ({ response }) {
-              alert(response.data.message)
+              alert(response.data.message);
             }
           }}
         >
