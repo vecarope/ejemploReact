@@ -19,11 +19,11 @@ const Error404 = () => {
         }}
       >
         <div className=" text-center mx-3 sm:mx-10">
-          <h1 class=" mb-5 text-5xl sm:text-8xl font-bold hover:decoration-4">
+          <h1 className=" mb-5 text-5xl sm:text-8xl font-bold hover:decoration-4">
             Oops
           </h1>
           <br />
-          <p class=" mb-5  text-3xl sm:text-5xl ">
+          <p className=" mb-5  text-3xl sm:text-5xl ">
             <strong>Parece que perdiste la ruta</strong>, presiona el siguiente
             botón para encontar el camino a tu primer empleo como Developer{' '}
           </p>

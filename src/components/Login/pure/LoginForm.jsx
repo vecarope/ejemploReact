@@ -10,7 +10,7 @@ const LoginForm = () => {
     passwordConfirm: ''
   };
   return (
-    <section class="md:min-w-full w-full justify-center flex">
+    <section className="md:min-w-full w-full justify-center flex">
       <Formik
         initialValues={initialCredentials}
         validationSchema={validateSchema}
@@ -23,9 +23,9 @@ const LoginForm = () => {
       >
         {({ errors, touched, isSubmitting }) => (
           <Form className="form-control max-w-xs md:justify-center ">
-            <div class="md:contents md:items-center">
-              <div class="flex flex-col  md:w-fit md:flex-wrap">
-                <div class="flex flex-col md:w-fit">
+            <div className="md:contents md:items-center">
+              <div className="flex flex-col  md:w-fit md:flex-wrap">
+                <div className="flex flex-col md:w-fit">
                   <label
                     htmlFor="userEmail"
                     className="label-text"
@@ -44,15 +44,14 @@ const LoginForm = () => {
                     <ErrorMessage
                       component="div"
                       name="userEmail"
-                      class="text-red-500"
+                      className="text-red-500"
                     />
                   )}
                 </div>
                 <div class="flex flex-col md:w-fit">
                   <label
                     htmlFor="userPassword"
-                    className="label-text"
-                    class="text-white md:text-dark-text md:text-lg pt-3 font-sans md:w-80"
+                    className="text-white label-text md:text-dark-text md:text-lg pt-3 font-sans md:w-80"
                   >
                     Ingresá tu contraseña:
                   </label>
@@ -67,15 +66,14 @@ const LoginForm = () => {
                     <ErrorMessage
                       component="div"
                       name="userPassword"
-                      class="text-red-500"
+                      className="text-red-500"
                     />
                   )}
                 </div>
-                <div class="flex flex-col md:w-fit">
+                <div className="flex flex-col md:w-fit">
                   <label
                     htmlFor="passwordConfirm"
-                    className="label-text"
-                    class="text-white md:text-dark-text md:text-lg pt-3 font-sans md:w-80"
+                    className="text-white label-text md:text-dark-text md:text-lg pt-3 font-sans md:w-80"
                   >
                     Reingresa contraseña:
                   </label>
@@ -90,21 +88,21 @@ const LoginForm = () => {
                     <ErrorMessage
                       component="div"
                       name="passwordConfirm"
-                      class="text-red-500"
+                      className="text-red-500"
                     />
                   )}
                 </div>
               </div>
             </div>
-            <div class="flex flex-col py-6 items-center md:justify-center   ">
+            <div className="flex flex-col py-6 items-center md:justify-center   ">
               <button
                 type="submit"
-                class="rounded-lg border hover:border text-lg p-2 w-2/3 font-regular bg-white hover:bg-transparent hover:md:bg-mid-blue md:bg-dark-purple hover: text-dark-purple mb:text-white hover:text-white md:text-white font-sans"
+                className="rounded-lg border hover:border text-lg p-2 w-2/3 font-regular bg-white hover:bg-transparent hover:md:bg-mid-blue md:bg-dark-purple hover: text-dark-purple mb:text-white hover:text-white md:text-white font-sans"
               >
                 Iniciar Sesión
               </button>
               <Link to={'/register'}>
-                <span class=" flex py-3.5 text-sm text-white text-center font-thin  hover:md:text-mid-blue md:text-dark-purple font-sans">
+                <span className=" flex py-3.5 text-sm text-white text-center font-thin  hover:md:text-mid-blue md:text-dark-purple font-sans">
                   Crear cuenta
                 </span>
               </Link>

@@ -14,7 +14,7 @@ const Navbar = () => {
   return (
     <nav className="flex items-center h-20 text-white justify-between px-2 py-3 bg-[#1E239A]">
       <Link to={'/'}>
-        <img class="w-40" src={logo} alt="Logo" />
+        <img className="w-40" src={logo} alt="Logo" />
       </Link>
 
       <ul className="hidden md:flex gap-3">
@@ -49,7 +49,7 @@ const Navbar = () => {
       >
         <div className="flex justify-between items-center">
           <Link to={'/'} className="justify-between px-2 py-3">
-            <img class="w-40" src={logoColor} alt="LogoColor" />
+            <img className="w-40" src={logoColor} alt="LogoColor" />
           </Link>
 
           {
