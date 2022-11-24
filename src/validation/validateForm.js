@@ -4,7 +4,7 @@ let validateStrings = /^[A-Za-z#&]+$/;
 let validateAlphanumeric = /^(?=.*\d)(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ]/;
 
 export const validateSchema = Yup.object().shape({
-  userName: Yup.string()
+  firstName: Yup.string()
     .required('Debes ingresar un nombre.')
     .matches(validateStrings, {
       excludeEmptyString: true,
@@ -12,7 +12,7 @@ export const validateSchema = Yup.object().shape({
     })
     .min(2, 'El nombre debe tener al menos 2 letras.')
     .max(25, 'El nombre debe ser más corto.'),
-  userLastName: Yup.string()
+  lastName: Yup.string()
     .required('Debes ingresar un apellido.')
     .matches(validateStrings, {
       excludeEmptyString: true,
@@ -20,12 +20,12 @@ export const validateSchema = Yup.object().shape({
     })
     .min(2, 'El apellido debe tener al menos 2 letras.')
     .max(30, 'El apellido debe ser más corto.'),
-  userEmail: Yup.string()
+  email: Yup.string()
     .required('El e-mail es requerido.')
     .email('El e-mail ingresado no es válido.')
     .min(6, 'El e-mail es demasiado corto.')
     .max(50, 'El e-mail ingresado es muy largo.'),
-  userPassword: Yup.string()
+  password: Yup.string()
     .matches(validateAlphanumeric, {
       excludeEmptyString: true,
       message:
