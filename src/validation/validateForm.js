@@ -1,11 +1,11 @@
 import * as Yup from 'yup';
 
-let validateStrings =
-  /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s[a-zA-ZÀ-ÿ\u00f1\u00d1])*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/;
+let validateStrings = /^[ÁÉÍÓÚA-Z][a-záéíóú]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú]+)*$/;
 let validateAlphanumeric = /^(?=.*\d)(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ]/;
 
 export const validateSchema = Yup.object().shape({
   firstName: Yup.string()
+    .trim()
     .required('Debes ingresar un nombre.')
     .matches(validateStrings, {
       excludeEmptyString: true,
@@ -14,6 +14,7 @@ export const validateSchema = Yup.object().shape({
     .min(2, 'El nombre debe tener al menos 2 letras.')
     .max(25, 'El nombre debe ser más corto.'),
   lastName: Yup.string()
+    .trim()
     .required('Debes ingresar un apellido.')
     .matches(validateStrings, {
       excludeEmptyString: true,
