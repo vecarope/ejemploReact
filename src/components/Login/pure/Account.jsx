@@ -8,14 +8,14 @@ const Account = ({ change }) => {
       {loginOptions.map((ele) =>
         ele.title === 'Ingresa con tu mail' ? (
           <button
-            className="col-span-2 col-start-2"
+            className="md:col-span-2 md:col-start-2"
             onClick={() => change('email')}
           >
             <Option info={ele} key={'option' + ele.id} />
           </button>
         ) : (
           <button
-            className="col-span-2" /* onClick={() => **aqui iria la llamada a la api para el login de cada opcion} */
+            className="md:col-span-2" /* onClick={() => **aqui iria la llamada a la api para el login de cada opcion} */
           >
             <Option info={ele} key={'option' + ele.id} />
           </button>
