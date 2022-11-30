@@ -1,6 +1,7 @@
 import * as Yup from 'yup';
 
-let validateStrings = /^[A-Za-z#&]+$/;
+let validateStrings =
+  /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s[a-zA-ZÀ-ÿ\u00f1\u00d1])*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/;
 let validateAlphanumeric = /^(?=.*\d)(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ]/;
 
 export const validateSchema = Yup.object().shape({
