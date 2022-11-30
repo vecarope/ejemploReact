@@ -1,9 +1,10 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { validateSchema } from '../../validation/validateForm';
 import MoonImage from '../../assets/design/moon_color.png';
 import OvalBlue from '../../assets/design/oval.png';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const initialCredentials = {
   firstName: '',
@@ -14,12 +15,13 @@ const initialCredentials = {
 };
 
 const Register = () => {
+  const navigate = useNavigate();
   return (
     <div className="flex flex-col items-center md:bg-white md:w-3/5 md:my-11 md:rounded-xl md:border-8 md:border-zinc-800 max-w-screen-xl ">
       <h1 className=" py-1.5 md:my-4 text-4xl text-white md:text-5xl md:text-dark-purple font-bold text-center font-sans  ">
         Regístrate
       </h1>
-      <div class="container ">
+      <div className="container ">
         <img
           src={OvalBlue}
           alt="oval"
@@ -31,19 +33,19 @@ const Register = () => {
           initialValues={initialCredentials}
           validationSchema={validateSchema}
           onSubmit={async (values) => {
-            await new Promise((res) => setTimeout(res, 1800));
             /* Guardo las credenciales en LocalStorage para simular un acceso hasta tener las rutas listas */
-            localStorage.setItem('User temp', values);
-            alert(JSON.stringify(values));
 
             try {
               const { data } = await axios.post(
                 'http://localhost:3001/api/auth/register',
                 values
               );
-              alert(data.message);
-              window.location.replace('/');
-              return data.message;
+              localStorage.setItem('userRegister', data);
+              return Swal.fire(
+                '¡Registro completado!',
+                `${values.firstName}, inicia sesión para continuar.`,
+                'success'
+              ).then(navigate('/login'));
             } catch ({ response }) {
               alert(response.data.message);
             }
@@ -100,7 +102,7 @@ const Register = () => {
                   <div className="flex flex-col md:w-fit">
                     <label
                       htmlFor="email"
-                      class="text-white label-text md:text-dark-text md:text-lg pt-3 font-sans md:w-80"
+                      className="text-white label-text md:text-dark-text md:text-lg pt-3 font-sans md:w-80"
                     >
                       Ingresa tu correo:
                     </label>
