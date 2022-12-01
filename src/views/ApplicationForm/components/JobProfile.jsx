@@ -78,7 +78,7 @@ export const JobProfile = () => {
 
   /* faltaría traer el SELECT como un componente import y los datos con axios */
   return (
-    <section className="mt-10  sm:mt-0">
+    <section className="mt-10">
       <h3 className="text-2xl ml-16 font-sans font-bold text-[#140B34]">
         PERFIL LABORAL
       </h3>
@@ -129,14 +129,10 @@ export const JobProfile = () => {
               </p>
             </div>
 
-            <div className="w-60">
+            <div className="w-min-auto">
               <ul>
                 {lenguage.map((lenguage) => (
                   <li className="flex w-60 pt-2">
-                    <input
-                      type="checkbox"
-                      className=".checkbox rounded-sm bg-[#E2F2FE] border-[#140B34] flex-none my-1"
-                    />
                     <span className="flex-1 px-2 font-sans">{lenguage}</span>
                     <select
                       className="flex-1 bg-[#E2F2FE] border-[#140B34] rounded-md form-select form-select-sm
@@ -148,9 +144,8 @@ export const JobProfile = () => {
                             text-sm
                             font-normal
                             text-gray-700
-                            bg-white bg-clip-padding bg-no-repeat
-                            border border-solid border-gray-300
-                            rounded
+                            bg-clip-padding bg-no-repeat
+                            border border-solid
                             transition
                             ease-in-out
                             m-0
@@ -181,11 +176,9 @@ export const JobProfile = () => {
               <ul>
                 {basesFrameworks.map((basesFrameworks) => (
                   <li className="flex items-center w-96 pt-2">
-                    <input
-                      type="checkbox"
-                      className=".checkbox rounded-sm bg-[#E2F2FE] border-[#140B34] flex-none my-1"
-                    />
-                    <span className="flex-1 px-2 font-sans">{basesFrameworks}</span>
+                    <span className="flex-1 px-2 font-sans">
+                      {basesFrameworks}
+                    </span>
                     <select
                       className="flex-1 bg-[#E2F2FE] border-[#140B34] rounded-md form-select form-select-sm
                             appearance-none
@@ -196,9 +189,8 @@ export const JobProfile = () => {
                             text-sm
                             font-normal
                             text-gray-700
-                            bg-white bg-clip-padding bg-no-repeat
-                            border border-solid border-gray-300
-                            rounded
+                           bg-clip-padding bg-no-repeat
+                            border border-solid
                             transition
                             ease-in-out
                             m-0
@@ -229,10 +221,6 @@ export const JobProfile = () => {
               <ul>
                 {tools.map((tools) => (
                   <li className="flex items-center w-96 pt-2">
-                    <input
-                      type="checkbox"
-                      className=".checkbox rounded-sm bg-[#E2F2FE] border-[#140B34] flex-none my-1"
-                    />
                     <span className="flex-1 px-2 font-sans">{tools}</span>
                     <select
                       className="flex-1 bg-[#E2F2FE] border-[#140B34] rounded-md form-select form-select-sm
@@ -244,9 +232,8 @@ export const JobProfile = () => {
                             text-sm
                             font-normal
                             text-gray-700
-                            bg-white bg-clip-padding bg-no-repeat
-                            border border-solid border-gray-300
-                            rounded
+                           bg-clip-padding bg-no-repeat
+                            border border-solid
                             transition
                             ease-in-out
                             m-0
@@ -265,10 +252,6 @@ export const JobProfile = () => {
           </div>
         </div>
       </div>
-
     </section>
-    
-    
   );
-  
 };
