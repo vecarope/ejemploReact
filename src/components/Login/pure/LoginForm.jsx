@@ -3,6 +3,7 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { validateSchemaLogin } from '../../../validation/validateFormLogin';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { postLoginAxios } from '../../../hooks/postAxios';
 
 const LoginForm = () => {
   const initialCredentials = {
@@ -18,12 +19,11 @@ const LoginForm = () => {
         initialValues={initialCredentials}
         validationSchema={validateSchemaLogin}
         onSubmit={async (values) => {
-          await new Promise((res) => setTimeout(res, 1200));
-          localStorage.setItem('userTemp', values);
+          const profile = await postLoginAxios(values);
 
           return Swal.fire({
             title: 'Bienvenido!',
-            html: 'Cargando datos...',
+            html: `Bienvenido, ${profile.user.firstName} ${profile.user.lastName},`,
             timer: 2000,
             timerProgressBar: true,
             didOpen: () => {
