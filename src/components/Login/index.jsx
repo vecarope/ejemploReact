@@ -11,7 +11,7 @@ const Login = () => {
       <h1 className=" py-1.5 md:my-4 text-4xl text-white md:text-5xl md:text-dark-purple font-bold text-center font-sans  ">
         Únete a Devsafío
       </h1>
-      <div class="container ">
+      <div className="container ">
         <img
           src={OvalBlue}
           alt="oval"

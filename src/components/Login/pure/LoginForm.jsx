@@ -5,9 +5,8 @@ import { Link } from 'react-router-dom';
 
 const LoginForm = () => {
   const initialCredentials = {
-    userEmail: '',
-    userPassword: '',
-    passwordConfirm: ''
+    email: '',
+    password: ''
   };
   return (
     <section className="md:min-w-full w-full justify-center flex">
@@ -16,8 +15,7 @@ const LoginForm = () => {
         validationSchema={validateSchema}
         onSubmit={async (values) => {
           await new Promise((res) => setTimeout(res, 1800));
-          /* Guardo las credenciales en LocalStorage para simular un acceso hasta tener las rutas listas */
-          localStorage.setItem('User temp', values);
+          localStorage.setItem('userTemp', values);
           alert(JSON.stringify(values));
         }}
       >
@@ -27,67 +25,44 @@ const LoginForm = () => {
               <div className="flex flex-col  md:w-fit md:flex-wrap">
                 <div className="flex flex-col md:w-fit">
                   <label
-                    htmlFor="userEmail"
-                    className="label-text"
-                    class="text-white md:text-dark-text md:text-lg pt-3 font-sans md:w-80"
+                    htmlFor="email"
+                    className="text-white label-text md:text-dark-text md:text-lg pt-3 font-sans md:w-80"
                   >
                     Ingresa tu correo:
                   </label>
                   <Field
-                    id="userEmail"
-                    name="userEmail"
+                    id="email"
+                    name="email"
                     placeholder="tumejoremail@mail.com"
                     type="email"
                     className="input input-bordered input-secondary w-60 max-w-xs md:w-80 md:bg-fill-light md:border-inherit"
                   />
-                  {errors.userEmail && touched.userEmail && (
+                  {errors.email && touched.email && (
                     <ErrorMessage
                       component="div"
-                      name="userEmail"
-                      className="text-red-500"
-                    />
-                  )}
-                </div>
-                <div class="flex flex-col md:w-fit">
-                  <label
-                    htmlFor="userPassword"
-                    className="text-white label-text md:text-dark-text md:text-lg pt-3 font-sans md:w-80"
-                  >
-                    Ingresá tu contraseña:
-                  </label>
-                  <Field
-                    id="userPassword"
-                    name="userPassword"
-                    type="password"
-                    placeholder="*****"
-                    className="input input-bordered input-secondary w-60 max-w-xs md:w-80 md:bg-fill-light md:border-inherit"
-                  />
-                  {errors.userPassword && touched.userPassword && (
-                    <ErrorMessage
-                      component="div"
-                      name="userPassword"
+                      name="email"
                       className="text-red-500"
                     />
                   )}
                 </div>
                 <div className="flex flex-col md:w-fit">
                   <label
-                    htmlFor="passwordConfirm"
+                    htmlFor="password"
                     className="text-white label-text md:text-dark-text md:text-lg pt-3 font-sans md:w-80"
                   >
-                    Reingresa contraseña:
+                    Ingresá tu contraseña:
                   </label>
                   <Field
-                    id="passwordConfirm"
-                    name="passwordConfirm"
+                    id="password"
+                    name="password"
                     type="password"
-                    placeholder="Repite la contraseña."
+                    placeholder="*****"
                     className="input input-bordered input-secondary w-60 max-w-xs md:w-80 md:bg-fill-light md:border-inherit"
                   />
-                  {errors.passwordConfirm && touched.passwordConfirm && (
+                  {errors.password && touched.password && (
                     <ErrorMessage
                       component="div"
-                      name="passwordConfirm"
+                      name="password"
                       className="text-red-500"
                     />
                   )}
