@@ -1,22 +1,42 @@
 import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
-import { validateSchema } from '../../../validation/validateForm';
-import { Link } from 'react-router-dom';
+import { validateSchemaLogin } from '../../../validation/validateFormLogin';
+import { Link, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const LoginForm = () => {
   const initialCredentials = {
     email: '',
     password: ''
   };
+
+  const navigate = useNavigate();
+  let timerInterval;
   return (
     <section className="md:min-w-full w-full justify-center flex">
       <Formik
         initialValues={initialCredentials}
-        validationSchema={validateSchema}
+        validationSchema={validateSchemaLogin}
         onSubmit={async (values) => {
-          await new Promise((res) => setTimeout(res, 1800));
+          await new Promise((res) => setTimeout(res, 1200));
           localStorage.setItem('userTemp', values);
-          alert(JSON.stringify(values));
+
+          return Swal.fire({
+            title: 'Bienvenido!',
+            html: 'Cargando datos...',
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: () => {
+              Swal.showLoading();
+              const b = Swal.getHtmlContainer().querySelector('b');
+              timerInterval = setInterval(() => {
+                b.textContent = Swal.getTimerLeft();
+              }, 100);
+            },
+            willClose: () => {
+              clearInterval(timerInterval);
+            }
+          }).then(navigate('/application'));
         }}
       >
         {({ errors, touched, isSubmitting }) => (
