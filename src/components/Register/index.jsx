@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
-import { validateSchema } from '../../validation/validateForm';
+import { validateSchemaRegister } from '../../validation/validateFormRegister';
 import MoonImage from '../../assets/design/moon_color.png';
 import OvalBlue from '../../assets/design/oval.png';
 import axios from 'axios';
@@ -31,7 +31,7 @@ const Register = () => {
       <section className="md:min-w-full md:justify-center md:flex">
         <Formik
           initialValues={initialCredentials}
-          validationSchema={validateSchema}
+          validationSchema={validateSchemaRegister}
           onSubmit={async (values) => {
             /* Guardo las credenciales en LocalStorage para simular un acceso hasta tener las rutas listas */
 
