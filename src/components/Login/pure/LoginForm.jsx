@@ -1,18 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { validateSchemaLogin } from '../../../validation/validateFormLogin';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { postLoginAxios } from '../../../hooks/postAxios';
+import { AuthContext } from '../../../context/authContext';
 
 const LoginForm = () => {
+  const { login, setLoginStatus}= useContext(AuthContext);
   const initialCredentials = {
     email: '',
     password: ''
   };
-
   const navigate = useNavigate();
   let timerInterval;
+  console.log('DATA LOGIN -->', login);
   return (
     <section className="md:min-w-full w-full justify-center flex">
       <Formik
@@ -20,7 +22,11 @@ const LoginForm = () => {
         validationSchema={validateSchemaLogin}
         onSubmit={async (values) => {
           const profile = await postLoginAxios(values);
-
+          console.log(profile);
+          setLoginStatus();
+          setTimeout(() => {
+              setLoginStatus ?  navigate('/application') : navigate('/register')
+          }, 1000);
           return Swal.fire({
             title: 'Bienvenido!',
             html: `Bienvenido, ${profile.user.firstName} ${profile.user.lastName},`,
@@ -36,7 +42,9 @@ const LoginForm = () => {
             willClose: () => {
               clearInterval(timerInterval);
             }
-          }).then(navigate('/application'));
+          })
+
+
         }}
       >
         {({ errors, touched, isSubmitting }) => (
