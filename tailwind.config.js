@@ -19,9 +19,6 @@ module.exports = {
         'light-purple': '#2738F5',
         'dark-text': '#232323',
         'fill-light': '#E2F2FE'
-      },
-      backgroundImage: {
-        'error404': "url('../../assets/design/error404.png')",
       }
     }
   },
