@@ -21,19 +21,19 @@ export const PersonalInformation = () => {
   return (
     <div className="mt-10  sm:mt-0">
       <div className="my-8 ">
-        <h3 className="text-2xl ml-16 font-sans font-bold text-[#140B34]">
+        <h3 className="text-2xl ml-10 md:ml-16 font-sans font-bold text-[#140B34]">
           INFORMACIÓN PERSONAL
         </h3>
       </div>
       <div className="md:grid md:grid-cols-2 md:gap-6 ">
         <div className="mt-5 my-4 md:col-span-2 md:mt-0">
-          <div className="grid grid-cols-6 mx-40 md:gap-x-40 md:gap-y-6">
+          <div className="grid grid-cols-6 mx-10 md:mx-40 md:gap-x-40 md:gap-y-6">
             <div className="col-span-6 sm:col-span-3">
               <label
                 htmlFor="firstName"
                 className="block text-xl my-4 font-sans font-medium text-[#140B34]"
               >
-                Nombre
+                Nombre <span class=" text-red-700">*</span>
               </label>
               <input
                 type="text"
@@ -50,7 +50,7 @@ export const PersonalInformation = () => {
                 htmlFor="lastName"
                 className="block text-xl my-4 font-medium text-[#140B34]"
               >
-                Apellido
+                Apellido <span class=" text-red-700">*</span>
               </label>
               <input
                 type="text"
@@ -67,7 +67,7 @@ export const PersonalInformation = () => {
                 htmlFor="email-address"
                 className="block text-xl my-4 font-medium text-[#140B34]"
               >
-                Email
+                Email <span class=" text-red-700">*</span>
               </label>
               <input
                 type="email"
@@ -84,7 +84,7 @@ export const PersonalInformation = () => {
                 htmlFor="email-address"
                 className="block text-xl my-4 font-medium text-[#140B34]"
               >
-                Número de teléfono móvil
+                Número de teléfono móvil <span class=" text-red-700">*</span>
               </label>
               <input
                 type="tel"
@@ -101,7 +101,7 @@ export const PersonalInformation = () => {
                 htmlFor="city"
                 className="block text-xl my-4 font-medium text-[#140B34]"
               >
-                Ciudad
+                Ciudad <span class=" text-red-700">*</span>
               </label>
               <input
                 type="text"
@@ -118,7 +118,7 @@ export const PersonalInformation = () => {
                 htmlFor="country"
                 className="block text-xl my-4 font-medium text-[#140B34]"
               >
-                País/región
+                País/región <span class=" text-red-700">*</span>
               </label>
               <input
                 type="text"
@@ -135,7 +135,7 @@ export const PersonalInformation = () => {
                 htmlFor="country"
                 className="block text-xl my-4 font-medium text-[#140B34]"
               >
-                ¿Con qué género te identificas?
+                ¿Con qué género te identificas?<span class=" text-red-700">*</span>
               </label>
               <select
                 id="gender"
@@ -155,9 +155,9 @@ export const PersonalInformation = () => {
             <div className="col-span-6 sm:col-span-3">
               <label
                 htmlFor="stateJob"
-                className="block  my-4 text-lg text-[#140B34]"
+                className="block  my-5 md:my-4 text-lg text-[#140B34]"
               >
-                ¿Cuál es tu estado laboral actual ?
+                ¿Cuál es tu estado laboral actual ?<span class=" text-red-700">*</span>
               </label>
               <ul>
                 {workStatus.map((workStatus) => (
@@ -177,13 +177,13 @@ export const PersonalInformation = () => {
             <div className="col-span-6 sm:col-span-3">
               <label
                 htmlFor="stateJob"
-                className="block text-lg font-[20px] mb-5 text-[#140B34]"
+                className="block text-lg font-[20px] my-5 md:my-4  text-[#140B34]"
               >
-                ¿Cuál o cuáles cargos te gustaria optar?
+                ¿Cuál o cuáles cargos te gustaria optar?<span class=" text-red-700">*</span>
               </label>
               <label
                 htmlFor="stack"
-                className="block font-light text-base text-[#575253]"
+                className="block text-justify font-light text-base text-[#575253]"
               >
                 <strong>Ten en cuenta:</strong> De acuerdo al cargo que
                 postules, te pediremos que seas capaz de demostrarlo de manera
@@ -211,7 +211,7 @@ export const PersonalInformation = () => {
           <div className="md:hidden">
             <button
               type="submit"
-              className="inline-flex  justify-center rounded-md border border-transparent bg-[#2738F5] py-2 px-4 
+              className=" mx-32  rounded-md border border-transparent bg-[#2738F5] py-2 px-4 
               text-sm font-medium text-white shadow-sm hover:bg-[#2738F5]-700 focus:outline-none focus:ring-2 focus:ring-[#2738F5]-500 focus:ring-offset-2"
             >
               CONTINUAR

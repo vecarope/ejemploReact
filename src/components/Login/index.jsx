@@ -5,13 +5,13 @@ import Account from './pure/Account';
 import LoginForm from './pure/LoginForm';
 
 const Login = () => {
-  const [userEmail, setUserEmail] = useState('options');
+  const [userEmail, setUserEmail] = useState(false);
   return (
     <div className="flex flex-col items-center md:bg-white md:w-3/5 md:my-11 md:rounded-xl md:border-8 md:border-zinc-800 max-w-screen-xl ">
       <h1 className=" py-1.5 md:my-4 text-4xl text-white md:text-5xl md:text-dark-purple font-bold text-center font-sans  ">
         Únete a Devsafío
       </h1>
-      <div class="container ">
+      <div className="container ">
         <img
           src={OvalBlue}
           alt="oval"
@@ -26,7 +26,7 @@ const Login = () => {
         </p>
       </div>
       <div className="container mx-auto mt-5 text-center">
-        {userEmail !== 'options' ? (
+        {userEmail !== false ? (
           <LoginForm />
         ) : (
           <Account change={setUserEmail} />
