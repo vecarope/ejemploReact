@@ -56,21 +56,24 @@ export const JobProfile = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
         {/* lenguaje */}
-        <div className="flex justify-center">
-          <div className="form-control">
+        <div className="flex justify-center w-5/6 mx-auto">
+          <div className="form-control ">
             <div className="flex justify-center pb-2">
               <p className="pt-6">
                 <b>Lenguaje</b>
               </p>
             </div>
 
-            <div className="w-min-auto">
+            <div className="w-96">
               <ul>
                 {lenguage !== null ? (
                   lenguage.data.map((lenguage) => (
-                    <li className="flex w-60 pt-2" key={lenguage.id}>
+                    <li
+                      className="flex items-center w-5/6 py-2.5 md:py-1.5 mx-auto"
+                      key={lenguage.id}
+                    >
                       <span className="flex-1 px-2 font-sans">
                         {lenguage.name}
                       </span>
@@ -107,7 +110,7 @@ export const JobProfile = () => {
           </div>
         </div>
         {/* bases o frameworks */}
-        <div className="flex justify-center">
+        <div className="flex justify-center w-5/6 mx-auto">
           <div className="form-control">
             <div className="flex justify-center pb-2">
               <p className="pt-6">
@@ -120,7 +123,7 @@ export const JobProfile = () => {
                 {basesFrameworks !== null ? (
                   basesFrameworks.data.map((basesFrameworks) => (
                     <li
-                      className="flex items-center w-96 pt-2"
+                      className="flex items-center w-5/6 py-2.5 md:py-1.5 mx-auto"
                       key={basesFrameworks.id}
                     >
                       <span className="flex-1 px-2 font-sans">
@@ -130,7 +133,7 @@ export const JobProfile = () => {
                         className="flex-1 bg-[#E2F2FE] border-[#140B34] rounded-md form-select form-select-sm
                             appearance-none
                             block
-                            w-full
+                           
                             px-2
                             py-1
                             text-sm
@@ -171,7 +174,10 @@ export const JobProfile = () => {
               <ul>
                 {tools !== null ? (
                   tools.data.map((tools) => (
-                    <li className="flex items-center w-96 pt-2" key={tools.id}>
+                    <li
+                      className="flex items-center w-5/6 py-2.5 md:py-1.5 mx-auto"
+                      key={tools.id}
+                    >
                       <span className="flex-1 px-2 font-sans">
                         {tools.name}
                       </span>
