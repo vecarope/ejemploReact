@@ -33,7 +33,7 @@ export const PersonalInformation = () => {
                 htmlFor="firstName"
                 className="block text-xl my-4 font-sans font-medium text-[#140B34]"
               >
-                Nombre <span class=" text-red-700">*</span>
+                Nombre <span className=" text-red-700">*</span>
               </label>
               <input
                 type="text"
@@ -50,7 +50,7 @@ export const PersonalInformation = () => {
                 htmlFor="lastName"
                 className="block text-xl my-4 font-medium text-[#140B34]"
               >
-                Apellido <span class=" text-red-700">*</span>
+                Apellido <span className=" text-red-700">*</span>
               </label>
               <input
                 type="text"
@@ -67,7 +67,7 @@ export const PersonalInformation = () => {
                 htmlFor="email-address"
                 className="block text-xl my-4 font-medium text-[#140B34]"
               >
-                Email <span class=" text-red-700">*</span>
+                Email <span className=" text-red-700">*</span>
               </label>
               <input
                 type="email"
@@ -84,7 +84,8 @@ export const PersonalInformation = () => {
                 htmlFor="email-address"
                 className="block text-xl my-4 font-medium text-[#140B34]"
               >
-                Número de teléfono móvil <span class=" text-red-700">*</span>
+                Número de teléfono móvil{' '}
+                <span className=" text-red-700">*</span>
               </label>
               <input
                 type="tel"
@@ -101,7 +102,7 @@ export const PersonalInformation = () => {
                 htmlFor="city"
                 className="block text-xl my-4 font-medium text-[#140B34]"
               >
-                Ciudad <span class=" text-red-700">*</span>
+                Ciudad <span className=" text-red-700">*</span>
               </label>
               <input
                 type="text"
@@ -118,7 +119,7 @@ export const PersonalInformation = () => {
                 htmlFor="country"
                 className="block text-xl my-4 font-medium text-[#140B34]"
               >
-                País/región <span class=" text-red-700">*</span>
+                País/región <span className=" text-red-700">*</span>
               </label>
               <input
                 type="text"
@@ -135,7 +136,8 @@ export const PersonalInformation = () => {
                 htmlFor="country"
                 className="block text-xl my-4 font-medium text-[#140B34]"
               >
-                ¿Con qué género te identificas?<span class=" text-red-700">*</span>
+                ¿Con qué género te identificas?
+                <span className=" text-red-700">*</span>
               </label>
               <select
                 id="gender"
@@ -157,7 +159,8 @@ export const PersonalInformation = () => {
                 htmlFor="stateJob"
                 className="block  my-5 md:my-4 text-lg text-[#140B34]"
               >
-                ¿Cuál es tu estado laboral actual ?<span class=" text-red-700">*</span>
+                ¿Cuál es tu estado laboral actual ?
+                <span className=" text-red-700">*</span>
               </label>
               <ul>
                 {workStatus.map((workStatus) => (
@@ -179,7 +182,8 @@ export const PersonalInformation = () => {
                 htmlFor="stateJob"
                 className="block text-lg font-[20px] my-5 md:my-4  text-[#140B34]"
               >
-                ¿Cuál o cuáles cargos te gustaria optar?<span class=" text-red-700">*</span>
+                ¿Cuál o cuáles cargos te gustaria optar?
+                <span className=" text-red-700">*</span>
               </label>
               <label
                 htmlFor="stack"
