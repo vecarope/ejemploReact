@@ -1,50 +1,23 @@
 import React, { useContext } from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { validateSchemaLogin } from '../../../validation/validateFormLogin';
-import { Link, useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import { postLoginAxios } from '../../../hooks/postAxios';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/authContext';
 
 const LoginForm = () => {
-  const { login, setLoginStatus}= useContext(AuthContext);
+  const { postLogin } = useContext(AuthContext);
   const initialCredentials = {
     email: '',
     password: ''
   };
-  const navigate = useNavigate();
-  let timerInterval;
-  console.log('DATA LOGIN -->', login);
+
   return (
     <section className="md:min-w-full w-full justify-center flex">
       <Formik
         initialValues={initialCredentials}
         validationSchema={validateSchemaLogin}
         onSubmit={async (values) => {
-          const profile = await postLoginAxios(values);
-          console.log(profile);
-          setLoginStatus();
-          setTimeout(() => {
-              setLoginStatus ?  navigate('/application') : navigate('/register')
-          }, 1000);
-          return Swal.fire({
-            title: 'Bienvenido!',
-            html: `Bienvenido, ${profile.user.firstName} ${profile.user.lastName},`,
-            timer: 2000,
-            timerProgressBar: true,
-            didOpen: () => {
-              Swal.showLoading();
-              const b = Swal.getHtmlContainer().querySelector('b');
-              timerInterval = setInterval(() => {
-                b.textContent = Swal.getTimerLeft();
-              }, 100);
-            },
-            willClose: () => {
-              clearInterval(timerInterval);
-            }
-          })
-
-
+          await postLogin(values);
         }}
       >
         {({ errors, touched, isSubmitting }) => (
