@@ -6,20 +6,28 @@ import Swal from 'sweetalert2';
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [userData, setUserData] = useState({});
+  const [userData, setUserData] = useState(null);
   // const [token, setToken] = useState(null);
 
   let timerInterval;
   const navigate = useNavigate();
 
-  /*  useEffect(() => {
+  const loginStatus = async (user) => {
     setUserData(user);
-  }, []); */
+    userData !== null ? navigate('/application') : navigate('/register');
+    console.log(Object.values(user));
+  };
+
+  const logoutStatus = async () => {
+    setUserData(null);
+    userData !== null ? navigate('/application') : navigate('/register');
+  };
 
   const postLogin = async (values) => {
     const { user } = await postLoginAxios(values);
+    localStorage.setItem('userInfo', { user });
     console.log('USER DESDE POSTLOGIN -> ', user);
-    setUserData(user);
+    loginStatus(localStorage.getItem('userInfo'));
     console.log('USER DESDE USER -> ', userData);
     /*  Swal.fire({
       title: 'Bienvenido!',
@@ -39,11 +47,7 @@ export const AuthProvider = ({ children }) => {
     }); */
   };
 
-  userData.length !== 0 || null
-    ? navigate('/application')
-    : navigate('/register');
-
-  const data = { userData, postLogin };
+  const data = { userData, postLogin, logoutStatus };
 
   return <AuthContext.Provider value={data}>{children}</AuthContext.Provider>;
 };
