@@ -6,6 +6,7 @@ const ApplicationFormPage = () => {
       <ApplicationForm.OverviewCard />
       <ApplicationForm.PersonalInformation />
       <ApplicationForm.JobProfile />
+      <ApplicationForm.ExperienceAndWork />
     </main>
   );
 };

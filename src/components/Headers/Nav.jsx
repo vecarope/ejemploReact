@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../../../assets/images/DEV-IMAGOTIPO-WHITE-HORIZONTAL.png';
+import logo from '../../assets/images/DEV-IMAGOTIPO-WHITE-HORIZONTAL.png';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
-import logoColor from '../../../assets/images/DEV IMAGOTIPO COLOR HORIZONTAL.png';
+import logoColor from '../../assets/images/DEV IMAGOTIPO COLOR HORIZONTAL.png';
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
