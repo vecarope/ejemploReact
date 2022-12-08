@@ -3,7 +3,7 @@ import * as Yup from 'yup';
 let validateStrings = /^[ÁÉÍÓÚA-Z][a-záéíóú]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú]+)*$/;
 let validateAlphanumeric = /^(?=.*\d)(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ]/;
 
-export const validateSchema = Yup.object().shape({
+export const validateSchemaRegister = Yup.object().shape({
   firstName: Yup.string()
     .trim()
     .required('Debes ingresar un nombre.')

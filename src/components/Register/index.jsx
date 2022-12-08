@@ -1,9 +1,9 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
-import { validateSchema } from '../../validation/validateForm';
+import { validateSchemaRegister } from '../../validation/validateFormRegister';
 import MoonImage from '../../assets/design/moon_color.png';
 import OvalBlue from '../../assets/design/oval.png';
-import axios from 'axios';
+import { postRegisterAxios } from '../../hooks/postAxios';
 import Swal from 'sweetalert2';
 
 const initialCredentials = {
@@ -31,23 +31,18 @@ const Register = () => {
       <section className="md:min-w-full md:justify-center md:flex">
         <Formik
           initialValues={initialCredentials}
-          validationSchema={validateSchema}
+          validationSchema={validateSchemaRegister}
           onSubmit={async (values) => {
-            /* Guardo las credenciales en LocalStorage para simular un acceso hasta tener las rutas listas */
-
             try {
-              const { data } = await axios.post(
-                'http://localhost:3001/api/auth/register',
-                values
-              );
-              localStorage.setItem('userRegister', data);
+              await postRegisterAxios(values);
               return Swal.fire(
                 '¡Registro completado!',
                 `${values.firstName}, inicia sesión para continuar.`,
                 'success'
               ).then(navigate('/login'));
-            } catch ({ response }) {
-              alert(response.data.message);
+            } catch (error) {
+              console.error(error);
+              alert('Error:', error);
             }
           }}
         >
@@ -143,7 +138,7 @@ const Register = () => {
                       />
                     )}
                   </div>
-                  <div class="flex flex-col md:w-fit">
+                  <div className="flex flex-col md:w-fit">
                     <label
                       htmlFor="passwordConfirm"
                       className="text-white label-text md:text-dark-text md:text-lg pt-3 font-sans md:w-80"

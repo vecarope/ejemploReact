@@ -8,6 +8,7 @@ const Account = ({ change }) => {
       {loginOptions.map((ele) =>
         ele.title === 'Ingresa con tu mail' ? (
           <button
+            key={ele.id}
             className="py-1 md:col-span-2 md:col-start-2"
             onClick={() => change('email')}
           >
@@ -15,6 +16,7 @@ const Account = ({ change }) => {
           </button>
         ) : (
           <button
+            key={ele.id}
             className="py-1 md:col-span-2" /* onClick={() => **aqui iria la llamada a la api para el login de cada opcion} */
           >
             <Option info={ele} key={'option' + ele.id} />

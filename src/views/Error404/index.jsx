@@ -2,7 +2,8 @@ import React from 'react';
 import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../assets/componentsCSS/button.css';
-// import eror404 from '../../assets/design/404error.jpg';
+import error404 from '../../assets/design/error404.jpg';
+
 const Error404 = () => {
   const navigate = useNavigate();
 
@@ -12,22 +13,24 @@ const Error404 = () => {
 
   return (
     <section>
-      <div
-        className="hero  bg-no-repeat bg-cover h-screen"
-        style={{
-          backgroundImage: `url("https://img.freepik.com/vector-gratis/concepto-fallo-tecnico-landing-page_52683-12188.jpg?w=740&t=st=1668951489~exp=1668952089~hmac=c10d3174bd065e7cc00f459d6bb6223b19921a0a7bc6329732fe69c0fe314e4d")`
-        }}
-      >
-        <div className=" text-center mx-3 sm:mx-10">
-          <h1 className=" mb-5 text-5xl sm:text-8xl font-bold hover:decoration-4">
-            Oops
-          </h1>
+      <div className="flex-col">
+        <div>
+          <img
+            className="mx-auto w-full sm:object-contain sm:w-1/2"
+            src={error404}
+            alt="error img"
+          />
+        </div>
+        <div className="text-center mx-3  sm:m-10">
+          <h1 className=" mt-8 mb-5 text-5xl sm:text-7xl font-bold">Oops</h1>
           <br />
-          <p className=" mb-5  text-3xl sm:text-5xl ">
+          <p className="bg-[error404] mb-5  text-3xl sm:text-4xl ">
             <strong>Parece que perdiste la ruta</strong>, presiona el siguiente
-            botón para encontar el camino a tu primer empleo como Developer{' '}
+            botón
+            <br />
+            para encontrar el camino a tu primer empleo como Developer{' '}
           </p>
-          <button onClick={goLanding} className="btn btn-blue">
+          <button onClick={goLanding} className="btn btn-blue mb-8">
             DEVSAFIO
           </button>
         </div>

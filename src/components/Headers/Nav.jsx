@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/images/DEV-IMAGOTIPO-WHITE-HORIZONTAL.png';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import logoColor from '../../assets/images/DEV IMAGOTIPO COLOR HORIZONTAL.png';
+import { AuthContext } from '../../context/authContext';
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
+  const { userData, userLogout } = useContext(AuthContext);
 
   const handleNav = () => {
     setNav(!nav);
@@ -18,18 +20,31 @@ const Navbar = () => {
       </Link>
 
       <ul className="hidden md:flex gap-3">
-        <li className="p-4">
-          <Link to="/login">Iniciar Sesión</Link>
-        </li>
+        {!userData && (
+          <li className="p-4">
+            <Link to="/login">Iniciar Sesión</Link>
+          </li>
+        )}
         <li className="p-4">
           <Link to="/">Administra la Pagina</Link>
         </li>
-        <button
-          type="button"
-          className="p-4 bg-[#E2F2FE]] text-[#E2F2FE] border-2 border-sky-500] rounded-lg ..."
-        >
-          <Link to="/register">Registrate</Link>
-        </button>
+        {!userData && (
+          <button
+            type="button"
+            className="p-4 bg-[#E2F2FE]] text-[#E2F2FE] border-2 border-sky-500] rounded-lg ..."
+          >
+            <Link to="/register">Registrate</Link>
+          </button>
+        )}
+        {userData && (
+          <button
+            onClick={userLogout}
+            type="button"
+            className="p-4 bg-[#E2F2FE]] text-[#E2F2FE] border-2 border-sky-500] rounded-lg ..."
+          >
+            Cerrar Sesión
+          </button>
+        )}
         <button className="p-4 bg-[#E2F2FE] text-[#1E239A]  rounded-lg ...">
           <Link to="/contact">Contactanos</Link>
         </button>
