@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../../../assets/images/DEV-IMAGOTIPO-WHITE-HORIZONTAL.png';
+import logo from '../../assets/images/DEV-IMAGOTIPO-WHITE-HORIZONTAL.png';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
-import logoColor from '../../../assets/images/DEV IMAGOTIPO COLOR HORIZONTAL.png';
-import { AuthContext } from '../../../context/authContext';
+import logoColor from '../../assets/images/DEV IMAGOTIPO COLOR HORIZONTAL.png';
+import { AuthContext } from '../../context/authContext';
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);

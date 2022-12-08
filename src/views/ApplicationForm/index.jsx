@@ -1,6 +1,5 @@
 import * as ApplicationForm from './components';
 
-
 const ApplicationFormPage = () => {
   return (
     <main className="container mx-auto my-12">
@@ -8,7 +7,8 @@ const ApplicationFormPage = () => {
       <ApplicationForm.PersonalInformation />
       <ApplicationForm.EducationProfile />
       <ApplicationForm.JobProfile />
-      <ApplicationForm.JobType/>
+      <ApplicationForm.ExperienceAndWork />
+      <ApplicationForm.JobType />
     </main>
   );
 };

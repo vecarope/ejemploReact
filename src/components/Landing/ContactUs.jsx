@@ -9,7 +9,7 @@ const ContactUs = () => {
     >
       <div className="container flex mx-auto flex-col md:flex-row">
         <div className="md:text-center md:w-1/2">
-          <h2 class="py-8 px-4 md:py-1.5 font-sans text-5xl md:text-3xl font-semibold text-dark-purple">
+          <h2 className="py-8 px-4 md:py-1.5 font-sans text-5xl md:text-3xl font-semibold text-dark-purple">
             DEVsafiamos el sistema
           </h2>
           <h5 className="py-4 px-4 leading-relaxed font-sans text-xl font-medium md:w-4/5 md:mx-auto">
@@ -23,7 +23,7 @@ const ContactUs = () => {
           </h5>
 
           <img
-            className="w-10 md:w-4/5 md:mx-auto"
+            className="w-16 md:w-4/5 md:mx-auto "
             src={ImgIntersec}
             alt="img"
           />
@@ -40,8 +40,8 @@ const ContactUs = () => {
           </button>
         </div>
 
-        <div class="card bg-[#140B34] w-auto h-auto md:w-1/2 mx-auto items-center">
-          <form class="py-5 px-8 flex flex-wrap grid ">
+        <div className="card bg-[#140B34] w-auto h-auto md:w-1/2 mx-auto items-center">
+          <form className="py-5 px-8 flex flex-wrap grid ">
             <h5 className="text-white py-4 px-4 leading-relaxed font-sans text-xl font-medium md:w-6/6 md:mx-auto">
               <b>
                 Si eres empresa y buscas talento TI, déjanos tu información en
@@ -171,7 +171,7 @@ const ContactUs = () => {
             </div>
 
             <div className="w-full my-5 px-5">
-              <label for="comment" class="sr-only">
+              <label for="comment" className="sr-only">
                 Your comment
               </label>
               <textarea
