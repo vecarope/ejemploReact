@@ -1,6 +1,5 @@
 import React from 'react'
 import Dashboard from '../../components/User/Dashboard'
-import {FcNext} from 'react-icons/fc'
 import CardHomeUser from '../../components/User/CardHomeUser'
 
 export default function UserHome() {
