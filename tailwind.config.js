@@ -9,6 +9,9 @@ module.exports = {
       serif: ['Merriweather', 'serif']
     },
     extend: {
+      fontFamily: {
+        sans: ['Poppins', 'sans-serif'],
+      },
       colors: {
         'mid-light-blue': '#2738F5 ',
         'mid-blue': '#1E239A',
@@ -36,5 +39,9 @@ module.exports = {
       }
     ]
   },
-  plugins: [require('daisyui'), require('tw-elements/dist/plugin'), require("@tailwindcss/forms")]
+  plugins: [
+    require('daisyui'),
+    require('tw-elements/dist/plugin'),
+    require('@tailwindcss/forms')
+  ]
 };
