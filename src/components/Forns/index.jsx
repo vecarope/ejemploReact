@@ -50,11 +50,9 @@ export const InputSelect = ({ label, touched, errors, children, ...props }) => {
       >
         {children[1] ? (
           <>
-            <option defaultValue={false} disabled selected>
-              Selecionar
-            </option>
+            <option defaultValue={null}>Selecionar</option>
             {children.map((element, index) => (
-              <option key={index} value={element} defaultValue={false}>
+              <option key={index} value={element}>
                 {element}
               </option>
             ))}
