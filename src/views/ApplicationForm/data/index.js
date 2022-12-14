@@ -5,12 +5,12 @@ export const initialForm = {
   email: '',
   phone: '',
   city: '',
-  country: ''
+  country: '',
   //Education Profile
-  /*  typeInstitution: '',
+  typeInstitution: '',
   course1: '',
   Institutecourse1: '',
-  typeInstitute: '' */
+  typeInstitute: ''
   //JobProfile
 
   //ExperienceAndWork
