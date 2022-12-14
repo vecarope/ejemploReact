@@ -9,7 +9,7 @@ export const validateSchemaRegister = Yup.object().shape({
     .required('Debes ingresar un nombre.')
     .matches(validateStrings, {
       excludeEmptyString: true,
-      message: 'El nombre debe ser solo texto.'
+      message: 'El nombre debe ser solo texto y comenzar con mayúscula.'
     })
     .min(2, 'El nombre debe tener al menos 2 letras.')
     .max(25, 'El nombre debe ser más corto.'),
@@ -18,7 +18,7 @@ export const validateSchemaRegister = Yup.object().shape({
     .required('Debes ingresar un apellido.')
     .matches(validateStrings, {
       excludeEmptyString: true,
-      message: 'El apellido debe ser solo texto.'
+      message: 'El apellido ser solo texto y comenzar con mayúscula.'
     })
     .min(2, 'El apellido debe tener al menos 2 letras.')
     .max(30, 'El apellido debe ser más corto.'),

@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
+import { ErrorMessage, Field } from 'formik';
+
 import apiClient from '../../../services/api.service';
-export const JobProfile = () => {
+export const JobProfile = ({ errors, touched }) => {
   const [lenguage, setLenguage] = useState(null);
   const [basesFrameworks, setBasesFrameworks] = useState(null);
   const [tools, setTools] = useState(null);

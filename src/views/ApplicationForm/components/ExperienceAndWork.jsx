@@ -1,6 +1,5 @@
-import React from 'react';
-
-export const ExperienceAndWork = () => {
+import { ErrorMessage, Field } from 'formik';
+export const ExperienceAndWork = ({ errors, touched }) => {
   const SoftSkills = [
     'Líder.',
     'Resiliente/Perseverante',
@@ -24,7 +23,7 @@ export const ExperienceAndWork = () => {
   ];
 
   return (
-    <div className=" mt-10 mt-0 px-0">
+    <div className=" mt-10 px-0">
       <div className="my-8">
         <h3 className="text-2xl ml-16 font-sans font-bold text-[#140B34]">
           EXPERIENCIA Y TRABAJO

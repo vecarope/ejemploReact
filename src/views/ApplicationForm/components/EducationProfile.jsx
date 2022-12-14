@@ -1,6 +1,5 @@
-export const EducationProfile = () =>
-{
-
+import { ErrorMessage, Field } from 'formik';
+export const EducationProfile = ({ errors, touched }) => {
   const educationLevel = [
     'Universitaria Completa',
     'Universitaria Incompleta o en curso',
@@ -22,11 +21,7 @@ export const EducationProfile = () =>
     'Otro'
   ];
 
-  const educationStatus = [
-    'Egresado',
-    'Titulado',
-    'En curso'
-  ]
+  const educationStatus = ['Egresado', 'Titulado', 'En curso'];
 
   const englishLevel = [
     'Ninguno',
@@ -53,7 +48,8 @@ export const EducationProfile = () =>
                 htmlFor="typeInstitution"
                 className="block  md:text-xl md:my-4 font-light text-[#140B34]"
               >
-                ¿Cuál es tu máximo nivel educacional?<span class=" text-red-700">*</span>
+                ¿Cuál es tu máximo nivel educacional?
+                <span class=" text-red-700">*</span>
               </label>
               <select
                 id="typeInstitution"
@@ -74,7 +70,12 @@ export const EducationProfile = () =>
               <div
                 htmlFor="stack"
                 className="block text-justify font-bold my-4 text-sm md:text-2xl text-[#140B34]"
-              > A continuación, indícanos 2 (dos) carreras profesionales, cursos, bootcamp o certificaciones cursadas relacionadas al desarrollo de software, diseño o TI (puedes indicarnos las más importantes o actuales):
+              >
+                {' '}
+                A continuación, indícanos 2 (dos) carreras profesionales,
+                cursos, bootcamp o certificaciones cursadas relacionadas al
+                desarrollo de software, diseño o TI (puedes indicarnos las más
+                importantes o actuales):
               </div>
             </div>
             <div className="col-span-6 sm:col-span-6">
@@ -82,7 +83,8 @@ export const EducationProfile = () =>
                 htmlFor=""
                 className="block  md:text-xl my-4 font-sans font-bold text-[#140B34]"
               >
-                Nombre de la carrera, curso, bootcamp o certificación 1:<span class=" text-red-700">*</span>
+                Nombre de la carrera, curso, bootcamp o certificación 1:
+                <span class=" text-red-700">*</span>
               </label>
               <input
                 type="text"
@@ -185,7 +187,7 @@ export const EducationProfile = () =>
                   Selecionar
                 </option>
                 {typeInstitution.map((typeInstitution) => (
-                  <option>{typeInstitution}</option>
+                  <option key={typeInstitution}>{typeInstitution}</option>
                 ))}
               </select>
             </div>
@@ -194,7 +196,8 @@ export const EducationProfile = () =>
                 htmlFor="educationStatus"
                 className="block md:text-xl my-4 font-light text-[#140B34]"
               >
-                ¿Cuál es tu situacion educacional actual ( Bootcamp, diplomados, universidad, curso u otros)?
+                ¿Cuál es tu situacion educacional actual ( Bootcamp, diplomados,
+                universidad, curso u otros)?
               </label>
               <select
                 id="EducationStatus"
@@ -234,11 +237,13 @@ export const EducationProfile = () =>
               </select>
             </div>
           </div>
-          <div className='md:hidden'>
+          <div className="md:hidden">
             <button
               type="submit"
               className=" mx-32 my-10  rounded-md border border-transparent bg-[#2738F5] py-2 px-4  text-sm font-medium text-white shadow-sm hover:bg-[#2738F5]-700 focus:outline-none focus:ring-2 focus:ring-[#2738F5]-500 focus:ring-offset-2"
-            >CONTINUAR</button>
+            >
+              CONTINUAR
+            </button>
           </div>
         </div>
       </div>

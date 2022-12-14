@@ -1,4 +1,11 @@
-export const PersonalInformation = () => {
+import {
+  InputCheckbox,
+  InputField,
+  InputRadio,
+  InputSelect
+} from '../../../components/Forns';
+
+export const PersonalInformation = ({ errors, touched }) => {
   const gender = ['Femenino', 'Masculino', 'No binario', 'Otro'];
 
   const workStatus = [
@@ -29,187 +36,114 @@ export const PersonalInformation = () => {
         <div className="mt-5 my-4 md:col-span-2 md:mt-0">
           <div className="grid grid-cols-6 mx-10 md:mx-40 md:gap-x-40 md:gap-y-6">
             <div className="col-span-6 sm:col-span-3">
-              <label
-                htmlFor="firstName"
-                className="block text-xl my-4 font-sans font-medium text-[#140B34]"
-              >
-                Nombre <span className=" text-red-700">*</span>
-              </label>
-              <input
+              <InputField
+                label="Nombre"
+                touched={touched}
+                errors={errors}
                 type="text"
                 name="firstName"
                 id="firstName"
-                autoComplete="given-name"
-                className="mt-1 block w-full rounded-md border-[#E2F2FE]-200 bg-[#E2F2FE] shadow-sm focus:[#E2F2FE] 
-                focus:ring-[#E2F2FE]-300 "
                 required
               />
             </div>
             <div className="col-span-6 sm:col-span-3">
-              <label
-                htmlFor="lastName"
-                className="block text-xl my-4 font-medium text-[#140B34]"
-              >
-                Apellido <span className=" text-red-700">*</span>
-              </label>
-              <input
+              <InputField
+                label="Apellido"
+                touched={touched}
+                errors={errors}
                 type="text"
                 name="lastName"
                 id="lastName"
-                autoComplete="lastName"
-                className="mt-1 block w-full rounded-md border-[#E2F2FE]-200 bg-[#E2F2FE] shadow-sm focus:[#E2F2FE] 
-                focus:ring-[#E2F2FE]-300 sm:text-xl"
                 required
               />
             </div>
             <div className="col-span-6 sm:col-span-3">
-              <label
-                htmlFor="email-address"
-                className="block text-xl my-4 font-medium text-[#140B34]"
-              >
-                Email <span className=" text-red-700">*</span>
-              </label>
-              <input
+              <InputField
+                label="Email"
+                touched={touched}
+                errors={errors}
                 type="email"
                 name="email"
                 id="email"
-                autoComplete="email"
-                className="mt-1 block w-full rounded-md border-[#E2F2FE]-200 bg-[#E2F2FE] shadow-sm focus:[#E2F2FE] 
-                focus:ring-[#E2F2FE]-300 sm:text-xl"
                 required
               />
             </div>
             <div className="col-span-6 sm:col-span-3">
-              <label
-                htmlFor="email-address"
-                className="block text-xl my-4 font-medium text-[#140B34]"
-              >
-                Número de teléfono móvil{' '}
-                <span className=" text-red-700">*</span>
-              </label>
-              <input
+              <InputField
+                label="Número de teléfono"
+                touched={touched}
+                errors={errors}
                 type="tel"
-                name="phoneNumber"
-                id="phoneNumber"
-                autoComplete="phone"
-                className="mt-1 block w-full rounded-md border-[#E2F2FE]-200 bg-[#E2F2FE] py-2 px-3 shadow-sm focus:[#E2F2FE] 
-                focus:ring-[#E2F2FE]-300 sm:text-xl"
+                name="phone"
+                id="phone"
                 required
               />
             </div>
             <div className="col-span-6 sm:col-span-3 ">
-              <label
-                htmlFor="city"
-                className="block text-xl my-4 font-medium text-[#140B34]"
-              >
-                Ciudad <span className=" text-red-700">*</span>
-              </label>
-              <input
+              <InputField
+                label="Ciudad"
+                touched={touched}
+                errors={errors}
                 type="text"
                 name="city"
                 id="city"
-                autoComplete="address-level2"
-                className="mt-1 block w-full rounded-md border-[#E2F2FE]-200 bg-[#E2F2FE] shadow-sm focus:[#E2F2FE] 
-                focus:ring-[#E2F2FE]-300 sm:text-xl"
                 required
               />
             </div>
             <div className="col-span-6 sm:col-span-3 ">
-              <label
-                htmlFor="country"
-                className="block text-xl my-4 font-medium text-[#140B34]"
-              >
-                País/región <span className=" text-red-700">*</span>
-              </label>
-              <input
+              <InputField
+                label="País/región"
+                touched={touched}
+                errors={errors}
                 type="text"
                 name="country"
                 id="country"
-                autoComplete="country-name"
-                className="mt-1 block w-full rounded-md border-[#E2F2FE]-200 bg-[#E2F2FE] shadow-sm focus:[#E2F2FE] 
-                focus:ring-[#E2F2FE]-300 sm:text-xl"
                 required
               />
             </div>
             <div className="col-span-6 sm:col-span-3">
-              <label
-                htmlFor="country"
-                className="block text-xl my-4 font-medium text-[#140B34]"
-              >
-                ¿Con qué género te identificas?
-                <span className=" text-red-700">*</span>
-              </label>
-              <select
+              <InputSelect
+                label={'¿Con qué género te identificas?'}
+                touched={touched}
+                errors={errors}
                 id="gender"
                 name="gender"
-                autoComplete="gender-name"
-                className="mt-1 block w-full rounded-md border  py-2 px-3 border-[#E2F2FE]-200 bg-[#E2F2FE] shadow-sm focus:[#E2F2FE] 
-                focus:ring-[#E2F2FE]-300  sm:text-xl"
               >
-                <option disabled selected>
-                  Selecionar
-                </option>
-                {gender.map((gender) => (
-                  <option>{gender}</option>
-                ))}
-              </select>
+                {gender}
+              </InputSelect>
             </div>
             <div className="col-span-6 sm:col-span-3">
-              <label
-                htmlFor="stateJob"
-                className="block  my-5 md:my-4 text-lg text-[#140B34]"
+              <InputRadio
+                label=" ¿Cuál es tu estado laboral actual?"
+                touched={touched}
+                errors={errors}
+                id="statusJob"
+                name="statusJob"
+                required
               >
-                ¿Cuál es tu estado laboral actual ?
-                <span className=" text-red-700">*</span>
-              </label>
-              <ul>
-                {workStatus.map((workStatus) => (
-                  <li>
-                    <input
-                      type="radio"
-                      name="radio"
-                      className=".radio1 mr-4 my-2"
-                    />
-                    <label className=" text-base font-light text-[#232323]">
-                      {workStatus}
-                    </label>
-                  </li>
-                ))}
-              </ul>
+                {workStatus}
+              </InputRadio>
             </div>
             <div className="col-span-6 sm:col-span-3">
-              <label
-                htmlFor="stateJob"
-                className="block text-lg font-[20px] my-5 md:my-4  text-[#140B34]"
+              <InputCheckbox
+                label="¿Cuál o cuáles cargos te gustaria optar?"
+                touched={touched}
+                errors={errors}
+                required
+                name="stack"
+                headText={
+                  <label
+                    htmlFor="stack"
+                    className="block text-justify font-light text-base text-[#575253]"
+                  >
+                    <strong>Ten en cuenta:</strong> De acuerdo al cargo que
+                    postules, te pediremos que seas capaz de demostrarlo de
+                    manera practica durante el proceso de seleción.
+                  </label>
+                }
               >
-                ¿Cuál o cuáles cargos te gustaria optar?
-                <span className=" text-red-700">*</span>
-              </label>
-              <label
-                htmlFor="stack"
-                className="block text-justify font-light text-base text-[#575253]"
-              >
-                <strong>Ten en cuenta:</strong> De acuerdo al cargo que
-                postules, te pediremos que seas capaz de demostrarlo de manera
-                practica durante el proceso de seleción.
-              </label>
-              <div className="form-control">
-                <label className="label cursor-pointer mb-8">
-                  <ul>
-                    {cargo.map((cargo) => (
-                      <li>
-                        <input
-                          type="checkbox"
-                          className=".checkbox mr-4 my-2"
-                        />
-                        <span className="label-text font-light text-base text-[#232323]">
-                          {cargo}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </label>
-              </div>
+                {cargo}
+              </InputCheckbox>
             </div>
           </div>
           <div className="md:hidden">
