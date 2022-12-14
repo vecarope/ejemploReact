@@ -74,8 +74,8 @@ export const PersonalInformation = ({ errors, touched }) => {
                 touched={touched}
                 errors={errors}
                 type="tel"
-                name="phone"
-                id="phone"
+                name="phoneNumber"
+                id="phoneNumber"
                 required
               />
             </div>
@@ -117,8 +117,8 @@ export const PersonalInformation = ({ errors, touched }) => {
                 label=" ¿Cuál es tu estado laboral actual?"
                 touched={touched}
                 errors={errors}
-                id="statusJob"
-                name="statusJob"
+                id="employmentStatusCurrent"
+                name="employmentStatusCurrent"
                 required
               >
                 {workStatus}

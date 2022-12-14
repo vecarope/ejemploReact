@@ -27,7 +27,7 @@ export const validateSchemaAplicationForm = Yup.object().shape({
     .email('El e-mail ingresado no es válido.')
     .min(6, 'El e-mail es demasiado corto.')
     .max(50, 'El e-mail ingresado es muy largo.'),
-  phone: Yup.string()
+  phoneNumber: Yup.string()
     .trim()
     .required('Debes ingresar un telefono.')
     .matches(validateNumber, {
@@ -54,7 +54,7 @@ export const validateSchemaAplicationForm = Yup.object().shape({
     })
     .min(2, 'El pais debe tener al menos 2 letras.')
     .max(29, 'El pais debe ser más corta.'),
-  statusJob: Yup.string().required('Debes elegir una opcion.'),
+  employmentStatusCurrent: Yup.string().required('Debes elegir una opcion.'),
   stack: Yup.array()
     .min(1, 'Debes elegir al menos 1 item')
     .max(3, 'Solo puedes elegir hasta 3 items')
