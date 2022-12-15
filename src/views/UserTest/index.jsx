@@ -1,5 +1,5 @@
 import React from 'react'
-import { FcNext } from 'react-icons/fc'
+//import { FcNext } from 'react-icons/fc'
 import Dashboard from '../../components/User/Dashboard'
 
 
