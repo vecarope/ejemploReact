@@ -15,6 +15,7 @@ FE: [Javier Archuby](https://github.com/Javier1978A)
 FE: [Francisco D. Molina](https://github.com/TheFranciscoMolina)  
 FE: [Eliecer Calderon](https://github.com/eliecergonzalez2021)  
 FE: [Irani Romero](https://github.com/iranimromero)  
+FS: [Daniela Hernández](https://github.com/DanyBeth-Dev)
 
 ### Backend
 
