@@ -58,5 +58,19 @@ export const validateSchemaAplicationForm = Yup.object().shape({
   stack: Yup.array()
     .min(1, 'Debes elegir al menos 1 item')
     .max(3, 'Solo puedes elegir hasta 3 items')
-    .required('Esta opcion es requerida.')
+    .required('Esta opcion es requerida.'),
+  gender: Yup.string().required('Debes seleccionar una opción.'),
+  educationalLevel: Yup.string(),
+  educationStatusCurrent: Yup.string(),
+  englishLevel: Yup.string(),
+  additionalToolsComment: Yup.string(),
+  cvUrl: Yup.string(),
+  linkedinUrl: Yup.string(),
+  githubUrl: Yup.string(),
+  portfolioUrl: Yup.string(),
+  featuredProject: Yup.string(),
+  idealWorkComment: Yup.string(),
+  workAvailability: Yup.string(),
+  relocationOption: Yup.string(),
+  visa: Yup.string()
 });
