@@ -3,17 +3,28 @@ export const initialForm = {
   firstName: '',
   lastName: '',
   email: '',
-  phone: '',
+  phoneNumber: '',
   city: '',
   country: '',
+  gender: '',
+  employmentStatusCurrent: '',
+  stack: '',
   //Education Profile
-  typeInstitution: '',
-  course1: '',
-  Institutecourse1: '',
-  typeInstitute: ''
+  educationalLevel: '',
+  educationStatusCurrent: '',
+  englishLevel: '',
   //JobProfile
-
+  additionalToolsComment: '',
+  cvUrl: '',
+  linkedinUrl: '',
+  githubUrl: '',
+  portfolioUrl: '',
   //ExperienceAndWork
+  featuredProject: '',
 
   //JobType
+  idealWorkComment: '',
+  workAvailability: '',
+  relocationOption: '',
+  visa: ''
 };
