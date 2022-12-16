@@ -3,9 +3,8 @@
 import {
   InputCheckbox,
   InputField,
-  InputRadio,
-  InputSelect
-} from '../../../components/Forns';
+  InputRadio
+} from '../../../components/Forms';
 
 export const ExperienceAndWork = ({ errors, touched }) => {
   const SoftSkills = [
