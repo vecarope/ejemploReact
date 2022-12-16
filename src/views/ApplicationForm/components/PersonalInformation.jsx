@@ -4,8 +4,11 @@ import {
   InputRadio,
   InputSelect
 } from '../../../components/Forms';
+import { useContext } from 'react';
+import { AuthContext } from '../../../context/authContext';
 
 export const PersonalInformation = ({ errors, touched }) => {
+  const { userData } = useContext(AuthContext);
   const gender = ['Femenino', 'Masculino', 'No binario', 'Otro'];
 
   const workStatus = [
@@ -40,6 +43,7 @@ export const PersonalInformation = ({ errors, touched }) => {
                 label="Nombre"
                 touched={touched}
                 errors={errors}
+                value={userData.firstName}
                 type="text"
                 name="firstName"
                 id="firstName"
@@ -51,6 +55,7 @@ export const PersonalInformation = ({ errors, touched }) => {
                 label="Apellido"
                 touched={touched}
                 errors={errors}
+                value={userData.lastName}
                 type="text"
                 name="lastName"
                 id="lastName"
@@ -62,6 +67,7 @@ export const PersonalInformation = ({ errors, touched }) => {
                 label="Email"
                 touched={touched}
                 errors={errors}
+                value={userData.email}
                 type="email"
                 name="email"
                 id="email"
