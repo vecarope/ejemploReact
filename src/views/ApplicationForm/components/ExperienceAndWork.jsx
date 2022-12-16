@@ -1,4 +1,12 @@
-import { ErrorMessage, Field } from 'formik';
+//import { ErrorMessage, Field } from 'formik';
+
+import {
+  InputCheckbox,
+  InputField,
+  InputRadio,
+  InputSelect
+} from '../../../components/Forns';
+
 export const ExperienceAndWork = ({ errors, touched }) => {
   const SoftSkills = [
     'Líder.',
@@ -45,15 +53,14 @@ export const ExperienceAndWork = ({ errors, touched }) => {
               >
                 Subir como documento público en Google Drive o similar
               </label>
-              <input
+              <InputField
                 type="text"
-                name="firstName"
-                id="firstName"
-                autoComplete="given-name"
-                className="mt-1 block w-full rounded-md border-[#E2F2FE]-200 bg-[#E2F2FE] shadow-sm focus:[#E2F2FE] 
-                  focus:ring-[#E2F2FE]-300 "
+                name="cvUrl"
+                id="cvUrl"
                 required
                 placeholder="Link aquí"
+                touched={touched}
+                errors={errors}
               />
             </div>
             <div className="col-span-6 sm:col-span-3">
@@ -63,15 +70,14 @@ export const ExperienceAndWork = ({ errors, touched }) => {
               >
                 URL de LinkedIn
               </label>
-              <input
+              <InputField
                 type="text"
-                name="lastName"
-                id="lastName"
-                autoComplete="lastName"
-                className="mt-1 block w-full rounded-md border-[#E2F2FE]-200 bg-[#E2F2FE] shadow-sm focus:[#E2F2FE] 
-                  focus:ring-[#E2F2FE]-300 sm:text-xl"
+                name="linkedinUrl"
+                id="linkedinUrl"
                 required
                 placeholder="Link aquí"
+                touched={touched}
+                errors={errors}
               />
             </div>
             <div className="col-span-6 sm:col-span-3">
@@ -81,15 +87,14 @@ export const ExperienceAndWork = ({ errors, touched }) => {
               >
                 URL de GitHub
               </label>
-              <input
+              <InputField
                 type="text"
-                name="text"
-                id="UrlGitHub"
-                autoComplete="text"
-                className="mt-1 block w-full rounded-md border-[#E2F2FE]-200 bg-[#E2F2FE] shadow-sm focus:[#E2F2FE] 
-                  focus:ring-[#E2F2FE]-300 sm:text-xl"
+                name="githubUrl"
+                id="githubUrl"
                 required
                 placeholder="Link aquí"
+                touched={touched}
+                errors={errors}
               />
             </div>
             <div className="col-span-6 sm:col-span-3">
@@ -99,15 +104,14 @@ export const ExperienceAndWork = ({ errors, touched }) => {
               >
                 URL de Portafolio/Sitio web
               </label>
-              <input
+              <InputField
                 type="text"
-                name="UrlPort"
-                id="UrlPort"
-                autoComplete="UrlPort"
-                className="mt-1 block w-full rounded-md border-[#E2F2FE]-200 bg-[#E2F2FE] py-2 px-3 shadow-sm focus:[#E2F2FE] 
-                  focus:ring-[#E2F2FE]-300 sm:text-xl"
+                name="portfolioUrl"
+                id="portfolioUrl"
                 required
                 placeholder="Link aquí"
+                touched={touched}
+                errors={errors}
               />
             </div>
             <div className="w-full rounded-lg text-sm sm:col-span-full">
@@ -129,57 +133,28 @@ export const ExperienceAndWork = ({ errors, touched }) => {
               </textarea>
             </div>
             <div className="col-span-6 sm:col-span-3">
-              <label
-                htmlFor="stateJob"
-                className="block  my-4 text-lg text-[#140B34]"
+              <InputCheckbox
+                label="Selecciona 3 habilidades blandas que te representen"
+                touched={touched}
+                errors={errors}
+                required
+                name="additionalToolsComment"
+                id="additionalToolsComment"
               >
-                Selecciona 3 habilidades blandas que te representen:
-              </label>
-              <ul>
-                {SoftSkills.map((SoftSkills) => (
-                  <li>
-                    <input
-                      type="checkbox"
-                      name="checkbox"
-                      className=".checkbox mr-4 my-2"
-                    />
-                    <label className=" text-base font-light text-[#232323]">
-                      {SoftSkills}
-                    </label>
-                  </li>
-                ))}
-              </ul>
+                {SoftSkills}
+              </InputCheckbox>
             </div>
             <div className="col-span-6 sm:col-span-3">
-              <label
-                htmlFor="stateJob"
-                className="block text-lg font-[20px] mb-5 text-[#140B34]"
+              <InputRadio
+                label=" ¿Cuántos años de experiencia laboral posees en desarrollo de software y/o diseño?"
+                touched={touched}
+                errors={errors}
+                id="devExperience"
+                name="devExperience"
+                required
               >
-                ¿Cuántos años de experiencia laboral posees en desarrollo de
-                software y/o diseño?
-              </label>
-              <label
-                htmlFor="stack"
-                className="block font-light text-base text-[#575253]"
-              ></label>
-              <div className="form-control">
-                <label className="label cursor-pointer mb-8">
-                  <ul>
-                    {YearsOfExperience.map((YearsOfExperience) => (
-                      <li>
-                        <input
-                          type="radio"
-                          name="radio"
-                          className=".radio mr-4 my-2"
-                        />
-                        <span className="label-text font-light text-base text-[#232323]">
-                          {YearsOfExperience}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </label>
-              </div>
+                {YearsOfExperience}
+              </InputRadio>
             </div>
           </div>
         </div>

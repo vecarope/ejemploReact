@@ -117,8 +117,8 @@ export const PersonalInformation = ({ errors, touched }) => {
                 label=" ¿Cuál es tu estado laboral actual?"
                 touched={touched}
                 errors={errors}
-                id="employmentStatusCurrent"
-                name="employmentStatusCurrent"
+                id="additionalToolsComment"
+                name="additionalToolsComment"
                 required
               >
                 {workStatus}
