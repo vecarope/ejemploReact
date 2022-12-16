@@ -2,6 +2,13 @@ import * as Yup from 'yup';
 
 let validateStrings = /^[A-ZÁÉÍÓÚ][a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ][a-zñáéíóú]+)?$/;
 let validateNumber = /^([0-9])*$/;
+let validateURL =
+  /(([\w]+:)?\/\/)?(([\d\w]|%[a-fA-f\d]{2,2})+(:([\d\w]|%[a-fA-f\d]{2,2})+)?@)?([\d\w][-\d\w]{0,253}[\d\w]\.)+[\w]{2,63}(:[\d]+)?(\/([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)*(\?(&?([-+_~.\d\w]|%[a-fA-f\d]{2,2})=?)*)?(#([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)?/;
+let validateLinkedinURL =
+  /(https?)?:?(\/\/)?(([w]{3}||\w\w)\.)?linkedin.com(\w+:{0,1}\w*@)?(\S+)(:([0-9])+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/;
+
+let validateGithubURL =
+  /(https?)?:?(\/\/)?(([w]{3}||\w\w)\.)?github.com(\w+:{0,1}\w*@)?(\S+)(:([0-9])+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/;
 
 export const validateSchemaAplicationForm = Yup.object().shape({
   firstName: Yup.string()
@@ -54,23 +61,66 @@ export const validateSchemaAplicationForm = Yup.object().shape({
     })
     .min(2, 'El pais debe tener al menos 2 letras.')
     .max(29, 'El pais debe ser más corta.'),
+  gender: Yup.string().required('Debes seleccionar una opción.'),
   employmentStatusCurrent: Yup.string().required('Debes elegir una opcion.'),
   stack: Yup.array()
     .min(1, 'Debes elegir al menos 1 item')
     .max(3, 'Solo puedes elegir hasta 3 items')
     .required('Esta opcion es requerida.'),
-  gender: Yup.string().required('Debes seleccionar una opción.'),
-  educationalLevel: Yup.string(),
-  educationStatusCurrent: Yup.string(),
-  englishLevel: Yup.string(),
-  additionalToolsComment: Yup.string(),
-  cvUrl: Yup.string(),
-  linkedinUrl: Yup.string(),
-  githubUrl: Yup.string(),
-  portfolioUrl: Yup.string(),
-  featuredProject: Yup.string(),
-  idealWorkComment: Yup.string(),
-  workAvailability: Yup.string(),
-  relocationOption: Yup.string(),
-  visa: Yup.string()
+
+  educationalLevel: Yup.string().required('Debes seleccionar una opción.'),
+  educationStatusCurrent: Yup.string().required(
+    'Debes seleccionar una opción.'
+  ),
+  englishLevel: Yup.string().required('Debes seleccionar un nivel de ingles.'),
+  additionalToolsComment: Yup.array()
+    .min(3, 'Debes elegir 3 items')
+    .max(3, 'Solo puedes elegir hasta 3 items')
+    .required('Esta opcion es requerida.'),
+  cvUrl: Yup.string()
+    .trim()
+    .required('Este link es requerodo.')
+    .matches(validateURL, {
+      excludeEmptyString: true,
+      message: 'Debes ingresar un link válido.'
+    }),
+  linkedinUrl: Yup.string()
+    .trim()
+    .required('Este link es requerido.')
+    .matches(validateLinkedinURL, {
+      excludeEmptyString: true,
+      message: 'Debes ingresar un link de LinkedIn válido.'
+    }),
+  githubUrl: Yup.string()
+    .trim()
+    .required('Este link es requerido.')
+    .matches(validateGithubURL, {
+      excludeEmptyString: true,
+      message: 'Debes ingresar un link de GitHub válido.'
+    }),
+  portfolioUrl: Yup.string()
+    .trim()
+    .required('Este link es requerido.')
+    .matches(validateURL, {
+      excludeEmptyString: true,
+      message: 'Debes ingresar un link válido.'
+    }),
+  featuredProject: Yup.string()
+    .trim()
+    // .required('Debes completar esta espacio de texo.')
+    .min(20, 'El texto debe ser más largo. ¡Cuentanos más del proyecto!')
+    .max(500, 'El texto debe ser más corto.'),
+  devExperience: Yup.string().required('Debes seleccionar una opción.'),
+  idealWorkComment: Yup.string()
+    .trim()
+    // .required('Debes completar esta espacio de texo.')
+    .min(20, 'El texto debe ser más largo. ¡Cuentanos más del proyecto!')
+    .max(500, 'El texto debe ser más corto.'),
+  workAvailability: Yup.array()
+    .min(1, 'Debes elegir al menos 1 item')
+    .max(3, 'Solo puedes elegir hasta 3 preferebcias'),
+  relocationOption: Yup.string().required('Debes seleccionar una opción.'),
+  visa: Yup.array()
+    .min(1, 'Debes elegir al menos 1 item')
+    .max(3, 'Solo puedes elegir hasta 3 preferebcias')
 });
