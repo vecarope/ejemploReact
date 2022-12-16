@@ -74,7 +74,7 @@ export const validateSchemaAplicationForm = Yup.object().shape({
   ),
   englishLevel: Yup.string().required('Debes seleccionar un nivel de ingles.'),
   additionalToolsComment: Yup.array()
-    .min(3, 'Debes elegir 3 items')
+    .min(1, 'Debes elegir al menos 1 item')
     .max(3, 'Solo puedes elegir hasta 3 items')
     .required('Esta opcion es requerida.'),
   cvUrl: Yup.string()
@@ -118,7 +118,7 @@ export const validateSchemaAplicationForm = Yup.object().shape({
     .max(500, 'El texto debe ser más corto.'),
   workAvailability: Yup.array()
     .min(1, 'Debes elegir al menos 1 item')
-    .max(3, 'Solo puedes elegir hasta 3 preferebcias'),
+    .max(3, 'Solo puedes elegir hasta 3 preferencias'),
   relocationOption: Yup.string().required('Debes seleccionar una opción.'),
   visa: Yup.array()
     .min(1, 'Debes elegir al menos 1 item')
