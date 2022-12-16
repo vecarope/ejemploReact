@@ -1,4 +1,10 @@
-import { ErrorMessage, Field } from 'formik';
+import {
+  InputCheckbox,
+  InputField,
+  InputRadio,
+  InputSelect
+} from '../../../components/Forns';
+
 export const EducationProfile = ({ errors, touched }) => {
   const educationLevel = [
     'Universitaria Completa',
