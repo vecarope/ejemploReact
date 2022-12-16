@@ -21,6 +21,7 @@ export const initialForm = {
   portfolioUrl: '',
   //ExperienceAndWork
   featuredProject: '',
+  devExperience: '',
 
   //JobType
   idealWorkComment: '',
