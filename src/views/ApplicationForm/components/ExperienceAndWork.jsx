@@ -46,10 +46,7 @@ export const ExperienceAndWork = ({ errors, touched }) => {
               >
                 URL CV:
               </label>
-              <label
-                htmlFor="stack"
-                className="block font-light text-base text-[#575253]"
-              >
+              <label className="block font-light text-base text-[#575253]">
                 Subir como documento público en Google Drive o similar
               </label>
               <InputField
