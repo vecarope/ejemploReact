@@ -3,7 +3,7 @@ import {
   InputField,
   InputRadio,
   InputSelect
-} from '../../../components/Forns';
+} from '../../../components/Forms';
 
 export const EducationProfile = ({ errors, touched }) => {
   const educationLevel = [
