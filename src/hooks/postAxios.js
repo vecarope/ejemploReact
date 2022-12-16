@@ -17,3 +17,12 @@ export const postLoginAxios = async (values) => {
     return error.message;
   }
 };
+
+export const postContactCompany = async (values) => {
+    try {
+    const { data } = await apiClient.post('/contact-company', values);
+    return data;
+  } catch ({ error }) {
+    return error.message;
+  }
+};

@@ -1,11 +1,54 @@
 import React from 'react';
 import ImgIntersec from '../../assets/design/Intersect.png';
+import { useEffect, useState } from 'react';
+import apiClient from '../../../src/services/api.service';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { postContactCompany } from '../../hooks/postAxios';
+import Swal from 'sweetalert2';
+import { validateSchemaContactCompany } from '../../../src/validation/validateFormContactCompany';
+/* import { useNavigate } from 'react-router-dom'; */
+
+const initialCredentials = {
+  name: '',
+  lastName: '',
+  email: '',
+  phone: '',
+  companyName: '',
+  doubts: '',
+  workAreaId: []
+};
+
+const CustomInputComponent = ({
+  field, // { name, value, onChange, onBlur }
+  form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
+  ...props
+}) => (
+  <div>
+    <textarea
+      type="text"
+      {...field}
+      {...props}
+      className="resize-none rounded-lg h-24 text-sm text-gray-900 bg-white border-0 w-full"
+    />
+    {touched[field.name] && errors[field.name] && (
+      <div className="error">{errors[field.name]}</div>
+    )}
+  </div>
+);
 
 const ContactUs = () => {
+  const [workAreaContact, setworkAreaContact] = useState(null);
+  const getAllWorkArea = async () => {
+    setworkAreaContact(await apiClient('/work-area-company'));
+  };
+
+  useEffect(() => {
+    getAllWorkArea();
+  }, []);
   return (
     <section
       className="animate__animated animate__fadeIn flex justify-center items-center min-h-screen
-    md:h-5/6 md:py-11"
+  md:h-5/6 md:py-11"
     >
       <div className="container flex mx-auto flex-col md:flex-row">
         <div className="md:text-center md:w-1/2">
@@ -39,151 +82,190 @@ const ContactUs = () => {
             AGENDAR
           </button>
         </div>
-
         <div className="card bg-[#140B34] w-auto h-auto md:w-1/2 mx-auto items-center">
-          <form className="py-5 px-8 flex flex-wrap grid ">
-            <h5 className="text-white py-4 px-4 leading-relaxed font-sans text-xl font-medium md:w-6/6 md:mx-auto">
-              <b>
-                Si eres empresa y buscas talento TI, déjanos tu información en
-                este formulario. En breve te contactaremos:
-              </b>
-            </h5>
+          <Formik
+            initialValues={initialCredentials}
+            validationSchema={validateSchemaContactCompany}
+            onSubmit={async (e) => {
+              /* Quitamos las id con valor string */
+              const { workAreaId, ...payload } = e;
+              /* Convertirmos string en número */
+              function toNumber(value) {
+                return Number(value);
+              }
+              let nums = e.workAreaId.map(toNumber);
+              payload.workAreaId = nums;
+              try {
+                await postContactCompany(payload);
+                Swal.fire({
+                  title: `${e.companyName}`,
+                  text: `¡Formulario enviado!, nos pondremos en contacto contigo`,
+                  icon: `success`,
+                  showConfirmButton: false,
+                  timer: 4000,
+                  timerProgressBar: true
+                });
+              } catch (error) {
+                console.error(error);
+                alert('Error:', error);
+              }
+            }}
+          >
+            {({ values, errors, touched, handleSubmit, handl }) => (
+             
+              <Form
+                className="py-5 px-8 flex flex-wrap grid"
+                onSubmit={handleSubmit}
+              >
+                <h5 className="text-white py-4 px-4 leading-relaxed font-sans text-xl font-medium md:w-6/6 md:mx-auto">
+                  <b>
+                    Si eres empresa y buscas talento TI, déjanos tu información
+                    en este formulario. En breve te contactaremos:
+                  </b>
+                </h5>
 
-            <div className="grid grid-cols-2">
-              <div className="flex-initial w-64 m-5 ">
-                <label className="text-white font-sans ">Nombre *</label>
-                <br />
-                <input
-                  type="display:flex"
-                  className="input input-bordered"
-                  placeholder="Ingrese Nombre"
-                  required
-                />
-              </div>
+                <div className="grid grid-cols-2">
+                  <div className="flex-initial w-64 m-5 ">
+                    <label className="text-white font-sans ">Nombre *</label>
+                    <br />
+                    <Field
+                      id="name"
+                      name="name"
+                      type="text"
+                      className="input input-bordered"
+                      placeholder="Ingrese Nombre"
+                    />
+                    {errors.name && touched.name && (
+                      <ErrorMessage
+                        component="div"
+                        name="name"
+                        className="text-red-500"
+                      />
+                    )}
+                  </div>
+                  <div className="flex-initial w-64 m-5 ">
+                    <label className="text-white font-sans ">Apellido *</label>
+                    <br />
+                    <Field
+                      id="lastName"
+                      name="lastName"
+                      type="text"
+                      className="input input-bordered"
+                      placeholder="Ingrese Nombre"
+                    />
+                    {errors.lastName && touched.lastName && (
+                      <ErrorMessage
+                        component="div"
+                        name="lastName"
+                        className="text-red-500"
+                      />
+                    )}
+                  </div>
+                  <div className="flex-initial w-64 m-5 ">
+                    <label className="text-white font-sans ">
+                      Email corporativo *
+                    </label>
+                    <br />
+                    <Field
+                      id="email"
+                      name="email"
+                      type="text"
+                      className="input input-bordered"
+                      placeholder="Ingrese Nombre"
+                    />
+                    {errors.email && touched.email && (
+                      <ErrorMessage
+                        component="div"
+                        name="email"
+                        className="text-red-500"
+                      />
+                    )}
+                  </div>
+                  <div className="flex-initial w-64 m-5 ">
+                    <label className="text-white font-sans ">
+                      Número de teléfono *
+                    </label>
+                    <br />
+                    <Field
+                      id="phone"
+                      name="phone"
+                      type="text"
+                      className="input input-bordered"
+                      placeholder="Ingrese Nombre"
+                    />
+                    {errors.phone && touched.phone && (
+                      <ErrorMessage
+                        component="div"
+                        name="phone"
+                        className="text-red-500"
+                      />
+                    )}
+                  </div>
+                </div>
 
-              <div className="flex-initial w-64 m-5 ">
-                <label className="text-white font-sans ">Apellido *</label>
-                <br />
-                <input
-                  type="text"
-                  className="input input-bordered"
-                  placeholder="Ingrese Apellido"
-                  required
-                />
-              </div>
-
-              <div className="flex-initial w-64 m-5 ">
-                <label className="text-white font-sans ">
-                  Email corporativo *
+                <div className="grow h-auto w-auto m-5 flex flex-wrap grid grid-cols-1 ">
+                  <label className="text-white font-sans ">
+                    ¿A qué empresa perteneces? *
+                  </label>
+                  <Field
+                    id="companyName"
+                    name="companyName"
+                    type="text"
+                    className="input input-bordered"
+                    placeholder="Ingrese aquí"
+                  />
+                  {errors.companyName && touched.companyName && (
+                    <ErrorMessage
+                      component="div"
+                      name="companyName"
+                      className="text-red-500"
+                    />
+                  )}
+                </div>
+                <p className="text-white font-sans flex px-5">
+                  Cargo/área de preferencia que buscas contratar *
+                </p>
+                {/* workArea section */}
+                <div className="hover:auto-cols-min">
+                  {workAreaContact !== null ? (
+                    workAreaContact.data.map((e) => (
+                      <div className="form-control grow h-auto w-auto mx-5 grid grid-cols-1">
+                        <label className="label cursor-pointer justify-start gap-4">
+                          <Field
+                            type="checkbox"
+                            className="checkbox"
+                            name="workAreaId"
+                            value={`${e.id}`}
+                          />
+                          <span className="label-text text-white">
+                            {e.name}
+                          </span>
+                        </label>
+                      </div>
+                    ))
+                  ) : (
+                    <p>Cargando datos....</p>
+                  )}
+                  {errors.workAreaId && touched.workAreaId && (
+                    <ErrorMessage
+                      component="div"
+                      name="workAreaId"
+                      className="text-red-500 px-5"
+                    />
+                  )}
+                </div>
+                <label className="text-white font-sans px-5 mt-3">
+                  ¿Dudas? Déjalas acá!
                 </label>
-                <input
-                  type="email"
-                  className="input input-bordered"
-                  placeholder="Ingrese Email"
-                  required
-                />
-              </div>
-
-              <div className="flex-initial w-64 m-5 ">
-                <label className="text-white font-sans ">
-                  Número de teléfono *
-                </label>
-                <input
-                  type="tel"
-                  className="input input-bordered"
-                  placeholder="Ingrese teléfono"
-                  required
-                />
-              </div>
-            </div>
-
-            <div className="grow h-auto w-auto m-5 flex flex-wrap grid grid-cols-1 ">
-              <label className="text-white font-sans ">
-                ¿A qué empresa perteneces? *
-              </label>
-              <input
-                type="text"
-                className="input input-bordered"
-                placeholder="Ingrese aquí"
-                required
-              />
-            </div>
-
-            <p className="text-white font-sans flex px-5">
-              Cargo/área de preferencia que buscas contratar *
-            </p>
-
-            <div className="hover:auto-cols-min">
-              <div className="form-control grow h-auto w-auto mx-5 grid grid-cols-1">
-                <label className="label cursor-pointer justify-start gap-4">
-                  <input type="checkbox" className="checkbox" />
-                  <span className="label-text text-white">
-                    Desarrollador Front End
-                  </span>
-                </label>
-              </div>
-
-              <div className="form-control grow h-auto w-auto mx-5 grid grid-cols-1">
-                <label className="label cursor-pointer justify-start gap-4">
-                  <input type="checkbox" className="checkbox" />
-                  <span className="label-text text-white">
-                    Desarrollador Full Stack / Backend
-                  </span>
-                </label>
-              </div>
-
-              <div className="form-control grow h-auto w-auto mx-5 grid grid-cols-1">
-                <label className="label cursor-pointer justify-start gap-4">
-                  <input type="checkbox" className="checkbox" />
-                  <span className="label-text text-white">Diseñador UX/UI</span>
-                </label>
-              </div>
-
-              <div className="form-control grow h-auto w-auto mx-5 grid grid-cols-1">
-                <label className="label cursor-pointer justify-start gap-4">
-                  <input type="checkbox" className="checkbox" />
-                  <span className="label-text text-white">Analista QA</span>
-                </label>
-              </div>
-
-              <div className="form-control grow h-auto w-auto mx-5 grid grid-cols-1">
-                <label className="label cursor-pointer justify-start gap-4">
-                  <input type="checkbox" className="checkbox" />
-                  <span className="label-text text-white">
-                    Desarrollador Mobile
-                  </span>
-                </label>
-              </div>
-
-              <div className="form-control grow h-auto w-auto mx-5 grid grid-cols-1">
-                <label className="label cursor-pointer justify-start gap-4">
-                  <input type="checkbox" className="checkbox" />
-                  <span className="label-text text-white">Datos</span>
-                </label>
-              </div>
-
-              <div className="form-control grow h-auto w-auto mx-5 grid grid-cols-1">
-                <label className="label cursor-pointer justify-start gap-4">
-                  <input type="checkbox" className="checkbox" />
-                  <span className="label-text text-white">Otra</span>
-                </label>
-              </div>
-            </div>
-
-            <div className="w-full my-5 px-5">
-              <label for="comment" className="sr-only">
-                Your comment
-              </label>
-              <textarea
-                id="comment"
-                rows="4"
-                className="w-full rounded-lg text-sm text-gray-900 bg-white border-0 resize-none"
-                placeholder="¿Dudas? Déjalas acá!"
-              ></textarea>
-            </div>
-
-            <button className="btn btn-active mx-5">Enviar</button>
-          </form>
+                <div className="w-full mb-5 px-5  mt-3">
+                  <Field name="doubts" component={CustomInputComponent} />
+                </div>
+                <button type="submit" className="btn btn-active mx-5">
+                  Enviar
+                </button>
+              </Form>
+            )}
+          </Formik>
         </div>
       </div>
     </section>
