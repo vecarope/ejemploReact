@@ -1,9 +1,4 @@
-import {
-  InputCheckbox,
-  InputField,
-  InputRadio,
-  InputSelect
-} from '../../../components/Forms';
+import { InputField, InputSelect } from '../../../components/Forms';
 
 export const EducationProfile = ({ errors, touched }) => {
   const educationLevel = [
@@ -50,27 +45,15 @@ export const EducationProfile = ({ errors, touched }) => {
         <div className="mt-5 my-4 md:col-span-7 md:mt-0">
           <div className="grid grid-cols-6  mx-10 md:mx-40 md:gap-x-6 md:gap-y-6">
             <div className="col-span-6 sm:col-span-6">
-              <label
-                htmlFor="typeInstitution"
-                className="block  md:text-xl md:my-4 font-light text-[#140B34]"
+              <InputSelect
+                label={'¿Cuál es tu máximo nivel educacional?'}
+                touched={touched}
+                errors={errors}
+                id="educationalLevel"
+                name="educationalLevel"
               >
-                ¿Cuál es tu máximo nivel educacional?
-                <span class=" text-red-700">*</span>
-              </label>
-              <select
-                id="typeInstitution"
-                name="typeInstitution"
-                autoComplete="education-level"
-                className="mt-1 block w-full rounded-md border  py-2 px-3 border-[#E2F2FE]-200 bg-[#E2F2FE] shadow-sm focus:[#E2F2FE] 
-                focus:ring-[#E2F2FE]-300  sm:text-xl"
-              >
-                <option disabled selected>
-                  Selecionar
-                </option>
-                {educationLevel.map((educationLevel) => (
-                  <option>{educationLevel}</option>
-                ))}
-              </select>
+                {educationLevel}
+              </InputSelect>
             </div>
             <div className="col-span-6 sm:col-span-6">
               <div
@@ -85,162 +68,98 @@ export const EducationProfile = ({ errors, touched }) => {
               </div>
             </div>
             <div className="col-span-6 sm:col-span-6">
-              <label
-                htmlFor=""
-                className="block  md:text-xl my-4 font-sans font-bold text-[#140B34]"
-              >
-                Nombre de la carrera, curso, bootcamp o certificación 1:
-                <span class=" text-red-700">*</span>
-              </label>
-              <input
+              <InputField
+                label="Nombre de la carrera, curso, bootcamp o certificación 1"
                 type="text"
-                name="course1"
-                id="course1"
-                autoComplete="give-course1"
-                className="mt-1 block w-full rounded-md border-[#E2F2FE]-200 bg-[#E2F2FE] shadow-sm focus:[#E2F2FE] 
-                focus:ring-[#E2F2FE]-300 "
+                name="educationStatusCurrent"
+                id="educationStatusCurrent"
                 required
+                placeholder="Nombre de la carrera, curso, bootcamp o certificación 1"
+                touched={touched}
+                errors={errors}
               />
             </div>
             <div className="col-span-6 sm:col-span-6">
-              <label
-                htmlFor=""
-                className="block md:text-xl my-4 font-light text-[#140B34]"
-              >
-                Nombre institución 1:<span class=" text-red-700">*</span>
-              </label>
-              <input
+              <InputField
+                label="Nombre institución 1"
                 type="text"
-                name="Institutecourse1"
-                id="Institutecourse1"
-                autoComplete="give-course1"
-                className="mt-1 block w-full rounded-md border-[#E2F2FE]-200 bg-[#E2F2FE] shadow-sm focus:[#E2F2FE] 
-                focus:ring-[#E2F2FE]-300 "
+                name="educationStatusCurrent"
+                id="educationStatusCurrent"
                 required
+                placeholder="Nombre institución 1"
+                touched={touched}
+                errors={errors}
               />
             </div>
             <div className="col-span-6 sm:col-span-6">
-              <label
-                htmlFor="typeInstitute"
-                className="block md:text-xl my-4 font-light text-[#140B34]"
+              <InputSelect
+                label={'Tipo institución 1:'}
+                touched={touched}
+                errors={errors}
+                id="educationalLevel"
+                name="educationalLevel"
               >
-                Tipo institución 1:<span class=" text-red-700">*</span>
-              </label>
-              <select
-                id="typeInstitute"
-                name="typeInstitute"
-                autoComplete="type-Institution"
-                className="mt-1 block w-full rounded-md border  py-2 px-3 border-[#E2F2FE]-200 bg-[#E2F2FE] shadow-sm focus:[#E2F2FE] 
-                focus:ring-[#E2F2FE]-300  sm:text-xl"
-              >
-                <option disabled selected>
-                  Selecionar
-                </option>
-                {typeInstitution.map((typeInstitution) => (
-                  <option>{typeInstitution}</option>
-                ))}
-              </select>
+                {typeInstitution}
+              </InputSelect>
             </div>
             <div className="col-span-6 sm:col-span-6">
-              <label
-                htmlFor=""
-                className="block md:text-xl my-4 font-sans font-bold text-[#140B34]"
-              >
-                Nombre de la carrera, curso, bootcamp o certificación 2:
-              </label>
-              <input
+              <InputField
+                label="Nombre de la carrera, curso, bootcamp o certificación 2:"
                 type="text"
-                name="course1"
-                id="course1"
-                autoComplete="give-course1"
-                className="mt-1 block w-full rounded-md border-[#E2F2FE]-200 bg-[#E2F2FE] shadow-sm focus:[#E2F2FE] 
-                focus:ring-[#E2F2FE]-300 "
+                name="educationStatusCurrent"
+                id="educationStatusCurrent"
                 required
+                placeholder="Nombre de la carrera, curso, bootcamp o certificación 2:"
+                touched={touched}
+                errors={errors}
               />
             </div>
             <div className="col-span-6 sm:col-span-6">
-              <label
-                htmlFor=""
-                className="block md:text-xl my-4 font-light text-[#140B34]"
-              >
-                Nombre institución 2:
-              </label>
-              <input
+              <InputField
+                label="Nombre institución 2"
                 type="text"
-                name="Institutecourse1"
-                id="Institutecourse1"
-                autoComplete="give-course1"
-                className="mt-1 block w-full rounded-md border-[#E2F2FE]-200 bg-[#E2F2FE] shadow-sm focus:[#E2F2FE] 
-                focus:ring-[#E2F2FE]-300 "
+                name="educationStatusCurrent"
+                id="educationStatusCurrent"
                 required
+                placeholder="Nombre institución 2"
+                touched={touched}
+                errors={errors}
               />
             </div>
             <div className="col-span-6 sm:col-span-6">
-              <label
-                htmlFor="typeInstitute"
-                className="block md:text-xl my-4 font-light text-[#140B34]"
+              <InputSelect
+                label={'Tipo institución 2:'}
+                touched={touched}
+                errors={errors}
+                id="educationalLevel"
+                name="educationalLevel"
               >
-                Tipo institución 2:
-              </label>
-              <select
-                id="typeInstitute"
-                name="typeInstitute"
-                autoComplete="type-Institution"
-                className="mt-1 block w-full rounded-md border  py-2 px-3 border-[#E2F2FE]-200 bg-[#E2F2FE] shadow-sm focus:[#E2F2FE] 
-                focus:ring-[#E2F2FE]-300  sm:text-xl"
-              >
-                <option disabled selected>
-                  Selecionar
-                </option>
-                {typeInstitution.map((typeInstitution) => (
-                  <option key={typeInstitution}>{typeInstitution}</option>
-                ))}
-              </select>
+                {typeInstitution}
+              </InputSelect>
             </div>
             <div className="col-span-6 sm:col-span-4">
-              <label
-                htmlFor="educationStatus"
-                className="block md:text-xl my-4 font-light text-[#140B34]"
+              <InputSelect
+                label={
+                  '¿Cuál es tu situacion educacional actual ( Bootcamp, diplomados,universidad, curso u otros)?'
+                }
+                touched={touched}
+                errors={errors}
+                id="educationStatusCurrent"
+                name="educationStatusCurrent"
               >
-                ¿Cuál es tu situacion educacional actual ( Bootcamp, diplomados,
-                universidad, curso u otros)?
-              </label>
-              <select
-                id="EducationStatus"
-                name="EducationStatus"
-                autoComplete="status-education"
-                className="mt-1 block w-full rounded-md border  py-2 px-3 border-[#E2F2FE]-200 bg-[#E2F2FE] shadow-sm focus:[#E2F2FE] 
-                focus:ring-[#E2F2FE]-300  sm:text-xl"
-              >
-                <option disabled selected>
-                  Selecionar
-                </option>
-                {educationStatus.map((educationStatus) => (
-                  <option>{educationStatus}</option>
-                ))}
-              </select>
+                {educationStatus}
+              </InputSelect>
             </div>
             <div className="col-span-6 sm:col-span-2 pt-6">
-              <label
-                htmlFor="englishLevel"
-                className="block md:text-xl my-4 font-light text-[#140B34]"
-              >
-                Nivel inglés
-              </label>
-              <select
+              <InputSelect
+                label={'Nivel inglés'}
+                touched={touched}
+                errors={errors}
                 id="englishLevel"
-                name="english"
-                autoComplete="english-level"
-                className="mt-1 block w-full rounded-md border  py-2 px-3 border-[#E2F2FE]-200 bg-[#E2F2FE] shadow-sm focus:[#E2F2FE] 
-                focus:ring-[#E2F2FE]-300  sm:text-xl "
+                name="englishLevel"
               >
-                <option disabled selected>
-                  Selecionar
-                </option>
-                {englishLevel.map((englishLevel) => (
-                  <option>{englishLevel}</option>
-                ))}
-              </select>
+                {englishLevel}
+              </InputSelect>
             </div>
           </div>
           <div className="md:hidden">
