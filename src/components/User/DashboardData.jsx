@@ -7,7 +7,7 @@ export const DashboardData=[
         {
             title:'Home', 
             icon:<AiOutlineHome/>,
-            path:'/userHome'
+            path:'/userHome',
         },
         {
             title:'Perfil', 
