@@ -170,7 +170,7 @@ const Register = () => {
                   Crear cuenta
                 </button>
                 <Link to={'/login'}>
-                  <span className=" flex py-3.5 text-sm text-white text-center font-thin  hover:md:text-mid-blue md:text-dark-purple font-sans">
+                  <span className=" flex py-3.5 text-sm text-white text-center font-medium  hover:md:text-mid-blue md:text-dark-purple font-sans">
                     Iniciar sesión
                   </span>
                 </Link>

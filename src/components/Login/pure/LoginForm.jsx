@@ -77,16 +77,24 @@ const LoginForm = () => {
               >
                 Iniciar Sesión
               </button>
-              <Link to={'/register'}>
-                <span className=" flex py-3.5 text-sm text-white text-center font-thin  hover:md:text-mid-blue md:text-dark-purple font-sans">
-                  Crear cuenta
-                </span>
-              </Link>
               {isSubmitting ? (
                 <div>
                   <p>Ingresando...</p>
                 </div>
               ) : null}
+            </div>
+            <div className="flex flex-col md:flex-row max-w-xs md:max-w-lg mx-auto">
+              <Link to={'/register'}>
+                <span className=" flex py-3.5 text-sm text-white text-center font-medium  hover:md:text-mid-blue md:text-dark-purple font-sans">
+                  Crear cuenta
+                </span>
+              </Link>
+              <span className="px-3 flex"></span>
+              <Link to={'/forgot-password'}>
+                <span className=" flex py-3.5 text-sm text-white text-center font-medium  hover:md:text-mid-blue md:text-dark-purple font-sans">
+                  Olvidé la contraseña
+                </span>
+              </Link>
             </div>
           </Form>
         )}
