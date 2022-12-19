@@ -4,13 +4,21 @@ import Swal from 'sweetalert2';
 
 export const AuthContext = createContext();
 
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error('useAuth must be used within a AuthContextProvider');
+  }
+  return context;
+};
+
 const initialUser = localStorage.getItem('user');
 
 export const AuthProvider = ({ children }) => {
   const [userData, setUserData] = useState(
     initialUser ? JSON.parse(initialUser) : null
   );
-
+  
   const userLogout = () => {
     setUserData(null);
     localStorage.clear();
@@ -63,26 +71,20 @@ export const AuthProvider = ({ children }) => {
     });
   };
 
+
   const restorePassword = async (values) => {
     console.log('RESTORE PASSWORD =>', values);
     alert('Contraseña cambiana');
   };
+  
 
   const data = {
     userData,
     userLogout,
     postLogin,
     forgotPassword,
-    restorePassword
-  };
+    restorePassw
 
   return <AuthContext.Provider value={data}>{children}</AuthContext.Provider>;
 };
 
-export const useAuth = () => {
-  const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error('useAuth must be used within a AuthContextProvider');
-  }
-  return context;
-};

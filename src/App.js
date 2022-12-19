@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import ProtectedRoutes from './ProtectRoutes/ProtectedRoutes';
 import { useAuth } from './context/authContext';
+import ProtectedRoutes from './ProtectRoutes/ProtectedRoutes';
 const Error404 = React.lazy(() => import('./views/Error404'));
 const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'));
 const HomePage = React.lazy(() => import('./views/Home'));
@@ -17,7 +17,6 @@ const RestorePasswordPage = React.lazy(() => import('./views/RestorePassword'));
 
 function App() {
   const { userData } = useAuth();
-
   return (
     <Suspense>
       <Routes>
@@ -47,7 +46,6 @@ function App() {
           >
             <Route index element={<AdminLayout />} />
           </Route>
-
           <Route path="/404" element={<Error404 />} />
           <Route path="*" element={<Navigate to="/404" />} />
         </Route>
