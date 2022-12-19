@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Formik, Form } from 'formik';
-import { validateNewPassword } from '../../../validation/validateNwePassword';
+import { validateNewPassword } from '../../../validation/validateNewPassword';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/authContext';
 import { InputField } from '../../Forms';

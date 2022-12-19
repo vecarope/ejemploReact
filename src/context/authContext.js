@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
   const [userData, setUserData] = useState(
     initialUser ? JSON.parse(initialUser) : null
   );
-  
+
   const userLogout = () => {
     setUserData(null);
     localStorage.clear();
@@ -71,20 +71,18 @@ export const AuthProvider = ({ children }) => {
     });
   };
 
-
   const restorePassword = async (values) => {
     console.log('RESTORE PASSWORD =>', values);
     alert('Contraseña cambiana');
   };
-  
 
   const data = {
     userData,
     userLogout,
     postLogin,
     forgotPassword,
-    restorePassw
+    restorePassword
+  };
 
   return <AuthContext.Provider value={data}>{children}</AuthContext.Provider>;
 };
-
