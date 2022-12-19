@@ -63,7 +63,18 @@ export const AuthProvider = ({ children }) => {
     });
   };
 
-  const data = { userData, userLogout, postLogin, forgotPassword };
+  const restorePassword = async (values) => {
+    console.log('RESTORE PASSWORD =>', values);
+    alert('Contraseña cambiana');
+  };
+
+  const data = {
+    userData,
+    userLogout,
+    postLogin,
+    forgotPassword,
+    restorePassword
+  };
 
   return <AuthContext.Provider value={data}>{children}</AuthContext.Provider>;
 };

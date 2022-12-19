@@ -1,22 +1,20 @@
 import React, { useContext } from 'react';
 import { Formik, Form } from 'formik';
-import { validateForgotPassword } from '../../../validation/validateFormLogin';
+import { validateNewPassword } from '../../../validation/validateNwePassword';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/authContext';
 import { InputField } from '../../Forms';
 
 const RestorePassword = () => {
-  const { forgotPassword } = useContext(AuthContext);
+  const { restorePassword } = useContext(AuthContext);
 
   return (
     <section className="flex flex-col items-center bg-white md:w-3/5 my-11 rounded-xl border-8 border-zinc-800 max-w-screen-xl ">
       <Formik
-        initialValues={{
-          email: ''
-        }}
-        validationSchema={validateForgotPassword}
+        initialValues={{ password: '', passwordConfirm: '' }}
+        validationSchema={validateNewPassword}
         onSubmit={async (values) => {
-          await forgotPassword(values);
+          await restorePassword(values);
         }}
       >
         {({ errors, touched, isSubmitting }) => (

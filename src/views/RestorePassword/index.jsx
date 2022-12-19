@@ -1,7 +1,8 @@
 import React from 'react';
+import RestorePassword from '../../components/Login/RestorePassword';
 
 const RestorePasswordPage = () => {
-  return <div>RestorePasswordPage</div>;
+  return <RestorePassword />;
 };
 
 export default RestorePasswordPage;
