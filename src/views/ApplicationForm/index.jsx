@@ -3,16 +3,18 @@ import { validateSchemaAplicationForm } from './validation/validationFormAplicat
 import { Form, Formik } from 'formik';
 import { initialForm } from './data';
 import { useAuth } from '../../context/authContext';
-import { Navigate } from 'react-router-dom';
+import { Fragment } from 'react';
+import Error from '../../components/Error/Error';
+
 
 const ApplicationFormPage = () => {
-  const { userData } = useAuth();
+  const { userData } = useAuth(); 
   return (
     <main className="container mx-auto my-12">
-      {!userData ? (
-        <Navigate to={'/login'} />
-      ) : (
-        <>
+      {
+        !userData ? <Error/>:
+        (
+        <Fragment>
           <ApplicationForm.OverviewCard />
           <Formik
             initialValues={initialForm}
@@ -55,8 +57,9 @@ const ApplicationFormPage = () => {
               </Form>
             )}
           </Formik>
-        </>
-      )}
+        </Fragment>
+        )
+     }
     </main>
   );
 };
