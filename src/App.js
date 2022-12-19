@@ -9,13 +9,15 @@ const RegisterPage = React.lazy(() => import('./views/Register'));
 const LoginPage = React.lazy(() => import(`./views/Login`));
 const ApplicationFormPage = React.lazy(() => import('./views/ApplicationForm'));
 const UserProfile = React.lazy(() => import('./views/UserProfile'));
-const ForgotPasswordPage = React.lazy(() => import('./views/ForgotPassword'));
 const UserTest = React.lazy(() => import('./views/UserTest'));
 const UserLayout = React.lazy(() => import('./layout/UserLayout'));
 const AdminLayout = React.lazy(() => import('./layout/AdminLayout.js'));
+const ForgotPasswordPage = React.lazy(() => import('./views/ForgotPassword'));
+const RestorePasswordPage = React.lazy(() => import('./views/RestorePassword'));
 
 function App() {
   const { userData } = useAuth();
+
   return (
     <Suspense>
       <Routes>
@@ -25,7 +27,7 @@ function App() {
           <Route path="login" element={<LoginPage />} />
           <Route path="application" element={<ApplicationFormPage />} />
           <Route path="forgot-password" element={<ForgotPasswordPage />} />
-
+          <Route path="restore-password" element={<RestorePasswordPage />} />
           <Route
             path="/user"
             element={<ProtectedRoutes isAllowed={!!userData} />}
