@@ -1,47 +1,57 @@
 import React, { useContext } from 'react';
 import { Formik, Form } from 'formik';
-import { validateForgotPassword } from '../../../validation/validateFormLogin';
+import { validateNewPassword } from '../../../validation/validateNwePassword';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/authContext';
 import { InputField } from '../../Forms';
 
-const ForgotPassword = () => {
-  const { forgotPassword } = useContext(AuthContext);
+const RestorePassword = () => {
+  const { restorePassword } = useContext(AuthContext);
 
   return (
     <section className="flex flex-col items-center bg-white md:w-3/5 my-11 rounded-xl border-8 border-zinc-800 max-w-screen-xl ">
       <Formik
-        initialValues={{
-          email: ''
-        }}
-        validationSchema={validateForgotPassword}
+        initialValues={{ password: '', passwordConfirm: '' }}
+        validationSchema={validateNewPassword}
         onSubmit={async (values) => {
-          await forgotPassword(values);
+          await restorePassword(values);
         }}
       >
         {({ errors, touched, isSubmitting }) => (
           <Form className="form-control md:justify-center ">
             <h1 className="py-1.5 md:my-4 text-4xl  md:text-5xl text-dark-purple font-bold text-center font-sans  ">
-              Recuperá tu contraseña
+              Restaurar contraseña
             </h1>
             <div>
               <p className="py-4 px-4 text-center md:w-10/12 text-dark-text leading-relaxed font-sans text-xl font-light md:w-75 md:mx-auto">
-                Ingresá el email con el que te has registrado previamente en
-                Devsafío. Ten en cuenta que debes contar con acceso a este email
-                para poder recibir el enlace y recuperar/crear una contraseña.
+                Creá una nueva contraseña. Recordá que debe ser alfanumerica, y
+                tener mayúsculas y minúsculas.
               </p>
             </div>
             <div className="container mx-auto mt-5 text-center md:max-w-screen-sm">
               <div className="md:contents md:items-center container mt-5 text-center mx-auto justify-center">
                 <div className="mx-auto justify-center flex-col w-8/12">
                   <InputField
-                    label={'Ingresa tu correo:'}
-                    id="email"
-                    name="email"
-                    placeholder="tuemailregistrado@mail.com"
-                    type="email"
+                    label={'Creá la nueva contraseña:'}
+                    id="password"
+                    name="password"
+                    placeholder="*********"
+                    type="password"
                     errors={errors}
                     touched={touched}
+                    required
+                  />
+                </div>
+                <div className="mx-auto justify-center flex-col w-8/12">
+                  <InputField
+                    label={'Repeti la contraseña creada:'}
+                    id="passwordConfirm"
+                    name="passwordConfirm"
+                    placeholder="**********"
+                    type="password"
+                    errors={errors}
+                    touched={touched}
+                    required
                   />
                 </div>
               </div>
@@ -50,11 +60,11 @@ const ForgotPassword = () => {
                   type="submit"
                   className="rounded-lg border hover:border text-lg p-2 w-2/3 font-regular hover:bg-mid-blue bg-dark-purple  text-white hover:text-white font-sans"
                 >
-                  Recuperar contraseña
+                  DEfinir contraseña
                 </button>
                 {isSubmitting ? (
                   <div>
-                    <p>Enviando mail...</p>
+                    <p>Enviando nueva contraseña...</p>
                   </div>
                 ) : null}
               </div>
@@ -79,4 +89,4 @@ const ForgotPassword = () => {
   );
 };
 
-export default ForgotPassword;
+export default RestorePassword;
