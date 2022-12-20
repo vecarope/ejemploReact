@@ -24,15 +24,15 @@ const RestorePassword = () => {
             </h1>
             <div>
               <p className="py-4 px-4 text-center md:w-10/12 text-dark-text leading-relaxed font-sans text-xl font-light md:w-75 md:mx-auto">
-                Creá una nueva contraseña. Recordá que debe ser alfanumerica, y
-                tener mayúsculas y minúsculas.
+                Escribe una nueva contraseña. Recuerda que debe ser
+                alfanumerica, y tener mayúsculas y minúsculas.
               </p>
             </div>
             <div className="container mx-auto mt-5 text-center md:max-w-screen-sm">
               <div className="md:contents md:items-center container mt-5 text-center mx-auto justify-center">
                 <div className="mx-auto justify-center flex-col w-8/12">
                   <InputField
-                    label={'Creá la nueva contraseña:'}
+                    label={'Nueva contraseña:'}
                     id="password"
                     name="password"
                     placeholder="*********"
@@ -44,7 +44,7 @@ const RestorePassword = () => {
                 </div>
                 <div className="mx-auto justify-center flex-col w-8/12">
                   <InputField
-                    label={'Repeti la contraseña creada:'}
+                    label={'Confirmar contraseña:'}
                     id="passwordConfirm"
                     name="passwordConfirm"
                     placeholder="**********"
@@ -60,7 +60,7 @@ const RestorePassword = () => {
                   type="submit"
                   className="rounded-lg border hover:border text-lg p-2 w-2/3 font-regular hover:bg-mid-blue bg-dark-purple  text-white hover:text-white font-sans"
                 >
-                  DEfinir contraseña
+                  Recuperar contraseña
                 </button>
                 {isSubmitting ? (
                   <div>

@@ -22,13 +22,13 @@ const ForgotPassword = () => {
         {({ errors, touched, isSubmitting }) => (
           <Form className="form-control md:justify-center ">
             <h1 className="py-1.5 md:my-4 text-4xl  md:text-5xl text-dark-purple font-bold text-center font-sans  ">
-              Recuperá tu contraseña
+              Restablecer contraseña
             </h1>
             <div>
               <p className="py-4 px-4 text-center md:w-10/12 text-dark-text leading-relaxed font-sans text-xl font-light md:w-75 md:mx-auto">
-                Ingresá el email con el que te has registrado previamente en
-                Devsafío. Ten en cuenta que debes contar con acceso a este email
-                para poder recibir el enlace y recuperar/crear una contraseña.
+                Coloca el email con el que te has registrado previamente en
+                Devsafío. Te enviaremos un correo electronico a este email con
+                los pasos para poder recuperar tu contraseña.
               </p>
             </div>
             <div className="container mx-auto mt-5 text-center md:max-w-screen-sm">
@@ -50,7 +50,7 @@ const ForgotPassword = () => {
                   type="submit"
                   className="rounded-lg border hover:border text-lg p-2 w-2/3 font-regular hover:bg-mid-blue bg-dark-purple  text-white hover:text-white font-sans"
                 >
-                  Recuperar contraseña
+                  Restablecer contraseña
                 </button>
                 {isSubmitting ? (
                   <div>
