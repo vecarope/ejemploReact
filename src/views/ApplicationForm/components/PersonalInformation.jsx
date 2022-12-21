@@ -79,7 +79,7 @@ export const PersonalInformation = ({ errors, touched }) => {
                 label="Número de teléfono"
                 touched={touched}
                 errors={errors}
-                type="tel"
+                type="number"
                 name="phoneNumber"
                 id="phoneNumber"
                 required

@@ -38,16 +38,8 @@ export const ExperienceAndWork = ({ errors, touched }) => {
         <div className="md:col-span-2 md:mt-0">
           <div className="grid mx-auto grid-cols-1 md:grid-cols-6 px-8 md:px-40 md:gap-x-40 md:gap-y-6">
             <div className="col-span-6 sm:col-span-3">
-              <label
-                htmlFor="UrlCv"
-                className="block text-xl my-4 font-sans font-medium text-[#140B34]"
-              >
-                URL CV:
-              </label>
-              <label className="block font-light text-base text-[#575253]">
-                Subir como documento público en Google Drive o similar
-              </label>
               <InputField
+                label={'URL CV:'}
                 type="text"
                 name="cvUrl"
                 id="cvUrl"
@@ -56,15 +48,13 @@ export const ExperienceAndWork = ({ errors, touched }) => {
                 touched={touched}
                 errors={errors}
               />
+              <label className="block font-light text-base text-[#575253]">
+                Subir como documento público en Google Drive o similar
+              </label>
             </div>
             <div className="col-span-6 sm:col-span-3">
-              <label
-                htmlFor="UrlLinkedin"
-                className="block text-xl my-4 font-medium text-[#140B34]"
-              >
-                URL de LinkedIn
-              </label>
               <InputField
+                label={'URL de LinkedIn'}
                 type="text"
                 name="linkedinUrl"
                 id="linkedinUrl"
@@ -75,13 +65,8 @@ export const ExperienceAndWork = ({ errors, touched }) => {
               />
             </div>
             <div className="col-span-6 sm:col-span-3">
-              <label
-                htmlFor="email-address"
-                className="block text-xl my-4 font-medium text-[#140B34]"
-              >
-                URL de GitHub
-              </label>
               <InputField
+                label={'URL de GitHub'}
                 type="text"
                 name="githubUrl"
                 id="githubUrl"
@@ -92,13 +77,8 @@ export const ExperienceAndWork = ({ errors, touched }) => {
               />
             </div>
             <div className="col-span-6 sm:col-span-3">
-              <label
-                htmlFor="UrlPort"
-                className="block text-xl my-4 font-medium text-[#140B34]"
-              >
-                URL de Portafolio/Sitio web
-              </label>
               <InputField
+                label={'URL de Portafolio/Sitio web'}
                 type="text"
                 name="portfolioUrl"
                 id="portfolioUrl"
