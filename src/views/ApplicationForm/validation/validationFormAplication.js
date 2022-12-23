@@ -2,34 +2,14 @@ import * as Yup from 'yup';
 
 let validateStrings = /^[A-ZÁÉÍÓÚ][a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ][a-zñáéíóú]+)?$/;
 let validateNumber = /^([0-9])*$/;
-let validateURL = /(([\w]+:)?\/\/)?(([\d\w]|%[a-fA-f\d]{2,2})+(:([\d\w]|%[a-fA-f\d]{2,2})+)?@)?([\d\w][-\d\w]{0,253}[\d\w]\.)+[\w]{2,63}(:[\d]+)?(\/([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)*(\?(&?([-+_~.\d\w]|%[a-fA-f\d]{2,2})=?)*)?(#([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)?/;
-let validateLinkedinURL = /(https?)?:?(\/\/)?(([w]{3}||\w\w)\.)?linkedin.com(\w+:{0,1}\w*@)?(\S+)(:([0-9])+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/;
-let validateGithubURL = /(https?)?:?(\/\/)?(([w]{3}||\w\w)\.)?github.com(\w+:{0,1}\w*@)?(\S+)(:([0-9])+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/;
+let validateURL =
+  /(([\w]+:)?\/\/)?(([\d\w]|%[a-fA-f\d]{2,2})+(:([\d\w]|%[a-fA-f\d]{2,2})+)?@)?([\d\w][-\d\w]{0,253}[\d\w]\.)+[\w]{2,63}(:[\d]+)?(\/([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)*(\?(&?([-+_~.\d\w]|%[a-fA-f\d]{2,2})=?)*)?(#([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)?/;
+let validateLinkedinURL =
+  /(https?)?:?(\/\/)?(([w]{3}||\w\w)\.)?linkedin.com(\w+:{0,1}\w*@)?(\S+)(:([0-9])+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/;
+let validateGithubURL =
+  /(https?)?:?(\/\/)?(([w]{3}||\w\w)\.)?github.com(\w+:{0,1}\w*@)?(\S+)(:([0-9])+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/;
 
 export const validateSchemaAplicationForm = Yup.object().shape({
-  firstName: Yup.string()
-    .trim()
-    .required('Debes ingresar un nombre.')
-    .matches(validateStrings, {
-      excludeEmptyString: true,
-      message: 'El nombre debe ser solo texto y comenzar con mayúscula.'
-    })
-    .min(2, 'El nombre debe tener al menos 2 letras.')
-    .max(25, 'El nombre debe ser más corto.'),
-  lastName: Yup.string()
-    .trim()
-    .required('Debes ingresar un apellido.')
-    .matches(validateStrings, {
-      excludeEmptyString: true,
-      message: 'El apellido debe ser solo texto y comenzar con mayúscula.'
-    })
-    .min(2, 'El apellido debe tener al menos 2 letras.')
-    .max(30, 'El apellido debe ser más corto.'),
-  email: Yup.string()
-    .required('El e-mail es requerido.')
-    .email('El e-mail ingresado no es válido.')
-    .min(6, 'El e-mail es demasiado corto.')
-    .max(50, 'El e-mail ingresado es muy largo.'),
   phoneNumber: Yup.string()
     .trim()
     .required('Debes ingresar un telefono.')
@@ -64,15 +44,53 @@ export const validateSchemaAplicationForm = Yup.object().shape({
     .max(3, 'Solo puedes elegir hasta 3 items')
     .required('Esta opcion es requerida.'),
 
+  name: Yup.string()
+    .required('Debes ingresar un nombre.')
+    .matches(validateStrings, {
+      excludeEmptyString: true,
+      message: 'El nombre debe ser solo texto y comenzar con mayúscula.'
+    })
+    .min(2, 'El nombre debe tener al menos 2 letras.')
+    .max(25, 'El nombre debe ser más corto.'),
+  institute_name: Yup.string()
+    .required('Debes ingresar un nombre.')
+    .matches(validateStrings, {
+      excludeEmptyString: true,
+      message: 'El nombre debe ser solo texto y comenzar con mayúscula.'
+    })
+    .min(2, 'El nombre debe tener al menos 2 letras.')
+    .max(25, 'El nombre debe ser más corto.'),
+  type: Yup.string().required('Debes seleccionar una opción.'),
+  name2: Yup.string()
+    .required('Debes ingresar un nombre.')
+    .matches(validateStrings, {
+      excludeEmptyString: true,
+      message: 'El nombre debe ser solo texto y comenzar con mayúscula.'
+    })
+    .min(2, 'El nombre debe tener al menos 2 letras.')
+    .max(25, 'El nombre debe ser más corto.'),
+  institute_name2: Yup.string()
+    .required('Debes ingresar un nombre.')
+    .matches(validateStrings, {
+      excludeEmptyString: true,
+      message: 'El nombre debe ser solo texto y comenzar con mayúscula.'
+    })
+    .min(2, 'El nombre debe tener al menos 2 letras.')
+    .max(25, 'El nombre debe ser más corto.'),
+  type2: Yup.string().required('Debes seleccionar una opción.'),
   educationalLevel: Yup.string().required('Debes seleccionar una opción.'),
   educationStatusCurrent: Yup.string().required(
     'Debes seleccionar una opción.'
   ),
   englishLevel: Yup.string().required('Debes seleccionar un nivel de ingles.'),
-  additionalToolsComment: Yup.array()
-    .min(1, 'Debes elegir al menos 1 item')
-    .max(3, 'Solo puedes elegir hasta 3 items')
-    .required('Esta opcion es requerida.'),
+  additionalToolsComment: Yup.string()
+    .trim()
+    .required('Debes completar este campo.')
+    .min(
+      3,
+      'El texto debe ser más largo. ¿Qué herramienta/habilidad adicional quieres contarnos?'
+    )
+    .max(100, 'El texto debe ser más corto.'),
   cvUrl: Yup.string()
     .trim()
     .required('Este link es requerodo.')
@@ -103,15 +121,22 @@ export const validateSchemaAplicationForm = Yup.object().shape({
     }),
   featuredProject: Yup.string()
     .trim()
-    // .required('Debes completar esta espacio de texo.')
-    .min(20, 'El texto debe ser más largo. ¡Cuentanos más del proyecto!')
-    .max(500, 'El texto debe ser más corto.'),
+    .required('Debes completar este campo.')
+    .min(80, 'El texto debe ser más largo. ¡Cuentanos más del proyecto!')
+    .max(400, 'El texto debe ser más corto.'),
+  softSkills: Yup.array()
+    .min(1, 'Debes elegir al menos 1 item')
+    .max(3, 'Solo puedes elegir hasta 3 items')
+    .required('Esta opcion es requerida.'),
   devExperience: Yup.string().required('Debes seleccionar una opción.'),
   idealWorkComment: Yup.string()
     .trim()
-    // .required('Debes completar esta espacio de texo.')
-    .min(20, 'El texto debe ser más largo. ¡Cuentanos más del proyecto!')
-    .max(500, 'El texto debe ser más corto.'),
+    .required('Debes completar este campo.')
+    .min(
+      80,
+      'El texto debe ser más largo. ¡Cuentanos más sobre tu empleo ideal!'
+    )
+    .max(400, 'El texto debe ser más corto.'),
   workAvailability: Yup.array()
     .min(1, 'Debes elegir al menos 1 item')
     .max(3, 'Solo puedes elegir hasta 3 preferencias'),
