@@ -5,15 +5,15 @@ import { initialForm } from './data';
 import { useAuth } from '../../context/authContext';
 import { Fragment } from 'react';
 import Error from '../../components/Error/Error';
-
+import { postApplicationForm } from '../../hooks/postAxios';
 
 const ApplicationFormPage = () => {
-  const { userData } = useAuth(); 
+  const { userData } = useAuth();
   return (
     <main className="container mx-auto my-12">
-      {
-        !userData ? <Error/>:
-        (
+      {!userData ? (
+        <Error />
+      ) : (
         <Fragment>
           <ApplicationForm.OverviewCard />
           <Formik
@@ -21,7 +21,7 @@ const ApplicationFormPage = () => {
             validationSchema={validateSchemaAplicationForm}
             onSubmit={async (values) => {
               try {
-                console.log(values);
+                await postApplicationForm(values);
               } catch (error) {
                 console.error(error);
               }
@@ -58,8 +58,7 @@ const ApplicationFormPage = () => {
             )}
           </Formik>
         </Fragment>
-        )
-     }
+      )}
     </main>
   );
 };

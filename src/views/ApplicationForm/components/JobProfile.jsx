@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { ErrorMessage, Field } from 'formik';
-
+import { InputTextArea } from '../../../components/Forms';
 import apiClient from '../../../services/api.service';
+
 export const JobProfile = ({ errors, touched }) => {
   const [lenguage, setLenguage] = useState(null);
   const [basesFrameworks, setBasesFrameworks] = useState(null);
@@ -215,6 +215,17 @@ export const JobProfile = ({ errors, touched }) => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="col-span-6 sm:col-span-3">
+        <InputTextArea
+          label="Indícanos alguna otra competencia, herramienta o tecnología que conozcas que creas importante agregar:"
+          touched={touched}
+          errors={errors}
+          placeholder="Cuentanos aqui..."
+          required
+          name="additionalToolsComment"
+          id="additionalToolsComment"
+        />
       </div>
     </section>
   );

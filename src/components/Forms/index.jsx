@@ -1,6 +1,6 @@
 import { ErrorMessage, Field } from 'formik';
 
-export const InputField = ({ label, touched, errors, ...props }) => {
+export const InputField = ({ label, touched, errors, headText, ...props }) => {
   return (
     <>
       {label && (
@@ -12,10 +12,49 @@ export const InputField = ({ label, touched, errors, ...props }) => {
           {props.required ? <span className=" text-red-700">*</span> : null}
         </label>
       )}
+      {headText ? headText : null}
       <Field
         {...props}
         id={props.name}
         name={props.name}
+        className="mt-1 block w-full rounded-md border-[#E2F2FE]-200 bg-[#E2F2FE] shadow-sm focus:[#E2F2FE] focus:ring-[#E2F2FE]-300 sm:text-xl"
+      />
+      {touched && errors && (
+        <ErrorMessage
+          component="div"
+          name={props.name}
+          className="text-red-500"
+        />
+      )}
+    </>
+  );
+};
+
+export const InputTextArea = ({
+  label,
+  touched,
+  errors,
+  headText,
+  ...props
+}) => {
+  return (
+    <>
+      {label && (
+        <label
+          htmlFor={props.name}
+          className="block text-xl my-4 font-medium text-[#140B34]"
+        >
+          {label}{' '}
+          {props.required ? <span className=" text-red-700">*</span> : null}
+        </label>
+      )}
+      {headText ? headText : null}
+      <Field
+        {...props}
+        as="textarea"
+        id={props.name}
+        name={props.name}
+        placeholder={props.placeholder}
         className="mt-1 block w-full rounded-md border-[#E2F2FE]-200 bg-[#E2F2FE] shadow-sm focus:[#E2F2FE] focus:ring-[#E2F2FE]-300 sm:text-xl"
       />
       {touched && errors && (
@@ -52,7 +91,10 @@ export const InputSelect = ({ label, touched, errors, children, ...props }) => {
           <>
             <option defaultValue={null}>Selecionar</option>
             {children.map((element, index) => (
-              <option key={index} value={element}>
+              <option
+                key={index}
+                value={props.name === 'educationalLevel' ? index : element}
+              >
                 {element}
               </option>
             ))}
@@ -93,7 +135,12 @@ export const InputRadio = ({ label, touched, errors, children, ...props }) => {
                 <Field
                   type="radio"
                   name={props.name}
-                  value={element}
+                  value={
+                    props.name === 'devExperience' ||
+                    props.name === 'relocationOption'
+                      ? element + ', ' + index
+                      : element
+                  }
                   id={element}
                   className="radio1 mr-4 my-2"
                 />
@@ -123,7 +170,7 @@ export const InputCheckbox = ({
   touched,
   errors,
   headText,
-  children,
+  data = [],
   ...props
 }) => {
   return (
@@ -148,26 +195,30 @@ export const InputCheckbox = ({
           name={props.name}
           className="label cursor-pointer mb-8"
         >
-          {children[1] ? (
-            <ul>
-              {children.map((element, index) => (
-                <li key={index}>
+          <ul>
+            {data && data.length > 1 ? (
+              data.map((element, id, index) => (
+                <li key={element.id ? element.id : index}>
                   <input
                     type="checkbox"
                     name={props.name}
-                    value={element}
-                    id={element}
+                    value={
+                      props.name === 'softSkills'
+                        ? element.name + ', ' + element.id || element.index
+                        : element.name || element
+                    }
+                    id={element.name || element}
                     className=".checkbox mr-4 my-2"
                   />
                   <span className="label-text font-light text-base text-[#232323]">
-                    {element}
+                    {element.name || element}
                   </span>
                 </li>
-              ))}
-            </ul>
-          ) : (
-            children
-          )}
+              ))
+            ) : (
+              <p></p>
+            )}
+          </ul>
         </Field>
         {touched && errors && (
           <ErrorMessage

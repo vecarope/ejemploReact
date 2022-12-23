@@ -71,8 +71,8 @@ export const EducationProfile = ({ errors, touched }) => {
               <InputField
                 label="Nombre de la carrera, curso, bootcamp o certificación 1"
                 type="text"
-                name="educationStatusCurrent"
-                id="educationStatusCurrent"
+                name="name"
+                id="name"
                 required
                 placeholder="Nombre de la carrera, curso, bootcamp o certificación 1"
                 touched={touched}
@@ -83,8 +83,8 @@ export const EducationProfile = ({ errors, touched }) => {
               <InputField
                 label="Nombre institución 1"
                 type="text"
-                name="educationStatusCurrent"
-                id="educationStatusCurrent"
+                name="institute_name"
+                id="institute_name"
                 required
                 placeholder="Nombre institución 1"
                 touched={touched}
@@ -96,8 +96,8 @@ export const EducationProfile = ({ errors, touched }) => {
                 label={'Tipo institución 1:'}
                 touched={touched}
                 errors={errors}
-                id="educationalLevel"
-                name="educationalLevel"
+                id="type"
+                name="type"
               >
                 {typeInstitution}
               </InputSelect>
@@ -106,9 +106,8 @@ export const EducationProfile = ({ errors, touched }) => {
               <InputField
                 label="Nombre de la carrera, curso, bootcamp o certificación 2:"
                 type="text"
-                name="educationStatusCurrent"
-                id="educationStatusCurrent"
-                required
+                name="name2"
+                id="name2"
                 placeholder="Nombre de la carrera, curso, bootcamp o certificación 2:"
                 touched={touched}
                 errors={errors}
@@ -118,9 +117,8 @@ export const EducationProfile = ({ errors, touched }) => {
               <InputField
                 label="Nombre institución 2"
                 type="text"
-                name="educationStatusCurrent"
-                id="educationStatusCurrent"
-                required
+                name="institute_name2"
+                id="institute_name2"
                 placeholder="Nombre institución 2"
                 touched={touched}
                 errors={errors}
@@ -131,8 +129,8 @@ export const EducationProfile = ({ errors, touched }) => {
                 label={'Tipo institución 2:'}
                 touched={touched}
                 errors={errors}
-                id="educationalLevel"
-                name="educationalLevel"
+                id="type2"
+                name="type2"
               >
                 {typeInstitution}
               </InputSelect>

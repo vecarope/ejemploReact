@@ -47,7 +47,7 @@ export const PersonalInformation = ({ errors, touched }) => {
                 type="text"
                 name="firstName"
                 id="firstName"
-                required
+                disabled
               />
             </div>
             <div className="col-span-6 sm:col-span-3">
@@ -59,7 +59,7 @@ export const PersonalInformation = ({ errors, touched }) => {
                 type="text"
                 name="lastName"
                 id="lastName"
-                required
+                disabled
               />
             </div>
             <div className="col-span-6 sm:col-span-3">
@@ -71,7 +71,7 @@ export const PersonalInformation = ({ errors, touched }) => {
                 type="email"
                 name="email"
                 id="email"
-                required
+                disabled
               />
             </div>
             <div className="col-span-6 sm:col-span-3">
@@ -79,7 +79,7 @@ export const PersonalInformation = ({ errors, touched }) => {
                 label="Número de teléfono"
                 touched={touched}
                 errors={errors}
-                type="number"
+                type="tel"
                 name="phoneNumber"
                 id="phoneNumber"
                 required
@@ -137,6 +137,7 @@ export const PersonalInformation = ({ errors, touched }) => {
                 errors={errors}
                 required
                 name="stack"
+                data={cargo}
                 headText={
                   <label
                     htmlFor="stack"
@@ -147,9 +148,7 @@ export const PersonalInformation = ({ errors, touched }) => {
                     manera practica durante el proceso de seleción.
                   </label>
                 }
-              >
-                {cargo}
-              </InputCheckbox>
+              ></InputCheckbox>
             </div>
           </div>
           <div className="md:hidden">
