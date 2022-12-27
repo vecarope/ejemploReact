@@ -6,7 +6,7 @@ const HomePage = () => {
       <Landing.Hero />
       <Landing.HowWeWork />
       <Landing.Features />
-      <Landing.Contat />
+      <Landing.Contact />
     </main>
   );
 };

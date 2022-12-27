@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Link as SmoothLink, animateScroll as scroll } from "react-scroll";
 import logo from '../../assets/images/DEV-IMAGOTIPO-WHITE-HORIZONTAL.png';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import logoColor from '../../assets/images/DEV IMAGOTIPO COLOR HORIZONTAL.png';
@@ -46,7 +47,14 @@ const Navbar = () => {
           </button>
         )}
         <button className="p-4 bg-[#E2F2FE] text-[#1E239A]  rounded-lg ...">
-          <Link to="/contact">Contactanos</Link>
+          <SmoothLink
+            activeClass="active"
+            to="contact-section"
+            spy={true}
+            smooth={true}
+            offset={-70}
+            duration={500}
+          >Contrata Talento</SmoothLink>
         </button>
       </ul>
 
@@ -56,11 +64,10 @@ const Navbar = () => {
 
       <div
         className={`
-            md:hidden flex flex-col ${
-              nav
-                ? 'fixed left-0 top-0 z-10  w-full border-r border-r-blue-900 bg-[#E2F2FE] ease-in-out duration-500'
-                : 'ease-in-out duration-500 fixed left-[-100%]'
-            }`}
+            md:hidden flex flex-col ${nav
+            ? 'fixed left-0 top-0 z-10  w-full border-r border-r-blue-900 bg-[#E2F2FE] ease-in-out duration-500'
+            : 'ease-in-out duration-500 fixed left-[-100%]'
+          }`}
       >
         <div className="flex justify-between items-center">
           <Link to={'/'} className="justify-between px-2 py-3">
@@ -87,7 +94,14 @@ const Navbar = () => {
             <Link to="/register">Registro</Link>
           </li>
           <li className="p-4">
-            <Link to="/contact">Contacto</Link>
+            <SmoothLink
+            activeClass="active"
+            to="contact-section"
+            spy={true}
+            smooth={true}
+            offset={-70}
+            duration={500}
+            >Contrata Talento</SmoothLink>
           </li>
         </ul>
       </div>
