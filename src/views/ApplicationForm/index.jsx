@@ -1,21 +1,19 @@
+import { Fragment } from 'react';
 import * as ApplicationForm from './components';
 import { validateSchemaAplicationForm } from './validation/validationFormAplication';
 import { Form, Formik } from 'formik';
 import { initialForm } from './data';
-import { useAuth } from '../../context/authContext';
-import { Fragment } from 'react';
 import Error from '../../components/Error/Error';
-
+import { useAuth } from '../../context/authContext';
 
 const ApplicationFormPage = () => {
-  const { userData } = useAuth(); 
+  const { userData } = useAuth();
   return (
     <main className="container mx-auto my-12">
-      {
-        !userData ? <Error/>:
+      <ApplicationForm.OverviewCard />
+      {!userData ? <Error/>:
         (
         <Fragment>
-          <ApplicationForm.OverviewCard />
           <Formik
             initialValues={initialForm}
             validationSchema={validateSchemaAplicationForm}
@@ -59,7 +57,7 @@ const ApplicationFormPage = () => {
           </Formik>
         </Fragment>
         )
-     }
+      }
     </main>
   );
 };
