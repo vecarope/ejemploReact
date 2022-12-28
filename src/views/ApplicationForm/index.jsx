@@ -26,7 +26,7 @@ const ApplicationFormPage = () => {
                 await postApplicationForm(values);
                 return Swal.fire(
                   '¡Excelente!',
-                  `${userData.firstName}, continua completando tu perfil.`,
+                  `${userData.firstName}, continúa completando tu perfil.`,
                   'success'
                 ).then(navigate('/user'));
               } catch (error) {
