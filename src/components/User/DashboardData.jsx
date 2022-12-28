@@ -6,17 +6,17 @@ import {CgFileDocument} from 'react-icons/cg'
 export const DashboardData=[
         {
             title:'Home', 
-            icon:<AiOutlineHome/>,
+            icon:<AiOutlineHome className='w-5 h-5'/>,
             path:'/userHome',
         },
         {
             title:'Perfil', 
-            icon:<FiUserCheck/>,
+            icon:<FiUserCheck className='w-5 h-5'/>,
             path:'/userProfile'
         },
         {
             title:'Test técnicos', 
-            icon:<CgFileDocument/>,
+            icon:<CgFileDocument className='w-5 h-5'/>,
             path:'/userTest'
         }
       ]
