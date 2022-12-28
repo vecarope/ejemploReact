@@ -14,7 +14,7 @@ export default function UserProfile() {
         <div className='lg:w-72 lg:pt-10 h-screen my-5 bg-fill-light rounded-tr-3xl'>
           <Dashboard/>
         </div>
-        <div className=' w-auto md:w-screen md:mt-5 lg:my-10 ml-5 lg:ml-20 lg:w-screen m-5 lg:m-12'>
+        <div className='grid container mx-auto mr-10 md:w-screen md:mt-5 lg:my-10 ml-5 lg:ml-20 lg:w-screen m-5 lg:m-12'>
           <h1 className='font-bold text-lg md:text-xl lg:text-2xl md:mb-3 lg:mb-4 '>¡Bienvenido!</h1><br/><br/>
           <div className='lg:flex lg:justify-between mb-2 lg:mb-6 '>
             <div className='flex gap-6 md:text-md lg:text-lg mb-2'>
@@ -26,19 +26,19 @@ export default function UserProfile() {
             </div>
           </div>
           <hr className=' border-black'/>
-          <div className='flex gap-6 justify-around md:justify-between lg:justify-between mb-2 mt-4 lg:mb-7 lg:gap-6 lg:mt-10'>
-            <div className='flex'>
+          <div className='grid grid-cols-2 gap-2 justify-between sm:grid-cols-3 lg:justify-between mb-2 mt-4 lg:mb-7 lg:gap-6 lg:mt-10'>
+            <div className='col-start-1'>
               <SlUser className='w-11 h-11 mr-7'/>
-              <div>
-                <h1 className='font-bold text-xl'>nombre apellido</h1>
-                <p className='text-lg'>pais</p>  
-              </div>
             </div>
-            <div className='flex'>
+            <div className='col-start-1 sm:col-start-2'>
+              <h1 className='font-bold text-xl'>nombre apellido</h1>
+              <p className='text-lg'>pais</p>  
+            </div>
+            <div className='flex justify-end'>
               <FiEdit2/>     
             </div>
           </div>
-          <div className='flex justify-start md:justify-around gap-8 mb-2 mt-4 lg:mb-7'>
+          <div className='flex justify-start sm:justify-around md:justify-around gap-8 mb-2 mt-4 lg:mb-7'>
             <div className='flex gap-5'>
               <AiOutlineMail className=' text-xl'/>
               <p className='hidden md:block'>correo</p>
