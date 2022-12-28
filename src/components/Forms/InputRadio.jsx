@@ -13,7 +13,7 @@ export const InputRadio = ({ label, touched, errors, children, ...props }) => {
           {props.required ? <span className=" text-red-700">*</span> : null}
         </label>
       )}
-      <Field {...props} as="radio" name={props.name} className="mr-4 my-2">
+      <Field {...props} as="Radio" name={props.name} className="mr-4 my-2">
         {children[1] ? (
           <ul>
             {children.map((element, index) => (

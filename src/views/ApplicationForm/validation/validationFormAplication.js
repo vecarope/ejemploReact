@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 
-let validateStrings = /^[A-ZÁÉÍÓÚ][a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ][a-zñáéíóú]+)?$/;
+let validateStrings = /^[A-ZÁÉÍÓÚ a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ a-zñáéíóú]+)?$/;
 let validateNumber = /^([0-9])*$/;
 let validateURL =
   /(([\w]+:)?\/\/)?(([\d\w]|%[a-fA-f\d]{2,2})+(:([\d\w]|%[a-fA-f\d]{2,2})+)?@)?([\d\w][-\d\w]{0,253}[\d\w]\.)+[\w]{2,63}(:[\d]+)?(\/([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)*(\?(&?([-+_~.\d\w]|%[a-fA-f\d]{2,2})=?)*)?(#([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)?/;
@@ -17,14 +17,14 @@ export const validateSchemaAplicationForm = Yup.object().shape({
       excludeEmptyString: true,
       message: 'El telefono debe ser solo numeros.'
     })
-    .min(6, 'El telefono es muy corto.')
-    .max(25, 'El numero de telefono debe ser más corto.'),
+    .min(7, 'El telefono es muy corto.')
+    .max(18, 'El numero de telefono debe ser más corto.'),
   city: Yup.string()
     .trim()
     .required('Debes ingresar una ciudad.')
     .matches(validateStrings, {
       excludeEmptyString: true,
-      message: 'La ciuddad debe ser solo texto y comenzar con mayúscula..'
+      message: 'La ciuddad debe ser solo texto.'
     })
     .min(2, 'La ciudad debe tener al menos 2 letras.')
     .max(25, 'La ciudad debe ser más corta.'),
@@ -33,7 +33,7 @@ export const validateSchemaAplicationForm = Yup.object().shape({
     .required('Debes ingresar un pais.')
     .matches(validateStrings, {
       excludeEmptyString: true,
-      message: 'El pais debe ser solo texto y comenzar con mayúscula.'
+      message: 'El pais debe ser solo texto.'
     })
     .min(2, 'El pais debe tener al menos 2 letras.')
     .max(29, 'El pais debe ser más corta.'),
@@ -48,7 +48,7 @@ export const validateSchemaAplicationForm = Yup.object().shape({
     .required('Debes ingresar un nombre.')
     .matches(validateStrings, {
       excludeEmptyString: true,
-      message: 'El nombre debe ser solo texto y comenzar con mayúscula.'
+      message: 'El nombre debe ser solo texto.'
     })
     .min(2, 'El nombre debe tener al menos 2 letras.')
     .max(25, 'El nombre debe ser más corto.'),
@@ -56,7 +56,7 @@ export const validateSchemaAplicationForm = Yup.object().shape({
     .required('Debes ingresar un nombre.')
     .matches(validateStrings, {
       excludeEmptyString: true,
-      message: 'El nombre debe ser solo texto y comenzar con mayúscula.'
+      message: 'El nombre debe ser solo texto.'
     })
     .min(2, 'El nombre debe tener al menos 2 letras.')
     .max(25, 'El nombre debe ser más corto.'),
@@ -64,14 +64,14 @@ export const validateSchemaAplicationForm = Yup.object().shape({
   name2: Yup.string()
     .matches(validateStrings, {
       excludeEmptyString: true,
-      message: 'El nombre debe ser solo texto y comenzar con mayúscula.'
+      message: 'El nombre debe ser solo texto.'
     })
     .min(2, 'El nombre debe tener al menos 2 letras.')
     .max(25, 'El nombre debe ser más corto.'),
   institute_name2: Yup.string()
     .matches(validateStrings, {
       excludeEmptyString: true,
-      message: 'El nombre debe ser solo texto y comenzar con mayúscula.'
+      message: 'El nombre debe ser solo texto.'
     })
     .min(2, 'El nombre debe tener al menos 2 letras.')
     .max(25, 'El nombre debe ser más corto.'),
@@ -142,9 +142,13 @@ export const validateSchemaAplicationForm = Yup.object().shape({
   visa: Yup.array()
     .min(1, 'Debes elegir al menos 1 item')
     .max(3, 'Solo puedes elegir hasta 3 preferencias'),
-  lenguage: Yup.array().required('Debes completar este campo.'),
-  baseAndFramework: Yup.array().required('Debes completar este campo.'),
-  tools: Yup.array().required(
-    'Debes completar este campo.'
-  ) /* .required('Debes seleccionar al menos una opción.') */
+  lenguage: Yup.array()
+    .required('Este campo es requerido.')
+    .min(2, 'Debes elegir al menos 3 item'),
+  baseAndFramework: Yup.array()
+    .required('Este campo es requerido.')
+    .min(1, 'Debes elegir al menos 3 item'),
+  tools: Yup.array()
+    .required('Este campo es requerido.')
+    .min(1, 'Debes elegir al menos 3 item')
 });

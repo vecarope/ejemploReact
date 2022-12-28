@@ -34,7 +34,6 @@ export const InputSelectArray = ({
                         arrayHelpers.remove(index);
                       }
                       arrayHelpers.push({ ...element, level: e.target.value });
-                      console.log(values[name]);
                     }}
                     className="flex-1 bg-[#E2F2FE] border-[#140B34] rounded-md form-select form-select-sm
                             appearance-none
