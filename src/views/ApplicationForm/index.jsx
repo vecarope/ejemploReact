@@ -3,29 +3,39 @@ import * as ApplicationForm from './components';
 import { validateSchemaAplicationForm } from './validation/validationFormAplication';
 import { Form, Formik } from 'formik';
 import { initialForm } from './data';
-import Error from '../../components/Error/Error';
 import { useAuth } from '../../context/authContext';
+import { Fragment } from 'react';
+import { postApplicationForm } from '../../hooks/postApplicationForm';
+import Error from '../../components/Error/Error';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const ApplicationFormPage = () => {
   const { userData } = useAuth();
+  const navigate = useNavigate();
   return (
     <main className="container mx-auto my-12">
-      <ApplicationForm.OverviewCard />
-      {!userData ? <Error/>:
-        (
+      {!userData ? (
+        <Error />
+      ) : (
         <Fragment>
           <Formik
             initialValues={initialForm}
             validationSchema={validateSchemaAplicationForm}
             onSubmit={async (values) => {
               try {
-                console.log(values);
+                await postApplicationForm(values);
+                return Swal.fire(
+                  '¡Excelente!',
+                  `${userData.firstName}, continua completando tu perfil.`,
+                  'success'
+                ).then(navigate('/user'));
               } catch (error) {
                 console.error(error);
               }
             }}
           >
-            {({ errors, touched, isSubmitting }) => (
+            {({ errors, touched, isSubmitting, values }) => (
               <Form>
                 <ApplicationForm.PersonalInformation
                   errors={errors}
@@ -35,7 +45,11 @@ const ApplicationFormPage = () => {
                   errors={errors}
                   touched={touched}
                 />
-                <ApplicationForm.JobProfile errors={errors} touched={touched} />
+                <ApplicationForm.JobProfile
+                  errors={errors}
+                  touched={touched}
+                  values={values}
+                />
                 <ApplicationForm.ExperienceAndWork
                   errors={errors}
                   touched={touched}
@@ -56,8 +70,7 @@ const ApplicationFormPage = () => {
             )}
           </Formik>
         </Fragment>
-        )
-      }
+      )}
     </main>
   );
 };

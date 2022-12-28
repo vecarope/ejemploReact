@@ -38,9 +38,8 @@ export const AuthProvider = ({ children }) => {
         timerProgressBar: true,
         didOpen: () => {
           Swal.showLoading();
-          const b = Swal.getHtmlContainer().querySelector('b');
           timerInterval = setInterval(() => {
-            b.textContent = Swal.getTimerLeft();
+            Swal.getTimerLeft();
           }, 100);
         },
         willClose: () => {
@@ -60,9 +59,8 @@ export const AuthProvider = ({ children }) => {
       timerProgressBar: true,
       didOpen: () => {
         Swal.showLoading();
-        const b = Swal.getHtmlContainer().querySelector('b');
         timerInterval = setInterval(() => {
-          b.textContent = Swal.getTimerLeft();
+          Swal.getTimerLeft();
         }, 100);
       },
       willClose: () => {

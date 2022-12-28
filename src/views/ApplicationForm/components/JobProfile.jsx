@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { ErrorMessage, Field } from 'formik';
-
+import * as FormField from '../../../components/Forms';
 import apiClient from '../../../services/api.service';
-export const JobProfile = ({ errors, touched }) => {
+
+export const JobProfile = ({ errors, touched, values }) => {
   const [lenguage, setLenguage] = useState(null);
   const [basesFrameworks, setBasesFrameworks] = useState(null);
   const [tools, setTools] = useState(null);
@@ -17,7 +17,6 @@ export const JobProfile = ({ errors, touched }) => {
     getAllData();
   }, []);
 
-  /* faltaría traer el SELECT como un componente import y los datos con axios */
   return (
     <section className="mt-10">
       <h3 className="text-2xl ml-16 font-sans font-bold text-[#140B34]">
@@ -68,47 +67,14 @@ export const JobProfile = ({ errors, touched }) => {
               </p>
             </div>
 
-            <div className="w-96">
-              <ul>
-                {lenguage !== null ? (
-                  lenguage.data.map((lenguage) => (
-                    <li
-                      className="flex items-center w-5/6 py-2.5 md:py-1.5 mx-auto"
-                      key={lenguage.id}
-                    >
-                      <span className="flex-1 px-2 font-sans">
-                        {lenguage.name}
-                      </span>
-                      <select
-                        className="flex-1 bg-[#E2F2FE] border-[#140B34] rounded-md form-select form-select-sm
-                            appearance-none
-                            block
-                            w-full
-                            px-2
-                            py-1
-                            text-sm
-                            font-normal
-                            text-gray-700
-                            bg-clip-padding bg-no-repeat
-                            border border-solid
-                            transition
-                            ease-in-out
-                            m-0
-                            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                        aria-label=".form-select-sm lenguage"
-                      >
-                        <option defaultValue={'0'}>Nivel</option>
-                        <option value="1">Nivel 1</option>
-                        <option value="2">Nivel 2</option>
-                        <option value="3">Nivel 3</option>
-                      </select>
-                    </li>
-                  ))
-                ) : (
-                  <p>Cargando datos...</p>
-                )}
-              </ul>
-            </div>
+            <FormField.InputSelectArray
+              data={lenguage?.data}
+              name="lenguage"
+              id="lenguage"
+              touched={touched}
+              errors={errors}
+              values={values}
+            />
           </div>
         </div>
         {/* bases o frameworks */}
@@ -120,47 +86,14 @@ export const JobProfile = ({ errors, touched }) => {
               </p>
             </div>
 
-            <div className="w-96">
-              <ul>
-                {basesFrameworks !== null ? (
-                  basesFrameworks.data.map((basesFrameworks) => (
-                    <li
-                      className="flex items-center w-5/6 py-2.5 md:py-1.5 mx-auto"
-                      key={basesFrameworks.id}
-                    >
-                      <span className="flex-1 px-2 font-sans">
-                        {basesFrameworks.name}
-                      </span>
-                      <select
-                        className="flex-1 bg-[#E2F2FE] border-[#140B34] rounded-md form-select form-select-sm
-                            appearance-none
-                            block
-                           
-                            px-2
-                            py-1
-                            text-sm
-                            font-normal
-                            text-gray-700
-                           bg-clip-padding bg-no-repeat
-                            border border-solid
-                            transition
-                            ease-in-out
-                            m-0
-                            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                        aria-label=".form-select-sm basesFrameworks"
-                      >
-                        <option defaultValue={'0'}>Nivel</option>
-                        <option value="1">Nivel 1</option>
-                        <option value="2">Nivel 2</option>
-                        <option value="3">Nivel 3</option>
-                      </select>
-                    </li>
-                  ))
-                ) : (
-                  <p>Cargando datos...</p>
-                )}
-              </ul>
-            </div>
+            <FormField.InputSelectArray
+              data={basesFrameworks?.data}
+              name="baseAndFramework"
+              id="baseAndFramework"
+              touched={touched}
+              errors={errors}
+              values={values}
+            />
           </div>
         </div>
         {/*  herramientas*/}
@@ -171,50 +104,27 @@ export const JobProfile = ({ errors, touched }) => {
                 <b>Herramientas</b>
               </p>
             </div>
-
-            <div className=" w-96">
-              <ul>
-                {tools !== null ? (
-                  tools.data.map((tools) => (
-                    <li
-                      className="flex items-center w-5/6 py-2.5 md:py-1.5 mx-auto"
-                      key={tools.id}
-                    >
-                      <span className="flex-1 px-2 font-sans">
-                        {tools.name}
-                      </span>
-                      <select
-                        className="flex-1 bg-[#E2F2FE] border-[#140B34] rounded-md form-select form-select-sm
-                            appearance-none
-                            block
-                            w-full
-                            px-2
-                            py-1
-                            text-sm
-                            font-normal
-                            text-gray-700
-                           bg-clip-padding bg-no-repeat
-                            border border-solid
-                            transition
-                            ease-in-out
-                            m-0
-                            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                        aria-label=".form-select-sm tools"
-                      >
-                        <option defaultValue={'0'}> Nivel</option>
-                        <option value="1">Nivel 1</option>
-                        <option value="2">Nivel 2</option>
-                        <option value="3">Nivel 3</option>
-                      </select>
-                    </li>
-                  ))
-                ) : (
-                  <p>Cargando datos...</p>
-                )}
-              </ul>
-            </div>
+            <FormField.InputSelectArray
+              data={tools?.data}
+              name="tools"
+              id="tools"
+              touched={touched}
+              errors={errors}
+              values={values}
+            />
           </div>
         </div>
+      </div>
+      <div className="col-span-6 sm:col-span-3">
+        <FormField.InputTextArea
+          label="Indícanos alguna otra competencia, herramienta o tecnología que conozcas que creas importante agregar:"
+          touched={touched}
+          errors={errors}
+          placeholder="Cuentanos aqui..."
+          required
+          name="additionalToolsComment"
+          id="additionalToolsComment"
+        />
       </div>
     </section>
   );

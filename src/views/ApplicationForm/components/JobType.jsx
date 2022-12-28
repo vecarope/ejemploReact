@@ -1,8 +1,4 @@
-import {
-  InputCheckbox,
-  InputField,
-  InputRadio
-} from '../../../components/Forms';
+import * as FormField from '../../../components/Forms';
 const availability = ['Full Time', 'Part Time', 'Freelance'];
 
 const status = [
@@ -31,11 +27,10 @@ export const JobType = ({ errors, touched }) => {
           <div className="mt-5 my-4 md:col-span-2 md:mt-0">
             <div className="grid grid-cols-6 mx-10 md:mx-40 md:gap-x-6 md:gap-y-6">
               <div className="col-span-12 sm:col-span-6">
-                <InputField
+                <FormField.InputTextArea
                   label={
                     'Déjanos una breve descripción con respecto tu trabajo ideal'
                   }
-                  type="text"
                   name="idealWorkComment"
                   id="idealWorkComment"
                   required
@@ -46,20 +41,19 @@ export const JobType = ({ errors, touched }) => {
               </div>
               <div className="col-span-8 sm:col-span-2">
                 <div className="form-control">
-                  <InputCheckbox
+                  <FormField.InputCheckbox
                     label="Indícanos tu disponibilidad laboral:"
                     touched={touched}
                     errors={errors}
                     required
                     name="workAvailability"
                     id="workAvailability"
-                  >
-                    {availability}
-                  </InputCheckbox>
+                    data={availability}
+                  />
                 </div>
               </div>
               <div className="col-span-8 sm:col-span-2">
-                <InputRadio
+                <FormField.InputRadio
                   label="¿Qué describe mejor tu situación actual?"
                   touched={touched}
                   errors={errors}
@@ -68,20 +62,19 @@ export const JobType = ({ errors, touched }) => {
                   required
                 >
                   {status}
-                </InputRadio>
+                </FormField.InputRadio>
               </div>
               <div className="col-span-8 sm:col-span-2">
                 <div className="form-control">
-                  <InputCheckbox
+                  <FormField.InputCheckbox
                     label="¿Cuentas con Visa de trabajo activa en?"
                     touched={touched}
                     errors={errors}
-                    required
                     name="visa"
                     id="visa"
-                  >
-                    {visaStatus}
-                  </InputCheckbox>
+                    data={visaStatus}
+                    required
+                  />
                 </div>
               </div>
             </div>

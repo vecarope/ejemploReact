@@ -1,9 +1,4 @@
-import {
-  InputCheckbox,
-  InputField,
-  InputRadio,
-  InputSelect
-} from '../../../components/Forms';
+import * as FormField from '../../../components/Forms';
 import { useContext } from 'react';
 import { AuthContext } from '../../../context/authContext';
 
@@ -39,7 +34,7 @@ export const PersonalInformation = ({ errors, touched }) => {
         <div className="mt-5 my-4 md:col-span-2 md:mt-0">
           <div className="grid grid-cols-6 mx-10 md:mx-40 md:gap-x-40 md:gap-y-6">
             <div className="col-span-6 sm:col-span-3">
-              <InputField
+              <FormField.InputField
                 label="Nombre"
                 touched={touched}
                 errors={errors}
@@ -47,11 +42,11 @@ export const PersonalInformation = ({ errors, touched }) => {
                 type="text"
                 name="firstName"
                 id="firstName"
-                required
+                disabled
               />
             </div>
             <div className="col-span-6 sm:col-span-3">
-              <InputField
+              <FormField.InputField
                 label="Apellido"
                 touched={touched}
                 errors={errors}
@@ -59,11 +54,11 @@ export const PersonalInformation = ({ errors, touched }) => {
                 type="text"
                 name="lastName"
                 id="lastName"
-                required
+                disabled
               />
             </div>
             <div className="col-span-6 sm:col-span-3">
-              <InputField
+              <FormField.InputField
                 label="Email"
                 touched={touched}
                 errors={errors}
@@ -71,22 +66,22 @@ export const PersonalInformation = ({ errors, touched }) => {
                 type="email"
                 name="email"
                 id="email"
-                required
+                disabled
               />
             </div>
             <div className="col-span-6 sm:col-span-3">
-              <InputField
+              <FormField.InputField
                 label="Número de teléfono"
                 touched={touched}
                 errors={errors}
-                type="number"
+                type="tel"
                 name="phoneNumber"
                 id="phoneNumber"
                 required
               />
             </div>
             <div className="col-span-6 sm:col-span-3 ">
-              <InputField
+              <FormField.InputField
                 label="Ciudad"
                 touched={touched}
                 errors={errors}
@@ -97,7 +92,7 @@ export const PersonalInformation = ({ errors, touched }) => {
               />
             </div>
             <div className="col-span-6 sm:col-span-3 ">
-              <InputField
+              <FormField.InputField
                 label="País/región"
                 touched={touched}
                 errors={errors}
@@ -108,18 +103,17 @@ export const PersonalInformation = ({ errors, touched }) => {
               />
             </div>
             <div className="col-span-6 sm:col-span-3">
-              <InputSelect
+              <FormField.InputSelect
                 label={'¿Con qué género te identificas?'}
                 touched={touched}
                 errors={errors}
                 id="gender"
                 name="gender"
-              >
-                {gender}
-              </InputSelect>
+                data={gender}
+              />
             </div>
             <div className="col-span-6 sm:col-span-3">
-              <InputRadio
+              <FormField.InputRadio
                 label=" ¿Cuál es tu estado laboral actual?"
                 touched={touched}
                 errors={errors}
@@ -128,15 +122,16 @@ export const PersonalInformation = ({ errors, touched }) => {
                 required
               >
                 {workStatus}
-              </InputRadio>
+              </FormField.InputRadio>
             </div>
             <div className="col-span-6 sm:col-span-3">
-              <InputCheckbox
+              <FormField.InputCheckbox
                 label="¿Cuál o cuáles cargos te gustaria optar?"
                 touched={touched}
                 errors={errors}
                 required
                 name="stack"
+                data={cargo}
                 headText={
                   <label
                     htmlFor="stack"
@@ -147,9 +142,7 @@ export const PersonalInformation = ({ errors, touched }) => {
                     manera practica durante el proceso de seleción.
                   </label>
                 }
-              >
-                {cargo}
-              </InputCheckbox>
+              ></FormField.InputCheckbox>
             </div>
           </div>
           <div className="md:hidden">

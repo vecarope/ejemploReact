@@ -1,8 +1,5 @@
 export const initialForm = {
   //Personal information:
-  firstName: '',
-  lastName: '',
-  email: '',
   phoneNumber: '',
   city: '',
   country: '',
@@ -10,6 +7,12 @@ export const initialForm = {
   employmentStatusCurrent: '',
   stack: '',
   //Education Profile
+  name: '',
+  institute_name: '',
+  type: '',
+  name2: '',
+  institute_name2: '',
+  type2: '',
   educationalLevel: '',
   educationStatusCurrent: '',
   englishLevel: '',
@@ -22,10 +25,14 @@ export const initialForm = {
   //ExperienceAndWork
   featuredProject: '',
   devExperience: '',
+  softSkills: '',
 
   //JobType
   idealWorkComment: '',
   workAvailability: '',
   relocationOption: '',
-  visa: ''
+  visa: '',
+  lenguage: [],
+  baseAndFramework: [],
+  tools: []
 };

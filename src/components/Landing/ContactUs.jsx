@@ -1,11 +1,11 @@
-import React from 'react';
-import ImgIntersec from '../../assets/design/Intersect.png';
 import { useEffect, useState } from 'react';
-import apiClient from '../../../src/services/api.service';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
-import { postContactCompany } from '../../hooks/postAxios';
-import Swal from 'sweetalert2';
 import { validateSchemaContactCompany } from '../../../src/validation/validateFormContactCompany';
+import { postContactCompany } from '../../hooks/postContactCompany';
+import ImgIntersec from '../../assets/design/Intersect.png';
+import apiClient from '../../../src/services/api.service';
+import Swal from 'sweetalert2';
+
 /* import { useNavigate } from 'react-router-dom'; */
 
 const initialCredentials = {
@@ -113,9 +113,8 @@ const ContactUs = () => {
             }}
           >
             {({ values, errors, touched, handleSubmit, handl }) => (
-             
               <Form
-                className="py-5 px-8 flex flex-wrap grid"
+                className="py-5 px-8 flex flex-wrap"
                 onSubmit={handleSubmit}
               >
                 <h5 className="text-white py-4 px-4 leading-relaxed font-sans text-xl font-medium md:w-6/6 md:mx-auto">
@@ -204,7 +203,7 @@ const ContactUs = () => {
                   </div>
                 </div>
 
-                <div className="grow h-auto w-auto m-5 flex flex-wrap grid grid-cols-1 ">
+                <div className="grow h-auto w-auto m-5 grid grid-cols-1 ">
                   <label className="text-white font-sans ">
                     ¿A qué empresa perteneces? *
                   </label>

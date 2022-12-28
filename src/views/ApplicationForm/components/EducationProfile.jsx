@@ -1,4 +1,4 @@
-import { InputField, InputSelect } from '../../../components/Forms';
+import * as FormField from '../../../components/Forms';
 
 export const EducationProfile = ({ errors, touched }) => {
   const educationLevel = [
@@ -45,15 +45,14 @@ export const EducationProfile = ({ errors, touched }) => {
         <div className="mt-5 my-4 md:col-span-7 md:mt-0">
           <div className="grid grid-cols-6  mx-10 md:mx-40 md:gap-x-6 md:gap-y-6">
             <div className="col-span-6 sm:col-span-6">
-              <InputSelect
+              <FormField.InputSelect
                 label={'¿Cuál es tu máximo nivel educacional?'}
                 touched={touched}
                 errors={errors}
                 id="educationalLevel"
                 name="educationalLevel"
-              >
-                {educationLevel}
-              </InputSelect>
+                data={educationLevel}
+              />
             </div>
             <div className="col-span-6 sm:col-span-6">
               <div
@@ -68,11 +67,11 @@ export const EducationProfile = ({ errors, touched }) => {
               </div>
             </div>
             <div className="col-span-6 sm:col-span-6">
-              <InputField
+              <FormField.InputField
                 label="Nombre de la carrera, curso, bootcamp o certificación 1"
                 type="text"
-                name="educationStatusCurrent"
-                id="educationStatusCurrent"
+                name="name"
+                id="name"
                 required
                 placeholder="Nombre de la carrera, curso, bootcamp o certificación 1"
                 touched={touched}
@@ -80,11 +79,11 @@ export const EducationProfile = ({ errors, touched }) => {
               />
             </div>
             <div className="col-span-6 sm:col-span-6">
-              <InputField
+              <FormField.InputField
                 label="Nombre institución 1"
                 type="text"
-                name="educationStatusCurrent"
-                id="educationStatusCurrent"
+                name="institute_name"
+                id="institute_name"
                 required
                 placeholder="Nombre institución 1"
                 touched={touched}
@@ -92,53 +91,49 @@ export const EducationProfile = ({ errors, touched }) => {
               />
             </div>
             <div className="col-span-6 sm:col-span-6">
-              <InputSelect
+              <FormField.InputSelect
                 label={'Tipo institución 1:'}
                 touched={touched}
                 errors={errors}
-                id="educationalLevel"
-                name="educationalLevel"
-              >
-                {typeInstitution}
-              </InputSelect>
+                id="type"
+                name="type"
+                data={typeInstitution}
+              />
             </div>
             <div className="col-span-6 sm:col-span-6">
-              <InputField
+              <FormField.InputField
                 label="Nombre de la carrera, curso, bootcamp o certificación 2:"
                 type="text"
-                name="educationStatusCurrent"
-                id="educationStatusCurrent"
-                required
+                name="name2"
+                id="name2"
                 placeholder="Nombre de la carrera, curso, bootcamp o certificación 2:"
                 touched={touched}
                 errors={errors}
               />
             </div>
             <div className="col-span-6 sm:col-span-6">
-              <InputField
+              <FormField.InputField
                 label="Nombre institución 2"
                 type="text"
-                name="educationStatusCurrent"
-                id="educationStatusCurrent"
-                required
+                name="institute_name2"
+                id="institute_name2"
                 placeholder="Nombre institución 2"
                 touched={touched}
                 errors={errors}
               />
             </div>
             <div className="col-span-6 sm:col-span-6">
-              <InputSelect
+              <FormField.InputSelect
                 label={'Tipo institución 2:'}
                 touched={touched}
                 errors={errors}
-                id="educationalLevel"
-                name="educationalLevel"
-              >
-                {typeInstitution}
-              </InputSelect>
+                id="type2"
+                name="type2"
+                data={typeInstitution}
+              />
             </div>
             <div className="col-span-6 sm:col-span-4">
-              <InputSelect
+              <FormField.InputSelect
                 label={
                   '¿Cuál es tu situacion educacional actual ( Bootcamp, diplomados,universidad, curso u otros)?'
                 }
@@ -146,20 +141,18 @@ export const EducationProfile = ({ errors, touched }) => {
                 errors={errors}
                 id="educationStatusCurrent"
                 name="educationStatusCurrent"
-              >
-                {educationStatus}
-              </InputSelect>
+                data={educationStatus}
+              />
             </div>
             <div className="col-span-6 sm:col-span-2 pt-6">
-              <InputSelect
+              <FormField.InputSelect
                 label={'Nivel inglés'}
                 touched={touched}
                 errors={errors}
                 id="englishLevel"
                 name="englishLevel"
-              >
-                {englishLevel}
-              </InputSelect>
+                data={englishLevel}
+              />
             </div>
           </div>
           <div className="md:hidden">

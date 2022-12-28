@@ -1,23 +1,18 @@
-import {
-  InputCheckbox,
-  InputField,
-  InputRadio
-} from '../../../components/Forms';
+import * as FormField from '../../../components/Forms';
+import { useEffect, useState } from 'react';
+import apiClient from '../../../services/api.service';
 
 export const ExperienceAndWork = ({ errors, touched }) => {
-  const SoftSkills = [
-    'Líder.',
-    'Resiliente/Perseverante',
-    'Comunicación/Sociable',
-    'Colaborativo/Empatía',
-    'Aprendizaje ágil/Autónomo',
-    'Flexible/Adaptable',
-    'Responsable',
-    'Innovador/Curioso',
-    'Negociación',
-    'Resolución de problemas',
-    'Productividad/Iniciativa'
-  ];
+  const [softSkills, setSoftSkills] = useState(false);
+
+  const getSoftSkills = async () => {
+    const { data } = await apiClient('/soft-skills');
+    setSoftSkills(data);
+  };
+
+  useEffect(() => {
+    getSoftSkills();
+  }, []);
 
   const YearsOfExperience = [
     'No poseo experiencia laboral',
@@ -38,7 +33,7 @@ export const ExperienceAndWork = ({ errors, touched }) => {
         <div className="md:col-span-2 md:mt-0">
           <div className="grid mx-auto grid-cols-1 md:grid-cols-6 px-8 md:px-40 md:gap-x-40 md:gap-y-6">
             <div className="col-span-6 sm:col-span-3">
-              <InputField
+              <FormField.InputField
                 label={'URL CV:'}
                 type="text"
                 name="cvUrl"
@@ -53,7 +48,7 @@ export const ExperienceAndWork = ({ errors, touched }) => {
               </label>
             </div>
             <div className="col-span-6 sm:col-span-3">
-              <InputField
+              <FormField.InputField
                 label={'URL de LinkedIn'}
                 type="text"
                 name="linkedinUrl"
@@ -65,7 +60,7 @@ export const ExperienceAndWork = ({ errors, touched }) => {
               />
             </div>
             <div className="col-span-6 sm:col-span-3">
-              <InputField
+              <FormField.InputField
                 label={'URL de GitHub'}
                 type="text"
                 name="githubUrl"
@@ -77,7 +72,7 @@ export const ExperienceAndWork = ({ errors, touched }) => {
               />
             </div>
             <div className="col-span-6 sm:col-span-3">
-              <InputField
+              <FormField.InputField
                 label={'URL de Portafolio/Sitio web'}
                 type="text"
                 name="portfolioUrl"
@@ -89,37 +84,47 @@ export const ExperienceAndWork = ({ errors, touched }) => {
               />
             </div>
             <div className="w-full rounded-lg text-sm sm:col-span-full">
-              <label htmlFor="" className="block  my-4 text-lg text-[#140B34]">
-                Explícanos en detalle algún proyecto que te enorgullece
-              </label>
-              <label
-                htmlFor="stack"
-                className="block font-light text-base text-[#575253]"
-              >
-                Describe de que trató, tu rol en el proyecto y por qué lo
-                elegiste (por ejemplo: arquitectura de desarrollo, equipo y tu
-                rol en el proyecto, tecnologías utilizadas, dificultades y
-                soluciones, funcionalidades, objetivos, etc. Recuerda NO
-                esperamos link, sino explicación)
-              </label>
-              <textarea className="w-full text-sm text-[#575253]">
-                Escribe aquí...
-              </textarea>
-            </div>
-            <div className="col-span-6 sm:col-span-3">
-              <InputCheckbox
-                label="Selecciona 3 habilidades blandas que te representen"
+              <FormField.InputTextArea
+                label={
+                  'Explícanos en detalle algún proyecto que te enorgullece'
+                }
+                name="featuredProject"
+                id="featuredProject"
+                required
+                placeholder="Cuentanos aquí..."
                 touched={touched}
                 errors={errors}
-                required
-                name="additionalToolsComment"
-                id="additionalToolsComment"
-              >
-                {SoftSkills}
-              </InputCheckbox>
+                headText={
+                  <label
+                    htmlFor="featuredProject"
+                    className="block text-justify font-light text-base text-[#575253]"
+                  >
+                    Describe de que trató, tu rol en el proyecto y por qué lo
+                    elegiste (por ejemplo: arquitectura de desarrollo, equipo y
+                    tu rol en el proyecto, tecnologías utilizadas, dificultades
+                    y soluciones, funcionalidades, objetivos, etc. Recuerda NO
+                    esperamos link, sino explicación)
+                  </label>
+                }
+              />
             </div>
             <div className="col-span-6 sm:col-span-3">
-              <InputRadio
+              {softSkills != null ? (
+                <FormField.InputCheckbox
+                  label="Selecciona 3 habilidades blandas que te representen"
+                  touched={touched}
+                  errors={errors}
+                  required
+                  name="softSkills"
+                  id="softSkills"
+                  data={softSkills}
+                />
+              ) : (
+                <p>Cargando datos</p>
+              )}
+            </div>
+            <div className="col-span-6 sm:col-span-3">
+              <FormField.InputRadio
                 label=" ¿Cuántos años de experiencia laboral posees en desarrollo de software y/o diseño?"
                 touched={touched}
                 errors={errors}
@@ -128,7 +133,7 @@ export const ExperienceAndWork = ({ errors, touched }) => {
                 required
               >
                 {YearsOfExperience}
-              </InputRadio>
+              </FormField.InputRadio>
             </div>
           </div>
         </div>
