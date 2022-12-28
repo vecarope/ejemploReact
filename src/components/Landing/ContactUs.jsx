@@ -49,6 +49,7 @@ const ContactUs = () => {
     <section
       className="animate__animated animate__fadeIn flex justify-center items-center min-h-screen
   md:h-5/6 md:py-11"
+  id="contact-section"
     >
       <div className="container flex mx-auto flex-col md:flex-row">
         <div className="md:text-center md:w-1/2">
