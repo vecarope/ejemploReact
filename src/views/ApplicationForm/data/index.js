@@ -31,5 +31,8 @@ export const initialForm = {
   idealWorkComment: '',
   workAvailability: '',
   relocationOption: '',
-  visa: ''
+  visa: '',
+  lenguage: [],
+  baseAndFramework: [],
+  tools: []
 };

@@ -121,7 +121,7 @@ export const validateSchemaAplicationForm = Yup.object().shape({
     .trim()
     .required('Debes completar este campo.')
     .min(80, 'El texto debe ser más largo. ¡Cuentanos más del proyecto!')
-    .max(400, 'El texto debe ser más corto.'),
+    .max(200, 'El texto debe ser más corto.'),
   softSkills: Yup.array()
     .min(1, 'Debes elegir al menos 1 item')
     .max(3, 'Solo puedes elegir hasta 3 items')
@@ -134,12 +134,17 @@ export const validateSchemaAplicationForm = Yup.object().shape({
       80,
       'El texto debe ser más largo. ¡Cuentanos más sobre tu empleo ideal!'
     )
-    .max(400, 'El texto debe ser más corto.'),
+    .max(200, 'El texto debe ser más corto.'),
   workAvailability: Yup.array()
     .min(1, 'Debes elegir al menos 1 item')
     .max(3, 'Solo puedes elegir hasta 3 preferencias'),
   relocationOption: Yup.string().required('Debes seleccionar una opción.'),
   visa: Yup.array()
     .min(1, 'Debes elegir al menos 1 item')
-    .max(3, 'Solo puedes elegir hasta 3 preferencias')
+    .max(3, 'Solo puedes elegir hasta 3 preferencias'),
+  lenguage: Yup.array().required('Debes completar este campo.'),
+  baseAndFramework: Yup.array().required('Debes completar este campo.'),
+  tools: Yup.array().required(
+    'Debes completar este campo.'
+  ) /* .required('Debes seleccionar al menos una opción.') */
 });

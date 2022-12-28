@@ -5,7 +5,7 @@ import { initialForm } from './data';
 import { useAuth } from '../../context/authContext';
 import { Fragment } from 'react';
 import Error from '../../components/Error/Error';
-import { postApplicationForm } from '../../hooks/postAxios';
+import { postApplicationForm } from '../../hooks/postApplicationForm';
 
 const ApplicationFormPage = () => {
   const { userData } = useAuth();
@@ -27,7 +27,7 @@ const ApplicationFormPage = () => {
               }
             }}
           >
-            {({ errors, touched, isSubmitting }) => (
+            {({ errors, touched, isSubmitting, values }) => (
               <Form>
                 <ApplicationForm.PersonalInformation
                   errors={errors}
@@ -37,7 +37,11 @@ const ApplicationFormPage = () => {
                   errors={errors}
                   touched={touched}
                 />
-                <ApplicationForm.JobProfile errors={errors} touched={touched} />
+                <ApplicationForm.JobProfile
+                  errors={errors}
+                  touched={touched}
+                  values={values}
+                />
                 <ApplicationForm.ExperienceAndWork
                   errors={errors}
                   touched={touched}
