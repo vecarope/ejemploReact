@@ -33,7 +33,7 @@ export const InputCheckbox = ({
           <ul>
             {data && data.length > 1 ? (
               data.map((element, id, index) => (
-                <li key={element.id ? element.id : index}>
+                <li key={id ? id : index}>
                   <input
                     type="checkbox"
                     name={props.name}
