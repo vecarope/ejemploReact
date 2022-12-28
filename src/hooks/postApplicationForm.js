@@ -51,11 +51,11 @@ export const postApplicationForm = async (values) => {
         },
     values.baseAndFramework[1]
       ? values.baseAndFramework.map((element) => ({
-          dataBaseId: parseInt(element.id),
+          databaseId: parseInt(element.id),
           level: parseInt(element.level)
         }))
       : {
-          dataBaseId: parseInt(values.baseAndFramework[0].id),
+          databaseId: parseInt(values.baseAndFramework[0].id),
           level: parseInt(values.baseAndFramework.level)
         },
 
@@ -71,11 +71,11 @@ export const postApplicationForm = async (values) => {
 
     values.softSkills[1]
       ? values.softSkills.map((skill) => ({
-          softSkillId: parseInt(skill.split(',')[1].trim()),
+          softSkillsId: parseInt(skill.split(',')[1].trim()),
           name: skill.split(',')[0].trim()
         }))
       : {
-          softSkillId: parseInt(values.softSkills[0].split(',')[1].trim()),
+          softSkillsId: parseInt(values.softSkills[0].split(',')[1].trim()),
           name: values.softSkills[0].split(',')[0].trim()
         }
   ];
