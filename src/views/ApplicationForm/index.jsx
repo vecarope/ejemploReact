@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import * as ApplicationForm from './components';
 import { validateSchemaAplicationForm } from './validation/validationFormAplication';
 import { Form, Formik } from 'formik';
@@ -18,7 +19,6 @@ const ApplicationFormPage = () => {
         <Error />
       ) : (
         <Fragment>
-          <ApplicationForm.OverviewCard />
           <Formik
             initialValues={initialForm}
             validationSchema={validateSchemaAplicationForm}
