@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import * as ApplicationForm from './components';
 import { validateSchemaAplicationForm } from './validation/validationFormAplication';
 import { Form, Formik } from 'formik';
@@ -55,12 +54,14 @@ const ApplicationFormPage = () => {
                   touched={touched}
                 />
                 <ApplicationForm.JobType errors={errors} touched={touched} />
-                <button
-                  type="submit"
-                  className="rounded-lg border hover:border text-lg p-2 w-2/3 font-regular bg-white hover:bg-transparent hover:md:bg-mid-blue md:bg-dark-purple hover: text-dark-purple mb:text-white hover:text-white md:text-white font-sans"
-                >
-                  Enviar Formulario
-                </button>
+                <div className="flex justify-center items-center">
+                  <button
+                    type="submit"
+                    className="rounded-lg border hover:border text-lg p-2 w-2/3 md:w-64 font-regular bg-mid-blue hover:bg-transparent hover:md:bg-mid-blue md:bg-dark-purple hover:md:text-white hover:text-dark-purple text-white md:text-white font-sans"
+                  >
+                    Enviar Formulario
+                  </button>
+                </div>
                 {isSubmitting ? (
                   <div>
                     <p>Enviando datos...</p>
