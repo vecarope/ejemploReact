@@ -52,8 +52,8 @@ const Navbar = () => {
             to="contact-section"
             spy={true}
             smooth={true}
-            offset={-70}
-            duration={500}
+            offset={0}
+            duration={800}
           >Contrata Talento</SmoothLink>
         </button>
       </ul>
