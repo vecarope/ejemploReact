@@ -80,8 +80,6 @@ export const postApplicationForm = async (values) => {
         }
   ];
   //   const token = localStorage.getItem('token');
-  console.log('FLAG - - >', appicationData);
-
   try {
     const { data } = await apiClient.post(`/user-workprofile/`, appicationData);
     return data;
