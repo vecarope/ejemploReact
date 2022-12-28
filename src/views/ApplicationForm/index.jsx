@@ -4,11 +4,14 @@ import { Form, Formik } from 'formik';
 import { initialForm } from './data';
 import { useAuth } from '../../context/authContext';
 import { Fragment } from 'react';
-import Error from '../../components/Error/Error';
 import { postApplicationForm } from '../../hooks/postApplicationForm';
+import Error from '../../components/Error/Error';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const ApplicationFormPage = () => {
   const { userData } = useAuth();
+  const navigate = useNavigate();
   return (
     <main className="container mx-auto my-12">
       {!userData ? (
@@ -22,6 +25,11 @@ const ApplicationFormPage = () => {
             onSubmit={async (values) => {
               try {
                 await postApplicationForm(values);
+                return Swal.fire(
+                  '¡Excelente!',
+                  `${userData.firstName}, continua completando tu perfil.`,
+                  'success'
+                ).then(navigate('/user'));
               } catch (error) {
                 console.error(error);
               }
