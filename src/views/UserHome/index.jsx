@@ -5,13 +5,13 @@ import CardHomeUser from '../../components/User/CardHomeUser'
 export default function UserHome() {
   return (
     <div className='flex'>
-        <div className='w-72 pt-10 h-screen my-5 bg-fill-light rounded-tr-3xl'>
+        <div className='lg:w-72 lg:pt-10 h-screen my-5 bg-fill-light rounded-tr-3xl'>
           <Dashboard/>
         </div>
-        <div className='my-20 ml-32 mb-10 '>
-          <h1 className=' font-bold text-2xl'>¡Bienvenido!</h1><br/>
-          <p className=' font-bold'>Mapa para recibir ofertas automáticas</p><br/><br/>
-          <div className='my-5 flex gap-6'>
+        <div className='container mx-auto grid md:ml-10 md:mr-14 my-10 ml-3 mr-8 lg:my-16 lg:ml-16 lg:mb-20 '>
+          <h1 className='font-bold text-lg md:text-xl lg:font-bold lg:text-3xl'>¡Bienvenido!</h1>
+          <p className=' font-bold text-sm md:text-lg'>Mapa para recibir ofertas automáticas</p>
+          <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
             <CardHomeUser/>
           </div>
         </div>   

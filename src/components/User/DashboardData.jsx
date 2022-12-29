@@ -7,17 +7,17 @@ export const DashboardData=[
         {
             title:'Home', 
             icon:<AiOutlineHome/>,
-            path:'user'
+            path:'/user'
         },
         {
             title:'Perfil', 
             icon:<FiUserCheck/>,
-            path:'profile'
+            path:'/profile'
         },
         {
             title:'Test técnicos', 
             icon:<CgFileDocument/>,
-            path:'test'
+            path:'/test'
         }
     ]
 

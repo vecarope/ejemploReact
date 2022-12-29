@@ -26,7 +26,7 @@ export default function CardHomeUser() {
   return (
         <>
             {dataCard.map((item, index)=>(
-            <div className="shadow-lg w-44 h-48 bg-fill-light rounded-md p-5" key={index}>
+            <div className="shadow-lg h-44 bg-fill-light rounded-md p-5 mb-4" key={index}>
             <div className="bg-dark-purple rounded-full content-center w-6 items-center mb-5">
                 <h1 className=' m-2 rounded-full text-white items-center'>{item.number}</h1>
             </div>
