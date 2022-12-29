@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 
-let validateStrings = /^[ÁÉÍÓÚA-Z][a-záéíóú]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú]+)*$/;
+let validateStrings = /^[A-ZÁÉÍÓÚ a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ a-zñáéíóú]+)?$/;
 
 export const validateSchemaContactCompany = Yup.object().shape({
   name: Yup.string()
@@ -31,10 +31,10 @@ export const validateSchemaContactCompany = Yup.object().shape({
     .required('Debes ingresar un telefono.')
     .min(8, 'El telefono es muy corto.')
     .max(25, 'El numero de telefono debe ser más corto.'),
-    companyName: Yup.string()
+  companyName: Yup.string()
     .trim()
     .required('Debes ingresar nombre de la empresa.'),
-   workAreaId: Yup.array()
+  workAreaId: Yup.array()
     .min(1, 'Debes elegir al menos 1 item')
     .required('Debes seleccionar al menos una opción.')
 });
