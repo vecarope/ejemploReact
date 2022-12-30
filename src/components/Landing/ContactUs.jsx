@@ -51,7 +51,7 @@ const ContactUs = () => {
   md:h-5/6 md:py-11"
     >
       <div className="container flex mx-auto flex-col md:flex-row">
-        <div className="md:text-center md:w-1/2">
+        <div className="text-center md:w-1/2 pb-8">
           <h2 className="py-8 px-4 md:py-1.5 font-sans text-5xl md:text-3xl font-semibold text-dark-purple">
             DEVsafiamos el sistema
           </h2>
@@ -66,7 +66,7 @@ const ContactUs = () => {
           </h5>
 
           <img
-            className="w-16 md:w-4/5 md:mx-auto "
+            className="container mx-auto py-3  sm:w-full md:w-auto flex-shrink-0 "
             src={ImgIntersec}
             alt="img"
           />
@@ -78,8 +78,14 @@ const ContactUs = () => {
             </b>
           </h5>
 
-          <button className="btn btn-blue" type="submit">
-            AGENDAR
+          <button className="btn btn-active mx-5 sm:px-8">
+            <a
+              href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0SQzKIaDQw2qnLJMrS8hm0EIM31uLGZUHFffAgzqX-0-TBwwD6RTMXxKU5pRMJxnfOftAHJ2Ao"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              AGENDAR
+            </a>
           </button>
         </div>
         <div className="card bg-[#140B34] w-auto h-auto md:w-1/2 mx-auto items-center">
@@ -112,7 +118,6 @@ const ContactUs = () => {
             }}
           >
             {({ values, errors, touched, handleSubmit, handl }) => (
-             
               <Form
                 className="py-5 px-8 flex flex-wrap grid"
                 onSubmit={handleSubmit}
@@ -124,15 +129,15 @@ const ContactUs = () => {
                   </b>
                 </h5>
 
-                <div className="grid grid-cols-2">
-                  <div className="flex-initial w-64 m-5 ">
+                <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-6">
+                  <div className="flex-initial h-auto w-auto m-5 col-span-6 sm:col-span-1">
                     <label className="text-white font-sans ">Nombre *</label>
                     <br />
                     <Field
                       id="name"
                       name="name"
                       type="text"
-                      className="input input-bordered"
+                      className="input input-bordered w-full"
                       placeholder="Ingrese Nombre"
                     />
                     {errors.name && touched.name && (
@@ -143,14 +148,16 @@ const ContactUs = () => {
                       />
                     )}
                   </div>
-                  <div className="flex-initial w-64 m-5 ">
-                    <label className="text-white font-sans ">Apellido *</label>
+                  <div className="flex-initial h-auto w-auto m-5 col-span-6 sm:col-span-1">
+                    <label className="text-white font-sans sm:col-span-3">
+                      Apellido *
+                    </label>
                     <br />
                     <Field
                       id="lastName"
                       name="lastName"
                       type="text"
-                      className="input input-bordered"
+                      className="input input-bordered w-full"
                       placeholder="Ingrese Nombre"
                     />
                     {errors.lastName && touched.lastName && (
@@ -161,7 +168,7 @@ const ContactUs = () => {
                       />
                     )}
                   </div>
-                  <div className="flex-initial w-64 m-5 ">
+                  <div className="flex-initial h-auto w-auto m-5 col-span-6 sm:col-span-1">
                     <label className="text-white font-sans ">
                       Email corporativo *
                     </label>
@@ -170,7 +177,7 @@ const ContactUs = () => {
                       id="email"
                       name="email"
                       type="text"
-                      className="input input-bordered"
+                      className="input input-bordered w-full"
                       placeholder="Ingrese Nombre"
                     />
                     {errors.email && touched.email && (
@@ -181,7 +188,7 @@ const ContactUs = () => {
                       />
                     )}
                   </div>
-                  <div className="flex-initial w-64 m-5 ">
+                  <div className="flex-initial w-auto m-5 col-span-6 sm:col-span-1">
                     <label className="text-white font-sans ">
                       Número de teléfono *
                     </label>
@@ -190,7 +197,7 @@ const ContactUs = () => {
                       id="phone"
                       name="phone"
                       type="text"
-                      className="input input-bordered"
+                      className="input input-bordered w-full"
                       placeholder="Ingrese Nombre"
                     />
                     {errors.phone && touched.phone && (
@@ -260,7 +267,10 @@ const ContactUs = () => {
                 <div className="w-full mb-5 px-5  mt-3">
                   <Field name="doubts" component={CustomInputComponent} />
                 </div>
-                <button type="submit" className="btn btn-active mx-5">
+                <button
+                  type="submit"
+                  className="btn btn-active mx-5 cursor-pointer ..."
+                >
                   Enviar
                 </button>
               </Form>
