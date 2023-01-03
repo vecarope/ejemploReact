@@ -4,6 +4,8 @@ export const postApplicationForm = async (values) => {
   const dataUser = localStorage.getItem('user');
   const userForm = JSON.parse(dataUser);
 
+  userForm.statusId = 2;
+
   const appicationData = [
     {
       phoneNumber: values.phoneNumber,
@@ -82,6 +84,9 @@ export const postApplicationForm = async (values) => {
   //   const token = localStorage.getItem('token');
   try {
     const { data } = await apiClient.post(`/user-workprofile/`, appicationData);
+    // console.log('EL DATA ES:', data);
+    userForm.statusId = 2;
+    localStorage.setItem('user', JSON.stringify(userForm));
     return data;
   } catch ({ error }) {
     return error.message;

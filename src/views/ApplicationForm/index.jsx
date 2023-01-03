@@ -7,7 +7,7 @@ import { Fragment } from 'react';
 import { postApplicationForm } from '../../hooks/postApplicationForm';
 import Error from '../../components/Error/Error';
 import Swal from 'sweetalert2';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const ApplicationFormPage = () => {
   const { userData } = useAuth();
@@ -16,7 +16,7 @@ const ApplicationFormPage = () => {
     <main className="container mx-auto my-12">
       {!userData ? (
         <Error />
-      ) : (
+      ) : userData.statusId === 1 ? (
         <Fragment>
           <Formik
             initialValues={initialForm}
@@ -71,6 +71,8 @@ const ApplicationFormPage = () => {
             )}
           </Formik>
         </Fragment>
+      ) : (
+        <Navigate to={'/user'} />
       )}
     </main>
   );
