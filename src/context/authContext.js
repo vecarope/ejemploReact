@@ -50,7 +50,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const forgotPassword = async (values) => {
-    console.log('FORGOT PASSWORD =>', values);
+    // console.log('FORGOT PASSWORD =>', values);
     let timerInterval;
     Swal.fire({
       title: 'Enlace enviado!',
@@ -70,7 +70,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const restorePassword = async (values) => {
-    console.log('RESTORE PASSWORD =>', values);
+    // console.log('RESTORE PASSWORD =>', values);
     alert('Contraseña cambiana');
   };
 
