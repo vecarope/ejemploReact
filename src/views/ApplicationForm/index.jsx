@@ -18,6 +18,7 @@ const ApplicationFormPage = () => {
         <Error />
       ) : (
         <Fragment>
+          <ApplicationForm.OverviewCard />
           <Formik
             initialValues={initialForm}
             validationSchema={validateSchemaAplicationForm}

@@ -132,7 +132,7 @@ export const EducationProfile = ({ errors, touched }) => {
                 data={typeInstitution}
               />
             </div>
-            <div className="col-span-6 sm:col-span-4">
+            <div className="col-span-6 lg:col-span-4">
               <FormField.InputSelect
                 label={
                   '¿Cuál es tu situacion educacional actual ( Bootcamp, diplomados,universidad, curso u otros)?'
@@ -144,7 +144,7 @@ export const EducationProfile = ({ errors, touched }) => {
                 data={educationStatus}
               />
             </div>
-            <div className="col-span-6 sm:col-span-2 pt-6">
+            <div className="col-span-6 lg:col-span-2 pt-6">
               <FormField.InputSelect
                 label={'Nivel inglés'}
                 touched={touched}

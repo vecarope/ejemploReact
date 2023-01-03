@@ -35,7 +35,7 @@ export const OverviewCard = () => {
         posibilidad de ser contratado directamente por la empresa, con sus
         distintos beneficios y remuneración acorde al mercado.
       </p>
-      <p className="font-extralight font-sans tracking-wide leading-relaxed py-3">
+      <p className="font-extralight font-sans tracking-wide leading-relaxed py-3 text-xs md:text-base ">
         Si quieres saber más de nosotros y nuestras actividades, nos puedes
         seguir en: https://www.linkedin.com/company/devsafio
       </p>

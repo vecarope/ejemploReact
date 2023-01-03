@@ -8,7 +8,7 @@ export const InputSelectArray = ({
   ...props
 }) => {
   return (
-    <div className="w-96">
+    <div className="w-80 md:w-96">
       <FieldArray
         name={`${name}`}
         render={(arrayHelpers) => (
@@ -19,7 +19,7 @@ export const InputSelectArray = ({
                   className="flex items-center w-5/6 py-2.5 md:py-1.5 mx-auto"
                   key={element.id}
                 >
-                  <span className="flex-1 px-2 font-sans">{element.name}</span>
+                  <span className="flex-1 font-sans">{element.name}</span>
                   <Field
                     {...props}
                     as="select"

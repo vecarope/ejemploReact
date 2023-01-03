@@ -19,11 +19,11 @@ export const JobProfile = ({ errors, touched, values }) => {
 
   return (
     <section className="mt-10">
-      <h3 className="text-2xl ml-16 font-sans font-bold text-[#140B34]">
+      <h3 className="text-2xl mx-auto justify-center font-sans flex font-bold text-[#140B34]">
         PERFIL LABORAL
       </h3>
       <div className="flex justify-center">
-        <div className="p-9 max-w-6xl">
+        <div className="p-4 max-w-6xl">
           <p className="font-sans text-lg tracking-wide leading-relaxed py-3">
             Queremos conocer tus competencias y experiencia. A continuación
             podrás elegir las competencias que conoces con respecto a 3 niveles:
@@ -57,9 +57,9 @@ export const JobProfile = ({ errors, touched, values }) => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
         {/* lenguaje */}
-        <div className="flex justify-center w-5/6 mx-auto">
+        <div className="flex justify-center mx-auto">
           <div className="form-control ">
             <div className="flex justify-center pb-2">
               <p className="pt-6">
@@ -78,7 +78,7 @@ export const JobProfile = ({ errors, touched, values }) => {
           </div>
         </div>
         {/* bases o frameworks */}
-        <div className="flex justify-center w-5/6 mx-auto">
+        <div className="flex justify-center mx-auto">
           <div className="form-control">
             <div className="flex justify-center pb-2">
               <p className="pt-6">
@@ -115,7 +115,7 @@ export const JobProfile = ({ errors, touched, values }) => {
           </div>
         </div>
       </div>
-      <div className="col-span-6 sm:col-span-3">
+      <div className="col-span-6 md:col-span-3 px-5">
         <FormField.InputTextArea
           label="Indícanos alguna otra competencia, herramienta o tecnología que conozcas que creas importante agregar:"
           touched={touched}
