@@ -17,13 +17,13 @@ const visaStatus = [
 export const JobType = ({ errors, touched }) => {
   return (
     <>
-      <div className="mt-10  sm:mt-0">
-        <div className="my-8 ">
-          <h3 className="text-2xl ml-10 md:ml-16 font-sans font-bold text-dark-purple">
+      <div className="mt-10 md:mt-0">
+        <div className=" mx-auto justify-center">
+          <h3 className="w-56 md:w-auto align-middle text-center flex text-lg md:text-2xl mx-auto justify-center font-sans font-bold text-[#140B34]">
             ¿QUÉ TIPO DE TRABAJO ESTÁS BUSCANDO?
           </h3>
         </div>
-        <div className="grid md:grid-cols-1 md:gap-8">
+        <div className="grid md:grid-cols-1 md:gap-8 max-w-8xl">
           <div className="mt-5 my-4 md:col-span-2 ">
             <div className="col-span-12 md:col-span-6 mx-10 md:mx-40 lg:col-span-12">
               <FormField.InputTextArea

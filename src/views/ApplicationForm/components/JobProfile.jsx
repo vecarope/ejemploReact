@@ -18,11 +18,11 @@ export const JobProfile = ({ errors, touched, values }) => {
   }, []);
 
   return (
-    <section className="mt-10">
+    <section className="mt-10 max-w-6xl mx-auto justify-center">
       <h3 className="text-2xl mx-auto justify-center font-sans flex font-bold text-[#140B34]">
         PERFIL LABORAL
       </h3>
-      <div className="flex justify-center">
+      <div className="flex justify-center max-w-8xl">
         <div className="p-4 max-w-6xl">
           <p className="font-sans text-lg tracking-wide leading-relaxed py-3">
             Queremos conocer tus competencias y experiencia. A continuación

@@ -24,12 +24,12 @@ export const ExperienceAndWork = ({ errors, touched }) => {
 
   return (
     <div className=" mt-10 px-0">
-      <div className="my-8">
-        <h3 className="text-2xl ml-16 font-sans font-bold text-[#140B34]">
+      <div className="my-8 mx-auto justify-center">
+        <h3 className="text-2xl mx-auto justify-center font-sans flex font-bold text-[#140B34]">
           EXPERIENCIA Y TRABAJO
         </h3>
       </div>
-      <div className=" md:grid-cols-2 md:gap-6">
+      <div className=" md:grid-cols-2 md:gap-6 max-w-8xl">
         <div className="md:col-span-2 md:mt-0">
           <div className="grid grid-cols-2 lg:grid-cols-6 mx-10 md:mx-40 md:gap-x-10 md:gap-y-6">
             <div className="col-span-6 sm:col-span-3">

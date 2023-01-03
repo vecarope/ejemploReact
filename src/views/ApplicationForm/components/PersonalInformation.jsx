@@ -25,12 +25,12 @@ export const PersonalInformation = ({ errors, touched }) => {
 
   return (
     <div className="mt-10 md:mt-0">
-      <div className="my-8">
-        <h3 className="text-2xl ml-10 md:ml-16 font-sans font-bold text-[#140B34]">
+      <div className="my-8 mt-10 max-w-6xl mx-auto justify-center">
+        <h3 className="text-2xl mx-auto justify-center font-sans flex font-bold text-[#140B34]">
           INFORMACIÓN PERSONAL
         </h3>
       </div>
-      <div className="grid md:grid-cols-2 md:gap-6 ">
+      <div className="grid md:grid-cols-2 md:gap-6 max-w-8xl">
         <div className="mt-5 my-4 md:col-span-2 md:mt-0">
           <div className="grid grid-cols-2 lg:grid-cols-6 mx-10 md:mx-40 md:gap-x-10 md:gap-y-6">
             <div className="col-span-6 md:col-span-3">
