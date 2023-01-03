@@ -24,16 +24,16 @@ export const PersonalInformation = ({ errors, touched }) => {
   ];
 
   return (
-    <div className="mt-10  sm:mt-0">
-      <div className="my-8 ">
-        <h3 className="text-2xl ml-10 md:ml-16 font-sans font-bold text-[#140B34]">
+    <div className="mt-10 md:mt-0">
+      <div className="my-8 mt-10 max-w-6xl mx-auto justify-center">
+        <h3 className="text-2xl mx-auto justify-center font-sans flex font-bold text-[#140B34]">
           INFORMACIÓN PERSONAL
         </h3>
       </div>
-      <div className="md:grid md:grid-cols-2 md:gap-6 ">
+      <div className="grid md:grid-cols-2 md:gap-6 max-w-8xl">
         <div className="mt-5 my-4 md:col-span-2 md:mt-0">
-          <div className="grid grid-cols-6 mx-10 md:mx-40 md:gap-x-40 md:gap-y-6">
-            <div className="col-span-6 sm:col-span-3">
+          <div className="grid grid-cols-2 lg:grid-cols-6 mx-10 md:mx-40 md:gap-x-10 md:gap-y-6">
+            <div className="col-span-6 md:col-span-3">
               <FormField.InputField
                 label="Nombre"
                 touched={touched}
@@ -45,7 +45,7 @@ export const PersonalInformation = ({ errors, touched }) => {
                 disabled
               />
             </div>
-            <div className="col-span-6 sm:col-span-3">
+            <div className="col-span-6 md:col-span-3">
               <FormField.InputField
                 label="Apellido"
                 touched={touched}
@@ -57,7 +57,7 @@ export const PersonalInformation = ({ errors, touched }) => {
                 disabled
               />
             </div>
-            <div className="col-span-6 sm:col-span-3">
+            <div className="col-span-6 md:col-span-3">
               <FormField.InputField
                 label="Email"
                 touched={touched}
@@ -69,7 +69,7 @@ export const PersonalInformation = ({ errors, touched }) => {
                 disabled
               />
             </div>
-            <div className="col-span-6 sm:col-span-3">
+            <div className="col-span-6 md:col-span-3">
               <FormField.InputField
                 label="Número de teléfono"
                 touched={touched}
@@ -80,7 +80,7 @@ export const PersonalInformation = ({ errors, touched }) => {
                 required
               />
             </div>
-            <div className="col-span-6 sm:col-span-3 ">
+            <div className="col-span-6 md:col-span-3 ">
               <FormField.InputField
                 label="Ciudad"
                 touched={touched}
@@ -91,7 +91,7 @@ export const PersonalInformation = ({ errors, touched }) => {
                 required
               />
             </div>
-            <div className="col-span-6 sm:col-span-3 ">
+            <div className="col-span-6 md:col-span-3 ">
               <FormField.InputField
                 label="País/región"
                 touched={touched}
@@ -102,7 +102,7 @@ export const PersonalInformation = ({ errors, touched }) => {
                 required
               />
             </div>
-            <div className="col-span-6 sm:col-span-3">
+            <div className="col-span-6 md:col-span-3">
               <FormField.InputSelect
                 label={'¿Con qué género te identificas?'}
                 touched={touched}
@@ -112,7 +112,7 @@ export const PersonalInformation = ({ errors, touched }) => {
                 data={gender}
               />
             </div>
-            <div className="col-span-6 sm:col-span-3">
+            <div className="col-span-6 md:col-span-3">
               <FormField.InputRadio
                 label=" ¿Cuál es tu estado laboral actual?"
                 touched={touched}
@@ -124,7 +124,7 @@ export const PersonalInformation = ({ errors, touched }) => {
                 {workStatus}
               </FormField.InputRadio>
             </div>
-            <div className="col-span-6 sm:col-span-3">
+            <div className="col-span-6 md:col-span-3">
               <FormField.InputCheckbox
                 label="¿Cuál o cuáles cargos te gustaria optar?"
                 touched={touched}

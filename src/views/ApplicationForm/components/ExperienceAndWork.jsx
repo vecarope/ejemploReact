@@ -24,14 +24,14 @@ export const ExperienceAndWork = ({ errors, touched }) => {
 
   return (
     <div className=" mt-10 px-0">
-      <div className="my-8">
-        <h3 className="text-2xl ml-16 font-sans font-bold text-[#140B34]">
+      <div className="my-8 mx-auto justify-center">
+        <h3 className="text-2xl mx-auto justify-center font-sans flex font-bold text-[#140B34]">
           EXPERIENCIA Y TRABAJO
         </h3>
       </div>
-      <div className=" md:grid-cols-2 md:gap-6">
+      <div className=" md:grid-cols-2 md:gap-6 max-w-8xl">
         <div className="md:col-span-2 md:mt-0">
-          <div className="grid mx-auto grid-cols-1 md:grid-cols-6 px-8 md:px-40 md:gap-x-40 md:gap-y-6">
+          <div className="grid grid-cols-2 lg:grid-cols-6 mx-10 md:mx-40 md:gap-x-10 md:gap-y-6">
             <div className="col-span-6 sm:col-span-3">
               <FormField.InputField
                 label={'URL CV:'}
@@ -83,7 +83,7 @@ export const ExperienceAndWork = ({ errors, touched }) => {
                 errors={errors}
               />
             </div>
-            <div className="w-full rounded-lg text-sm sm:col-span-full">
+            <div className="rounded-lg text-sm col-span-full">
               <FormField.InputTextArea
                 label={
                   'Explícanos en detalle algún proyecto que te enorgullece'
@@ -97,7 +97,7 @@ export const ExperienceAndWork = ({ errors, touched }) => {
                 headText={
                   <label
                     htmlFor="featuredProject"
-                    className="block text-justify font-light text-base text-[#575253]"
+                    className="text-justify font-light text-base pb-5 font-sans text-[#575253]"
                   >
                     Describe de que trató, tu rol en el proyecto y por qué lo
                     elegiste (por ejemplo: arquitectura de desarrollo, equipo y
