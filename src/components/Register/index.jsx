@@ -42,7 +42,6 @@ const Register = () => {
               ).then(navigate('/login'));
             } catch (error) {
               console.error(error);
-              alert('Error:', error);
             }
           }}
         >
