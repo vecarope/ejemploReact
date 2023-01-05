@@ -11,7 +11,8 @@ const ApplicationFormPage = React.lazy(() => import('./views/ApplicationForm'));
 const UserProfile = React.lazy(() => import('./views/UserProfile'));
 const UserTest = React.lazy(() => import('./views/UserTest'));
 const UserLayout = React.lazy(() => import('./layout/UserLayout'));
-const AdminLayout = React.lazy(() => import('./layout/AdminLayout.js'));
+const UserHome = React.lazy(() => import('./views/UserHome'));
+const AdminLayout = React.lazy(()=> import('./layout/AdminLayout.js'))
 const ForgotPasswordPage = React.lazy(() => import('./views/ForgotPassword'));
 const RestorePasswordPage = React.lazy(() => import('./views/RestorePassword'));
 
@@ -29,9 +30,13 @@ function App() {
           <Route path="restore-password" element={<RestorePasswordPage />} />
           <Route
             path="/user"
-            element={<ProtectedRoutes isAllowed={!!userData} />}
-          >
-            <Route index element={<UserLayout />} />
+            element={
+              <ProtectedRoutes isAllowed={!!userData}>
+              <UserLayout />
+            </ProtectedRoutes>
+          }>
+            <Route index element={<Navigate to="welcome" />} />
+            <Route path="welcome" element={<UserHome />} />
             <Route path="profile" exact element={<UserProfile />} />
             <Route path="test" element={<UserTest />} />
           </Route>
@@ -39,13 +44,16 @@ function App() {
           <Route
             path="/admin"
             element={
-              <ProtectedRoutes
-                isAllowed={!!userData && userData.roleId === 2}
-              />
-            }
-          >
-            <Route index element={<AdminLayout />} />
+              <ProtectedRoutes isAllowed={!!userData && userData.roleId === 2}>
+              <UserLayout />
+              </ProtectedRoutes>
+            }>
+            <Route index element={<Navigate to="welcome" />} />
+            <Route path="welcome" element={<UserHome />} />
+            <Route path="profile" exact element={<AdminLayout />} />
+            <Route path="test" element={<UserTest />} />
           </Route>
+
           <Route path="/404" element={<Error404 />} />
           <Route path="*" element={<Navigate to="/404" />} />
         </Route>
