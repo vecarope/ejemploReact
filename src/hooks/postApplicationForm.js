@@ -83,7 +83,7 @@ export const postApplicationForm = async (values) => {
   ];
   //   const token = localStorage.getItem('token');
   try {
-    const { data } = await apiClient.post(`/user-workprofile/`, appicationData);
+    const { data } = await apiClient.post(`/users`, appicationData);
     // console.log('EL DATA ES:', data);
     userForm.statusId = 2;
     localStorage.setItem('user', JSON.stringify(userForm));
