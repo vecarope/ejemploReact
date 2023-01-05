@@ -8,10 +8,10 @@ export default function UserHome() {
         <div className='lg:w-72 lg:pt-10 h-screen my-5 bg-fill-light rounded-tr-3xl'>
           <Dashboard/>
         </div>
-        <div className='container mx-auto grid md:ml-10 md:mr-14 my-10 ml-3 mr-8 lg:my-16 lg:ml-16 lg:mb-20 '>
-          <h1 className='font-bold text-lg md:text-xl lg:font-bold lg:text-3xl'>¡Bienvenido!</h1>
-          <p className=' font-bold text-sm md:text-lg'>Mapa para recibir ofertas automáticas</p>
-          <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
+        <div className='container mx-auto flex flex-col md:ml-10 md:mr-14 my-10 ml-3 mr-8 lg:my-16 lg:ml-16 lg:mb-20 '>
+          <h1 className='font-bold mb-4 lg:mb-8 text-xl lg:text-3xl'>¡Bienvenido!</h1>
+          <p className='font-medium mb-5 lg:mb-9 text-lg md:text-lg'>Mapa para recibir ofertas automáticas</p>
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
             <CardHomeUser/>
           </div>
         </div>   
