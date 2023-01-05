@@ -10,8 +10,11 @@ import {
   MdOutlineEventAvailable
 } from 'react-icons/md';
 import { RiFolderUserLine, RiDeleteBinLine } from 'react-icons/ri';
+import { useAuth } from '../../context/authContext';
 
 export default function UserProfile() {
+  const { userData } = useAuth();
+
   return (
     <div className="flex">
       <div className="lg:w-72 lg:pt-10 h-screen my-5 bg-fill-light rounded-tr-3xl">
@@ -40,7 +43,7 @@ export default function UserProfile() {
             <SlUser className="w-11 h-11 mr-7" />
           </div>
           <div className="col-start-1 sm:col-start-2">
-            <h1 className="font-bold text-xl">nombre apellido</h1>
+            <h1 className="font-bold text-xl">{userData.firstName} {userData.lastName}</h1>
             <p className="text-lg">pais</p>
           </div>
           <div className="flex justify-end">
@@ -50,7 +53,7 @@ export default function UserProfile() {
         <div className="flex justify-start sm:justify-around md:justify-around gap-8 mb-2 mt-4 lg:mb-7">
           <div className="flex gap-5">
             <AiOutlineMail className=" text-xl" />
-            <p className="hidden md:block">correo</p>
+            <p className="hidden md:block">{userData.email}</p>
           </div>
           <div className="flex gap-5">
             <AiOutlinePhone className=" text-xl" />

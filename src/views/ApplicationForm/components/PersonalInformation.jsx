@@ -1,9 +1,8 @@
 import * as FormField from '../../../components/Forms';
-import { useContext } from 'react';
-import { AuthContext } from '../../../context/authContext';
+import { useAuth } from '../../../context/authContext';
 
 export const PersonalInformation = ({ errors, touched }) => {
-  const { userData } = useContext(AuthContext);
+  const { userData } = useAuth()
   const gender = ['Femenino', 'Masculino', 'No binario', 'Otro'];
 
   const workStatus = [
