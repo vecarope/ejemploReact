@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Dashboard from '../../components/User/Dashboard';
 import { GrDocumentTransfer } from 'react-icons/gr';
 import { FiEdit2 } from 'react-icons/fi';
@@ -11,9 +11,23 @@ import {
 } from 'react-icons/md';
 import { RiFolderUserLine, RiDeleteBinLine } from 'react-icons/ri';
 import { useAuth } from '../../context/authContext';
+import  apiClient from '../../services/api.service'
 
 export default function UserProfile() {
   const { userData } = useAuth();
+  const [ workProfile , setWorkProfile ] = useState(null);
+
+
+  useEffect(()=>{
+    async function getData(){
+    const res = await apiClient.get('/applicant');
+    setWorkProfile(res.data);
+  }
+  getData();
+  },[]); 
+
+  if (!workProfile) return "No hay datos!"
+  console.log(workProfile); 
 
   return (
     <div className="flex">
@@ -31,7 +45,7 @@ export default function UserProfile() {
             <GrDocumentTransfer /> <h1 className="mr-2">sube tu Cv </h1>
           </div>
           <div className="flex ml-10 gap-8 justify-between">
-            <h2 className="text-sm"> ejemplo</h2>
+            <h2 className="text-sm">{workProfile[0].cvUrl}</h2>
             <button onClick={'modal'}>
               <FiEdit2 />
             </button>
@@ -44,7 +58,7 @@ export default function UserProfile() {
           </div>
           <div className="col-start-1 sm:col-start-2">
             <h1 className="font-bold text-xl">{userData.firstName} {userData.lastName}</h1>
-            <p className="text-lg">pais</p>
+            <p className="text-lg">{workProfile[0].country}</p>
           </div>
           <div className="flex justify-end">
             <FiEdit2 />
@@ -57,14 +71,14 @@ export default function UserProfile() {
           </div>
           <div className="flex gap-5">
             <AiOutlinePhone className=" text-xl" />
-            <p className="hidden md:block">telefono</p>
+            <p className="hidden md:block">{workProfile[0].phoneNumber}</p>
           </div>
-          <div>
+          <a role="button" target="_blank"  rel="noopener noreferrer" href={`${workProfile[0].linkedinUrl}`} >
             <BsLinkedin className=" rounded-3xl w-6 h-6" />
-          </div>
-          <div>
+          </a>
+          <a role="button" target="_blank"  rel="noopener noreferrer" href={`${workProfile[0].githubUrl}`} >
             <BsGithub className=" w-6 h-6" />
-          </div>
+          </a>
         </div>
         <hr className=" border-black" />
         <div className="lg:flex lg:justify-between mb-4 lg:mb-7 mt-4 lg:mt-10">
@@ -74,8 +88,8 @@ export default function UserProfile() {
           </div>
           <div className="flex ml-10 gap-8 justify-between">
             <div className=" lg:text-end text-sm">
-              <h2 className="font-bold">Experiencia</h2>
-              <h2>inglés</h2>
+              <h2 className="font-bold">Experiencia {workProfile[0].devExperience} años</h2>
+              <h2>Nivel Ingles: {workProfile[0].englishLevel}</h2>
             </div>
             <div>
               <FiEdit2 />
@@ -90,7 +104,7 @@ export default function UserProfile() {
           </div>
           <div className="flex gap-8 justify-between">
             <div className="text-start ml-10 lg:text-end text-sm">
-              <h2 className="font-bold">Full Time</h2>
+              <h2 className="font-bold">{workProfile[0].workAvailability}</h2>
               <h2>Disponibilidad inmediata</h2>
             </div>
             <div>
@@ -106,7 +120,7 @@ export default function UserProfile() {
           </div>
           <div className="flex gap-8 justify-between">
             <div className="text-start ml-10 lg:text-end text-sm">
-              <p className="font-bold">Full Stack</p>
+              <p className="font-bold">{workProfile[0].stack}</p>
               <p>Salario anual 1.000.000 clp</p>
             </div>
             <div>
@@ -120,31 +134,37 @@ export default function UserProfile() {
             <h1 className="text-2xl">Habilidades</h1>
             <FiEdit2 className="mt-2" />
           </div>
-          <div className="flex gap-5 lg:gap-12">
-            <div className=" flex-col">
+          <div className="gap-5 lg:gap-12 grid-col">
+            <div className=" flex flex-row">
+            <div className="flex-col space-y-3 "> 
               <h1 className="mb-4">Avanzado</h1>
+              {workProfile[2].map((element,id)=>(
+              <div className=" md:flex lg:flex ">
+                <div className="badge badge-outline border-light-purple p-1 pt-0 pb-0 rounded-md"
+                id={id}>
+                {element.name}
+                </div>
+              </div>
+              ))}
               <h1 className="mb-4">Experimentado</h1>
+              {workProfile[3].map((element, id )=>(
+              <div className="md:flex lg:flex ">
+                <div className="badge badge-outline border-light-purple p-1 pt-0 pb-0 rounded-md"
+                id={id}>
+                {element.name}
+                </div>
+              </div>
+              ))}
               <h1 className=" mt-2">Principiante</h1>
-            </div>
-            <div className="flex-col space-y-3">
-              <div className=" md:flex lg:flex">
-                <div className="border-solid border border-light-purple p-1 pt-0 pb-0 rounded-md">
-                  html
-                </div>
-              </div>
-              <div className="md:flex lg:flex gap-5">
-                <div className="border-solid border border-light-purple p-1 pt-0 pb-0 rounded-md">
-                  html
-                </div>
-                <div className="border-solid border border-light-purple p-1 pt-0 pb-0 rounded-md">
-                  html
-                </div>
-              </div>
+              {workProfile[4].map((element,id) =>(
               <div className="md:flex lg:flex">
-                <div className="border-solid border border-light-purple p-1 pt-0 pb-0 rounded-md">
-                  html
+                <div className="badge badge-outline border border-light-purple p-1 pt-0 pb-0 rounded-md"
+                id={id}>
+                  {element.name}
                 </div>
               </div>
+              ))}
+            </div>
             </div>
           </div>
         </div>
@@ -154,8 +174,8 @@ export default function UserProfile() {
           <div className=" flex justify-between">
             <div>
               <h1 className=" text-blue-700 text-sm font-bold">fecha</h1>
-              <h1 className="text-2xl">lugar</h1>
-              <h1 className=" text-blue-700 text-sm font-bold">titulo</h1>
+              <h1 className="text-2xl">{workProfile[1].instituteName}</h1>
+              <h1 className=" text-blue-700 text-sm font-bold">{workProfile[1].name}</h1>
             </div>
             <div className=" flex gap-5 justify-between">
               <FiEdit2 />
