@@ -4,48 +4,48 @@ import { FiEdit2 } from 'react-icons/fi';
 import { SlUser } from 'react-icons/sl';
 import { AiOutlineMail, AiOutlinePhone } from 'react-icons/ai';
 import { BsLinkedin, BsGithub } from 'react-icons/bs';
-import
-  {
-    MdOutlineBookmarkAdded,
-    MdOutlineEventAvailable
-  } from 'react-icons/md';
+import {
+  MdOutlineBookmarkAdded,
+  MdOutlineEventAvailable
+} from 'react-icons/md';
 import { RiFolderUserLine, RiDeleteBinLine } from 'react-icons/ri';
 import { useAuth } from '../../context/authContext';
 import apiClient from '../../services/api.service';
+import Disponibilidad from '../../components/Modals/Disponibilidad';
 
-export default function UserProfile(){
+export default function UserProfile() {
   const { userData } = useAuth();
-  const [workProfile,setWorkProfile] = useState(null);
+  const [workProfile, setWorkProfile] = useState(null);
 
-  useEffect(() =>{
-    async function getData(){
+  useEffect(() => {
+    async function getData() {
       const res = await apiClient.get('/applicant');
       setWorkProfile(res.data);
-    } 
+    }
     getData();
-  },[]);
+  }, []);
 
   if (!workProfile)
     return (
-      <div className='container m-8 '>
-      <div className="alert bg-fill-light shadow-lg">
-        <div>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            className="stroke-current flex-shrink-0 w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-            ></path>
-          </svg>
-          <span className='text-primary'>Cargado datos del usuario...</span>
+      <div className="container m-8 ">
+        <div className="alert bg-fill-light shadow-lg">
+          <div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              className="stroke-current flex-shrink-0 w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              ></path>
+            </svg>
+            <span className="text-primary">Cargado datos del usuario...</span>
+          </div>
         </div>
-      </div>
       </div>
     );
 
@@ -63,8 +63,8 @@ export default function UserProfile(){
         <div className="flex ml-10 gap-8 justify-between">
           <h2 className="text-sm">{workProfile[0].cvUrl}</h2>
         </div>
-        </div>
-        <hr className=" border-black" />
+      </div>
+      <hr className=" border-black" />
       <div className="grid grid-cols-2 gap-2 justify-between sm:grid-cols-3 lg:justify-between mb-2 mt-4 lg:mb-7 lg:gap-6 lg:mt-10">
         <div className="col-start-1">
           <SlUser className="w-11 h-11 mr-7" />
@@ -113,13 +113,10 @@ export default function UserProfile(){
         </div>
         <div className="flex ml-10 gap-8 justify-between">
           <div className=" lg:text-end text-sm">
-            <h2 className="font-bold">
-            {workProfile[0].devExperience} 
-            </h2>
+            <h2 className="font-bold">{workProfile[0].devExperience}</h2>
             <h2>Nivel Ingles: {workProfile[0].englishLevel}</h2>
           </div>
-          <div>
-          </div>
+          <div></div>
         </div>
       </div>
       <hr className="border-black" />
@@ -131,10 +128,10 @@ export default function UserProfile(){
         <div className="flex gap-8 justify-between">
           <div className="text-start ml-10 lg:text-end text-sm">
             <h2 className="font-bold">{workProfile[0].workAvailability}</h2>
-            <h2>Disponibilidad inmediata</h2>
+            <h2>Posibilidad de ingreso: {workProfile[0].availabilityStatus}</h2>
           </div>
           <div>
-            <FiEdit2 />
+            <Disponibilidad />
           </div>
         </div>
       </div>
@@ -153,18 +150,18 @@ export default function UserProfile(){
             <FiEdit2 />
           </div>
         </div>
+      </div>
+      <hr className="border-black" />
+      <div className="mb-4 p-1 lg:mb-7 mt-4 lg:mt-10">
+        <div className="flex justify-between mb-8">
+          <h1 className="text-2xl">Habilidades</h1>
+          <FiEdit2 className="mt-2" />
         </div>
-        <hr className="border-black" />
-        <div className="mb-4 p-1 lg:mb-7 mt-4 lg:mt-10">
-          <div className="flex justify-between mb-8">
-            <h1 className="text-2xl">Habilidades</h1>
-            <FiEdit2 className="mt-2" />
-          </div>
-          <div className="gap-5 lg:gap-12 grid-col">
-            <div className=" flex flex-row">
-              <div className="flex-col space-y-3 ">
-                <h1 className="mb-4">Avanzado</h1>
-                {workProfile[2].map((element, id) => (
+        <div className="gap-5 lg:gap-12 grid-col">
+          <div className=" flex flex-row">
+            <div className="flex-col space-y-3 ">
+              <h1 className="mb-4">Avanzado</h1>
+              {workProfile[2].map((element, id) => (
                 <div className=" md:flex lg:flex ">
                   <div
                     className="badge badge-outline border-light-purple p-1 pt-0 pb-0 rounded-md"
@@ -172,10 +169,10 @@ export default function UserProfile(){
                   >
                     {element.name}
                   </div>
-                  </div>
-                ))}
-                <h1 className="mb-4">Experimentado</h1>
-                {workProfile[3].map((element, id) => (
+                </div>
+              ))}
+              <h1 className="mb-4">Experimentado</h1>
+              {workProfile[3].map((element, id) => (
                 <div className="md:flex lg:flex ">
                   <div
                     className="badge badge-outline border-light-purple p-1 pt-0 pb-0 rounded-md"
@@ -183,10 +180,10 @@ export default function UserProfile(){
                   >
                     {element.name}
                   </div>
-                  </div>
-                ))}
-                <h1 className=" mt-2">Principiante</h1>
-                {workProfile[4].map((element, id) => (
+                </div>
+              ))}
+              <h1 className=" mt-2">Principiante</h1>
+              {workProfile[4].map((element, id) => (
                 <div className="md:flex lg:flex">
                   <div
                     className="badge badge-outline border border-light-purple p-1 pt-0 pb-0 rounded-md"
@@ -194,12 +191,12 @@ export default function UserProfile(){
                   >
                     {element.name}
                   </div>
-                    </div>
-                ))}
+                </div>
+              ))}
             </div>
           </div>
         </div>
-        </div>
+      </div>
       <hr className="border-black" />
       <div className="lg:flex-col p-1 mb-4 lg:mb-7 mt-4 lg:mt-10">
         <h1 className=" text-2xl mb-10">Educación</h1>
@@ -215,8 +212,8 @@ export default function UserProfile(){
             <FiEdit2 />
             <RiDeleteBinLine />
           </div>
-          </div>
         </div>
       </div>
+    </div>
   );
-};
+}

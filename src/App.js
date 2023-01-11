@@ -12,7 +12,7 @@ const UserProfile = React.lazy(() => import('./views/UserProfile'));
 const UserTest = React.lazy(() => import('./views/UserTest'));
 const UserLayout = React.lazy(() => import('./layout/UserLayout'));
 const UserHome = React.lazy(() => import('./views/UserHome'));
-const AdminLayout = React.lazy(()=> import('./layout/AdminLayout.js'))
+const AdminLayout = React.lazy(() => import('./layout/AdminLayout.js'));
 const ForgotPasswordPage = React.lazy(() => import('./views/ForgotPassword'));
 const RestorePasswordPage = React.lazy(() => import('./views/RestorePassword'));
 
@@ -32,9 +32,10 @@ function App() {
             path="/user"
             element={
               <ProtectedRoutes isAllowed={!!userData}>
-              <UserLayout />
-            </ProtectedRoutes>
-          }>
+                <UserLayout />
+              </ProtectedRoutes>
+            }
+          >
             <Route index element={<Navigate to="welcome" />} />
             <Route path="welcome" element={<UserHome />} />
             <Route path="profile" exact element={<UserProfile />} />
@@ -45,9 +46,10 @@ function App() {
             path="/admin"
             element={
               <ProtectedRoutes isAllowed={!!userData && userData.roleId === 2}>
-              <UserLayout />
+                <UserLayout />
               </ProtectedRoutes>
-            }>
+            }
+          >
             <Route index element={<Navigate to="welcome" />} />
             <Route path="welcome" element={<UserHome />} />
             <Route path="profile" exact element={<AdminLayout />} />
