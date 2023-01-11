@@ -120,7 +120,7 @@ export const ExperienceAndWork = ({ errors, touched }) => {
                   data={softSkills}
                 />
               ) : (
-                <p>Cargando datos</p>
+                <progress className="animate-pulse progress w-56">Cargando datos</progress>
               )}
             </div>
             <div className="col-span-6 sm:col-span-3">

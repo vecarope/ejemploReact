@@ -64,8 +64,9 @@ const ApplicationFormPage = () => {
                   </button>
                 </div>
                 {isSubmitting ? (
-                  <div>
-                    <p>Enviando datos...</p>
+                  <div className='my-4 text-center'>
+                  <h2>Enviando Formulario</h2>
+                  <progress className="animate-pulse progress w-56"></progress>
                   </div>
                 ) : null}
               </Form>

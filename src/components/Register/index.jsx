@@ -176,7 +176,10 @@ const Register = () => {
 
                 {isSubmitting ? (
                   <div>
-                    <p>Cargando datos...</p>
+                <div className='my-4'>
+                <h2>Enviando registro</h2>
+                <progress className="animate-pulse progress w-56"></progress>
+                </div>
                   </div>
                 ) : null}
               </div>

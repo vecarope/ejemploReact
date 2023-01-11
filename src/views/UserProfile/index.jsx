@@ -21,14 +21,31 @@ export default function UserProfile(){
     async function getData(){
       const res = await apiClient.get('/applicant');
       setWorkProfile(res.data);
-    }
+    } 
     getData();
   },[]);
 
   if (!workProfile)
     return (
-      <div className="grid container mx-auto mr-10 md:w-screen md:mt-5 lg:my-10 ml-3 lg:mx-20 lg:w-screen m-5 lg:m-12">
-        !Cargando datos!
+      <div className='container m-8 '>
+      <div className="alert bg-fill-light shadow-lg">
+        <div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            className="stroke-current flex-shrink-0 w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            ></path>
+          </svg>
+          <span className='text-primary'>Cargado datos del usuario...</span>
+        </div>
+      </div>
       </div>
     );
 
@@ -45,9 +62,6 @@ export default function UserProfile(){
         </div>
         <div className="flex ml-10 gap-8 justify-between">
           <h2 className="text-sm">{workProfile[0].cvUrl}</h2>
-          <button onClick={'modal'}>
-            <FiEdit2 />
-          </button>
         </div>
         </div>
         <hr className=" border-black" />
@@ -100,12 +114,11 @@ export default function UserProfile(){
         <div className="flex ml-10 gap-8 justify-between">
           <div className=" lg:text-end text-sm">
             <h2 className="font-bold">
-              Experiencia {workProfile[0].devExperience} años
+            {workProfile[0].devExperience} 
             </h2>
             <h2>Nivel Ingles: {workProfile[0].englishLevel}</h2>
           </div>
           <div>
-            <FiEdit2 />
           </div>
         </div>
       </div>
