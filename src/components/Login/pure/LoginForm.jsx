@@ -78,8 +78,9 @@ const LoginForm = () => {
                 Iniciar Sesión
               </button>
               {isSubmitting ? (
-                <div>
-                  <p>Ingresando...</p>
+                <div className='my-4'>
+                <h2>Ingresando</h2>
+                <progress className="animate-pulse progress w-56"></progress>
                 </div>
               ) : null}
             </div>

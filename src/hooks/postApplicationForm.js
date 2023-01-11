@@ -23,7 +23,7 @@ export const postApplicationForm = async (values) => {
       githubUrl: values.githubUrl,
       portfolioUrl: values.portfolioUrl,
       featuredProject: values.featuredProject,
-      devExperience: values.devExperience.split(',')[1].trim(),
+      devExperience: values.devExperience.split(',')[0].trim(),
       idealWorkComment: values.idealWorkComment,
       workAvailability: values.workAvailability.toString(),
       relocationOption: values.relocationOption.split(',')[1].trim(),

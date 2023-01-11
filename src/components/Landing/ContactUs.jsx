@@ -118,7 +118,7 @@ const ContactUs = () => {
               }
             }}
           >
-            {({ values, errors, touched, handleSubmit, handl }) => (
+            {({  errors, touched, handleSubmit, isSubmitting }) => (
               <Form
                 className="py-5 px-8 flex flex-wrap"
                 onSubmit={handleSubmit}
@@ -252,7 +252,7 @@ const ContactUs = () => {
                       </div>
                     ))
                   ) : (
-                    <p>Cargando datos....</p>
+                    <progress className="animate-pulse progress w-56">Cargando datos</progress>
                   )}
                   {errors.workAreaId && touched.workAreaId && (
                     <ErrorMessage
@@ -274,6 +274,12 @@ const ContactUs = () => {
                 >
                   Enviar
                 </button>
+                {isSubmitting ? (
+                <div className='my-4'>
+                <h2>Enviando Formulario</h2>
+                <progress className="animate-pulse progress w-56"></progress>
+                </div>
+              ) : null}
               </Form>
             )}
           </Formik>
