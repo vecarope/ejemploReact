@@ -11,14 +11,15 @@ import {
 import { RiFolderUserLine, RiDeleteBinLine } from 'react-icons/ri';
 import { useAuth } from '../../context/authContext';
 import apiClient from '../../services/api.service';
-import Disponibilidad from '../../components/Modals/Disponibilidad';
-import CvModal from '../../components/Modals/CvModal'; 
+import Availability from '../../components/Modals/Availability';
+import CvModal from '../../components/Modals/CvModal';
 import WorkModal from '../../components/Modals/WorkModal';
-
+import { RoleAndCurrentSalary } from '../../components/Modals/RoleAndCurrentSalary';
 
 export default function UserProfile() {
   const { userData } = useAuth();
   const [workProfile, setWorkProfile] = useState(null);
+  console.log(workProfile);
 
   useEffect(() => {
     async function getData() {
@@ -67,7 +68,7 @@ export default function UserProfile() {
           <h2 className="text-sm">{workProfile[0].cvUrl}</h2>
         </div>
         <div>
-        <CvModal/>
+          <CvModal />
         </div>
       </div>
       <hr className=" border-black" />
@@ -123,7 +124,7 @@ export default function UserProfile() {
             <h2>Nivel Ingles: {workProfile[0].englishLevel}</h2>
           </div>
           <div>
-            <WorkModal/>
+            <WorkModal />
           </div>
         </div>
       </div>
@@ -139,7 +140,7 @@ export default function UserProfile() {
             <h2>Posibilidad de ingreso: {workProfile[0].availabilityStatus}</h2>
           </div>
           <div>
-            <Disponibilidad />
+            <Availability />
           </div>
         </div>
       </div>
@@ -152,10 +153,10 @@ export default function UserProfile() {
         <div className="flex gap-8 justify-between">
           <div className="text-start ml-10 lg:text-end text-sm">
             <p className="font-bold">{workProfile[0].stack}</p>
-            <p>Salario anual 1.000.000 clp</p>
+            <p>Salario anual: {workProfile[0].currentSalary}</p>
           </div>
           <div>
-            <FiEdit2 />
+            <RoleAndCurrentSalary />
           </div>
         </div>
       </div>
