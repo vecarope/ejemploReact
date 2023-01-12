@@ -12,6 +12,8 @@ import { RiFolderUserLine, RiDeleteBinLine } from 'react-icons/ri';
 import { useAuth } from '../../context/authContext';
 import apiClient from '../../services/api.service';
 import Disponibilidad from '../../components/Modals/Disponibilidad';
+import CvModal from '../../components/Modals/CvModal'; 
+
 
 export default function UserProfile() {
   const { userData } = useAuth();
@@ -62,6 +64,9 @@ export default function UserProfile() {
         </div>
         <div className="flex ml-10 gap-8 justify-between">
           <h2 className="text-sm">{workProfile[0].cvUrl}</h2>
+        </div>
+        <div>
+        <CvModal/>
         </div>
       </div>
       <hr className=" border-black" />
