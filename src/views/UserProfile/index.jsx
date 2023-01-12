@@ -13,6 +13,7 @@ import { useAuth } from '../../context/authContext';
 import apiClient from '../../services/api.service';
 import Disponibilidad from '../../components/Modals/Disponibilidad';
 import CvModal from '../../components/Modals/CvModal'; 
+import WorkModal from '../../components/Modals/WorkModal';
 
 
 export default function UserProfile() {
@@ -121,7 +122,9 @@ export default function UserProfile() {
             <h2 className="font-bold">{workProfile[0].devExperience}</h2>
             <h2>Nivel Ingles: {workProfile[0].englishLevel}</h2>
           </div>
-          <div></div>
+          <div>
+            <WorkModal/>
+          </div>
         </div>
       </div>
       <hr className="border-black" />
