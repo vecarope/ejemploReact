@@ -22,7 +22,7 @@ const validateAvailability = Yup.object().shape({
     .required('Este campo es requerido.')
 });
 
-const Disponibilidad = () => {
+const Availability = () => {
   return (
     <Modal title="Disponibilidad:">
       {(props) => (
@@ -89,4 +89,4 @@ const Disponibilidad = () => {
   );
 };
 
-export default Disponibilidad;
+export default Availability;
