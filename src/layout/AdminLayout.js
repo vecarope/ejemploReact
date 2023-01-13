@@ -1,16 +1,9 @@
-import React from 'react';
 import apiClient from '../services/api.service';
-import { GrDocumentTransfer } from 'react-icons/gr';
 import { FiEdit2 } from 'react-icons/fi';
 import { SlUser } from 'react-icons/sl';
 import { AiOutlineMail, AiOutlinePhone } from 'react-icons/ai';
 import { BsLinkedin, BsGithub } from 'react-icons/bs';
-import
-  {
-    MdOutlineBookmarkAdded,
-    MdOutlineEventAvailable
-  } from 'react-icons/md';
-import { RiFolderUserLine, RiDeleteBinLine } from 'react-icons/ri';
+import '../assets/componentsCSS/button.css';
 import { useAuth } from '../context/authContext';
 
 
@@ -55,11 +48,11 @@ const AdminLayout = () => {
   const { userData } = useAuth();
 
   return (
-    <div className="grid container mx-auto mr-10 md:w-screen md:mt-5 lg:my-10 ml-3 lg:mx-20 lg:w-screen m-5 lg:m-12">
-      <div className='container text-end  ml-3 md:mx-20 '>
+    <div className="grid container  h-40 mx-auto m-5 w-80 mr-10 md:w-screen md:h-50 md:mt-3 lg:my-10 ml-3 lg:mx-20 lg:w-screen lg:h-80 lg:m-12">
+      <div className='container text-end  ml-3 md:mx-10 h-25 mx-25'>
       <button
         onClick={exportExcelWorkProfile}
-        className="inline-flex items-center px-4 py-2 m-4 bg-[#2738F5] hover:bg-gray-300 text-gray-800 text-sm font-medium rounded-md text-[#FFFFFF]"
+        className="btn btn-blue inline-flex items-center font-light mx-1 btn-sm lg:btn-md"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -79,7 +72,7 @@ const AdminLayout = () => {
       </button>
       <button
         onClick={exportExcelContactCompanies}
-        className="inline-flex items-center px-4 py-2 m-4 bg-[#2738F5] hover:bg-gray-300 text-gray-800 text-sm font-medium rounded-md text-[#FFFFFF]"
+        className="inline-flex items-center btn btn-blue py-3 m-4 font-light mx-1 btn-md"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -99,24 +92,11 @@ const AdminLayout = () => {
       </button>
       </div>
       
-      <h1 className="font-bold text-lg md:text-xl lg:text-2xl md:mb-3 lg:mb-4 ">
+      <h1 className="font-bold text-lg md:text-xl lg:text-2xl mt-4 md:mb-2 lg:mb-4 ">
         ¡Bienvenido!
       </h1>
-      <br />
-      <br />
-      <div className="lg:flex lg:justify-between mb-2 lg:mb-6 ">
-        <div className="flex gap-6 md:text-md lg:text-lg mb-2">
-          <GrDocumentTransfer /> <h1 className="mr-2">sube tu Cv </h1>
-        </div>
-        <div className="flex ml-10 gap-8 justify-between">
-          <h2 className="text-sm">url Cv</h2>
-          <button onClick={'modal'}>
-            <FiEdit2 />
-          </button>
-        </div>
-        </div>
         <hr className=" border-black" />
-      <div className="grid grid-cols-2 gap-2 justify-between sm:grid-cols-3 lg:justify-between mb-2 mt-4 lg:mb-7 lg:gap-6 lg:mt-10">
+      <div className="grid grid-cols-2 gap-2 justify-between sm:grid-cols-3 lg:justify-between mb-2 mt-2 lg:mb-7 lg:gap-6 lg:mt-10">
         <div className="col-start-1">
           <SlUser className="w-11 h-11 mr-7" />
         </div>
@@ -156,88 +136,6 @@ const AdminLayout = () => {
           <BsGithub className=" w-6 h-6" />
         </a>
       </div>
-      <hr className=" border-black" />
-      <div className="lg:flex lg:justify-between mb-4 lg:mb-7 mt-4 lg:mt-10">
-        <div className="flex gap-5 text-lg">
-          <MdOutlineBookmarkAdded />
-          <h2>Experiencia Laboral</h2>
-        </div>
-        <div className="flex ml-10 gap-8 justify-between">
-          <div className=" lg:text-end text-sm">
-            <h2 className="font-bold">
-              Experiencia</h2>
-            <h2>Nivel Ingles </h2>
-          </div>
-          <div>
-            <FiEdit2 />
-          </div>
-        </div>
-      </div>
-      <hr className="border-black" />
-      <div className="lg:flex lg:justify-between mb-4 lg:mb-7 mt-4 lg:mt-10">
-        <div className="flex gap-5 text-lg">
-          <MdOutlineEventAvailable />
-          <p>Disponibilidad</p>
-        </div>
-        <div className="flex gap-8 justify-between">
-          <div className="text-start ml-10 lg:text-end text-sm">
-            <h2 className="font-bold">Full time</h2>
-            <h2>Disponibilidad inmediata</h2>
-          </div>
-          <div>
-            <FiEdit2 />
-          </div>
-        </div>
-      </div>
-      <hr className="border-black" />
-      <div className="lg:flex lg:justify-between mb-4 lg:mb-7 mt-4 lg:mt-10">
-        <div className="flex gap-6 text-lg">
-          <RiFolderUserLine />
-          <p>Rol y salario actual</p>
-        </div>
-        <div className="flex gap-8 justify-between">
-          <div className="text-start ml-10 lg:text-end text-sm">
-            <p className="font-bold">Empresa</p>
-            <p>Salario anual 1.000.000 clp</p>
-          </div>
-          <div>
-            <FiEdit2 />
-          </div>
-        </div>
-        </div>
-        <hr className="border-black" />
-        <div className="mb-4 p-1 lg:mb-7 mt-4 lg:mt-10">
-          <div className="flex justify-between mb-8">
-            <h1 className="text-2xl">Habilidades</h1>
-            <FiEdit2 className="mt-2" />
-          </div>
-          <div className="gap-5 lg:gap-12 grid-col">
-            <div className=" flex flex-row">
-              <div className="flex-col space-y-3 ">
-                <h1 className="mb-4">Avanzado</h1>
-                <h1 className="mb-4">Experimentado</h1>
-                <h1 className=" mt-2">Principiante</h1>
-            </div>
-          </div>
-        </div>
-        </div>
-      <hr className="border-black" />
-      <div className="lg:flex-col p-1 mb-4 lg:mb-7 mt-4 lg:mt-10">
-        <h1 className=" text-2xl mb-10">Educación</h1>
-        <div className=" flex justify-between">
-          <div>
-            <h1 className=" text-blue-700 text-sm font-bold">fecha</h1>
-            <h1 className="text-2xl">Institucion</h1>
-            <h1 className=" text-blue-700 text-sm font-bold">
-              Carrera
-            </h1>
-          </div>
-          <div className=" flex gap-5 justify-between">
-            <FiEdit2 />
-            <RiDeleteBinLine />
-          </div>
-          </div>
-        </div>
       </div>
   );
 };
