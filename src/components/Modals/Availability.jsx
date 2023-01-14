@@ -22,7 +22,10 @@ const validateAvailability = Yup.object().shape({
     .required('Este campo es requerido.')
 });
 
-const Availability = () => {
+const Availability = (props) => {
+
+  const { updateProfile } =props; 
+
   return (
     <Modal title="Disponibilidad:">
       {(props) => (
@@ -41,7 +44,7 @@ const Availability = () => {
                 confirmButtonColor: '#2738F5'
               })
                 .then(() => props.setShowModal(false))
-                .then(window.location.reload());
+                .then(updateProfile(values)); 
             } catch (error) {
               console.error(error);
             }
@@ -73,13 +76,6 @@ const Availability = () => {
                 <button className="btn btn-blue" type="submit">
                   Guardar Cambios
                 </button>
-                {isSubmitting ? (
-                  <div>
-                    <progress className="animate-pulse progress w-56">
-                      Enviando datos
-                    </progress>
-                  </div>
-                ) : null}
               </div>
             </Form>
           )}

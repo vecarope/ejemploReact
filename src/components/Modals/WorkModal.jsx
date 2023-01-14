@@ -30,7 +30,10 @@ const validateSchemaWorkExperience = Yup.object().shape({
     'Avanzado C2'
   ];
 
-const WorkModal = () => {
+const WorkModal = (props) => {
+
+  const {updateProfile} = props; 
+  console.log('up',updateProfile);
 
 
   return (
@@ -43,7 +46,7 @@ const WorkModal = () => {
           try {
             await apiClient.put('/users/work-experience', {
               englishLevel: values.englishLevel,
-              devExperience: values.devExperience.split(',')[0].trim()
+              devExperience: values.devExperience.split(',')[0]
             });
             console.log(values);
             return Swal.fire({
@@ -51,7 +54,7 @@ const WorkModal = () => {
               confirmButtonText: 'Cerrar',
               confirmButtonColor: '#2738F5'
             }).then(()=>props.setShowModal(false))
-              .then(()=>window.location.reload()); 
+              .then(updateProfile(values));
           } catch (error) {
             console.error(error);
           }
@@ -85,12 +88,6 @@ const WorkModal = () => {
             <button className="btn btn-blue" type="submit">
               Guardar Cambios
             </button>
-            {isSubmitting ? (
-              <div>
-                <progress className="animate-pulse progress w-56">
-                </progress>
-              </div>
-            ) : null}
           </div>
         </Form>
         )}
