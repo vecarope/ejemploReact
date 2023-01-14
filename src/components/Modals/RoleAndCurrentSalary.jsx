@@ -35,7 +35,10 @@ const cargo = [
   'Data Scientist o especialista machine learning',
   'Ingenería de Datos'
 ];
-export const RoleAndCurrentSalary = () => {
+export const RoleAndCurrentSalary = (props) => {
+
+  const { updateProfile } = props; 
+
   return (
     <Modal title="Rol y salario:">
       {(props) => (
@@ -54,13 +57,13 @@ export const RoleAndCurrentSalary = () => {
                 confirmButtonColor: '#2738F5'
               })
                 .then(() => props.setShowModal(false))
-                .then(window.location.reload());
+                .then(updateProfile(values)); 
             } catch (error) {
               console.error(error);
             }
           }}
         >
-          {({ errors, touched, isSubmitting }) => (
+          {({ errors, touched }) => (
             <Form>
               <div className="col-span-7 md:col-span-4 lg:col-span-4 md:mx-auto">
                 <div className="col-span-6 md:col-span-3">
@@ -97,13 +100,6 @@ export const RoleAndCurrentSalary = () => {
                 <button className="btn btn-blue" type="submit">
                   Guardar Cambios
                 </button>
-                {isSubmitting ? (
-                  <div>
-                    <progress className="animate-pulse progress w-56">
-                      Enviando datos
-                    </progress>
-                  </div>
-                ) : null}
               </div>
             </Form>
           )}

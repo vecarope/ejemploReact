@@ -14,22 +14,37 @@ import apiClient from '../../services/api.service';
 import Availability from '../../components/Modals/Availability';
 import CvModal from '../../components/Modals/CvModal';
 import WorkModal from '../../components/Modals/WorkModal';
-import { RoleAndCurrentSalary } from '../../components/Modals/RoleAndCurrentSalary';
+import {RoleAndCurrentSalary}  from '../../components/Modals/RoleAndCurrentSalary';
 
 export default function UserProfile() {
+
   const { userData } = useAuth();
-  const [workProfile, setWorkProfile] = useState(null);
-  console.log(workProfile);
+
+  const [profile,setProfile]= useState([]);
+  const [education,setEducation]= useState([]);
+  const [devLanguage,setLanguage]= useState([]);
+  const [database, setDataBase] =useState([]);
+  const [tools, setTools] = useState([]);
+  
 
   useEffect(() => {
     async function getData() {
       const res = await apiClient.get('/applicant');
-      setWorkProfile(res.data);
+      setProfile(res.data[0])
+      setEducation(res.data[1])
+      setLanguage(res.data[2])
+      setDataBase(res.data[3])
+      setTools(res.data[4])
     }
     getData();
-  }, []);
+  },[]);
 
-  if (!workProfile)
+  const updateProfile = (newState) => {
+    setProfile(prevState => ({...prevState, ...newState}));
+  }; 
+
+
+  if (!profile)
     return (
       <div className="container m-8 ">
         <div className="alert bg-fill-light shadow-lg">
@@ -51,11 +66,10 @@ export default function UserProfile() {
           </div>
         </div>
       </div>
-    );
-
-  return (
+      )
+    return (
     <div className="grid container mx-auto mr-10 md:w-screen md:mt-5 lg:my-10 ml-3 lg:mx-20 lg:w-screen m-5 lg:m-12">
-      <h1 className="font-bold text-lg md:text-xl lg:text-2xl md:mb-3 lg:mb-4 ">
+      <h1 className="font-bold text-lg md:text-xl lg:text-2xl md:mb-3 lg:mb-4 ">  
         ¡Bienvenido!
       </h1>
       <br />
@@ -64,11 +78,11 @@ export default function UserProfile() {
         <div className="flex gap-6 md:text-md lg:text-lg mb-2">
           <GrDocumentTransfer /> <h1 className="mr-2">sube tu Cv </h1>
         </div>
-        <div className="flex ml-10 gap-8 justify-between">
-          <h2 className="text-sm">{workProfile[0].cvUrl}</h2>
+        <div className="flex ml-7 gap-8 justify-between">
+          <h2 className="text-sm">{profile.cvUrl}</h2>
         </div>
         <div>
-          <CvModal />
+          <CvModal updateProfile={updateProfile} />
         </div>
       </div>
       <hr className=" border-black" />
@@ -80,7 +94,7 @@ export default function UserProfile() {
           <h1 className="font-bold text-xl">
             {userData.firstName} {userData.lastName}
           </h1>
-          <p className="text-lg">{workProfile[0].country}</p>
+          <p className="text-lg">{profile.country}</p>
         </div>
         <div className="flex justify-end">
           <FiEdit2 />
@@ -93,13 +107,13 @@ export default function UserProfile() {
         </div>
         <div className="flex gap-5">
           <AiOutlinePhone className=" text-xl" />
-          <p className="hidden md:block">{workProfile[0].phoneNumber}</p>
+          <p className="hidden md:block">{profile.phoneNumber}</p>
         </div>
         <a
           role="button"
           target="_blank"
           rel="noopener noreferrer"
-          href={`${workProfile[0].linkedinUrl}`}
+          href={`${profile.linkedinUrl}`}
         >
           <BsLinkedin className=" rounded-3xl w-6 h-6" />
         </a>
@@ -107,7 +121,7 @@ export default function UserProfile() {
           role="button"
           target="_blank"
           rel="noopener noreferrer"
-          href={`${workProfile[0].githubUrl}`}
+          href={`${profile.githubUrl}`}
         >
           <BsGithub className=" w-6 h-6" />
         </a>
@@ -120,11 +134,11 @@ export default function UserProfile() {
         </div>
         <div className="flex ml-10 gap-8 justify-between">
           <div className=" lg:text-end text-sm">
-            <h2 className="font-bold">{workProfile[0].devExperience}</h2>
-            <h2>Nivel Ingles: {workProfile[0].englishLevel}</h2>
+            <h2 className="font-bold">{profile.devExperience}</h2>
+            <h2>Nivel Ingles: {profile.englishLevel}</h2>
           </div>
           <div>
-            <WorkModal />
+            <WorkModal updateProfile={updateProfile} />
           </div>
         </div>
       </div>
@@ -136,11 +150,11 @@ export default function UserProfile() {
         </div>
         <div className="flex gap-8 justify-between">
           <div className="text-start ml-10 lg:text-end text-sm">
-            <h2 className="font-bold">{workProfile[0].workAvailability}</h2>
-            <h2>Posibilidad de ingreso: {workProfile[0].availabilityStatus}</h2>
+            <h2 className="font-bold">{profile.workAvailability}</h2>
+            <h2>Posibilidad de ingreso: {profile.availabilityStatus}</h2>
           </div>
           <div>
-            <Availability />
+            <Availability updateProfile={updateProfile} />
           </div>
         </div>
       </div>
@@ -152,11 +166,11 @@ export default function UserProfile() {
         </div>
         <div className="flex gap-8 justify-between">
           <div className="text-start ml-10 lg:text-end text-sm">
-            <p className="font-bold">{workProfile[0].stack}</p>
-            <p>Salario anual: {workProfile[0].currentSalary}</p>
+            <p className="font-bold">{profile.stack}</p>
+            <p>Salario anual: {profile.currentSalary}</p>
           </div>
           <div>
-            <RoleAndCurrentSalary />
+            <RoleAndCurrentSalary updateProfile={updateProfile} />
           </div>
         </div>
       </div>
@@ -170,7 +184,7 @@ export default function UserProfile() {
           <div className=" flex flex-row">
             <div className="flex-col space-y-3 ">
               <h1 className="mb-4">Avanzado</h1>
-              {workProfile[2].map((element, id) => (
+              {devLanguage.map((element, id) => (
                 <div className=" md:flex lg:flex ">
                   <div
                     className="badge badge-outline border-light-purple p-1 pt-0 pb-0 rounded-md"
@@ -181,7 +195,7 @@ export default function UserProfile() {
                 </div>
               ))}
               <h1 className="mb-4">Experimentado</h1>
-              {workProfile[3].map((element, id) => (
+              {database.map((element, id) => (
                 <div className="md:flex lg:flex ">
                   <div
                     className="badge badge-outline border-light-purple p-1 pt-0 pb-0 rounded-md"
@@ -192,7 +206,7 @@ export default function UserProfile() {
                 </div>
               ))}
               <h1 className=" mt-2">Principiante</h1>
-              {workProfile[4].map((element, id) => (
+              {tools.map((element, id) => (
                 <div className="md:flex lg:flex">
                   <div
                     className="badge badge-outline border border-light-purple p-1 pt-0 pb-0 rounded-md"
@@ -212,9 +226,9 @@ export default function UserProfile() {
         <div className=" flex justify-between">
           <div>
             <h1 className=" text-blue-700 text-sm font-bold">fecha</h1>
-            <h1 className="text-2xl">{workProfile[1].instituteName}</h1>
+            <h1 className="text-2xl">{education.instituteName}</h1>
             <h1 className=" text-blue-700 text-sm font-bold">
-              {workProfile[1].name}
+              {education.name}
             </h1>
           </div>
           <div className=" flex gap-5 justify-between">
@@ -224,5 +238,5 @@ export default function UserProfile() {
         </div>
       </div>
     </div>
-  );
+    ); 
 }

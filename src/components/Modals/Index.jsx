@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { FiEdit2 } from 'react-icons/fi';
 
-const Modal = ({ title, children }) => {
+const Modal = ({ title, children}) => {
   const [showModal, setShowModal] = useState(false);
+
 
   return (
     <>
@@ -24,7 +25,7 @@ const Modal = ({ title, children }) => {
                   </button>
                 </div>
                 <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
-                  {children({ showModal, setShowModal })}
+                  {children({ showModal, setShowModal})}
                 </div>
               </div>
             </div>

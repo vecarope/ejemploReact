@@ -19,7 +19,9 @@ const validateSchemaCV = Yup.object().shape({
     })
 });
 
-const CvModal = () => {
+const CvModal = (props) => {
+
+  const { updateProfile } = props; 
 
   return (
     <Modal title="Sube tu Cv">
@@ -35,14 +37,14 @@ const CvModal = () => {
                   confirmButtonText: 'Cerrar',
                   confirmButtonColor: '#2738F5'
                 })
-                  .then(() => props.setShowModal(false))
-                  .then(() => window.location.reload()); 
+                  .then(() => props.setShowModal(false)) 
+                  .then(updateProfile(values)); 
               } catch (error) {
                 console.error(error);
               }
             }}
           >
-            {({ errors, touched, isSubmitting }) => (
+            {({ errors, touched }) => (
             <Form>
               <div className="col-span-7 md:col-span-4 lg:col-span-4 md:mx-auto"></div>
               <FormField.InputField
@@ -62,11 +64,6 @@ const CvModal = () => {
                 <button className="btn btn-blue" type="submit">
                   Guardar Cambios
                 </button>
-                {isSubmitting ? (
-                  <div>
-                    <progress className="animate-pulse progress w-56"></progress>
-                  </div>
-                ) : null}
               </div>
             </Form>
             )}
