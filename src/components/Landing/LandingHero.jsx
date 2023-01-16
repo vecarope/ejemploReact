@@ -1,7 +1,7 @@
 import React from 'react';
 import coverImage2 from '../../assets/design/cover_image.png';
 import coverImage from '../../assets/design/cover_image_complete.png';
-import { Link as SmoothLink, animateScroll as scroll } from "react-scroll";
+import { Link as SmoothLink } from 'react-scroll';
 const LandingHero = () => {
   return (
     <section id="hero">
@@ -30,14 +30,18 @@ const LandingHero = () => {
                 type="submit"
                 className="rounded-full  bg-white text-center text-mid-light-blue p-[1rem] uppercase"
               >
-                <strong><SmoothLink
-            activeClass="active"
-            to="contact-section"
-            spy={true}
-            smooth={true}
-            offset={0}
-            duration={800}
-          >Quiero Contratar</SmoothLink></strong>
+                <strong>
+                  <SmoothLink
+                    activeClass="active"
+                    to="contact-section"
+                    spy={true}
+                    smooth={true}
+                    offset={0}
+                    duration={800}
+                  >
+                    Quiero Contratar
+                  </SmoothLink>
+                </strong>
               </button>
             </div>
           </div>
