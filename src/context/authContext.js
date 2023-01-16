@@ -71,7 +71,7 @@ export const AuthProvider = ({ children }) => {
 
   const restorePassword = async (values) => {
     // console.log('RESTORE PASSWORD =>', values);
-    alert('Contraseña cambiana');
+    alert('Contraseña cambiada');
   };
 
   const data = {
