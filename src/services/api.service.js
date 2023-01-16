@@ -1,13 +1,13 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-  baseURL: 'http://localhost:3001/api'
+  baseURL: process.env.API_URL
 });
 
 apiClient.interceptors.request.use(function (config) {
   config.headers['Authorization'] = localStorage.getItem('token');
 
-    console.log(config.headers)
+  console.log(config.headers);
   return config;
 });
 

@@ -22,7 +22,8 @@
     "tw-elements": "^1.0.0-alpha12",
     "web-vitals": "^2.1.4",
     "xlsx": "^0.18.5",
-    "yup": "^0.32.11"
+    "yup": "^0.32.11",
+    "dotenv": "^16.0.2"
   },
   "scripts": {
     "serve": "react-scripts start",
