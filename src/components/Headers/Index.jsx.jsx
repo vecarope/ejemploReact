@@ -1,12 +1,12 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Link as SmoothLink, animateScroll as scroll } from "react-scroll";
+import { Link as SmoothLink } from 'react-scroll';
 import logo from '../../assets/images/DEV-IMAGOTIPO-WHITE-HORIZONTAL.png';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import logoColor from '../../assets/images/DEV IMAGOTIPO COLOR HORIZONTAL.png';
 import { AuthContext } from '../../context/authContext';
 
-const Navbar = () => {
+export const Headers = () => {
   const [nav, setNav] = useState(false);
   const { userData, userLogout } = useContext(AuthContext);
 
@@ -26,9 +26,15 @@ const Navbar = () => {
             <Link to="/login">Iniciar Sesión</Link>
           </li>
         )}
-        <li className="p-4">
-          <Link to="/">Administra la Pagina</Link>
-        </li>
+        {userData && userData.roleId === 1 ? (
+          <li className="p-4">
+            <Link to="/user">Ver perfil</Link>
+          </li>
+        ) : userData && userData.roleId === 2 ? (
+          <li className="p-4">
+            <Link to="/">Administra la Pagina</Link>
+          </li>
+        ) : null}
         {!userData && (
           <button
             type="button"
@@ -46,16 +52,20 @@ const Navbar = () => {
             Cerrar Sesión
           </button>
         )}
-        <button className="p-4 bg-[#E2F2FE] text-[#1E239A]  rounded-lg ...">
-          <SmoothLink
-            activeClass="active"
-            to="contact-section"
-            spy={true}
-            smooth={true}
-            offset={0}
-            duration={800}
-          >Contrata Talento</SmoothLink>
-        </button>
+        {window.location.pathname === '/' ? (
+          <button className="p-4 bg-[#E2F2FE] text-[#1E239A]  rounded-lg ...">
+            <SmoothLink
+              activeClass="active"
+              to="contact-section"
+              spy={true}
+              smooth={true}
+              offset={0}
+              duration={800}
+            >
+              Contrata Talento
+            </SmoothLink>
+          </button>
+        ) : null}
       </ul>
 
       <div onClick={handleNav} className="md:hidden text-blue">
@@ -64,10 +74,11 @@ const Navbar = () => {
 
       <div
         className={`
-            md:hidden flex flex-col ${nav
-            ? 'fixed left-0 top-0 z-10  w-full border-r border-r-blue-900 bg-[#E2F2FE] ease-in-out duration-500'
-            : 'ease-in-out duration-500 fixed left-[-100%]'
-          }`}
+            md:hidden flex flex-col ${
+              nav
+                ? 'fixed left-0 top-0 z-10  w-full border-r border-r-blue-900 bg-[#E2F2FE] ease-in-out duration-500'
+                : 'ease-in-out duration-500 fixed left-[-100%]'
+            }`}
       >
         <div className="flex justify-between items-center">
           <Link to={'/'} className="justify-between px-2 py-3">
@@ -93,20 +104,31 @@ const Navbar = () => {
           <li className="p-4 border-b border-blue-600">
             <Link to="/register">Registro</Link>
           </li>
-          <li className="p-4">
-            <SmoothLink
-            activeClass="active"
-            to="contact-section"
-            spy={true}
-            smooth={true}
-            offset={-70}
-            duration={500}
-            >Contrata Talento</SmoothLink>
-          </li>
+          {userData && userData.roleId !== 2 ? (
+            <li className="p-4 border-b border-blue-600">
+              <Link to="/user">Ver perfil</Link>
+            </li>
+          ) : (
+            <li className="p-4 border-b border-blue-600">
+              <Link to="/">Administra la Pagina</Link>
+            </li>
+          )}
+          {window.location.pathname === '/' ? (
+            <li className="p-4 border-b border-blue-600">
+              <SmoothLink
+                activeClass="active"
+                to="contact-section"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+              >
+                Contrata Talento
+              </SmoothLink>
+            </li>
+          ) : null}
         </ul>
       </div>
     </nav>
   );
 };
-
-export default Navbar;
