@@ -86,7 +86,6 @@ export const AuthProvider = ({ children }) => {
       willClose: () => {
         clearInterval(timerInterval);
       }
-      
     }).then(function(result){
       if(result.isDismissed === true){
         window.location = '/forgot-password'
