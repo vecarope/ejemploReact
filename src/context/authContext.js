@@ -88,7 +88,7 @@ export const AuthProvider = ({ children }) => {
       }
     }).then(function(result){
       if(result.isDismissed === true){
-        window.location = '/forgot-password'
+        window.location = '/login'
       }})
   };
 
