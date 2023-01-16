@@ -25,3 +25,38 @@ export const postLoginAxios = async (values) => {
     });
   }
 };
+
+export const postForgotPassAxios = async (values) => {
+  try {
+    const { data } = await apiClient.post('/auth/forgot-password', values);
+    return data;
+  } catch (error) {
+    throw Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: `El mail no se encuentra registrado ${values.email}`
+    });
+  }
+};
+
+
+export const postRestorePassword = async (values) => {
+  try {
+    const { data } = await apiClient.post('/auth/reset-password', values);
+    return data;
+  } catch (error) {
+    throw Swal.fire({
+      icon: 'error',
+      title: 'Token expirado...',
+      html: `Serás redirigido a <b>restablecer contraseña</b>`,
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+    }).then(function(result){
+      console.log(result)
+      if(result.isDismissed === true){
+        window.location = '/forgot-password'
+      }
+    })
+  }
+};

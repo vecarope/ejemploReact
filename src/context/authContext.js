@@ -1,5 +1,5 @@
 import { createContext, useState, useContext } from 'react';
-import { postLoginAxios } from '../hooks/postAxios';
+import { postLoginAxios, postForgotPassAxios, postRestorePassword } from '../hooks/postAxios';
 import Swal from 'sweetalert2';
 
 export const AuthContext = createContext();
@@ -50,11 +50,11 @@ export const AuthProvider = ({ children }) => {
   };
 
   const forgotPassword = async (values) => {
-    // console.log('FORGOT PASSWORD =>', values);
+    await postForgotPassAxios(values);
     let timerInterval;
     Swal.fire({
       title: 'Enlace enviado!',
-      html: `Revisa el email: ${values.email},`,
+      html: `Revisa el email: ${values.email}`,
       timer: 3000,
       timerProgressBar: true,
       didOpen: () => {
@@ -70,8 +70,27 @@ export const AuthProvider = ({ children }) => {
   };
 
   const restorePassword = async (values) => {
-    // console.log('RESTORE PASSWORD =>', values);
-    alert('Contraseña cambiana');
+        await postRestorePassword(values);
+        let timerInterval;
+    Swal.fire({
+      title: 'Contraseña restaurada con éxito',
+      timer: 3000,
+      timerProgressBar: true,
+      showConfirmButton: false,
+      didOpen: () => {
+        Swal.showLoading();
+        timerInterval = setInterval(() => {
+          Swal.getTimerLeft();
+        }, 100);
+      },
+      willClose: () => {
+        clearInterval(timerInterval);
+      }
+      
+    }).then(function(result){
+      if(result.isDismissed === true){
+        window.location = '/forgot-password'
+      }})
   };
 
   const data = {

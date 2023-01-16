@@ -4,17 +4,20 @@ import { validateNewPassword } from '../../../validation/validateNewPassword';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/authContext';
 import { InputField } from '../../Forms';
+import { useSearchParams } from 'react-router-dom';
 
 const RestorePassword = () => {
-  const { restorePassword } = useContext(AuthContext);
-
+  const { restorePassword} = useContext(AuthContext);
+  const [params] = useSearchParams();
+  const token = params.get("token") ?? "";
   return (
     <section className="flex flex-col items-center bg-white md:w-3/5 my-11 rounded-xl border-8 border-zinc-800 max-w-screen-xl ">
       <Formik
         initialValues={{ password: '', passwordConfirm: '' }}
         validationSchema={validateNewPassword}
         onSubmit={async (values) => {
-          await restorePassword(values);
+          await restorePassword({values, token: token});
+     
         }}
       >
         {({ errors, touched, isSubmitting }) => (
