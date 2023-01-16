@@ -92,6 +92,7 @@ export const AuthProvider = ({ children }) => {
       }})
   };
 
+
   const data = {
     userData,
     userLogout,
