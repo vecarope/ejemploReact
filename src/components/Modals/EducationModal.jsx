@@ -5,6 +5,7 @@ import { Form, Formik } from 'formik';
 import '../../assets/componentsCSS/button.css';
 import apiClient from '../../services/api.service';
 import Swal from 'sweetalert2';
+import { month } from '../../views/ApplicationForm/data/FormData';
 
 let validateStrings = /^[A-ZÁÉÍÓÚ a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ a-zñáéíóú]+)?$/;
 let validateNumber = /^([0-9])*$/;
@@ -52,10 +53,6 @@ const validateSchemaEducation = Yup.object().shape({
   endYear: year,
 });
 
-const month = [
-  'Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'
-];
-
 const EducationModal = (props) => {
 
   const { updateEducation } = props;
@@ -71,12 +68,6 @@ const EducationModal = (props) => {
             try {
               await apiClient.put('/users/education', 
                 values
-                // name: values.name,
-                // instituteName: values.instituteName,
-                // startMonth: values.startMonth,
-                // endMonth: values.endMonth,
-                // startYear: values.startYear,
-                // endYear: values.endYear
               );
               return Swal.fire({
                 title:'¡Datos modificados!',
