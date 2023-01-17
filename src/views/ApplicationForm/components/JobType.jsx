@@ -1,18 +1,6 @@
 import * as FormField from '../../../components/Forms';
-const availability = ['Full Time', 'Part Time', 'Freelance'];
+import { availability,status, visaStatus } from '../data/FormData';
 
-const status = [
-  'Quiero trabajo desde mi ciudad actual',
-  'Estoy disponible para migrar de mi ciudad dentro de mi país',
-  'Estoy disponible para migrar a otro país'
-];
-
-const visaStatus = [
-  'Estados Unidos',
-  'Unión Europea',
-  'Mi país de residencia actual',
-  'Otros países'
-];
 
 export const JobType = ({ errors, touched }) => {
   return (

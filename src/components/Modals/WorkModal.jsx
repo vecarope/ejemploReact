@@ -1,10 +1,11 @@
 import Modal from '../Modals/Index';
-import * as FormField from '../../components/Forms';
+import * as FormField from '../Forms';
 import * as Yup from 'yup';
 import { Form, Formik } from 'formik';
 import '../../assets/componentsCSS/button.css';
 import apiClient from '../../services/api.service';
 import Swal from 'sweetalert2';
+import { englishLevel, YearsOfExperience } from '../../views/ApplicationForm/data/FormData';
 
 const valueForm = { devExperience: '', englishLevel: '' };
 
@@ -12,29 +13,10 @@ const validateSchemaWorkExperience = Yup.object().shape({
   englishLevel: Yup.string().required('Debes seleccionar un nivel de ingles.'),
   devExperience: Yup.string().required('Debes seleccionar una opción.')
 });
-  const YearsOfExperience = [
-    'No poseo experiencia laboral',
-    'Entre 0 a 1 año de experiencia laboral',
-    'Entre 1 a 2 años de experiencia laboral',
-    'Entre 2 a 3 años de experiencia laboral',
-    'Más de 4 años de experiencia laboral'
-  ];
-
-  const englishLevel = [
-    'Ninguno',
-    'Principiante A1',
-    'Principiante A2',
-    'Pre-intermedio B1',
-    'Intemedio B2',
-    'Intermedio avanzado C1',
-    'Avanzado C2'
-  ];
 
 const WorkModal = (props) => {
 
   const {updateProfile} = props; 
-  console.log('up',updateProfile);
-
 
   return (
     <Modal title="Experiencia Laboral">
@@ -44,23 +26,24 @@ const WorkModal = (props) => {
         validationSchema={validateSchemaWorkExperience}
         onSubmit={async values => {
           try {
-            await apiClient.put('/users/work-experience', {
+            const payload ={
               englishLevel: values.englishLevel,
-              devExperience: values.devExperience.split(',')[0]
-            });
+              devExperience: values.devExperience.split(',')[0].trim(),
+            }
+            await apiClient.put('/users/work-experience', payload );
             console.log(values);
             return Swal.fire({
               title: '¡Datos modificados!',
               confirmButtonText: 'Cerrar',
               confirmButtonColor: '#2738F5'
             }).then(()=>props.setShowModal(false))
-              .then(updateProfile(values));
+              .then(updateProfile(payload));
           } catch (error) {
             console.error(error);
           }
         }}
       >
-        {({ errors, touched, isSubmitting }) => (
+        {({ errors, touched }) => (
         <Form>
           <div className="col-span-6 sm:col-span-3">
             <FormField.InputRadio

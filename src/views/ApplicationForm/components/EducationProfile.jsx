@@ -1,38 +1,7 @@
 import * as FormField from '../../../components/Forms';
+import { educationLevel, typeInstitution, educationStatus, englishLevel } from '../data/FormData';
 
 export const EducationProfile = ({ errors, touched }) => {
-  const educationLevel = [
-    'Universitaria Completa',
-    'Universitaria Incompleta o en curso',
-    'Instituto profesional o CFT completa',
-    'Instituto profesional o CFT incompleta o en curso',
-    'Educación Media completa',
-    'Educación Media incompleta',
-    'Escolar completeta',
-    'Escolar incompleta',
-    'Postgrado completo',
-    'Postrago incompleto'
-  ];
-
-  const typeInstitution = [
-    'Postgrado',
-    'Instituto',
-    'Universidad',
-    'Bootcamp',
-    'Otro'
-  ];
-
-  const educationStatus = ['Egresado', 'Titulado', 'En curso'];
-
-  const englishLevel = [
-    'Ninguno',
-    'Principiante A1',
-    'Principiante A2',
-    'Pre-intermedio B1',
-    'Intemedio B2',
-    'Intermedio avanzado C1',
-    'Avanzado C2'
-  ];
 
   return (
     <div className="mt-10  sm:mt-0">

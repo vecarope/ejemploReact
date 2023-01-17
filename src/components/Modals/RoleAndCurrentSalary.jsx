@@ -5,6 +5,8 @@ import { Form, Formik } from 'formik';
 import '../../assets/componentsCSS/button.css';
 import apiClient from '../../services/api.service';
 import Swal from 'sweetalert2';
+import { cargo } from '../../views/ApplicationForm/data/FormData';
+
 
 const dataForm = {
   stack: '',
@@ -26,15 +28,6 @@ const validateForm = Yup.object().shape({
     })
 });
 
-const cargo = [
-  'Desarrollador/a Full Stack',
-  'Desarrollador/a Back End',
-  'Desarrollador/a Front End',
-  'Diseñador/a UX / UX Research o UI',
-  'Desarrollador/a Movil',
-  'Data Scientist o especialista machine learning',
-  'Ingenería de Datos'
-];
 export const RoleAndCurrentSalary = (props) => {
 
   const { updateProfile } = props; 
@@ -86,7 +79,7 @@ export const RoleAndCurrentSalary = (props) => {
                     }
                   />
                   <FormField.InputField
-                    label="Salario actual:"
+                    label="Salario actual (USD):"
                     touched={touched}
                     errors={errors}
                     required

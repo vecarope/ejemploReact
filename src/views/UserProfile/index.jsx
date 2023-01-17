@@ -167,7 +167,7 @@ export default function UserProfile() {
         <div className="flex gap-8 justify-between">
           <div className="text-start ml-10 lg:text-end text-sm">
             <p className="font-bold">{profile.stack}</p>
-            <p>Salario anual: {profile.currentSalary}</p>
+            <p> Salario actual: USD {profile.currentSalary}</p>
           </div>
           <div>
             <RoleAndCurrentSalary updateProfile={updateProfile} />
