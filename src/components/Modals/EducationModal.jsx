@@ -10,7 +10,7 @@ import { valueEducation } from '../../data/ModalInitialData';
 
 
 const EducationModal = (props) => {
-  
+
   const { updateEducation } = props;
 
   return (
