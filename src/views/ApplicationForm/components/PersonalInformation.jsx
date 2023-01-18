@@ -1,26 +1,10 @@
 import * as FormField from '../../../components/Forms';
 import { useAuth } from '../../../context/authContext';
+import { gender,cargo,workStatus } from '../data/FormData';
+
 
 export const PersonalInformation = ({ errors, touched }) => {
   const { userData } = useAuth()
-  const gender = ['Femenino', 'Masculino', 'No binario', 'Otro'];
-
-  const workStatus = [
-    'Cesante, busco empleo en TI por primera vez.',
-    'Cesante, ya he trabajado antes en TI.',
-    'Tengo trabajo en TI, pero busco otro.',
-    'Tengo trabajo (en otras áreas), pero busco en TI.'
-  ];
-
-  const cargo = [
-    'Desarrollador/a Full Stack',
-    'Desarrollador/a Back End',
-    'Desarrollador/a Front End',
-    'Diseñador/a UX / UX Research o UI',
-    'Desarrollador/a Movil',
-    'Data Scientist o especialista machine learning',
-    'Ingenería de Datos'
-  ];
 
   return (
     <div className="mt-10 md:mt-0">

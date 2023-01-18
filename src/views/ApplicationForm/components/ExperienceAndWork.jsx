@@ -1,6 +1,8 @@
 import * as FormField from '../../../components/Forms';
 import { useEffect, useState } from 'react';
 import apiClient from '../../../services/api.service';
+import { YearsOfExperience } from '../data/FormData';
+
 
 export const ExperienceAndWork = ({ errors, touched }) => {
   const [softSkills, setSoftSkills] = useState(false);
@@ -13,14 +15,6 @@ export const ExperienceAndWork = ({ errors, touched }) => {
   useEffect(() => {
     getSoftSkills();
   }, []);
-
-  const YearsOfExperience = [
-    'No poseo experiencia laboral',
-    'Entre 0 a 1 año de experiencia laboral',
-    'Entre 1 a 2 años de experiencia laboral',
-    'Entre 2 a 3 años de experiencia laboral',
-    'Más de 4 años de experiencia laboral'
-  ];
 
   return (
     <div className=" mt-10 px-0">

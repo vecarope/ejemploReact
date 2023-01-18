@@ -5,9 +5,8 @@ import { Form, Formik } from 'formik';
 import '../../assets/componentsCSS/button.css';
 import apiClient from '../../services/api.service';
 import Swal from 'sweetalert2';
+import { time, availability } from '../../views/ApplicationForm/data/FormData';
 
-const availability = ['Full Time', 'Part Time', 'Freelance'];
-const time = ['Inmediata', 'Corto plazo', 'Largo plazo'];
 const dataAvailability = {
   workAvailability: '',
   availabilityStatus: ''
@@ -50,7 +49,7 @@ const Availability = (props) => {
             }
           }}
         >
-          {({ errors, touched, isSubmitting }) => (
+          {({ errors, touched}) => (
             <Form>
               <div className="col-span-7 md:col-span-4 lg:col-span-4 md:mx-auto">
                 <FormField.InputCheckbox
