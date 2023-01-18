@@ -37,7 +37,7 @@ const englishLevel = [
   'Avanzado C2'
 ];
 
-const YearsOfExperience = [
+const yearsOfExperience = [
   'No poseo experiencia laboral',
   'Entre 0 a 1 año de experiencia laboral',
   'Entre 1 a 2 años de experiencia laboral',
@@ -86,7 +86,7 @@ export  {
   typeInstitution,
   educationStatus,
   englishLevel,
-  YearsOfExperience,
+  yearsOfExperience,
   status,
   visaStatus, 
   gender,

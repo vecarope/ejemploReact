@@ -1,57 +1,13 @@
 import Modal from './Index';
 import * as FormField from '../Forms';
-import * as Yup from 'yup';
 import { Form, Formik } from 'formik';
 import '../../assets/componentsCSS/button.css';
 import apiClient from '../../services/api.service';
 import Swal from 'sweetalert2';
-import { month } from '../../views/ApplicationForm/data/FormData';
+import { month } from '../../data/FormData';
+import { validateEducation } from '../../validation/validateModals';
+import { valueEducation } from '../../data/ModalInitialData';
 
-let validateStrings = /^[A-ZÁÉÍÓÚ a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ a-zñáéíóú]+)?$/;
-let validateNumber = /^([0-9])*$/;
-
-const valueEducation = {
-  name: '',
-  instituteName: '',
-  startMonth: '',
-  endMonth: '',
-  startYear: '',
-  endYear: ''
-};
-
-const year = 
-  Yup.string()
-  .trim()
-  .required('Debe ingresar un año.')
-  .matches(validateNumber, {
-    excludeEmptyString: true,
-    message: 'Debe ingresar solo numeros.'
-  })
-  .min(4, 'Debe ingresar 4 digitos.')
-  .max(4, 'El año no puede tener mas de 4 digitos.');
-
-const validateSchemaEducation = Yup.object().shape({
-  name: Yup.string()
-    .required('Debes ingresar un nombre.')
-    .matches(validateStrings, {
-      excludeEmptyString: true,
-      message: 'El nombre debe ser solo texto.'
-    })
-    .min(2, 'El nombre debe tener al menos 2 letras.')
-    .max(25, 'El nombre debe ser más corto.'),
-  instituteName: Yup.string()
-    .required('Debes ingresar un nombre.')
-    .matches(validateStrings, {
-      excludeEmptyString: true,
-      message: 'El nombre debe ser solo texto.'
-    })
-    .min(2, 'El nombre debe tener al menos 2 letras.')
-    .max(25, 'El nombre debe ser más corto.'),
-  startMonth: Yup.string().required('Debes seleccionar un mes.'),
-  endMonth: Yup.string().required('Debes seleccionar un mes.'),
-  startYear: year,
-  endYear: year,
-});
 
 const EducationModal = (props) => {
 
@@ -62,7 +18,7 @@ const EducationModal = (props) => {
       {(props) => (
         <Formik
           initialValues={valueEducation}
-          validationSchema={validateSchemaEducation}
+          validationSchema={validateEducation}
           onSubmit = { async (values) => {
             console.log(values); 
             try {

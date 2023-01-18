@@ -1,7 +1,7 @@
 import * as ApplicationForm from './components';
-import { validateSchemaAplicationForm } from './validation/validationFormAplication';
+import { validateSchemaAplicationForm } from '../../validation/validateFormAplication.js';
 import { Form, Formik } from 'formik';
-import { initialForm } from './data';
+import { initialForm } from '../../data/FormInitialData';
 import { useAuth } from '../../context/authContext';
 import { Fragment } from 'react';
 import { postApplicationForm } from '../../hooks/postApplicationForm';

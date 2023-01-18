@@ -1,7 +1,7 @@
 import * as FormField from '../../../components/Forms';
 import { useEffect, useState } from 'react';
 import apiClient from '../../../services/api.service';
-import { YearsOfExperience } from '../data/FormData';
+import { yearsOfExperience } from '../../../data/FormData';
 
 
 export const ExperienceAndWork = ({ errors, touched }) => {
@@ -126,7 +126,7 @@ export const ExperienceAndWork = ({ errors, touched }) => {
                 name="devExperience"
                 required
               >
-                {YearsOfExperience}
+                {yearsOfExperience}
               </FormField.InputRadio>
             </div>
           </div>

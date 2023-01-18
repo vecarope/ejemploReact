@@ -1,18 +1,13 @@
 import Modal from '../Modals/Index';
 import * as FormField from '../Forms';
-import * as Yup from 'yup';
 import { Form, Formik } from 'formik';
 import '../../assets/componentsCSS/button.css';
 import apiClient from '../../services/api.service';
 import Swal from 'sweetalert2';
-import { englishLevel, YearsOfExperience } from '../../views/ApplicationForm/data/FormData';
+import { englishLevel, yearsOfExperience } from '../../data/FormData';
+import { validateWorkExperience } from '../../validation/validateModals';
+import { valueWorkExperience } from '../../data/ModalInitialData';
 
-const valueForm = { devExperience: '', englishLevel: '' };
-
-const validateSchemaWorkExperience = Yup.object().shape({
-  englishLevel: Yup.string().required('Debes seleccionar un nivel de ingles.'),
-  devExperience: Yup.string().required('Debes seleccionar una opción.')
-});
 
 const WorkModal = (props) => {
 
@@ -22,8 +17,8 @@ const WorkModal = (props) => {
     <Modal title="Experiencia Laboral">
       {(props) => (
       <Formik
-        initialValues={valueForm}
-        validationSchema={validateSchemaWorkExperience}
+        initialValues={valueWorkExperience}
+        validationSchema={validateWorkExperience}
         onSubmit={async values => {
           try {
             const payload ={
@@ -31,7 +26,6 @@ const WorkModal = (props) => {
               devExperience: values.devExperience.split(',')[0].trim(),
             }
             await apiClient.put('/users/work-experience', payload );
-            console.log(values);
             return Swal.fire({
               title: '¡Datos modificados!',
               confirmButtonText: 'Cerrar',
@@ -54,7 +48,7 @@ const WorkModal = (props) => {
               name="devExperience"
               required
             >
-              {YearsOfExperience}
+              {yearsOfExperience}
             </FormField.InputRadio>
           </div>
           <div className="col-span-6 sm:col-span-2 py-2">

@@ -1,5 +1,5 @@
 import * as FormField from '../../../components/Forms';
-import { educationLevel, typeInstitution, educationStatus, englishLevel } from '../data/FormData';
+import { educationLevel, typeInstitution, educationStatus, englishLevel } from '../../../data/FormData';
 
 export const EducationProfile = ({ errors, touched }) => {
 

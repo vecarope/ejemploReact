@@ -1,6 +1,6 @@
 import * as FormField from '../../../components/Forms';
 import { useAuth } from '../../../context/authContext';
-import { gender,cargo,workStatus } from '../data/FormData';
+import { gender,cargo,workStatus } from '../../../data/FormData';
 
 
 export const PersonalInformation = ({ errors, touched }) => {
