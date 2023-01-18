@@ -1,23 +1,12 @@
 import Modal from '../Modals/Index';
 import * as FormField from '../Forms';
-import * as Yup from 'yup';
 import { Form, Formik } from 'formik';
 import '../../assets/componentsCSS/button.css';
 import apiClient from '../../services/api.service';
 import Swal from 'sweetalert2';
+import { validateCV } from '../../validation/validateModals';
+import { valueCv } from '../../data/ModalInitialData';
 
-const dataCv = { cvUrl: '' };
-let validateURL = /(([\w]+:)?\/\/)?(([\d\w]|%[a-fA-f\d]{2,2})+(:([\d\w]|%[a-fA-f\d]{2,2})+)?@)?([\d\w][-\d\w]{0,253}[\d\w]\.)+[\w]{2,63}(:[\d]+)?(\/([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)*(\?(&?([-+_~.\d\w]|%[a-fA-f\d]{2,2})=?)*)?(#([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)?/;
-
-const validateSchemaCV = Yup.object().shape({
-  cvUrl: Yup.string()
-    .trim()
-    .required('Este link es requerodo.')
-    .matches(validateURL, {
-      excludeEmptyString: true,
-      message: 'Debes ingresar un link válido.'
-    })
-});
 
 const CvModal = (props) => {
 
@@ -27,8 +16,8 @@ const CvModal = (props) => {
     <Modal title="Sube tu Cv">
       {(props) => (
           <Formik
-            initialValues={dataCv}
-            validationSchema={validateSchemaCV}
+            initialValues={valueCv}
+            validationSchema={validateCV}
             onSubmit={async values => {
               try {
                 await apiClient.put('/users/cv', values);

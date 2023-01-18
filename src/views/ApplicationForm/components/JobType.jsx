@@ -1,5 +1,5 @@
 import * as FormField from '../../../components/Forms';
-import { availability,status, visaStatus } from '../data/FormData';
+import { availability,status, visaStatus } from '../../../data/FormData';
 
 
 export const JobType = ({ errors, touched }) => {

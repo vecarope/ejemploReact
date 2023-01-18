@@ -33,7 +33,7 @@ export const postApplicationForm = async (values) => {
     [
       {
         name: values.name,
-        instituteName: values.institute_name,
+        instituteName: values.instituteName,
         type: values.type
       } /* ,
       {

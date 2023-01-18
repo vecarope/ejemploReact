@@ -1,32 +1,13 @@
 import Modal from './Index';
 import * as FormField from '../Forms';
-import * as Yup from 'yup';
 import { Form, Formik } from 'formik';
 import '../../assets/componentsCSS/button.css';
 import apiClient from '../../services/api.service';
 import Swal from 'sweetalert2';
-import { cargo } from '../../views/ApplicationForm/data/FormData';
+import { cargo } from '../../data/FormData';
+import { validateStackAndSalary } from '../../validation/validateModals';
+import { valueStackAndSalary } from '../../data/ModalInitialData';
 
-
-const dataForm = {
-  stack: '',
-  currentSalary: ''
-};
-let validateNumber = /^([0-9])*$/;
-
-const validateForm = Yup.object().shape({
-  stack: Yup.array()
-    .min(1, 'Debes elegir al menos 1 item')
-    .max(3, 'Solo puedes elegir hasta 3 items')
-    .required('Esta opcion es requerida.'),
-  currentSalary: Yup.string()
-    .trim()
-    .required('Debes ingresar un valor.')
-    .matches(validateNumber, {
-      excludeEmptyString: true,
-      message: 'El salario debe ser solo numeros.'
-    })
-});
 
 export const RoleAndCurrentSalary = (props) => {
 
@@ -36,8 +17,8 @@ export const RoleAndCurrentSalary = (props) => {
     <Modal title="Rol y salario:">
       {(props) => (
         <Formik
-          initialValues={dataForm}
-          validationSchema={validateForm}
+          initialValues={valueStackAndSalary}
+          validationSchema={validateStackAndSalary}
           onSubmit={async (values) => {
             try {
               await apiClient.put('/users/stack-salary', {

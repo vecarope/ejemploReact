@@ -1,25 +1,13 @@
 import Modal from './Index';
 import * as FormField from '../Forms';
-import * as Yup from 'yup';
 import { Form, Formik } from 'formik';
 import '../../assets/componentsCSS/button.css';
 import apiClient from '../../services/api.service';
 import Swal from 'sweetalert2';
-import { time, availability } from '../../views/ApplicationForm/data/FormData';
+import { time, availability } from '../../data/FormData';
+import { validateAvailability } from '../../validation/validateModals';
+import { valueAvailability } from '../../data/ModalInitialData';
 
-const dataAvailability = {
-  workAvailability: '',
-  availabilityStatus: ''
-};
-
-const validateAvailability = Yup.object().shape({
-  workAvailability: Yup.array()
-    .min(1, 'Debes elegir al menos 1 item')
-    .max(3, 'Solo puedes elegir hasta 3 preferencias'),
-  availabilityStatus: Yup.array()
-    .max(1, 'Debes elegir al menos 1 item')
-    .required('Este campo es requerido.')
-});
 
 const Availability = (props) => {
 
@@ -29,7 +17,7 @@ const Availability = (props) => {
     <Modal title="Disponibilidad:">
       {(props) => (
         <Formik
-          initialValues={dataAvailability}
+          initialValues={valueAvailability}
           validationSchema={validateAvailability}
           onSubmit={async (values) => {
             try {
