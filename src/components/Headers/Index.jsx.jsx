@@ -14,6 +14,11 @@ export const Headers = () => {
     setNav(!nav);
   };
 
+  const handleCloseSesion = () => {
+    userLogout();
+    handleNav();
+  };
+
   return (
     <nav className="flex items-center h-20 text-white justify-between px-2 py-3 bg-[#1E239A]">
       <Link to={'/'}>
@@ -32,7 +37,7 @@ export const Headers = () => {
           </li>
         ) : userData && userData.roleId === 2 ? (
           <li className="p-4">
-            <Link to="/">Administra la Pagina</Link>
+            <Link to="/admin">Administra la Pagina</Link>
           </li>
         ) : null}
         {!userData && (
@@ -95,23 +100,36 @@ export const Headers = () => {
         </div>
 
         <ul className="pt-12 uppercase text-blue-500 p-4 justify-center ...">
-          <li className="p-4 border-b border-blue-600">
-            <Link to="/">Inicio</Link>
+          <li className="p-4 border-b border-blue-600" onClick={handleNav}>
+            <Link to="/">Ir al inicio</Link>
           </li>
-          <li className="p-4 border-b border-blue-600">
-            <Link to="/login">Logín</Link>
-          </li>
-          <li className="p-4 border-b border-blue-600">
-            <Link to="/register">Registro</Link>
-          </li>
-          {userData && userData.roleId !== 2 ? (
-            <li className="p-4 border-b border-blue-600">
+          {!userData && (
+            <li className="p-4 border-b border-blue-600" onClick={handleNav}>
+              <Link to="/login">Iniciar Sesión</Link>
+            </li>
+          )}
+          {userData && userData.roleId === 1 ? (
+            <li className="p-4 border-b border-blue-600" onClick={handleNav}>
               <Link to="/user">Ver perfil</Link>
             </li>
-          ) : (
-            <li className="p-4 border-b border-blue-600">
-              <Link to="/">Administra la Pagina</Link>
+          ) : userData && userData.roleId === 2 ? (
+            <li className="p-4 border-b border-blue-600" onClick={handleNav}>
+              <Link to="/admin">Administra la Pagina</Link>
             </li>
+          ) : null}
+          {!userData && (
+            <li className="p-4 border-b border-blue-600" onClick={handleNav}>
+              <Link to="/register">Registro</Link>
+            </li>
+          )}
+          {userData && (
+            <button
+              onClick={handleCloseSesion}
+              type="button"
+              className="p-4 border-b border-blue-600"
+            >
+              CERRAR SESIÓN
+            </button>
           )}
           {window.location.pathname === '/' ? (
             <li className="p-4 border-b border-blue-600">
