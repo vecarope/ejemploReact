@@ -1,9 +1,9 @@
 import { createContext, useState, useContext } from 'react';
 import { postLoginAxios, postForgotPassAxios, postRestorePassword } from '../hooks/postAxios';
-import { GoogleAuthProvider,signInWithPopup,  FacebookAuthProvider,
-  GithubAuthProvider,} from 'firebase/auth';
+import { GoogleAuthProvider,signInWithPopup,  FacebookAuthProvider, GithubAuthProvider} from 'firebase/auth';
 import {auth} from '../services/firebaseConfig';
 import Swal from 'sweetalert2';
+import {postLoginGoogle} from '../hooks/postFirebase'
 
 export const AuthContext = createContext();
 
@@ -53,9 +53,19 @@ export const AuthProvider = ({ children }) => {
   };
   
   const loginWithGoogle = async () => {
+    
+
+    try{
     const googleProvider = new GoogleAuthProvider()
     const sign = await signInWithPopup(auth, googleProvider)
-    console.log(sign)
+    const {user, token} = await postLoginGoogle(sign)
+    setUserData(user);
+    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('token', token);
+
+    }catch(error){
+      console.log(error)
+    } 
   }
   const loginWithFacebook = async ()=>{
     const facebookProvider = new FacebookAuthProvider()
@@ -64,7 +74,7 @@ export const AuthProvider = ({ children }) => {
 
   const loginWithGithub = async ()=>{
     const githubProvider = new GithubAuthProvider()
-    await signInWithPopup(auth,  githubProvider)
+    const sign = await signInWithPopup(auth,  githubProvider)
   }
   
   

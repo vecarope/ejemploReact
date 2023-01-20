@@ -15,7 +15,7 @@ const Account = ({ change }) => {
     try {
       const google = await loginWithGoogle();
       console.log('google',google);
-      navigate("/");
+      navigate("/application");
     } catch ( error) {
       setError(error.message);
     }
