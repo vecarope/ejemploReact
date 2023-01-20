@@ -48,6 +48,7 @@ export default function UserProfile() {
     setEducation(prevState =>([{...prevState, ...newState}]));
   };
 
+
   if (!userData)
     return (
       <div className="container m-8 ">
@@ -86,7 +87,7 @@ export default function UserProfile() {
           <h2 className="text-sm">{profile.cvUrl}</h2>
         </div>
         <div>
-          <CvModal updateProfile={updateProfile} />
+          <CvModal updateProfile={updateProfile} data={profile}/>
         </div>
       </div>
       <hr className=" border-black" />
@@ -143,7 +144,7 @@ export default function UserProfile() {
             <h2>Nivel Ingles: {profile.englishLevel}</h2>
           </div>
           <div>
-            <WorkModal updateProfile={updateProfile} />
+            <WorkModal updateProfile={updateProfile} data={profile}/>
           </div>
         </div>
       </div>
@@ -159,7 +160,7 @@ export default function UserProfile() {
             <h2>Posibilidad de ingreso: {profile.availabilityStatus}</h2>
           </div>
           <div>
-            <Availability updateProfile={updateProfile} />
+            <Availability updateProfile={updateProfile} data={profile} />
           </div>
         </div>
       </div>
@@ -175,7 +176,7 @@ export default function UserProfile() {
             <p> Salario actual: USD {profile.currentSalary}</p>
           </div>
           <div>
-            <RoleAndCurrentSalary updateProfile={updateProfile} />
+            <RoleAndCurrentSalary updateProfile={updateProfile} data={profile}/>
           </div>
         </div>
       </div>
@@ -238,7 +239,7 @@ export default function UserProfile() {
             </h1>
           </div>
           <div className=" flex gap-5 justify-between">
-            <EducationModal updateEducation={updateEducation} />
+            <EducationModal updateEducation={updateEducation} dataValues={element}/>
             <RiDeleteBinLine />
           </div>
         </div>))}

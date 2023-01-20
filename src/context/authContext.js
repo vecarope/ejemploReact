@@ -1,5 +1,7 @@
 import { createContext, useState, useContext } from 'react';
 import { postLoginAxios, postForgotPassAxios, postRestorePassword } from '../hooks/postAxios';
+import { GoogleAuthProvider,signInWithPopup } from 'firebase/auth';
+import {auth} from '../services/firebaseConfig';
 import Swal from 'sweetalert2';
 
 export const AuthContext = createContext();
@@ -48,7 +50,13 @@ export const AuthProvider = ({ children }) => {
       });
     }
   };
-
+  
+  const loginWithGoogle = async () => {
+    const googleProvider = new GoogleAuthProvider()
+    const sign = await signInWithPopup(auth, googleProvider)
+    console.log(sign)
+  }
+  
   const forgotPassword = async (values) => {
     await postForgotPassAxios(values);
     let timerInterval;
@@ -68,6 +76,7 @@ export const AuthProvider = ({ children }) => {
       }
     });
   };
+
 
   const restorePassword = async (values) => {
         await postRestorePassword(values);
@@ -97,6 +106,7 @@ export const AuthProvider = ({ children }) => {
     userData,
     userLogout,
     postLogin,
+    loginWithGoogle,
     forgotPassword,
     restorePassword
   };

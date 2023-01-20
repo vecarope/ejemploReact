@@ -12,9 +12,12 @@ import { valueStackAndSalary } from '../../data/ModalInitialData';
 export const RoleAndCurrentSalary = (props) => {
 
   const { updateProfile } = props; 
+  const { data } =props; 
+  console.log(data); 
+  
 
   return (
-    <Modal title="Rol y salario:">
+    <Modal title="Rol y salario">
       {(props) => (
         <Formik
           initialValues={valueStackAndSalary}
@@ -61,6 +64,7 @@ export const RoleAndCurrentSalary = (props) => {
                   />
                   <FormField.InputField
                     label="Salario actual (USD):"
+                    placeHolder={data.currentSalary}
                     touched={touched}
                     errors={errors}
                     required

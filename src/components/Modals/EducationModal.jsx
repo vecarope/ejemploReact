@@ -12,6 +12,7 @@ import { valueEducation } from '../../data/ModalInitialData';
 const EducationModal = (props) => {
 
   const { updateEducation } = props;
+  const { dataValues } = props; 
 
   return (
     <Modal title="Educación">
@@ -47,7 +48,7 @@ const EducationModal = (props) => {
                   name="name"
                   id="name"
                   required
-                  placeholder="Nombre de la carrera, curso, bootcamp o certificación"
+                  placeholder={dataValues.name}
                   touched={touched}
                   errors={errors}
                 />
@@ -59,7 +60,7 @@ const EducationModal = (props) => {
                   name="instituteName"
                   id="instituteName"
                   required
-                  placeholder="Nombre institución"
+                  placeholder={dataValues.instituteName}
                   touched={touched}
                   errors={errors}
                 />
@@ -81,6 +82,7 @@ const EducationModal = (props) => {
                     type='text'
                     touched={touched}
                     errors={errors}
+                    placeholder={dataValues.startYear}
                     name="startYear"
                     id="startYear"
                     required
@@ -93,6 +95,7 @@ const EducationModal = (props) => {
                     errors={errors}
                     id="endMonth"
                     name="endMonth"
+                    valueDefault={dataValues.endMonth}
                     data={month}
                     required
                   />
@@ -104,6 +107,7 @@ const EducationModal = (props) => {
                     errors={errors}
                     type="text"
                     name="endYear"
+                    placeholder={dataValues.endYear}
                     id="endYear"
                     required
                   />

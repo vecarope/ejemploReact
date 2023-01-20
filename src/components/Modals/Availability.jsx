@@ -8,13 +8,13 @@ import { time, availability } from '../../data/FormData';
 import { validateAvailability } from '../../validation/validateModals';
 import { valueAvailability } from '../../data/ModalInitialData';
 
-
 const Availability = (props) => {
 
   const { updateProfile } =props; 
+  const {data} =props; 
 
   return (
-    <Modal title="Disponibilidad:">
+    <Modal title="Disponibilidad">
       {(props) => (
         <Formik
           initialValues={valueAvailability}
@@ -48,6 +48,7 @@ const Availability = (props) => {
                   name="workAvailability"
                   id="workAvailability"
                   data={availability}
+                  checked={data.workAvailability}
                 />
                 <FormField.InputCheckbox
                   label="Indicanos tu tipo incorporación:"

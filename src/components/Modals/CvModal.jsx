@@ -11,6 +11,7 @@ import { valueCv } from '../../data/ModalInitialData';
 const CvModal = (props) => {
 
   const { updateProfile } = props; 
+  const {data} = props; 
 
   return (
     <Modal title="Sube tu Cv">
@@ -42,7 +43,7 @@ const CvModal = (props) => {
                 name="cvUrl"
                 id="cvUrl"
                 required
-                placeholder="Link aquí"
+                placeholder={data.cvUrl}
                 touched={touched}
                 errors={errors}
               />

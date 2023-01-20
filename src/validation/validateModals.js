@@ -17,7 +17,7 @@ const validateAvailability = Yup.object().shape({
 const validateCV = Yup.object().shape({
   cvUrl: Yup.string()
     .trim()
-    .required('Este link es requerodo.')
+    .required('Este link es requerido.')
     .matches(validateURL, {
       excludeEmptyString: true,
       message: 'Debes ingresar un link válido.'
