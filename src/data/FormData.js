@@ -11,7 +11,7 @@ const educationLevel = [
   'Instituto profesional o CFT incompleta o en curso',
   'Educación Media completa',
   'Educación Media incompleta',
-  'Escolar completeta',
+  'Escolar completa',
   'Escolar incompleta',
   'Postgrado completo',
   'Postgrado incompleto'
