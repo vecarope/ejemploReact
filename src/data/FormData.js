@@ -14,7 +14,7 @@ const educationLevel = [
   'Escolar completeta',
   'Escolar incompleta',
   'Postgrado completo',
-  'Postrago incompleto'
+  'Postgrado incompleto'
 ];
 
 const typeInstitution = [
