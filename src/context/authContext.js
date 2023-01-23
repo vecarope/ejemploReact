@@ -3,7 +3,7 @@ import { postLoginAxios, postForgotPassAxios, postRestorePassword } from '../hoo
 import { GoogleAuthProvider,signInWithPopup,  FacebookAuthProvider, GithubAuthProvider} from 'firebase/auth';
 import {auth} from '../services/firebaseConfig';
 import Swal from 'sweetalert2';
-import {postLoginGoogle} from '../hooks/postFirebase'
+import {postLoginFirebase} from '../hooks/postFirebase'
 
 export const AuthContext = createContext();
 
@@ -58,7 +58,7 @@ export const AuthProvider = ({ children }) => {
     try{
     const googleProvider = new GoogleAuthProvider()
     const sign = await signInWithPopup(auth, googleProvider)
-    const {user, token} = await postLoginGoogle(sign)
+    const {user, token} = await postLoginFirebase(sign)
     setUserData(user);
     localStorage.setItem('user', JSON.stringify(user));
     localStorage.setItem('token', token);

@@ -1,12 +1,12 @@
 import apiClient from '../services/api.service';
 
-const postLoginGoogle = async (values) => {
+const postLoginFirebase = async (values) => {
   try {
-    const { data } = await apiClient.post('/auth/login-google', values);    
+    const { data } = await apiClient.post('/auth/login-firebase', values);    
     return data;
   } catch ({ error }) {
     return error.message;
   }
 };
 
-export{postLoginGoogle}
+export{postLoginFirebase}
