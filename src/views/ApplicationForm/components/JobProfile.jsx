@@ -88,8 +88,8 @@ export const JobProfile = ({ errors, touched, values }) => {
 
             <FormField.InputSelectArray
               data={basesFrameworks?.data}
-              name="baseAndFramework"
-              id="baseAndFramework"
+              name="basesAndFrameworks"
+              id="basesAndFrameworks"
               touched={touched}
               errors={errors}
               values={values}

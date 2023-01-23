@@ -61,21 +61,6 @@ export const validateSchemaAplicationForm = Yup.object().shape({
     .min(2, 'El nombre debe tener al menos 2 letras.')
     .max(25, 'El nombre debe ser más corto.'),
   type: Yup.string().required('Debes seleccionar una opción.'),
-  name2: Yup.string()
-    .matches(validateStrings, {
-      excludeEmptyString: true,
-      message: 'El nombre debe ser solo texto.'
-    })
-    .min(2, 'El nombre debe tener al menos 2 letras.')
-    .max(25, 'El nombre debe ser más corto.'),
-  institute_name2: Yup.string()
-    .matches(validateStrings, {
-      excludeEmptyString: true,
-      message: 'El nombre debe ser solo texto.'
-    })
-    .min(2, 'El nombre debe tener al menos 2 letras.')
-    .max(25, 'El nombre debe ser más corto.'),
-  type2: Yup.string(),
   educationalLevel: Yup.string().required('Debes seleccionar una opción.'),
   educationStatusCurrent: Yup.string().required(
     'Debes seleccionar una opción.'
@@ -144,11 +129,11 @@ export const validateSchemaAplicationForm = Yup.object().shape({
     .max(3, 'Solo puedes elegir hasta 3 preferencias'),
   lenguage: Yup.array()
     .required('Este campo es requerido.')
-    .min(2, 'Debes elegir al menos 3 item'),
-  baseAndFramework: Yup.array()
+    .min(2, 'Debes elegir al menos 2 items'),
+  basesAndFrameworks: Yup.array()
     .required('Este campo es requerido.')
-    .min(1, 'Debes elegir al menos 3 item'),
+    .min(2, 'Debes elegir al menos 2 items'),
   tools: Yup.array()
     .required('Este campo es requerido.')
-    .min(1, 'Debes elegir al menos 3 item')
+    .min(2, 'Debes elegir al menos 2 items')
 });
