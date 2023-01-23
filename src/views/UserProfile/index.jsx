@@ -15,6 +15,8 @@ import Availability from '../../components/Modals/Availability';
 import CvModal from '../../components/Modals/CvModal';
 import WorkModal from '../../components/Modals/WorkModal';
 import { RoleAndCurrentSalary } from '../../components/Modals/RoleAndCurrentSalary';
+import HabilityModal from '../../components/Modals/HabilityModal';
+
 
 export default function UserProfile() {
   const { userData } = useAuth();
@@ -164,7 +166,7 @@ export default function UserProfile() {
       <div className="mb-4 p-1 lg:mb-7 mt-4 lg:mt-10">
         <div className="flex justify-between mb-8">
           <h1 className="text-2xl">Habilidades</h1>
-          <FiEdit2 className="mt-2" />
+          <HabilityModal className="mt-2" />
         </div>
         <div className="gap-5 lg:gap-12 grid-col">
           <div className=" flex flex-row">
