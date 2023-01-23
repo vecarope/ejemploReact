@@ -1,11 +1,6 @@
 import { useState } from 'react';
-import Modal from '../Modals/Index';
-import * as FormField from '../Forms';
-import { Form, Formik } from 'formik';
 import '../../assets/componentsCSS/button.css';
 import { FiEdit2 } from 'react-icons/fi';
-import apiClient from '../../services/api.service';
-//import Swal from 'sweetalert2';
 
 function ShowLanguage(){
   alert("form lenguajes")
@@ -35,12 +30,19 @@ const HabilityModal = () => {
             <div onClick={ShowLanguage} className="flex items-center justify-start p-6 border-t border-solid border-slate-200 rounded-b hover:bg-light-purple hover:text-white">Lenguajes</div>
             <div onClick={ShowLanguage} className="flex items-center justify-start p-6 border-t border-solid border-slate-200 rounded-b hover:bg-light-purple hover:text-white">Herramientas</div>
             <div onClick={ShowLanguage} className="flex items-center justify-start p-6 border-t border-solid border-slate-200 rounded-b hover:bg-light-purple hover:text-white">Frameworks</div>
+            <button className="btn btn-blue" type="submit">
+                  Guardar Cambios
+            </button>
           </div>
           </div>
           </div>
           <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+                <button className="btn btn-blue" type="submit">
+                  Guardar Cambios
+                </button>
         </>
       ): null}
+
     </>
   );
 };
