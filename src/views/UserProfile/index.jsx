@@ -20,7 +20,6 @@ import DataSkills from '../../components/Modals/DataSkills';
 
 export default function UserProfile() {
   const { userData } = useAuth();
-
   const [profile, setProfile] = useState([]);
   const [education, setEducation] = useState([]);
   const [devLanguage, setLanguage] = useState([]);
