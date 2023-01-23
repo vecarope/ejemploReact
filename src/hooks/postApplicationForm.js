@@ -17,7 +17,7 @@ export const postApplicationForm = async (values) => {
       educationalLevel: values.educationalLevel,
       educationStatusCurrent: values.educationStatusCurrent,
       englishLevel: values.englishLevel,
-      comment: values.additionalToolsComment.toString(),
+      additionalToolsComment: values.additionalToolsComment.toString(),
       cvUrl: values.cvUrl,
       linkedinUrl: values.linkedinUrl,
       githubUrl: values.githubUrl,
@@ -26,7 +26,7 @@ export const postApplicationForm = async (values) => {
       devExperience: values.devExperience.split(',')[0].trim(),
       idealWorkComment: values.idealWorkComment,
       workAvailability: values.workAvailability.toString(),
-      relocationOption: values.relocationOption.split(',')[1].trim(),
+      relocationOption: values.relocationOption.split(',')[0].trim(),
       visa: values.visa.toString(),
       userId: userForm.id
     },
@@ -35,12 +35,7 @@ export const postApplicationForm = async (values) => {
         name: values.name,
         instituteName: values.instituteName,
         type: values.type
-      } /* ,
-      {
-        name: values.name2,
-        instituteName: values.institute_name2,
-        type: values.type2
-      } */
+      }
     ],
     values.lenguage.length > 1
       ? values.lenguage.map((element) => ({
@@ -51,14 +46,14 @@ export const postApplicationForm = async (values) => {
           devLanguageId: parseInt(values.lenguage[0].id),
           level: parseInt(values.lenguage[0].level)
         },
-    values.baseAndFramework[1]
-      ? values.baseAndFramework.map((element) => ({
+    values.basesAndFrameworks[1]
+      ? values.basesAndFrameworks.map((element) => ({
           databaseId: parseInt(element.id),
           level: parseInt(element.level)
         }))
       : {
-          databaseId: parseInt(values.baseAndFramework[0].id),
-          level: parseInt(values.baseAndFramework.level)
+          databaseId: parseInt(values.basesAndFrameworks[0].id),
+          level: parseInt(values.basesAndFrameworks.level)
         },
 
     values.tools[1]
