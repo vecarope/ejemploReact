@@ -16,7 +16,7 @@ import CvModal from '../../components/Modals/CvModal';
 import WorkModal from '../../components/Modals/WorkModal';
 import EducationModal from '../../components/Modals/EducationModal';
 import { RoleAndCurrentSalary } from '../../components/Modals/RoleAndCurrentSalary';
-import HabilityModal from '../../components/Modals/HabilityModal';
+import DataSkills from '../../components/Modals/DataSkills';
 
 export default function UserProfile() {
   const { userData } = useAuth();
@@ -182,7 +182,11 @@ export default function UserProfile() {
       <div className="mb-4 p-1 lg:mb-7 mt-4 lg:mt-10">
         <div className="flex justify-between mb-8">
           <h1 className="text-2xl">Habilidades</h1>
-          <HabilityModal className="mt-2" />
+          <DataSkills
+            devLanguage={devLanguage}
+            database={database}
+            tools={tools}
+          />
         </div>
         <div className="gap-5 lg:gap-12 grid-col">
           <div className=" flex flex-row">
