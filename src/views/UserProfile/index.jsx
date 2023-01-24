@@ -8,7 +8,7 @@ import {
   MdOutlineBookmarkAdded,
   MdOutlineEventAvailable
 } from 'react-icons/md';
-import { RiFolderUserLine, RiDeleteBinLine } from 'react-icons/ri';
+import { RiFolderUserLine } from 'react-icons/ri';
 import { useAuth } from '../../context/authContext';
 import apiClient from '../../services/api.service';
 import Availability from '../../components/Modals/Availability';
@@ -16,6 +16,8 @@ import CvModal from '../../components/Modals/CvModal';
 import WorkModal from '../../components/Modals/WorkModal';
 import {RoleAndCurrentSalary}  from '../../components/Modals/RoleAndCurrentSalary';
 import EducationModal from '../../components/Modals/EducationModal'
+import DeleteEducation from '../../components/Modals/DeleteEducation';
+//import AddEducation from '../../components/Modals/AddEducation';
 
 export default function UserProfile() {
 
@@ -44,8 +46,12 @@ export default function UserProfile() {
     setProfile(prevState => ({...prevState, ...newState}));
   }; 
   
-  const updateEducation =(newState) =>{
+  const updateEducation = (newState) =>{
     setEducation(prevState =>([{...prevState, ...newState}]));
+  };
+
+  const removeEducation = (id) =>{
+    setEducation((prevState) => prevState.filter((element) => element.id !== id ));
   };
 
   if (!userData)
@@ -70,7 +76,7 @@ export default function UserProfile() {
           </div>
         </div>
       </div>
-      )
+      ) 
     return (
     <div className="grid container mx-auto mr-10 md:w-screen md:mt-5 lg:my-10 ml-3 lg:mx-20 lg:w-screen m-5 lg:m-12">
       <h1 className="font-bold text-lg md:text-xl lg:text-2xl md:mb-3 lg:mb-4 ">  
@@ -228,10 +234,13 @@ export default function UserProfile() {
       <hr className="border-black" />
       <div className="lg:flex-col p-1 mb-4 lg:mb-7 mt-4 lg:mt-10">
         <h1 className=" text-2xl mb-10">Educación</h1>
+        <div className='text-end my-4'>
+         {/* <AddEducation updateEducation={updateEducation}/> */}
+        </div>
         {education.map((element, id )=>(
-        <div className=" flex justify-between" id={id}>
+        <div className=" flex justify-between my-4" id={id}>
           <div>
-            <h1 className=" text-blue-700 text-sm font-bold">{element.startMonth} {element.startYear} - {element.endMonth} {element.endYear}</h1>
+            <h1 className=" text-blue-700 text-sm font-bold">{`${element.startMonth} ${element.startYear} - ${element.endMonth} ${element.endYear}`}</h1>
             <h1 className="text-2xl">{element.name}</h1>
             <h1 className=" text-blue-700 text-sm font-bold">
               {element.instituteName}
@@ -239,9 +248,10 @@ export default function UserProfile() {
           </div>
           <div className=" flex gap-5 justify-between">
             <EducationModal updateEducation={updateEducation} />
-            <RiDeleteBinLine />
+            <DeleteEducation removeEducation={removeEducation} id={element.id}/>
           </div>
-        </div>))}
+        </div>
+        ))}
       </div>
     </div>
     ); 
