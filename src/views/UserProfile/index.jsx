@@ -17,7 +17,7 @@ import WorkModal from '../../components/Modals/WorkModal';
 import {RoleAndCurrentSalary}  from '../../components/Modals/RoleAndCurrentSalary';
 import EducationModal from '../../components/Modals/EducationModal'
 import DeleteEducation from '../../components/Modals/DeleteEducation';
-import AddEducation from '../../components/Modals/AddEducation';
+//import AddEducation from '../../components/Modals/AddEducation';
 
 export default function UserProfile() {
 
@@ -46,8 +46,12 @@ export default function UserProfile() {
     setProfile(prevState => ({...prevState, ...newState}));
   }; 
   
-  const updateEducation =(newState) =>{
+  const updateEducation = (newState) =>{
     setEducation(prevState =>([{...prevState, ...newState}]));
+  };
+
+  const removeEducation = (id) =>{
+    setEducation((prevState) => prevState.filter((element) => element.id !== id ));
   };
 
   if (!userData)
@@ -231,7 +235,7 @@ export default function UserProfile() {
       <div className="lg:flex-col p-1 mb-4 lg:mb-7 mt-4 lg:mt-10">
         <h1 className=" text-2xl mb-10">Educación</h1>
         <div className='text-end my-4'>
-          <AddEducation updateEducation={updateEducation}/>
+         {/* <AddEducation updateEducation={updateEducation}/> */}
         </div>
         {education.map((element, id )=>(
         <div className=" flex justify-between my-4" id={id}>
@@ -244,7 +248,7 @@ export default function UserProfile() {
           </div>
           <div className=" flex gap-5 justify-between">
             <EducationModal updateEducation={updateEducation} />
-            <DeleteEducation education={education} id={element.id}/>
+            <DeleteEducation removeEducation={removeEducation} id={element.id}/>
           </div>
         </div>
         ))}
