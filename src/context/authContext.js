@@ -1,6 +1,9 @@
-import { createContext, useState, useContext } from 'react';
-import { postLoginAxios, postForgotPassAxios, postRestorePassword } from '../hooks/postAxios';
+import { FacebookAuthProvider, GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { createContext, useContext, useState } from 'react';
 import Swal from 'sweetalert2';
+import { postForgotPassAxios, postLoginAxios, postRestorePassword } from '../hooks/postAxios';
+import { postLoginFirebase } from '../hooks/postFirebase';
+import { auth } from '../services/firebaseConfig';
 
 export const AuthContext = createContext();
 
@@ -48,6 +51,31 @@ export const AuthProvider = ({ children }) => {
       });
     }
   };
+
+  const loginWithGoogle = async () => {
+    try{
+    const googleProvider = new GoogleAuthProvider()
+    const sign = await signInWithPopup(auth, googleProvider)
+    const {user, token} = await postLoginFirebase(sign)
+    setUserData(user);
+    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('token', token);
+
+    }catch(error){
+      console.log(error)
+    } 
+  }
+  
+  const loginWithFacebook = async ()=>{
+    const facebookProvider = new FacebookAuthProvider()
+    await signInWithPopup( auth, facebookProvider )
+  }
+  
+  const loginWithGithub = async ()=>{
+    const githubProvider = new GithubAuthProvider()
+    const sign = await signInWithPopup(auth,  githubProvider)
+  }
+
 
   const forgotPassword = async (values) => {
     await postForgotPassAxios(values);
@@ -97,6 +125,9 @@ export const AuthProvider = ({ children }) => {
     userData,
     userLogout,
     postLogin,
+    loginWithGoogle,
+    loginWithFacebook,
+    loginWithGithub, 
     forgotPassword,
     restorePassword
   };
