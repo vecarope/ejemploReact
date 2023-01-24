@@ -17,7 +17,7 @@ import WorkModal from '../../components/Modals/WorkModal';
 import {RoleAndCurrentSalary}  from '../../components/Modals/RoleAndCurrentSalary';
 import EducationModal from '../../components/Modals/EducationModal'
 import DeleteEducation from '../../components/Modals/DeleteEducation';
-//import AddEducation from '../../components/Modals/AddEducation';
+import AddEducation from '../../components/Modals/AddEducation';
 
 export default function UserProfile() {
 
@@ -233,12 +233,12 @@ export default function UserProfile() {
       </div>
       <hr className="border-black" />
       <div className="lg:flex-col p-1 mb-4 lg:mb-7 mt-4 lg:mt-10">
-        <h1 className=" text-2xl mb-10">Educación</h1>
-        <div className='text-end my-4'>
-         {/* <AddEducation updateEducation={updateEducation}/> */}
+        <h1 className=" text-2xl mb-4">Educación</h1>
+        <div className='flex justify-end mb-4'>
+          <AddEducation updateListEducation={setEducation} education={education} updateEducation={updateEducation}/>
         </div>
-        {education.map((element, id )=>(
-        <div className=" flex justify-between my-4" id={id}>
+        {education.map((element, id)=>(
+        <div className=" flex justify-between my-4"  key={id}>
           <div>
             <h1 className=" text-blue-700 text-sm font-bold">{`${element.startMonth} ${element.startYear} - ${element.endMonth} ${element.endYear}`}</h1>
             <h1 className="text-2xl">{element.name}</h1>
@@ -247,7 +247,7 @@ export default function UserProfile() {
             </h1>
           </div>
           <div className=" flex gap-5 justify-between">
-            <EducationModal updateEducation={updateEducation} />
+            <EducationModal updateListEducation={setEducation} education={education} updateEducation={updateEducation} />
             <DeleteEducation removeEducation={removeEducation} id={element.id}/>
           </div>
         </div>

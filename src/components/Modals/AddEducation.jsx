@@ -11,13 +11,13 @@ import {GrAddCircle} from 'react-icons/gr';
 
 const AddEducation = (props) => {
 
-  const [showModal, setShowModal] = useState(false);
-  const { updateEducation } = props;
-
+  const [showModal, setShowModal] = useState(false); 
+  const {updateListEducation}=props;
+  const {education}=props;
   return (
     <>
-      <button type="button" className="btn text-light bg-fill-light text-dark-text gap-2 hover:bg-mid-light-blue hover:text-white hover:fill-white" onClick={() => setShowModal(true)}>
-      <GrAddCircle className="h-6 w-6 "/> Agregar educación
+      <button type="button" className="btn btn-login bg-white text-dark-text hover:bg-fill-light hover:text-dark-text" onClick={() => setShowModal(true)}>
+      <GrAddCircle className="h-6 w-6 mr-1"/> Agregar educación
       </button>
   
   {showModal ? (
@@ -40,16 +40,14 @@ const AddEducation = (props) => {
           validationSchema={validateNewEducation}
           onSubmit = { async (values) => {
             try {
-              await apiClient.post('/users/education', 
-                values
-              ); 
+              await apiClient.post('/users/education',values); 
+              updateListEducation([...education, values]);
               return Swal.fire({
-                title:'¡Datos modificados!',
+                title:'¡Datos Guardados!',
                 confirmButtonText: 'Cerrar',
                 confirmButtonColor: '#2738F5'
               })
                 .then(()=>setShowModal(false))
-                .then(updateEducation(values));
             } catch (error) {
               console.error(error);
             }
