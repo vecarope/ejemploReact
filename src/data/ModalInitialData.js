@@ -13,6 +13,15 @@ const valueEducation = {
   startYear: '',
   endYear: ''
 };
+const valueNewEducation = {
+  name: '',
+  instituteName: '',
+  type:'',
+  startMonth: '',
+  endMonth: '',
+  startYear: '',
+  endYear: ''
+};
 
 const valueStackAndSalary = {
   stack: '',
@@ -25,4 +34,5 @@ export {valueAvailability,
         valueCv,
         valueEducation,
         valueStackAndSalary,
-        valueWorkExperience}
+        valueWorkExperience,
+        valueNewEducation}
