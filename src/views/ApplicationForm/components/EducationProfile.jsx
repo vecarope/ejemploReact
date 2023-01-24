@@ -1,8 +1,12 @@
 import * as FormField from '../../../components/Forms';
-import { educationLevel, typeInstitution, educationStatus, englishLevel } from '../../../data/FormData';
+import {
+  educationLevel,
+  typeInstitution,
+  educationStatus,
+  englishLevel
+} from '../../../data/FormData';
 
 export const EducationProfile = ({ errors, touched }) => {
-
   return (
     <div className="mt-10  sm:mt-0">
       <div className="my-8 mt-10 max-w-6xl mx-auto justify-center">
@@ -29,75 +33,43 @@ export const EducationProfile = ({ errors, touched }) => {
                 className="block text-justify font-bold my-4 text-sm md:text-2xl text-[#140B34]"
               >
                 {' '}
-                A continuación, indícanos 2 (dos) carreras profesionales,
-                cursos, bootcamp o certificaciones cursadas relacionadas al
-                desarrollo de software, diseño o TI (puedes indicarnos las más
-                importantes o actuales):
+                A continuación, indícanos la carrera profesional, curso,
+                bootcamp o certificaciones cursada relacionada al desarrollo de
+                software, diseño o TI (puedes indicarnos la más importante o
+                actuale):
               </div>
             </div>
             <div className="col-span-6 sm:col-span-6">
               <FormField.InputField
-                label="Nombre de la carrera, curso, bootcamp o certificación 1"
+                label="Nombre de la carrera, curso, bootcamp o certificación"
                 type="text"
                 name="name"
                 id="name"
                 required
-                placeholder="Nombre de la carrera, curso, bootcamp o certificación 1"
+                placeholder="Nombre de la carrera, curso, bootcamp o certificación"
                 touched={touched}
                 errors={errors}
               />
             </div>
             <div className="col-span-6 sm:col-span-6">
               <FormField.InputField
-                label="Nombre institución 1"
+                label="Nombre institución"
                 type="text"
                 name="institute_name"
                 id="institute_name"
                 required
-                placeholder="Nombre institución 1"
+                placeholder="Nombre institución"
                 touched={touched}
                 errors={errors}
               />
             </div>
             <div className="col-span-6 sm:col-span-6">
               <FormField.InputSelect
-                label={'Tipo institución 1:'}
+                label={'Tipo institución'}
                 touched={touched}
                 errors={errors}
                 id="type"
                 name="type"
-                data={typeInstitution}
-              />
-            </div>
-            <div className="col-span-6 sm:col-span-6">
-              <FormField.InputField
-                label="Nombre de la carrera, curso, bootcamp o certificación 2:"
-                type="text"
-                name="name2"
-                id="name2"
-                placeholder="Nombre de la carrera, curso, bootcamp o certificación 2:"
-                touched={touched}
-                errors={errors}
-              />
-            </div>
-            <div className="col-span-6 sm:col-span-6">
-              <FormField.InputField
-                label="Nombre institución 2"
-                type="text"
-                name="institute_name2"
-                id="institute_name2"
-                placeholder="Nombre institución 2"
-                touched={touched}
-                errors={errors}
-              />
-            </div>
-            <div className="col-span-6 sm:col-span-6">
-              <FormField.InputSelect
-                label={'Tipo institución 2:'}
-                touched={touched}
-                errors={errors}
-                id="type2"
-                name="type2"
                 data={typeInstitution}
               />
             </div>
