@@ -1,50 +1,25 @@
 import Modal from '../Modals/Index';
-import * as FormField from '../Forms';
-import { Form, Formik } from 'formik';
 import '../../assets/componentsCSS/button.css';
-import apiClient from '../../services/api.service';
-import Swal from 'sweetalert2';
+import { LanguageModal } from './HabilitiesModal/Language';
+import { DatabasesModal } from './HabilitiesModal/Frameworks';
+import { ToolsModal } from './HabilitiesModal/Tools';
 
 const DataSkills = (props) => {
   const { devLanguage, database, tools } = props;
 
   return (
-    <Modal title="Edita tus skills">
+    <Modal title="Edita tus skills:">
       {(props) => (
         <div>
           <ul
-            class="
-  nav nav-tabs nav-justified
-  flex flex-col
-  md:flex-row
-  flex-wrap
-  list-none
-  border-b-0
-  pl-0
-  mb-4
-"
+            className=" nav nav-tabs nav-justified flex flex-col md:flex-row flex-wrap list-none border-b-0 pl-0 mb-4"
             id="tabs-tabJustify"
             role="tablist"
           >
-            <li class="nav-item flex-grow text-center" role="presentation">
+            <li className="nav-item flex-grow text-center" role="presentation">
               <a
                 href="#tabs-homeJustify"
-                class="
-      nav-link
-      w-full
-      block
-      font-medium
-      text-xs
-      leading-tight
-      uppercase
-      border-x-0 border-t-0 border-b-2 border-transparent
-      px-6
-      py-3
-      my-2
-      hover:border-transparent hover:bg-gray-100
-      focus:border-transparent
-      active
-    "
+                className="nav-link w-full block font-medium text-xs leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-100 focus:border-transparent active"
                 id="tabs-home-tabJustify"
                 data-bs-toggle="pill"
                 data-bs-target="#tabs-homeJustify"
@@ -55,24 +30,10 @@ const DataSkills = (props) => {
                 Lenguajes
               </a>
             </li>
-            <li class="nav-item flex-grow text-center" role="presentation">
+            <li className="nav-item flex-grow text-center" role="presentation">
               <a
                 href="#tabs-profileJustify"
-                class="
-      nav-link
-      w-full
-      block
-      font-medium
-      text-xs
-      leading-tight
-      uppercase
-      border-x-0 border-t-0 border-b-2 border-transparent
-      px-6
-      py-3
-      my-2
-      hover:border-transparent hover:bg-gray-100
-      focus:border-transparent
-    "
+                className=" nav-link w-full block font-medium text-xs leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-100 focus:border-transparent"
                 id="tabs-profile-tabJustify"
                 data-bs-toggle="pill"
                 data-bs-target="#tabs-profileJustify"
@@ -80,27 +41,13 @@ const DataSkills = (props) => {
                 aria-controls="tabs-profileJustify"
                 aria-selected="false"
               >
-                Herramientas
+                Databases and Framework
               </a>
             </li>
-            <li class="nav-item flex-grow text-center" role="presentation">
+            <li className="nav-item flex-grow text-center" role="presentation">
               <a
                 href="#tabs-messagesJustify"
-                class="
-      nav-link
-      w-full
-      block
-      font-medium
-      text-xs
-      leading-tight
-      uppercase
-      border-x-0 border-t-0 border-b-2 border-transparent
-      px-6
-      py-3
-      my-2
-      hover:border-transparent hover:bg-gray-100
-      focus:border-transparent
-    "
+                className=" nav-link w-full block font-medium text-xs leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-100 focus:border-transparent"
                 id="tabs-messages-tabJustify"
                 data-bs-toggle="pill"
                 data-bs-target="#tabs-messagesJustify"
@@ -108,34 +55,34 @@ const DataSkills = (props) => {
                 aria-controls="tabs-messagesJustify"
                 aria-selected="false"
               >
-                Herramientas
+                Tools
               </a>
             </li>
           </ul>
-          <div class="tab-content" id="tabs-tabContentJustify">
+          <div className="tab-content" id="tabs-tabContentJustify">
             <div
-              class="tab-pane fade show active"
+              className="tab-pane fade show active"
               id="tabs-homeJustify"
               role="tabpanel"
               aria-labelledby="tabs-home-tabJustify"
             >
-              Tab 1:
+              <LanguageModal info={devLanguage} />
             </div>
             <div
-              class="tab-pane fade"
+              className="tab-pane fade"
               id="tabs-profileJustify"
               role="tabpanel"
               aria-labelledby="tabs-profile-tabJustify"
             >
-              Tab 2
+              <DatabasesModal info={database} />
             </div>
             <div
-              class="tab-pane fade"
+              className="tab-pane fade"
               id="tabs-messagesJustify"
               role="tabpanel"
               aria-labelledby="tabs-profile-tabJustify"
             >
-              Tab 3
+              <ToolsModal info={tools} />
             </div>
           </div>
         </div>
