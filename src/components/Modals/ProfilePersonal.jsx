@@ -11,16 +11,6 @@ let validateNumber = /^([0-9])*$/;
 let validateLinkedinURL = /(https?)?:?(\/\/)?(([w]{3}||\w\w)\.)?linkedin.com(\w+:{0,1}\w*@)?(\S+)(:([0-9])+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/;
 let validateGithubURL = /(https?)?:?(\/\/)?(([w]{3}||\w\w)\.)?github.com(\w+:{0,1}\w*@)?(\S+)(:([0-9])+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/;
 
-const personalInformation = {
-  phoneNumber: '',
-  city: '',
-  firstName: '',
-  lastName: '',
-  email: '',
-  linkedinUrl: '',
-  githubUrl: ''
-};
-
 const validateInformation = Yup.object().shape({
   phoneNumber: Yup.string()
     .trim()
@@ -29,7 +19,7 @@ const validateInformation = Yup.object().shape({
       excludeEmptyString: true,
       message: 'El telefono debe ser solo numeros.'
     }) */
-    .min(7, 'El telefono es muy corto.')
+    .min(8, 'El telefono es muy corto.')
     .max(18, 'El numero de telefono debe ser más corto.'),
 
   city: Yup.string()
@@ -90,7 +80,15 @@ export const ProfilePersonal = (props) => {
     <Modal title="Informacion Personal:">
       {(props) => (
         <Formik
-          initialValues={personalInformation}
+          initialValues={{
+            phoneNumber: data.phoneNumber || '',
+            city: data.city || '',
+            firstName: userData.firstName,
+            lastName: userData.lastName,
+            email: userData.email,
+            linkedinUrl: data.linkedinUrl || '',
+            githubUrl: data.githubUrl || ''
+          }}
           validationSchema={validateInformation}
           onSubmit={async (values) => {
             try {
@@ -119,7 +117,6 @@ export const ProfilePersonal = (props) => {
                     type="text"
                     name="firstName"
                     id="firstName"
-                    placeholder={userData.firstName}
                   />
                 </div>
                 <div className="col-span-2 row-span-1">
@@ -130,7 +127,6 @@ export const ProfilePersonal = (props) => {
                     type="text"
                     name="lastName"
                     id="lastName"
-                    placeholder={userData.lastName}
                   />
                 </div>
                 <div className="col-span-2 row-span-1">
@@ -141,7 +137,6 @@ export const ProfilePersonal = (props) => {
                     type="email"
                     name="email"
                     id="email"
-                    placeholder={userData.email}
                   />
                 </div>
                 <div className="row-span-4 col-start-1 col-end-2">
@@ -153,7 +148,6 @@ export const ProfilePersonal = (props) => {
                     name="phoneNumber"
                     id="phoneNumber"
                     required
-                    placeholder={data.phoneNumber}
                   />
                 </div>
                 <div className="row-span-4 col-start-2 col-end-3">
@@ -165,7 +159,6 @@ export const ProfilePersonal = (props) => {
                     name="city"
                     id="city"
                     required
-                    placeholder={data.city}
                   />
                 </div>
                 <div className="row-span-4 col-start-1 col-end-2">
@@ -175,7 +168,6 @@ export const ProfilePersonal = (props) => {
                     name="linkedinUrl"
                     id="linkedinUrl"
                     required
-                    placeholder={data.linkedinUrl}
                     touched={touched}
                     errors={errors}
                   />
@@ -187,7 +179,6 @@ export const ProfilePersonal = (props) => {
                     name="githubUrl"
                     id="githubUrl"
                     required
-                    placeholder={data.githubUrl}
                     touched={touched}
                     errors={errors}
                   />
