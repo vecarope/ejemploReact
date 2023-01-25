@@ -2,12 +2,43 @@ import * as FormField from '../../Forms';
 import { Form, Formik } from 'formik';
 import { GrAddCircle } from 'react-icons/gr';
 import '../../../assets/componentsCSS/button.css';
-// import apiClient from '../../services/api.service';
 import Swal from 'sweetalert2';
+import { useEffect, useState } from 'react';
 import { valueDataSkillsDatabases } from '../../../data/ModalInitialData';
 import { validateDataSkillsDatabase } from '../../../validation/validateModals';
+import apiClient from '../../services/api.service';
 
 export const DatabasesModal = (props) => {
+  const [frameworkAPI, setFrameworksAPI] = useState(null);
+  const [userFramework, setUserFrameworks] = useState(props.info);
+  const [showComponent, setshowComponent] = useState(false);
+
+  const extraComponent = () => {
+    setshowComponent(true);
+  };
+  const getAllFrameworks = async () => {
+    const { data } = await apiClient('/dev-frameworks');
+    setFrameworksAPI(data);
+  };
+  useEffect(()=> {
+    getAllFrameworks();
+  },[]);
+
+  let frameworkFilter = frameworkAPI?.filter((el)=>{
+    let found =false,
+    x=0;
+    while ( x < userFramework.length && !found){
+      if (el.name === userFramework[x].name) found = true;
+      x++;
+    }
+    if (!found) return el;
+    });
+  const handlerChangeEvent = (e) => {
+    let add = frameworkFilter.filter((el) => el.name === e.target.value);
+    setUserFrameworks([...userFramework, ...add]);
+    setshowComponent(false);
+  };
+
   return (
     <>
       <Formik
@@ -27,17 +58,17 @@ export const DatabasesModal = (props) => {
           }
         }}
       >
-        {({ errors, touched }) => (
+        {({ errors, touched, values }) => (
           <Form>
             <div className="col-span-7 md:col-span-4 lg:col-span-4 md:mx-auto">
               <FormField.InputSelectArray
-                data={props.info}
+                data={userFramework}
                 name="basesAndFrameworks"
                 id="basesAndFrameworks"
                 touched={touched}
                 errors={errors}
-
-                // values={values}
+                values={values}
+                edit={true}
               />
             </div>
             <div className="flex w-auto justify-end">
@@ -45,6 +76,26 @@ export const DatabasesModal = (props) => {
                 <GrAddCircle />
               </button>
             </div>
+            {showComponent !== false ? (
+              <>
+                  <div className="col-span-6 sm:col-span-6">
+                  <FormField.InputSelect
+                    label={'Indica la tecnología:'}
+                    touched={touched}
+                    errors={errors}
+                    name="frameworkTwo"
+                    id="frameworkTwo"
+                    data={frameworkFilter.map((e, index) => e.name)}
+                    onChange={(e) => {
+                      handlerChangeEvent(e);
+                    }}
+                  />
+                  <button className="flex" type="button">
+                    <GrAddCircle />
+                  </button>
+                </div>
+              </>
+            ): null}
             <div className="container py-8 justify-center">
               <button className="btn btn-blue" type="submit">
                 Guardar Cambios
