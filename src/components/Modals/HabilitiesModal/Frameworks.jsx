@@ -5,7 +5,6 @@ import { GrAddCircle } from 'react-icons/gr';
 import '../../../assets/componentsCSS/button.css';
 import Swal from 'sweetalert2';
 import { useEffect, useState } from 'react';
-import { valueDataSkillsDatabases } from '../../../data/ModalInitialData';
 import { validateDataSkillsDatabase } from '../../../validation/validateModals';
 import apiClient from '../../../services/api.service';
 
@@ -43,7 +42,7 @@ export const DatabasesModal = (props) => {
   return (
     <>
       <Formik
-        initialValues={valueDataSkillsDatabases}
+        initialValues={{ basesAndFrameworks: userFramework }}
         validationSchema={validateDataSkillsDatabase}
         onSubmit={async (values) => {
           try {
@@ -91,9 +90,6 @@ export const DatabasesModal = (props) => {
                       handlerChangeEvent(e);
                     }}
                   />
-                  <button className="flex" type="button">
-                    <GrAddCircle />
-                  </button>
                 </div>
               </>
             ) : null}

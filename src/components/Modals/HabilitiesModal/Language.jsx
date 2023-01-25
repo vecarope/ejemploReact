@@ -5,7 +5,6 @@ import { GrAddCircle } from 'react-icons/gr';
 import '../../../assets/componentsCSS/button.css';
 import Swal from 'sweetalert2';
 import { useEffect, useState } from 'react';
-import { valueDataSkillsLanguage } from '../../../data/ModalInitialData';
 import { validateDataSkillsLanguage } from '../../../validation/validateModals';
 import apiClient from '../../../services/api.service';
 
@@ -35,6 +34,7 @@ export const LanguageModal = (props) => {
       x++;
     }
     if (!found) return el;
+    // return userLanguaje.find((l) => l.name !== el.name);
   });
 
   const handlerChangeEvent = (e) => {
@@ -42,11 +42,10 @@ export const LanguageModal = (props) => {
     setUserLanguaje([...userLanguaje, ...add]);
     setshowComponent(false);
   };
-
   return (
     <>
       <Formik
-        initialValues={valueDataSkillsLanguage}
+        initialValues={{ lenguage: userLanguaje }}
         validationSchema={validateDataSkillsLanguage}
         onSubmit={async (values) => {
           console.log('VALUES-->', values);
@@ -95,10 +94,6 @@ export const LanguageModal = (props) => {
                       handlerChangeEvent(e);
                     }}
                   />
-
-                  <button className="flex" type="button">
-                    <GrAddCircle />
-                  </button>
                 </div>
               </>
             ) : null}

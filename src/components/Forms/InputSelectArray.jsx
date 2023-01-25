@@ -1,5 +1,6 @@
 import { ErrorMessage, Field, FieldArray } from 'formik';
 import { RiDeleteBinLine } from 'react-icons/ri';
+import Swal from 'sweetalert2';
 export const InputSelectArray = ({
   name,
   touched,
@@ -8,6 +9,27 @@ export const InputSelectArray = ({
   values,
   ...props
 }) => {
+  const deleteTechnology = () => {
+    Swal.fire({
+      title: '¡Cuidado!',
+      text: '¿Deseas eliminar esta tecnología?.',
+      icon: 'info',
+      showCancelButton: true,
+      confirmButtonColor: '#1E239A',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, eliminar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: '¡Tecnologia eliminada!',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
+    });
+  };
   return (
     <div className="w-80 md:w-96">
       <FieldArray
@@ -25,16 +47,23 @@ export const InputSelectArray = ({
                     {...props}
                     as="select"
                     id={element.id}
-                    name={element.name}
-                    defaultValue={false}
+                    name={`${name}[${index}].level`}
+                    // defaultValue={element.value || false}
                     onChange={(e) => {
                       let index = values[name].findIndex(
                         (lang) => lang.id === element.id
                       );
                       if (index >= 0) {
-                        arrayHelpers.remove(index);
+                        arrayHelpers.replace(index, {
+                          ...element,
+                          level: e.target.value
+                        });
+                      } else {
+                        arrayHelpers.push({
+                          ...element,
+                          level: e.target.value
+                        });
                       }
-                      arrayHelpers.push({ ...element, level: e.target.value });
                     }}
                     className="flex-1 bg-[#E2F2FE] border-[#140B34] rounded-md form-select form-select-sm
                             appearance-none
@@ -51,26 +80,19 @@ export const InputSelectArray = ({
                             m-0
                             focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                   >
-                    {element.level ? (
-                      <>
-                        <option value={element.level}>
-                          Actual: Nivel {element.level}
-                        </option>
-                        <option value={1}>Nivel 1</option>
-                        <option value={2}>Nivel 2</option>
-                        <option value={3}>Nivel 3</option>
-                      </>
-                    ) : (
-                      <>
-                        <option value={0}>Nivel</option>
-                        <option value={1}>Nivel 1</option>
-                        <option value={2}>Nivel 2</option>
-                        <option value={3}>Nivel 3</option>
-                      </>
-                    )}
+                    <>
+                      <option value={0}>Nivel</option>
+                      <option value={1}>Nivel 1</option>
+                      <option value={2}>Nivel 2</option>
+                      <option value={3}>Nivel 3</option>
+                    </>
                   </Field>
-                  {element.level || props.edit === true ? (
-                    <button className="px-4">
+                  {props.edit === true ? (
+                    <button
+                      className="px-4"
+                      type="button"
+                      onClick={deleteTechnology}
+                    >
                       <RiDeleteBinLine />
                     </button>
                   ) : null}

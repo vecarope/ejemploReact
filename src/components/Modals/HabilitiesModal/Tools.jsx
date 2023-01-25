@@ -6,7 +6,6 @@ import '../../../assets/componentsCSS/button.css';
 import apiClient from '../../../services/api.service';
 import { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
-import { valueDataSkillsTools } from '../../../data/ModalInitialData';
 import { validateDataSkillsTools } from '../../../validation/validateModals';
 
 export const ToolsModal = (props) => {
@@ -42,7 +41,7 @@ export const ToolsModal = (props) => {
   return (
     <>
       <Formik
-        initialValues={valueDataSkillsTools}
+        initialValues={{ tools: userTool }}
         validationSchema={validateDataSkillsTools}
         onSubmit={async (values) => {
           try {
@@ -90,9 +89,6 @@ export const ToolsModal = (props) => {
                       handlerChangeEvent(e);
                     }}
                   />
-                  <button className="flex" type="button">
-                    <GrAddCircle />
-                  </button>
                 </div>
               </>
             ) : null}
