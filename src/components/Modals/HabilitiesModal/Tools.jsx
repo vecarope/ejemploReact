@@ -1,5 +1,6 @@
 import * as FormField from '../../Forms';
 import { Form, Formik } from 'formik';
+import { GrAddCircle } from 'react-icons/gr';
 import '../../../assets/componentsCSS/button.css';
 // import apiClient from '../../services/api.service';
 import Swal from 'sweetalert2';
@@ -37,6 +38,16 @@ export const ToolsModal = (props) => {
                 errors={errors}
                 // values={values}
               />
+            </div>
+            <div className="flex w-auto justify-end">
+              <button className="flex">
+                <GrAddCircle />
+              </button>
+            </div>
+            <div className="container py-8 justify-center">
+              <button className="btn btn-blue" type="submit">
+                Guardar Cambios
+              </button>
             </div>
           </Form>
         )}

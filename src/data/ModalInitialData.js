@@ -21,8 +21,19 @@ const valueStackAndSalary = {
 
 const valueWorkExperience = { devExperience: '', englishLevel: '' };
 
-export {valueAvailability,
-        valueCv,
-        valueEducation,
-        valueStackAndSalary,
-        valueWorkExperience}
+const valueDataSkillsLanguage = { lenguage: [] };
+
+const valueDataSkillsDatabases = { basesAndFrameworks: [] };
+
+const valueDataSkillsTools = { tools: [] };
+
+export {
+  valueAvailability,
+  valueCv,
+  valueEducation,
+  valueStackAndSalary,
+  valueWorkExperience,
+  valueDataSkillsLanguage,
+  valueDataSkillsDatabases,
+  valueDataSkillsTools
+};

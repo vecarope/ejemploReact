@@ -1,4 +1,5 @@
 import { ErrorMessage, Field, FieldArray } from 'formik';
+import { RiDeleteBinLine } from 'react-icons/ri';
 export const InputSelectArray = ({
   name,
   touched,
@@ -12,12 +13,12 @@ export const InputSelectArray = ({
       <FieldArray
         name={`${name}`}
         render={(arrayHelpers) => (
-          <ul>
+          <ul key={name.length}>
             {data &&
               data.map((element, index) => (
                 <li
                   className="flex items-center w-5/6 py-2.5 md:py-1.5 mx-auto"
-                  key={element.id}
+                  key={element.id + index}
                 >
                   <span className="flex-1 font-sans">{element.name}</span>
                   <Field
@@ -50,11 +51,29 @@ export const InputSelectArray = ({
                             m-0
                             focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                   >
-                    <option value={0}>Nivel</option>
-                    <option value={1}>Nivel 1</option>
-                    <option value={2}>Nivel 2</option>
-                    <option value={3}>Nivel 3</option>
+                    {element.level ? (
+                      <>
+                        <option value={element.level}>
+                          Actual: Nivel {element.level}
+                        </option>
+                        <option value={1}>Nivel 1</option>
+                        <option value={2}>Nivel 2</option>
+                        <option value={3}>Nivel 3</option>
+                      </>
+                    ) : (
+                      <>
+                        <option value={0}>Nivel</option>
+                        <option value={1}>Nivel 1</option>
+                        <option value={2}>Nivel 2</option>
+                        <option value={3}>Nivel 3</option>
+                      </>
+                    )}
                   </Field>
+                  {element.level || props.edit === true ? (
+                    <button className="px-4">
+                      <RiDeleteBinLine />
+                    </button>
+                  ) : null}
                 </li>
               ))}
           </ul>

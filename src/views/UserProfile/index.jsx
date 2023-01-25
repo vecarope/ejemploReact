@@ -192,7 +192,7 @@ export default function UserProfile() {
             <div className="flex-col space-y-3 ">
               <h1 className="mb-4">Avanzado</h1>
               {devLanguage.map((element, id) => (
-                <div className=" md:flex lg:flex ">
+                <div className=" md:flex lg:flex " key={id}>
                   <div
                     className="badge badge-outline border-light-purple p-1 pt-0 pb-0 rounded-md"
                     id={id}
@@ -203,7 +203,7 @@ export default function UserProfile() {
               ))}
               <h1 className="mb-4">Experimentado</h1>
               {database.map((element, id) => (
-                <div className="md:flex lg:flex ">
+                <div className="md:flex lg:flex " key={id}>
                   <div
                     className="badge badge-outline border-light-purple p-1 pt-0 pb-0 rounded-md"
                     id={id}
@@ -214,7 +214,7 @@ export default function UserProfile() {
               ))}
               <h1 className=" mt-2">Principiante</h1>
               {tools.map((element, id) => (
-                <div className="md:flex lg:flex">
+                <div className="md:flex lg:flex" key={id}>
                   <div
                     className="badge badge-outline border border-light-purple p-1 pt-0 pb-0 rounded-md"
                     id={id}
@@ -231,7 +231,7 @@ export default function UserProfile() {
       <div className="lg:flex-col p-1 mb-4 lg:mb-7 mt-4 lg:mt-10">
         <h1 className=" text-2xl mb-10">Educación</h1>
         {education.map((element, id) => (
-          <div className=" flex justify-between" id={id}>
+          <div className=" flex justify-between" id={id} key={id}>
             <div>
               <h1 className=" text-blue-700 text-sm font-bold">
                 {element.startMonth} {element.startYear} - {element.endMonth}{' '}
