@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import * as FormField from '../../Forms';
 import { Form, Formik } from 'formik';
 import { GrAddCircle } from 'react-icons/gr';
@@ -6,7 +7,7 @@ import Swal from 'sweetalert2';
 import { useEffect, useState } from 'react';
 import { valueDataSkillsDatabases } from '../../../data/ModalInitialData';
 import { validateDataSkillsDatabase } from '../../../validation/validateModals';
-import apiClient from '../../services/api.service';
+import apiClient from '../../../services/api.service';
 
 export const DatabasesModal = (props) => {
   const [frameworkAPI, setFrameworksAPI] = useState(null);
@@ -17,22 +18,22 @@ export const DatabasesModal = (props) => {
     setshowComponent(true);
   };
   const getAllFrameworks = async () => {
-    const { data } = await apiClient('/dev-frameworks');
+    const { data } = await apiClient('/databases');
     setFrameworksAPI(data);
   };
-  useEffect(()=> {
+  useEffect(() => {
     getAllFrameworks();
-  },[]);
+  }, []);
 
-  let frameworkFilter = frameworkAPI?.filter((el)=>{
-    let found =false,
-    x=0;
-    while ( x < userFramework.length && !found){
+  let frameworkFilter = frameworkAPI?.filter((el) => {
+    let found = false,
+      x = 0;
+    while (x < userFramework.length && !found) {
       if (el.name === userFramework[x].name) found = true;
       x++;
     }
     if (!found) return el;
-    });
+  });
   const handlerChangeEvent = (e) => {
     let add = frameworkFilter.filter((el) => el.name === e.target.value);
     setUserFrameworks([...userFramework, ...add]);
@@ -72,13 +73,13 @@ export const DatabasesModal = (props) => {
               />
             </div>
             <div className="flex w-auto justify-end">
-              <button className="flex">
+              <button className="flex" type="button" onClick={extraComponent}>
                 <GrAddCircle />
               </button>
             </div>
             {showComponent !== false ? (
               <>
-                  <div className="col-span-6 sm:col-span-6">
+                <div className="col-span-6 sm:col-span-6">
                   <FormField.InputSelect
                     label={'Indica la tecnología:'}
                     touched={touched}
@@ -95,7 +96,7 @@ export const DatabasesModal = (props) => {
                   </button>
                 </div>
               </>
-            ): null}
+            ) : null}
             <div className="container py-8 justify-center">
               <button className="btn btn-blue" type="submit">
                 Guardar Cambios

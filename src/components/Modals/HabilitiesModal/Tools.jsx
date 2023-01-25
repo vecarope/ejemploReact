@@ -1,8 +1,9 @@
+/* eslint-disable array-callback-return */
 import * as FormField from '../../Forms';
 import { Form, Formik } from 'formik';
 import { GrAddCircle } from 'react-icons/gr';
 import '../../../assets/componentsCSS/button.css';
-import apiClient from '../../services/api.service';
+import apiClient from '../../../services/api.service';
 import { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import { valueDataSkillsTools } from '../../../data/ModalInitialData';
@@ -17,17 +18,18 @@ export const ToolsModal = (props) => {
     setshowComponent(true);
   };
   const getAllTools = async () => {
-    const { data } = await apiClient('/dev-tools');
-    setLenguageAPI(data);
+    const { data } = await apiClient('/tools');
+    setToolAPI(data);
   };
   useEffect(() => {
     getAllTools();
   }, []);
-  let toolsFilter = toolAPI?.filter((el)=> {
+
+  let toolsFilter = toolAPI?.filter((el) => {
     let found = false,
-    x=0;
-    while(x < userTool.length && !found) {
-      if (el.name === userTool[x].name) found= true;
+      x = 0;
+    while (x < userTool.length && !found) {
+      if (el.name === userTool[x].name) found = true;
       x++;
     }
     if (!found) return el;
@@ -70,7 +72,7 @@ export const ToolsModal = (props) => {
               />
             </div>
             <div className="flex w-auto justify-end">
-              <button className="flex">
+              <button className="flex" type="button" onClick={extraComponent}>
                 <GrAddCircle />
               </button>
             </div>
@@ -87,14 +89,14 @@ export const ToolsModal = (props) => {
                     onChange={(e) => {
                       handlerChangeEvent(e);
                     }}
-                  />     
-                      <button className="flex" type="button">
+                  />
+                  <button className="flex" type="button">
                     <GrAddCircle />
                   </button>
-                </div>        
+                </div>
               </>
             ) : null}
-            
+
             <div className="container py-8 justify-center">
               <button className="btn btn-blue" type="submit">
                 Guardar Cambios
