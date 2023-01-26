@@ -9,7 +9,7 @@ export const InputSelectArray = ({
   values,
   ...props
 }) => {
-  const deleteTechnology = () => {
+  /*  const deleteTechnology = () => {
     Swal.fire({
       title: '¡Cuidado!',
       text: '¿Deseas eliminar esta tecnología?.',
@@ -29,18 +29,18 @@ export const InputSelectArray = ({
         });
       }
     });
-  };
+  }; */
   return (
     <div className="w-80 md:w-96">
       <FieldArray
         name={`${name}`}
         render={(arrayHelpers) => (
-          <ul key={name.length}>
+          <ul>
             {data &&
               data.map((element, index) => (
                 <li
                   className="flex items-center w-5/6 py-2.5 md:py-1.5 mx-auto"
-                  key={element.id + index}
+                  key={element.id + name}
                 >
                   <span className="flex-1 font-sans">{element.name}</span>
                   <Field
@@ -49,10 +49,10 @@ export const InputSelectArray = ({
                     id={element.id}
                     name={`${name}[${index}].level`}
                     onChange={(e) => {
-                      let index = values[name].findIndex(
+                      let indexTec = values[name].findIndex(
                         (lang) => lang.id === element.id
                       );
-                      if (index >= 0) {
+                      if (indexTec >= 0) {
                         arrayHelpers.replace(index, {
                           ...element,
                           level: e.target.value
@@ -90,7 +90,7 @@ export const InputSelectArray = ({
                     <button
                       className="px-4"
                       type="button"
-                      onClick={deleteTechnology}
+                      onClick={() => arrayHelpers.remove(index)}
                     >
                       <RiDeleteBinLine />
                     </button>
