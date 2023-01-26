@@ -98,9 +98,14 @@ export const ProfilePersonal = (props) => {
                 confirmButtonText: 'Cerrar',
                 confirmButtonColor: '#2738F5'
               })
-                .then(() => props.setShowModal(false))
-                .then(updateProfile(values))
-                .then(updateUser(values));
+                .then(() => {
+                  props.setShowModal(false)
+                  updateProfile(values)
+                  updateUser({
+                    firstName: values.firstName,
+                    lastName: values.lastName,
+                  })
+                });
             } catch (error) {
               console.error(error);
             }
@@ -132,8 +137,7 @@ export const ProfilePersonal = (props) => {
                 <div className="col-span-2 row-span-1">
                   <FormField.InputField
                     label="Email"
-                    touched={touched}
-                    errors={errors}
+                    disabled
                     type="email"
                     name="email"
                     id="email"

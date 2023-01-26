@@ -19,7 +19,7 @@ import { useAuth } from '../../context/authContext';
 import apiClient from '../../services/api.service';
 
 export default function UserProfile() {
-  const { userData } = useAuth();
+  const { userData, setUserData } = useAuth();
 
   const [profile, setProfile] = useState([]);
   const [education, setEducation] = useState([]);
@@ -104,7 +104,7 @@ export default function UserProfile() {
             updateProfile={updateProfile}
             data={profile}
             userData={userData}
-            // updateUser={updateUser}
+            updateUser={(data) => setUserData(user => ({...user, ...data}))}
           />
         </div>
       </div>

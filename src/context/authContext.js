@@ -95,6 +95,7 @@ export const AuthProvider = ({ children }) => {
 
   const data = {
     userData,
+    setUserData,
     userLogout,
     postLogin,
     forgotPassword,
