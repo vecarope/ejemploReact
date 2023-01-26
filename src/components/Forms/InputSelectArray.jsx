@@ -48,7 +48,6 @@ export const InputSelectArray = ({
                     as="select"
                     id={element.id}
                     name={`${name}[${index}].level`}
-                    // defaultValue={element.value || false}
                     onChange={(e) => {
                       let index = values[name].findIndex(
                         (lang) => lang.id === element.id

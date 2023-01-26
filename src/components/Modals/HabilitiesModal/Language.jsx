@@ -87,9 +87,9 @@ export const LanguageModal = (props) => {
                     label={'Indica la tecnología:'}
                     touched={touched}
                     errors={errors}
-                    name="lenguageTwo"
-                    id="lenguageTwo"
-                    data={languajesFilter.map((e, index) => e.name)}
+                    name="lenguageSelect"
+                    id="lenguageSelect"
+                    data={languajesFilter.map((e) => e.name)}
                     onChange={(e) => {
                       handlerChangeEvent(e);
                     }}

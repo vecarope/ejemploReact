@@ -3,9 +3,24 @@ import '../../assets/componentsCSS/button.css';
 import { LanguageModal } from './HabilitiesModal/Language';
 import { DatabasesModal } from './HabilitiesModal/Frameworks';
 import { ToolsModal } from './HabilitiesModal/Tools';
+import { useEffect, useState } from 'react';
+import apiClient from '../../services/api.service';
 
 const DataSkills = (props) => {
-  const { devLanguage, database, tools } = props;
+  const [devLanguage, setdevLanguage] = useState([]);
+  const [database, setDatabase] = useState([]);
+  const [tools, setTools] = useState([]);
+
+  const getUserInfo = async () => {
+    const { data } = await apiClient('/users/skills');
+    setdevLanguage(data['devlanguages']);
+    setDatabase(data['databases']);
+    setTools(data['tools']);
+  };
+
+  useEffect(() => {
+    getUserInfo();
+  }, []);
 
   return (
     <Modal title="Edita tus skills:">

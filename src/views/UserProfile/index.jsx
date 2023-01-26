@@ -181,11 +181,7 @@ export default function UserProfile() {
       <div className="mb-4 p-1 lg:mb-7 mt-4 lg:mt-10">
         <div className="flex justify-between mb-8">
           <h1 className="text-2xl">Habilidades</h1>
-          <DataSkills
-            devLanguage={devLanguage}
-            database={database}
-            tools={tools}
-          />
+          <DataSkills />
         </div>
         <div className="gap-5 lg:gap-12 grid-col">
           <div className=" flex flex-row">
