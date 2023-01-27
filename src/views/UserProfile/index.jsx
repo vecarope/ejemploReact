@@ -14,44 +14,48 @@ import apiClient from '../../services/api.service';
 import Availability from '../../components/Modals/Availability';
 import CvModal from '../../components/Modals/CvModal';
 import WorkModal from '../../components/Modals/WorkModal';
-import {RoleAndCurrentSalary}  from '../../components/Modals/RoleAndCurrentSalary';
-import EducationModal from '../../components/Modals/EducationModal'
+import { RoleAndCurrentSalary } from '../../components/Modals/RoleAndCurrentSalary';
+import EducationModal from '../../components/Modals/EducationModal';
 import DeleteEducation from '../../components/Modals/DeleteEducation';
 import AddEducation from '../../components/Modals/AddEducation';
 
 export default function UserProfile() {
-
   const { userData } = useAuth();
 
-  const [profile,setProfile]= useState([]);
-  const [education,setEducation]= useState([]);
-  const [devLanguage,setLanguage]= useState([]);
-  const [database, setDataBase] =useState([]);
+  const [profile, setProfile] = useState([]);
+  const [education, setEducation] = useState([]);
+  const [devLanguage, setLanguage] = useState([]);
+  const [database, setDataBase] = useState([]);
   const [tools, setTools] = useState([]);
-  
 
   useEffect(() => {
     async function getData() {
       const res = await apiClient.get('/applicant');
-      setProfile(res.data[0])
-      setEducation(res.data[1])
-      setLanguage(res.data[2])
-      setDataBase(res.data[3])
-      setTools(res.data[4])
+      setProfile(res.data[0]);
+      setEducation(res.data[1]);
+      setLanguage(res.data[2]);
+      setDataBase(res.data[3]);
+      setTools(res.data[4]);
     }
     getData();
-  },[]);
+  }, []);
 
-  const updateProfile = (newState) => {
-    setProfile(prevState => ({...prevState, ...newState}));
-  }; 
-  
-  const updateEducation = (newState) =>{
-    setEducation(prevState =>([{...prevState, ...newState}]));
+  const updateProfile = newState => {
+    setProfile(prevState => ({ ...prevState, ...newState }));
   };
 
-  const removeEducation = (id) =>{
-    setEducation((prevState) => prevState.filter((element) => element.id !== id ));
+  // const postEducation = (newState) =>{
+  //   console.log (setEducation(prevState =>(([...prevState, newState ]))))
+  // };
+
+
+  const updateEducation =(values, id )=>{
+    setEducation(prevState => prevState.map(e => e.id === id ? ({...e,...values}): e))
+  }
+  
+  //ok
+  const removeEducation =(id )=> {
+    setEducation(prevState => prevState.filter(element => element.id !== id));
   };
 
   if (!userData)
@@ -76,10 +80,10 @@ export default function UserProfile() {
           </div>
         </div>
       </div>
-      ) 
-    return (
+    );
+  return (
     <div className="grid container mx-auto mr-10 md:w-screen md:mt-5 lg:my-10 ml-3 lg:mx-20 lg:w-screen m-5 lg:m-12">
-      <h1 className="font-bold text-lg md:text-xl lg:text-2xl md:mb-3 lg:mb-4 ">  
+      <h1 className="font-bold text-lg md:text-xl lg:text-2xl md:mb-3 lg:mb-4 ">
         ¡Bienvenido!
       </h1>
       <br />
@@ -92,7 +96,8 @@ export default function UserProfile() {
           <h2 className="text-sm">{profile.cvUrl}</h2>
         </div>
         <div>
-          <CvModal updateProfile={updateProfile} />
+          <CvModal updateProfile={updateProfile}
+          data={profile} />
         </div>
       </div>
       <hr className=" border-black" />
@@ -110,7 +115,7 @@ export default function UserProfile() {
           <FiEdit2 />
         </div>
       </div>
-        
+
       <div className="flex justify-start sm:justify-around md:justify-around gap-8 mb-2 mt-4 lg:mb-7">
         <div className="flex gap-5">
           <AiOutlineMail className=" text-xl" />
@@ -149,7 +154,7 @@ export default function UserProfile() {
             <h2>Nivel Ingles: {profile.englishLevel}</h2>
           </div>
           <div>
-            <WorkModal updateProfile={updateProfile} />
+            <WorkModal updateProfile={updateProfile} data={profile}/>
           </div>
         </div>
       </div>
@@ -165,7 +170,7 @@ export default function UserProfile() {
             <h2>Posibilidad de ingreso: {profile.availabilityStatus}</h2>
           </div>
           <div>
-            <Availability updateProfile={updateProfile} />
+            <Availability updateProfile={updateProfile} data={profile} />
           </div>
         </div>
       </div>
@@ -181,7 +186,7 @@ export default function UserProfile() {
             <p> Salario actual: USD {profile.currentSalary}</p>
           </div>
           <div>
-            <RoleAndCurrentSalary updateProfile={updateProfile} />
+            <RoleAndCurrentSalary updateProfile={updateProfile} data={profile} />
           </div>
         </div>
       </div>
@@ -234,25 +239,36 @@ export default function UserProfile() {
       <hr className="border-black" />
       <div className="lg:flex-col p-1 mb-4 lg:mb-7 mt-4 lg:mt-10">
         <h1 className=" text-2xl mb-4">Educación</h1>
-        <div className='flex justify-end mb-4'>
-          <AddEducation updateListEducation={setEducation} education={education} updateEducation={updateEducation}/>
+        <div className="flex justify-end mb-4">
+          <AddEducation
+          setEducation={setEducation}
+          id={education.id}
+          data={education}
+          />
         </div>
-        {education.map((element, id)=>(
-        <div className=" flex justify-between my-4"  key={id}>
-          <div>
-            <h1 className=" text-blue-700 text-sm font-bold">{`${element.startMonth} ${element.startYear} - ${element.endMonth} ${element.endYear}`}</h1>
-            <h1 className="text-2xl">{element.name}</h1>
-            <h1 className=" text-blue-700 text-sm font-bold">
-              {element.instituteName}
-            </h1>
+        {education.map((element) => (
+          <div className=" flex justify-between my-4" value={element.id} key={element.id}>
+            <div>
+              <h1 className=" text-blue-700 text-sm font-bold">{`${element.startMonth} ${element.startYear} - ${element.endMonth} ${element.endYear}`}</h1>
+              <h1 className="text-2xl">{element.name}</h1>
+              <h1 className=" text-blue-700 text-sm font-bold">
+                {element.instituteName}
+              </h1>
+            </div>
+            <div className=" flex gap-5 justify-between">
+              <EducationModal
+              updateEducation={updateEducation}
+              id={element.id}
+              data={education}
+              />
+              <DeleteEducation
+                removeEducation={removeEducation}
+                id={element.id}
+              />
+            </div>
           </div>
-          <div className=" flex gap-5 justify-between">
-            <EducationModal updateListEducation={setEducation} education={education} updateEducation={updateEducation} />
-            <DeleteEducation removeEducation={removeEducation} id={element.id}/>
-          </div>
-        </div>
         ))}
       </div>
     </div>
-    ); 
+  );
 }

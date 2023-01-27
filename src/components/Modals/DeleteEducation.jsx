@@ -3,8 +3,8 @@ import apiClient from '../../services/api.service';
 import { RiDeleteBinLine } from 'react-icons/ri';
 
 const DeleteEducation = props => {
-  const {removeEducation}=props;
-  const { id } = props;
+  const {removeEducation}=props; 
+  const { id } = props; 
 
   async function deleteItem(id) {
     try {
@@ -18,6 +18,7 @@ const DeleteEducation = props => {
         confirmButtonText: 'Si, eliminar!'
       });
       if (result.isConfirmed) {
+
         await apiClient.delete(`/users/education/${id}`)
         removeEducation(id)
         Swal.fire({
