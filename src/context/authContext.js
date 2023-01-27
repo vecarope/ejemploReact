@@ -27,6 +27,11 @@ export const AuthProvider = ({ children }) => {
     localStorage.clear();
   };
 
+  const updateUser = (data) => {
+    setUserData(data);
+    localStorage.setItem('user', JSON.stringify(data));
+  }
+
   const postLogin = async (values) => {
     const { user, token } = await postLoginAxios(values);
     if (user) {
@@ -123,6 +128,7 @@ export const AuthProvider = ({ children }) => {
 
   const data = {
     userData,
+    updateUser,
     userLogout,
     postLogin,
     loginWithGoogle,
