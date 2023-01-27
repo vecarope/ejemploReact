@@ -43,13 +43,13 @@ const AddEducation = (props) => {
                 <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
                   <Formik
                     initialValues={{
-                      name: data.name || '',
-                      instituteName: data.instituteName || '',
-                      type:data.type || '',
-                      startMonth:data.startMonth || '',
-                      endMonth: data.endMonth || '',
-                      startYear:data.startYear || '',
-                      endYear:data.endYear || ''
+                      name: '',
+                      instituteName:  '',
+                      type: '',
+                      startMonth: '',
+                      endMonth:  '',
+                      startYear: '',
+                      endYear: ''
                     }}
                     validationSchema={validateNewEducation}
                     onSubmit={async values => {
