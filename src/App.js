@@ -18,6 +18,8 @@ const RestorePasswordPage = React.lazy(() => import('./views/RestorePassword'));
 const DevlanguageTable = React.lazy(() => import('./views/Admin/Tables/DevlanguageTable'));
 const DatabaseTable = React.lazy(() => import('./views/Admin/Tables/DatabaseTable'));
 const ToolsTable = React.lazy(() => import('./views/Admin/Tables/ToolsTable'));
+const CompaniesTable = React.lazy(() => import('./views/Admin/Tables/CompaniesTable'));
+const ApplicantTable = React.lazy(() => import('./views/Admin/Tables/ApplicantTable'));
 
 function App() {
   const { userData } = useAuth();
@@ -60,6 +62,8 @@ function App() {
             <Route path="devlanguage" element={<DevlanguageTable />} />
             <Route path="database" element={<DatabaseTable />} />
             <Route path="tools" element={<ToolsTable />} />
+            <Route path="companies" element={<CompaniesTable />} />
+            <Route path="applicant" element={<ApplicantTable />} />
           </Route>
 
           <Route path="/404" element={<Error404 />} />
