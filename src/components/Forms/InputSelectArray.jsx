@@ -49,20 +49,10 @@ export const InputSelectArray = ({
                     id={element.id}
                     name={`${name}[${index}].level`}
                     onChange={(e) => {
-                      let indexTec = values[name].findIndex(
-                        (lang) => lang.id === element.id
-                      );
-                      if (indexTec >= 0) {
                         arrayHelpers.replace(index, {
                           ...element,
                           level: e.target.value
                         });
-                      } else {
-                        arrayHelpers.push({
-                          ...element,
-                          level: e.target.value
-                        });
-                      }
                     }}
                     className="flex-1 bg-[#E2F2FE] border-[#140B34] rounded-md form-select form-select-sm
                             appearance-none

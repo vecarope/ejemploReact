@@ -11,11 +11,7 @@ import apiClient from '../../../services/api.service';
 export const LanguageModal = (props) => {
   const [lenguageAPI, setLenguageAPI] = useState(null);
   const [userLanguaje, setUserLanguaje] = useState(props.info);
-  const [showComponent, setshowComponent] = useState(false);
-
-  const extraComponent = () => {
-    setshowComponent(true);
-  };
+  const [showComponent, setShowComponent] = useState(false);
 
   const getAllLanguajes = async () => {
     const { data } = await apiClient('/dev-languages');
@@ -37,10 +33,11 @@ export const LanguageModal = (props) => {
     // return userLanguaje.find((l) => l.name !== el.name);
   });
 
-  const handlerChangeEvent = (e) => {
+  const handlerChangeEvent = (e, values, setFieldValue) => {
     let add = languajesFilter.filter((el) => el.name === e.target.value);
-    setUserLanguaje([...userLanguaje, ...add]);
-    setshowComponent(false);
+    setUserLanguaje([...values, ...add]);
+    setFieldValue("lenguage", [...values, ...add]);
+    setShowComponent(false);
   };
   return (
     <>
@@ -62,11 +59,11 @@ export const LanguageModal = (props) => {
           }
         }}
       >
-        {({ errors, touched, values }) => (
+        {({ errors, touched, values, setFieldValue }) => (
           <Form>
             <div className="col-span-7 md:col-span-4 lg:col-span-6 md:mx-auto w-full">
               <FormField.InputSelectArray
-                data={userLanguaje}
+                data={values.lenguage}
                 name="lenguage"
                 id="lenguage"
                 touched={touched}
@@ -76,7 +73,7 @@ export const LanguageModal = (props) => {
               />
             </div>
             <div className="flex w-auto justify-end">
-              <button className="flex" type="button" onClick={extraComponent}>
+              <button className="flex" type="button" onClick={() => setShowComponent(true)}>
                 <GrAddCircle />
               </button>
             </div>
@@ -91,7 +88,7 @@ export const LanguageModal = (props) => {
                     id="lenguageSelect"
                     data={languajesFilter.map((e) => e.name)}
                     onChange={(e) => {
-                      handlerChangeEvent(e);
+                      handlerChangeEvent(e, values.lenguage, setFieldValue);
                     }}
                   />
                 </div>
