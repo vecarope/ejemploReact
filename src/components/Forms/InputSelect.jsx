@@ -21,12 +21,9 @@ export const InputSelect = ({ label, touched, errors, data, ...props }) => {
       >
         {data[1] ? (
           <>
-            <option defaultValue={null}>Selecionar</option>
+            <option defaultValue={null}>Seleccionar</option>
             {data.map((element, index) => (
-              <option
-                key={index}
-                value={props.name === 'educationalLevel' ? index : element}
-              >
+              <option key={index} value={element}>
                 {element}
               </option>
             ))}

@@ -10,9 +10,6 @@ export const initialForm = {
   name: '',
   institute_name: '',
   type: '',
-  name2: '',
-  institute_name2: '',
-  type2: '',
   educationalLevel: '',
   educationStatusCurrent: '',
   englishLevel: '',
@@ -33,6 +30,6 @@ export const initialForm = {
   relocationOption: '',
   visa: '',
   lenguage: [],
-  baseAndFramework: [],
+  basesAndFrameworks: [],
   tools: []
 };
