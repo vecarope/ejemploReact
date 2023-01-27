@@ -1,6 +1,5 @@
 import { ErrorMessage, Field, FieldArray } from 'formik';
 import { RiDeleteBinLine } from 'react-icons/ri';
-import Swal from 'sweetalert2';
 export const InputSelectArray = ({
   name,
   touched,
@@ -9,27 +8,6 @@ export const InputSelectArray = ({
   values,
   ...props
 }) => {
-  /*  const deleteTechnology = () => {
-    Swal.fire({
-      title: '¡Cuidado!',
-      text: '¿Deseas eliminar esta tecnología?.',
-      icon: 'info',
-      showCancelButton: true,
-      confirmButtonColor: '#1E239A',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, eliminar'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: '¡Tecnologia eliminada!',
-          showConfirmButton: false,
-          timer: 1500
-        });
-      }
-    });
-  }; */
   return (
     <div className="w-80 md:w-96">
       <FieldArray
@@ -49,10 +27,10 @@ export const InputSelectArray = ({
                     id={element.id}
                     name={`${name}[${index}].level`}
                     onChange={(e) => {
-                        arrayHelpers.replace(index, {
-                          ...element,
-                          level: e.target.value
-                        });
+                      arrayHelpers.replace(index, {
+                        ...element,
+                        level: e.target.value
+                      });
                     }}
                     className="flex-1 bg-[#E2F2FE] border-[#140B34] rounded-md form-select form-select-sm
                             appearance-none
