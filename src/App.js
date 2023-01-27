@@ -18,7 +18,6 @@ const RestorePasswordPage = React.lazy(() => import('./views/RestorePassword'));
 const DevlanguageTable = React.lazy(() => import('./views/Admin/Tables/DevlanguageTable'));
 const DatabaseTable = React.lazy(() => import('./views/Admin/Tables/DatabaseTable'));
 const ToolsTable = React.lazy(() => import('./views/Admin/Tables/ToolsTable'));
-const Companies = React.lazy(() => import('./views/Admin/Tables/CompaniesTable'));
 
 function App() {
   const { userData } = useAuth();
