@@ -1,25 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import { GrDocumentTransfer } from 'react-icons/gr';
-import { FiEdit2 } from 'react-icons/fi';
-import { SlUser } from 'react-icons/sl';
+import React, { useEffect, useState } from 'react';
 import { AiOutlineMail, AiOutlinePhone } from 'react-icons/ai';
-import { BsLinkedin, BsGithub } from 'react-icons/bs';
+import { BsGithub, BsLinkedin } from 'react-icons/bs';
+import { SlUser } from 'react-icons/sl';
+import { GrDocumentTransfer } from 'react-icons/gr';
 import {
   MdOutlineBookmarkAdded,
   MdOutlineEventAvailable
 } from 'react-icons/md';
-import { RiFolderUserLine, RiDeleteBinLine } from 'react-icons/ri';
+import { RiFolderUserLine } from 'react-icons/ri';
 import { useAuth } from '../../context/authContext';
 import apiClient from '../../services/api.service';
 import Availability from '../../components/Modals/Availability';
 import CvModal from '../../components/Modals/CvModal';
+import { ProfilePersonal } from '../../components/Modals/ProfilePersonal';
+import { RoleAndCurrentSalary } from '../../components/Modals/RoleAndCurrentSalary';
 import WorkModal from '../../components/Modals/WorkModal';
 import EducationModal from '../../components/Modals/EducationModal';
-import { RoleAndCurrentSalary } from '../../components/Modals/RoleAndCurrentSalary';
 import DataSkills from '../../components/Modals/DataSkills';
+import DeleteEducation from '../../components/Modals/DeleteEducation';
+//import AddEducation from '../../components/Modals/AddEducation';
 
 export default function UserProfile() {
-  const { userData } = useAuth();
+  const { userData, updateUser } = useAuth();
   const [profile, setProfile] = useState([]);
   const [education, setEducation] = useState([]);
   const [devLanguage, setLanguage] = useState([]);
@@ -44,6 +46,12 @@ export default function UserProfile() {
 
   const updateEducation = (newState) => {
     setEducation((prevState) => [{ ...prevState, ...newState }]);
+  };
+
+  const removeEducation = (id) => {
+    setEducation((prevState) =>
+      prevState.filter((element) => element.id !== id)
+    );
   };
 
   if (!userData)
@@ -98,8 +106,13 @@ export default function UserProfile() {
           </h1>
           <p className="text-lg">{profile.country}</p>
         </div>
-        <div>
-          <FiEdit2 />
+        <div className="flex justify-end">
+          <ProfilePersonal
+            updateProfile={updateProfile}
+            data={profile}
+            userData={userData}
+            updateUser={(data) => updateUser({ ...userData, ...data })}
+          />
         </div>
       </div>
 
@@ -226,13 +239,13 @@ export default function UserProfile() {
       <hr className="border-black" />
       <div className="lg:flex-col p-1 mb-4 lg:mb-7 mt-4 lg:mt-10">
         <h1 className=" text-2xl mb-10">Educación</h1>
+        <div className="text-end my-4">
+          {/* <AddEducation updateEducation={updateEducation}/> */}
+        </div>
         {education.map((element, id) => (
-          <div className=" flex justify-between" id={id} key={id}>
+          <div className=" flex justify-between my-4" id={id}>
             <div>
-              <h1 className=" text-blue-700 text-sm font-bold">
-                {element.startMonth} {element.startYear} - {element.endMonth}{' '}
-                {element.endYear}
-              </h1>
+              <h1 className=" text-blue-700 text-sm font-bold">{`${element.startMonth} ${element.startYear} - ${element.endMonth} ${element.endYear}`}</h1>
               <h1 className="text-2xl">{element.name}</h1>
               <h1 className=" text-blue-700 text-sm font-bold">
                 {element.instituteName}
@@ -240,7 +253,10 @@ export default function UserProfile() {
             </div>
             <div className=" flex gap-5 justify-between">
               <EducationModal updateEducation={updateEducation} />
-              <RiDeleteBinLine />
+              <DeleteEducation
+                removeEducation={removeEducation}
+                id={element.id}
+              />
             </div>
           </div>
         ))}
