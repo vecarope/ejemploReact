@@ -1,29 +1,19 @@
 import {ExportCompanies} from './Buttons/Buttons'
+import { useEffect, useState } from 'react';
+import apiClient from '../../services/api.service';
 
 const AdminCompanies = () => {
     
 
-  let Companies = [
-      {
-        id: 1,
-        name: 'Ignacio',
-        lastName: 'Guiloff',
-        email: 'iguiloff@gmail.com',
-        phone: '7895487324',
-        companyName: 'Array Spa',
-        workArea: 'Diseñador UX/UI,Analista QA',
-      },
-      {
-        id: 2,
-        name: 'Elon',
-        lastName: 'Musk',
-        email: 'emusk@spacex.com',
-        phone: '8895887828',
-        companyName: 'Space X',
-        workArea: 'Desarrollador Frontend,Desarrollador Full Stack / Backend',        
-      },
-    ];  
-    return (
+  const [companies, setCompanies] = useState(null);
+  const getAllCompanies = async () => {
+    setCompanies(await apiClient('admin/get-companies'));
+  };
+  useEffect(() => {
+    getAllCompanies();
+  }, []); 
+
+      return (
       <div className="grid container my-10 mr-1 md:mx-5 lg:mx-8 xl:mx-10">
        <div class="grid grid-cols-8 sm:grid-cols-6 gap-4 ml-5">
        <h1 className="font-bold text-lg md:text-xl lg:text-2xl mt-4 md:mb-2 lg:mb-4  col-start-1 col-end-3">
@@ -44,10 +34,13 @@ const AdminCompanies = () => {
                   <th scope="col" className="px-6 py-3 ">Email</th>
                   <th scope="col" className="px-6 py-3 ">Teléfono</th>
                   <th scope="col" className="px-6 py-3 ">Área de Busqueda</th>
+                  <th scope="col" className="px-6 py-3 ">Comentario</th>
                 </tr>
               </thead>
                 <tbody>
-                {Companies.map((e) => (
+                {
+                companies !== null ? (
+                companies.data.map((e) => (
                   <tr
                     className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
                     key={e.id}
@@ -62,9 +55,10 @@ const AdminCompanies = () => {
                     <td className="px-6 py-4">{e.lastName}</td>
                     <td className="px-6 py-4">{e.email}</td>
                     <td className="px-6 py-4">{e.phone}</td>
-                    <td className="px-6 py-4">{e.workArea}</td>
+                    <td className="px-6 py-4">{e.search}</td>
+                    <td className="px-6 py-4">{e.doubts}</td>
                   </tr>
-                ))}
+                ))):(<progress className="animate-pulse progress w-56">Cargando datos</progress>)}
               </tbody>
             </table>
           </div>
