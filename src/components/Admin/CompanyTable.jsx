@@ -33,7 +33,7 @@ const AdminCompanies = () => {
           <ExportCompanies></ExportCompanies>
           </div>
         </div>
-        <div className="sm:max-w-screen-sm lg:max-w-screen-sm xl:max-w-screen-xl">
+        <div className="sm:max-w-screen-sm md:max-w-screen-sm lg:max-w-screen-sm xl:max-w-screen-lg">
         <div className="relative overflow-x-auto ">
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
               <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
