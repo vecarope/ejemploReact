@@ -1,68 +1,18 @@
-import {ExportApplicant} from './Buttons/Buttons'
+import { useEffect, useState } from 'react';
+import apiClient from '../../services/api.service';
+import {ExportApplicant} from './Buttons/Buttons';
 
 const AdminApplicant = () => {
-    
 
-  let applicant =  [
-    {
-      firstName: 'Alexis',
-      lastName: 'Sanchez',
-      email: 'doglover@gmail.com',
-      id: 7,
-      phoneNumber: "+56965930736",
-      city: "Santiago",
-      country: "Chile",
-      gender: "Masculino",
-      employmentStatusCurrent: "Sin Empleo",
-      stack: "full stack",
-      educationalLevel: "universitaria",
-      educationStatusCurrent: "Bootcamp",
-      englishLevel: "No Level",
-      additionalToolsComment: "NestJS",
-      cvUrl: "http://www.cvUrlAlexis.net",
-      linkedinUrl: "http://www.linkedinUrlAlexis.net",
-      githubUrl: "http://www.githubUrlAlexis.net",
-      portfolioUrl: "http://www.portfolioUrlAlexis.net",
-      featuredProject: "web para vender productos",
-      devExperience: "sin experiencia",
-      idealWorkComment: "No lo tengo claro aún",
-      workAvailability: "fulltime, partime",
-      relocationOption: "Trabajar desde Francia",
-      visa: "Inglesa, Chilena",
-      userId: 7,
-      createdAt: '01-07-2020',
-      updatedAt: '01-07-2020'
-    },
-    {
-      id: 8,
-      firstName: 'Cristiano',
-      lastName: 'Santos',
-      email: 'eurocopa@gmail.com',
-      phoneNumber: "+56978952897",
-      city: "Lisboa",
-      country: "Portugal",
-      gender: "Masculino",
-      employmentStatusCurrent: "Empleado",
-      stack: "full stack",
-      educationalLevel: "universitaria",
-      educationStatusCurrent: "Universitaria",
-      englishLevel: "Avanzado",
-      additionalToolsComment: "WebPack",
-      cvUrl: "http://www.cvUrlCristiano.net",
-      linkedinUrl: "http://www.linkedinUrlCristiano.net",
-      githubUrl: "http://www.githubUrlCristiano.net",
-      portfolioUrl: "http://www.portfolioUrlCristiano.net",
-      featuredProject: "Ser el mejor jugador",
-      devExperience: "Con experiencia",
-      idealWorkComment: "Donde pueda brillar",
-      workAvailability: "fulltime, partime",
-      relocationOption: "Trabjo desde cualquier lugar",
-      visa: "Mundial",
-      userId: 8,
-    createdAt: '01-07-2020',
-      updatedAt: '01-07-2020',
-    },
-  ];  
+
+  const [applicant, setApplicant] = useState(null);
+  const getAllApplicant = async () => {
+    setApplicant(await apiClient('admin/get-workProfiles'));
+  };
+  useEffect(() => {
+    getAllApplicant();
+  }, []);
+
     return (
       <div className="grid container my-10 mr-1 md:mx-5 lg:mx-8 xl:mx-10">
        <div class="grid grid-cols-8 sm:grid-cols-6 gap-4 ml-5">
@@ -73,7 +23,7 @@ const AdminApplicant = () => {
           <ExportApplicant></ExportApplicant>
           </div>
         </div>
-        <div className="sm:max-w-screen-sm lg:max-w-screen-sm xl:max-w-screen-xl">
+        <div className="sm:max-w-screen-sm md:max-w-screen-sm lg:max-w-screen-sm xl:max-w-screen-xl">
         <div className="relative overflow-x-auto ">
             <table className=" text-sm text-left text-gray-500 dark:text-gray-400">
               <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -99,7 +49,9 @@ const AdminApplicant = () => {
                 </tr>
               </thead>
                 <tbody>
-                {applicant.map((e) => (
+                {
+                applicant !== null ? (
+                  applicant.data.map((e) => (
                   <tr
                     className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
                     key={e.id}
@@ -128,7 +80,9 @@ const AdminApplicant = () => {
                     <td className="text-xs mx-6">{e.idealWorkComment}</td>
                     <td className="text-xs align-middle">{e.workAvailability}</td>
                   </tr>
-                ))}
+                ))):(
+                  <progress className="animate-pulse progress w-56">Cargando datos</progress>
+                )}
               </tbody>
             </table>
           </div>
