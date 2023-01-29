@@ -49,7 +49,7 @@ const ContactUs = () => {
     <section
       className="animate__animated animate__fadeIn flex justify-center items-center min-h-screen
   md:h-5/6 md:py-11"
-  id="contact-section"
+      id="contact-section"
     >
       <div className="container flex mx-auto flex-col md:flex-row">
         <div className="text-center md:w-1/2 pb-8">
@@ -118,7 +118,7 @@ const ContactUs = () => {
               }
             }}
           >
-            {({  errors, touched, handleSubmit, isSubmitting }) => (
+            {({ errors, touched, handleSubmit, isSubmitting }) => (
               <Form
                 className="py-5 px-8 flex flex-wrap"
                 onSubmit={handleSubmit}
@@ -236,8 +236,11 @@ const ContactUs = () => {
                 {/* workArea section */}
                 <div className="hover:auto-cols-min">
                   {workAreaContact !== null ? (
-                    workAreaContact.data.map((e) => (
-                      <div className="form-control grow h-auto w-auto mx-5 grid grid-cols-1">
+                    workAreaContact.data.map((e, index) => (
+                      <div
+                        className="form-control grow h-auto w-auto mx-5 grid grid-cols-1"
+                        key={index}
+                      >
                         <label className="label cursor-pointer justify-start gap-4">
                           <Field
                             type="checkbox"
@@ -252,7 +255,9 @@ const ContactUs = () => {
                       </div>
                     ))
                   ) : (
-                    <progress className="animate-pulse progress w-56">Cargando datos</progress>
+                    <progress className="animate-pulse progress w-56">
+                      Cargando datos
+                    </progress>
                   )}
                   {errors.workAreaId && touched.workAreaId && (
                     <ErrorMessage
@@ -275,11 +280,11 @@ const ContactUs = () => {
                   Enviar
                 </button>
                 {isSubmitting ? (
-                <div className='my-4'>
-                <h2>Enviando Formulario</h2>
-                <progress className="animate-pulse progress w-56"></progress>
-                </div>
-              ) : null}
+                  <div className="my-4">
+                    <h2>Enviando Formulario</h2>
+                    <progress className="animate-pulse progress w-56"></progress>
+                  </div>
+                ) : null}
               </Form>
             )}
           </Formik>
