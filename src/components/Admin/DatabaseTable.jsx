@@ -25,10 +25,11 @@ const DatabaseTable = () => {
     ];
   
     return (
+      <div className="grid container  h-40 mx-auto m-5 w-80 mr-10 md:w-screen md:h-50 md:mt-3 lg:my-10 ml-3 lg:mx-20 lg:w-screen lg:h-80 lg:m-12">
       <div className="grid container my-10 mr-1 md:mx-5 lg:mx-5">
       <div class="grid grid-cols-8 sm:grid-cols-6 gap-4 ml-5">
         <h1 className="font-bold text-lg md:text-xl lg:text-2xl mt-4 md:mb-2 lg:mb-4  col-start-1 col-end-3">
-          Herramientas
+        Bases de datos
         </h1>
         <div className="col-end-8 sm:col-end-6 lg:col-end-6 xl:col-end-7 col-span-1">
           <button className="btn bg-[#89CFD9] text-[#232323] border-white inline-flex items-center font-light  sm:btn-md btn-md">
@@ -90,6 +91,7 @@ const DatabaseTable = () => {
           </table>
         </div>
       </div>
+    </div>
     </div>
     );
   };
