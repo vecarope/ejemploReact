@@ -1,33 +1,33 @@
-import {UpdateButton, DeleteButton} from './Buttons/Buttons'
+import { UpdateButton, DeleteButton } from './Buttons/Buttons';
 
 const ToolsTable = () => {
-    let tools = [
-      {
-        id: 1,
-        name: 'Github'
-      },
-      {
-        id: 2,
-        name: 'Adobe Illustrator'
-      },
-      {
-        id: 3,
-        name: 'Adobe Photoshop'
-      },
-      {
-        id: 4,
-        name: 'Adobe XD'
-      },
-      {
-        id: 5,
-        name: 'AWS'
-      },
-    ];
-  
-    return (
-      <div className="grid container  h-40 mx-auto m-5 w-80 mr-10 md:w-screen md:h-50 md:mt-3 lg:my-10 ml-3 lg:mx-20 lg:w-screen lg:h-80 lg:m-12">
+  let tools = [
+    {
+      id: 1,
+      name: 'Github'
+    },
+    {
+      id: 2,
+      name: 'Adobe Illustrator'
+    },
+    {
+      id: 3,
+      name: 'Adobe Photoshop'
+    },
+    {
+      id: 4,
+      name: 'Adobe XD'
+    },
+    {
+      id: 5,
+      name: 'AWS'
+    }
+  ];
+
+  return (
+    <div className="grid container  h-40 mx-auto m-5 w-80 mr-10 md:w-screen md:h-50 md:mt-3 lg:my-10 ml-3 lg:mx-20 lg:w-screen lg:h-80 lg:m-12">
       <div className="grid container my-10 mr-1 md:mx-5 lg:mx-5">
-        <div class="grid grid-cols-8 sm:grid-cols-6 gap-4 ml-5">
+        <div className="grid grid-cols-8 sm:grid-cols-6 gap-4 ml-5">
           <h1 className="font-bold text-lg md:text-xl lg:text-2xl mt-4 md:mb-2 lg:mb-4  col-start-1 col-end-3">
             Herramientas
           </h1>
@@ -37,17 +37,17 @@ const ToolsTable = () => {
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke-width="1.5"
+                strokeWidth="1.5"
                 stroke="currentColor"
-                class="w-6 h-6"
+                className="w-6 h-6"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              <span className='hidden sm:block'>Agregar</span>
+              <span className="hidden sm:block">Agregar</span>
             </button>
           </div>
         </div>
@@ -66,7 +66,7 @@ const ToolsTable = () => {
                   <th scope="col">Eliminar</th>
                 </tr>
               </thead>
-                <tbody>
+              <tbody>
                 {tools.map((e) => (
                   <tr
                     className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
@@ -80,10 +80,10 @@ const ToolsTable = () => {
                     </th>
                     <td className="sm:px-6 sm:py-4">{e.name}</td>
                     <td>
-                        <UpdateButton></UpdateButton>
+                      <UpdateButton></UpdateButton>
                     </td>
                     <td>
-                        <DeleteButton></DeleteButton>
+                      <DeleteButton></DeleteButton>
                     </td>
                   </tr>
                 ))}
@@ -92,9 +92,8 @@ const ToolsTable = () => {
           </div>
         </div>
       </div>
-      </div>
-    );
-  };
-  
-  export default ToolsTable;
-  
+    </div>
+  );
+};
+
+export default ToolsTable;

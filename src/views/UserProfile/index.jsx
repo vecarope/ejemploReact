@@ -243,7 +243,7 @@ export default function UserProfile() {
           {/* <AddEducation updateEducation={updateEducation}/> */}
         </div>
         {education.map((element, id) => (
-          <div className=" flex justify-between my-4" id={id}>
+          <div className=" flex justify-between my-4" key={id}>
             <div>
               <h1 className=" text-blue-700 text-sm font-bold">{`${element.startMonth} ${element.startYear} - ${element.endMonth} ${element.endYear}`}</h1>
               <h1 className="text-2xl">{element.name}</h1>

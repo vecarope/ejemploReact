@@ -6,12 +6,13 @@ export const InputSelectArray = ({
   errors,
   data,
   values,
+  updatedata,
   ...props
 }) => {
-  const deleteInfo = (index, arrayHelpers, element, data, updateData) => {
+  const deleteInfo = (index, arrayHelpers, element, data, updatedata) => {
     arrayHelpers.remove(index);
     let updateOptions = data.filter((el) => el.name !== element.name);
-    updateData(updateOptions);
+    updatedata(updateOptions);
   };
 
   return (
@@ -60,7 +61,7 @@ export const InputSelectArray = ({
                       <option value={3}>Nivel 3</option>
                     </>
                   </Field>
-                  {props.edit === true ? (
+                  {props.edit === 'true' ? (
                     <button
                       className="px-4"
                       type="button"
@@ -70,7 +71,7 @@ export const InputSelectArray = ({
                           arrayHelpers,
                           element,
                           data,
-                          props.updateData
+                          updatedata
                         )
                       }
                     >

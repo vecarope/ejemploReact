@@ -69,8 +69,8 @@ export const ToolsModal = (props) => {
                 touched={touched}
                 errors={errors}
                 values={values}
-                edit={true}
-                updateData={setUserTool}
+                edit="true"
+                updatedata={setUserTool}
               />
             </div>
             <div className="flex w-auto justify-end">
