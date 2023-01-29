@@ -69,8 +69,8 @@ export const DatabasesModal = (props) => {
                 touched={touched}
                 errors={errors}
                 values={values}
-                edit={true}
-                updateData={setUserFrameworks}
+                edit="true"
+                updatedata={setUserFrameworks}
               />
             </div>
             <div className="flex w-auto justify-end">

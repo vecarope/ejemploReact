@@ -68,8 +68,8 @@ export const LanguageModal = (props) => {
                 touched={touched}
                 errors={errors}
                 values={values}
-                edit={true}
-                updateData={setUserLanguaje}
+                edit="true"
+                updatedata={setUserLanguaje}
               />
             </div>
             <div className="flex w-auto justify-end">
