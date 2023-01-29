@@ -25,6 +25,7 @@ const ToolsTable = () => {
     ];
   
     return (
+      <div className="grid container  h-40 mx-auto m-5 w-80 mr-10 md:w-screen md:h-50 md:mt-3 lg:my-10 ml-3 lg:mx-20 lg:w-screen lg:h-80 lg:m-12">
       <div className="grid container my-10 mr-1 md:mx-5 lg:mx-5">
         <div class="grid grid-cols-8 sm:grid-cols-6 gap-4 ml-5">
           <h1 className="font-bold text-lg md:text-xl lg:text-2xl mt-4 md:mb-2 lg:mb-4  col-start-1 col-end-3">
@@ -90,6 +91,7 @@ const ToolsTable = () => {
             </table>
           </div>
         </div>
+      </div>
       </div>
     );
   };
