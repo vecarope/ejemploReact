@@ -13,7 +13,7 @@ export default function Dashboard(){
       {({ isActive }) =>
         <button
           key={index}
-          className={`h-16 flex md:w-48 p-5 text-start text-center cursor-pointer focus:bg-light-purple hover:bg-light-purple hover:text-white focus:text-white rounded-md ${isActive ? 'bg-light-purple text-white' : ''
+          className={`h-16 flex md:w-48 p-5  text-start cursor-pointer focus:bg-light-purple hover:bg-light-purple hover:text-white focus:text-white rounded-md ${isActive ? 'bg-light-purple text-white' : ''
             }`}>
           <div className='hidden md:flex gap-3 '>
             {item.icon} {item.title}
@@ -40,8 +40,8 @@ export default function Dashboard(){
           <ul>
         { userData.roleId === 1 ? dashboard(DashboardUser) : userData.roleId === 2? dashboard(DashboardAdmin) : null}
         </ul>
-        ):null} 
-      </div>
+        ):null}
+        </div>
     </div>
   )
 }
