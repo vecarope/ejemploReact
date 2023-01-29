@@ -10,7 +10,7 @@ const AdminLayout = () => {
   const { userData } = useAuth();
 
   return (
-    <div className="grid container  h-40 mx-auto m-5 w-80 mr-10 md:w-screen md:h-50 md:mt-3 lg:my-10 ml-3 lg:mx-20 lg:w-screen lg:h-80 lg:m-12">
+    <div className="grid container h-40 mx-auto m-5 w-80 mr-10 md:w-screen md:h-50 md:mt-3 lg:my-10 ml-3 lg:mx-20 lg:w-screen lg:h-80 lg:m-12">
       
       <h1 className="font-bold text-lg md:text-xl lg:text-2xl mt-4 md:mb-2 lg:mb-4 ">
         ¡Bienvenido!
@@ -24,10 +24,10 @@ const AdminLayout = () => {
           <h1 className="font-bold text-xl">
             {userData.firstName} {userData.lastName}
           </h1>
-          <p className="text-lg">Pais</p>
+          <p className="text-lg">País</p>
         </div>
         <div className="flex justify-end">
-          <FiEdit2 />
+          <FiEdit2/>
         </div>
       </div>
       <div className="flex justify-start sm:justify-around md:justify-around gap-8 mb-2 mt-4 lg:mb-7">
@@ -37,7 +37,7 @@ const AdminLayout = () => {
         </div>
         <div className="flex gap-5">
           <AiOutlinePhone className=" text-xl" />
-          <p className="hidden md:block">numero telefonico</p>
+          <p className="hidden md:block">Número telefonico</p>
         </div>
         <a
           role="button"
