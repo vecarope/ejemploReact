@@ -33,9 +33,10 @@ export const ToolsModal = (props) => {
     }
     if (!found) return el;
   });
-  const handlerChangeEvent = (e) => {
+  const handlerChangeEvent = (e, values, setFieldValue) => {
     let add = toolsFilter.filter((el) => el.name === e.target.value);
-    setUserTool([...userTool, ...add]);
+    setUserTool([...values, ...add]);
+    setFieldValue('tools', [...values, ...add]);
     setshowComponent(false);
   };
   return (
@@ -57,17 +58,18 @@ export const ToolsModal = (props) => {
           }
         }}
       >
-        {({ errors, touched, values }) => (
+        {({ errors, touched, values, setFieldValue }) => (
           <Form>
             <div className="col-span-7 md:col-span-4 lg:col-span-4 md:mx-auto">
               <FormField.InputSelectArray
-                data={userTool}
+                data={values.tools}
                 name="tools"
                 id="tools"
                 touched={touched}
                 errors={errors}
                 values={values}
                 edit={true}
+                updateData={setUserTool}
               />
             </div>
             <div className="flex w-auto justify-end">
@@ -86,7 +88,7 @@ export const ToolsModal = (props) => {
                     id="toolTwo"
                     data={toolsFilter.map((e, index) => e.name)}
                     onChange={(e) => {
-                      handlerChangeEvent(e);
+                      handlerChangeEvent(e, values.tools, setFieldValue);
                     }}
                   />
                 </div>

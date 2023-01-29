@@ -36,7 +36,7 @@ export const LanguageModal = (props) => {
   const handlerChangeEvent = (e, values, setFieldValue) => {
     let add = languajesFilter.filter((el) => el.name === e.target.value);
     setUserLanguaje([...values, ...add]);
-    setFieldValue("lenguage", [...values, ...add]);
+    setFieldValue('lenguage', [...values, ...add]);
     setShowComponent(false);
   };
   return (
@@ -45,7 +45,7 @@ export const LanguageModal = (props) => {
         initialValues={{ lenguage: userLanguaje }}
         validationSchema={validateDataSkillsLanguage}
         onSubmit={async (values) => {
-          console.log('VALUES-->', values);
+          // console.log('FORM LANG--<', values);
           try {
             // await apiClient.put('/users/cv', values);
             return Swal.fire({
@@ -70,10 +70,15 @@ export const LanguageModal = (props) => {
                 errors={errors}
                 values={values}
                 edit={true}
+                updateData={setUserLanguaje}
               />
             </div>
             <div className="flex w-auto justify-end">
-              <button className="flex" type="button" onClick={() => setShowComponent(true)}>
+              <button
+                className="flex"
+                type="button"
+                onClick={() => setShowComponent(true)}
+              >
                 <GrAddCircle />
               </button>
             </div>

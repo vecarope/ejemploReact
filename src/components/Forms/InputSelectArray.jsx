@@ -8,6 +8,12 @@ export const InputSelectArray = ({
   values,
   ...props
 }) => {
+  const deleteInfo = (index, arrayHelpers, element, data, updateData) => {
+    arrayHelpers.remove(index);
+    let updateOptions = data.filter((el) => el.name !== element.name);
+    updateData(updateOptions);
+  };
+
   return (
     <div className="w-80 md:w-96">
       <FieldArray
@@ -58,7 +64,15 @@ export const InputSelectArray = ({
                     <button
                       className="px-4"
                       type="button"
-                      onClick={() => arrayHelpers.remove(index)}
+                      onClick={() =>
+                        deleteInfo(
+                          index,
+                          arrayHelpers,
+                          element,
+                          data,
+                          props.updateData
+                        )
+                      }
                     >
                       <RiDeleteBinLine />
                     </button>

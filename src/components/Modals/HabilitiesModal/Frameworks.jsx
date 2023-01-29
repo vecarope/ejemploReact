@@ -33,9 +33,10 @@ export const DatabasesModal = (props) => {
     }
     if (!found) return el;
   });
-  const handlerChangeEvent = (e) => {
+  const handlerChangeEvent = (e, values, setFieldValue) => {
     let add = frameworkFilter.filter((el) => el.name === e.target.value);
-    setUserFrameworks([...userFramework, ...add]);
+    setUserFrameworks([...values, ...add]);
+    setFieldValue('basesAndFrameworks', [...values, ...add]);
     setshowComponent(false);
   };
 
@@ -58,17 +59,18 @@ export const DatabasesModal = (props) => {
           }
         }}
       >
-        {({ errors, touched, values }) => (
+        {({ errors, touched, values, setFieldValue }) => (
           <Form>
             <div className="col-span-7 md:col-span-4 lg:col-span-4 md:mx-auto">
               <FormField.InputSelectArray
-                data={userFramework}
+                data={values.basesAndFrameworks}
                 name="basesAndFrameworks"
                 id="basesAndFrameworks"
                 touched={touched}
                 errors={errors}
                 values={values}
                 edit={true}
+                updateData={setUserFrameworks}
               />
             </div>
             <div className="flex w-auto justify-end">
@@ -85,9 +87,13 @@ export const DatabasesModal = (props) => {
                     errors={errors}
                     name="frameworkTwo"
                     id="frameworkTwo"
-                    data={frameworkFilter.map((e, index) => e.name)}
+                    data={frameworkFilter.map((e) => e.name)}
                     onChange={(e) => {
-                      handlerChangeEvent(e);
+                      handlerChangeEvent(
+                        e,
+                        values.basesAndFrameworks,
+                        setFieldValue
+                      );
                     }}
                   />
                 </div>
