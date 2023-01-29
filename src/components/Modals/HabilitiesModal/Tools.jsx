@@ -7,6 +7,7 @@ import apiClient from '../../../services/api.service';
 import { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import { validateDataSkillsTools } from '../../../validation/validateModals';
+import { editTools } from '../../../hooks/editHability';
 
 export const ToolsModal = (props) => {
   const [toolAPI, setToolAPI] = useState(null);
@@ -45,14 +46,14 @@ export const ToolsModal = (props) => {
         initialValues={{ tools: userTool }}
         validationSchema={validateDataSkillsTools}
         onSubmit={async (values) => {
+          console.log('FORM TOOLS--<', values);
           try {
-            // await apiClient.put('/users/cv', values);
+            await editTools(values.tools);
             return Swal.fire({
               title: '¡Datos modificados!',
               confirmButtonText: 'Cerrar',
               confirmButtonColor: '#2738F5'
             }).then(() => props.setShowModal(false));
-            // .then(updateProfile(values));
           } catch (error) {
             console.error(error);
           }

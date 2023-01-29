@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { useEffect, useState } from 'react';
 import { validateDataSkillsDatabase } from '../../../validation/validateModals';
 import apiClient from '../../../services/api.service';
+import { editDatabases } from '../../../hooks/editHability';
 
 export const DatabasesModal = (props) => {
   const [frameworkAPI, setFrameworksAPI] = useState(null);
@@ -47,13 +48,12 @@ export const DatabasesModal = (props) => {
         validationSchema={validateDataSkillsDatabase}
         onSubmit={async (values) => {
           try {
-            // await apiClient.put('/users/cv', values);
+            await editDatabases(values.basesAndFrameworks);
             return Swal.fire({
               title: '¡Datos modificados!',
               confirmButtonText: 'Cerrar',
               confirmButtonColor: '#2738F5'
             }).then(() => props.setShowModal(false));
-            // .then(updateProfile(values));
           } catch (error) {
             console.error(error);
           }

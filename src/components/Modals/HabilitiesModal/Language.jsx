@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { useEffect, useState } from 'react';
 import { validateDataSkillsLanguage } from '../../../validation/validateModals';
 import apiClient from '../../../services/api.service';
+import { editLanguage } from '../../../hooks/editHability';
 
 export const LanguageModal = (props) => {
   const [lenguageAPI, setLenguageAPI] = useState(null);
@@ -45,15 +46,13 @@ export const LanguageModal = (props) => {
         initialValues={{ lenguage: userLanguaje }}
         validationSchema={validateDataSkillsLanguage}
         onSubmit={async (values) => {
-          // console.log('FORM LANG--<', values);
           try {
-            // await apiClient.put('/users/cv', values);
+            await editLanguage(values.lenguage);
             return Swal.fire({
-              title: '¡Lenguaje modificado!',
+              title: '¡Datos modificados!',
               confirmButtonText: 'Cerrar',
               confirmButtonColor: '#2738F5'
-            }).then(() => props.setShowModal(false));
-            // .then(updateProfile(values));
+            });
           } catch (error) {
             console.error(error);
           }
