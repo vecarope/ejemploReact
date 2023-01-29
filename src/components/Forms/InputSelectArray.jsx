@@ -1,4 +1,5 @@
 import { ErrorMessage, Field, FieldArray } from 'formik';
+import { RiDeleteBinLine } from 'react-icons/ri';
 export const InputSelectArray = ({
   name,
   touched,
@@ -7,6 +8,12 @@ export const InputSelectArray = ({
   values,
   ...props
 }) => {
+  const deleteInfo = (index, arrayHelpers, element, data, updateData) => {
+    arrayHelpers.remove(index);
+    let updateOptions = data.filter((el) => el.name !== element.name);
+    updateData(updateOptions);
+  };
+
   return (
     <div className="w-80 md:w-96">
       <FieldArray
@@ -17,23 +24,19 @@ export const InputSelectArray = ({
               data.map((element, index) => (
                 <li
                   className="flex items-center w-5/6 py-2.5 md:py-1.5 mx-auto"
-                  key={element.id}
+                  key={element.id + name}
                 >
                   <span className="flex-1 font-sans">{element.name}</span>
                   <Field
                     {...props}
                     as="select"
                     id={element.id}
-                    name={element.name}
-                    defaultValue={false}
+                    name={`${name}[${index}].level`}
                     onChange={(e) => {
-                      let index = values[name].findIndex(
-                        (lang) => lang.id === element.id
-                      );
-                      if (index >= 0) {
-                        arrayHelpers.remove(index);
-                      }
-                      arrayHelpers.push({ ...element, level: e.target.value });
+                      arrayHelpers.replace(index, {
+                        ...element,
+                        level: e.target.value
+                      });
                     }}
                     className="flex-1 bg-[#E2F2FE] border-[#140B34] rounded-md form-select form-select-sm
                             appearance-none
@@ -50,11 +53,30 @@ export const InputSelectArray = ({
                             m-0
                             focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                   >
-                    <option value={0}>Nivel</option>
-                    <option value={1}>Nivel 1</option>
-                    <option value={2}>Nivel 2</option>
-                    <option value={3}>Nivel 3</option>
+                    <>
+                      <option value={0}>Nivel</option>
+                      <option value={1}>Nivel 1</option>
+                      <option value={2}>Nivel 2</option>
+                      <option value={3}>Nivel 3</option>
+                    </>
                   </Field>
+                  {props.edit === true ? (
+                    <button
+                      className="px-4"
+                      type="button"
+                      onClick={() =>
+                        deleteInfo(
+                          index,
+                          arrayHelpers,
+                          element,
+                          data,
+                          props.updateData
+                        )
+                      }
+                    >
+                      <RiDeleteBinLine />
+                    </button>
+                  ) : null}
                 </li>
               ))}
           </ul>

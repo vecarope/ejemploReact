@@ -21,8 +21,10 @@ const valueStackAndSalary = {
 
 const valueWorkExperience = { devExperience: '', englishLevel: '' };
 
-export {valueAvailability,
-        valueCv,
-        valueEducation,
-        valueStackAndSalary,
-        valueWorkExperience}
+export {
+  valueAvailability,
+  valueCv,
+  valueEducation,
+  valueStackAndSalary,
+  valueWorkExperience
+};

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { AiOutlineMail, AiOutlinePhone } from 'react-icons/ai';
 import { BsGithub, BsLinkedin } from 'react-icons/bs';
-import { FiEdit2 } from 'react-icons/fi';
 import { SlUser } from 'react-icons/sl';
 import { GrDocumentTransfer } from 'react-icons/gr';
 import {
@@ -17,12 +16,12 @@ import { ProfilePersonal } from '../../components/Modals/ProfilePersonal';
 import { RoleAndCurrentSalary } from '../../components/Modals/RoleAndCurrentSalary';
 import WorkModal from '../../components/Modals/WorkModal';
 import EducationModal from '../../components/Modals/EducationModal';
+import DataSkills from '../../components/Modals/DataSkills';
 import DeleteEducation from '../../components/Modals/DeleteEducation';
 //import AddEducation from '../../components/Modals/AddEducation';
 
 export default function UserProfile() {
   const { userData, updateUser } = useAuth();
-
   const [profile, setProfile] = useState([]);
   const [education, setEducation] = useState([]);
   const [devLanguage, setLanguage] = useState([]);
@@ -195,14 +194,14 @@ export default function UserProfile() {
       <div className="mb-4 p-1 lg:mb-7 mt-4 lg:mt-10">
         <div className="flex justify-between mb-8">
           <h1 className="text-2xl">Habilidades</h1>
-          <FiEdit2 className="mt-2" />
+          <DataSkills />
         </div>
         <div className="gap-5 lg:gap-12 grid-col">
           <div className=" flex flex-row">
             <div className="flex-col space-y-3 ">
               <h1 className="mb-4">Avanzado</h1>
               {devLanguage.map((element, id) => (
-                <div className=" md:flex lg:flex ">
+                <div className=" md:flex lg:flex " key={id}>
                   <div
                     className="badge badge-outline border-light-purple p-1 pt-0 pb-0 rounded-md"
                     id={id}
@@ -213,7 +212,7 @@ export default function UserProfile() {
               ))}
               <h1 className="mb-4">Experimentado</h1>
               {database.map((element, id) => (
-                <div className="md:flex lg:flex ">
+                <div className="md:flex lg:flex " key={id}>
                   <div
                     className="badge badge-outline border-light-purple p-1 pt-0 pb-0 rounded-md"
                     id={id}
@@ -224,7 +223,7 @@ export default function UserProfile() {
               ))}
               <h1 className=" mt-2">Principiante</h1>
               {tools.map((element, id) => (
-                <div className="md:flex lg:flex">
+                <div className="md:flex lg:flex" key={id}>
                   <div
                     className="badge badge-outline border border-light-purple p-1 pt-0 pb-0 rounded-md"
                     id={id}
