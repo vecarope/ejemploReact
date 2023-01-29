@@ -6,8 +6,6 @@ import ImgIntersec from '../../assets/design/Intersect.png';
 import apiClient from '../../../src/services/api.service';
 import Swal from 'sweetalert2';
 
-/* import { useNavigate } from 'react-router-dom'; */
-
 const initialCredentials = {
   name: '',
   lastName: '',

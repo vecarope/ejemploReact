@@ -95,7 +95,7 @@ const Register = () => {
                 <div className="flex flex-col  md:w-fit md:flex-wrap">
                   <div className="flex flex-col md:w-fit">
                     <label
-                      htmlFor="email"
+                      // htmlFor="email"
                       className="text-white label-text md:text-dark-text md:text-lg pt-3 font-sans md:w-80"
                     >
                       Ingresa tu correo:
@@ -117,7 +117,7 @@ const Register = () => {
                   </div>
                   <div className="flex flex-col md:w-fit">
                     <label
-                      htmlFor="password"
+                      // htmlFor="password"
                       className="text-white label-text md:text-dark-text md:text-lg pt-3 font-sans md:w-80"
                     >
                       Crea tu contraseña:
@@ -176,10 +176,10 @@ const Register = () => {
 
                 {isSubmitting ? (
                   <div>
-                <div className='my-4'>
-                <h2>Enviando registro</h2>
-                <progress className="animate-pulse progress w-56"></progress>
-                </div>
+                    <div className="my-4">
+                      <h2>Enviando registro</h2>
+                      <progress className="animate-pulse progress w-56"></progress>
+                    </div>
                   </div>
                 ) : null}
               </div>
