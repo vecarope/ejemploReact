@@ -16,7 +16,6 @@ export const InputSelect = ({ label, touched, errors, data, ...props }) => {
         {...props}
         as="select"
         id={props.name}
-        defaultValue={false}
         className="mt-1 block w-full rounded-md border-[#E2F2FE]-200 bg-[#E2F2FE] shadow-sm focus:[#E2F2FE] focus:ring-[#E2F2FE]-300 sm:text-xl"
       >
         {data[1] ? (
