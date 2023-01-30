@@ -23,7 +23,7 @@ const DataSkills = (props) => {
   }, []);
 
   return (
-    <Modal title="Edita tus skills:">
+    <Modal title="Edita tus skills">
       {(props) => (
         <div>
           <ul
@@ -62,7 +62,7 @@ const DataSkills = (props) => {
                 aria-controls="tabs-profileJustify"
                 aria-selected="false"
               >
-                Databases and Framework
+                Bases de Datos y Framework
               </a>
             </li>
             <li className="nav-item flex-grow text-center" role="presentation">
@@ -76,7 +76,7 @@ const DataSkills = (props) => {
                 aria-controls="tabs-messagesJustify"
                 aria-selected="false"
               >
-                Tools
+                Herramientas
               </a>
             </li>
           </ul>

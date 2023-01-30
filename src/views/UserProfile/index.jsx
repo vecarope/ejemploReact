@@ -40,18 +40,16 @@ export default function UserProfile() {
     getData();
   }, []);
 
-  const updateProfile = (newState) => {
-    setProfile((prevState) => ({ ...prevState, ...newState }));
+  const updateProfile = newState => {
+    setProfile(prevState => ({ ...prevState, ...newState }));
   };
 
-  const updateEducation = (newState) => {
-    setEducation((prevState) => [{ ...prevState, ...newState }]);
+  const updateEducation = newState => {
+    setEducation(prevState => [{ ...prevState, ...newState }]);
   };
 
-  const removeEducation = (id) => {
-    setEducation((prevState) =>
-      prevState.filter((element) => element.id !== id)
-    );
+  const removeEducation = id => {
+    setEducation(prevState => prevState.filter(element => element.id !== id));
   };
 
   if (!userData)
@@ -111,7 +109,7 @@ export default function UserProfile() {
             updateProfile={updateProfile}
             data={profile}
             userData={userData}
-            updateUser={(data) => updateUser({ ...userData, ...data })}
+            updateUser={data => updateUser({ ...userData, ...data })}
           />
         </div>
       </div>
@@ -197,41 +195,57 @@ export default function UserProfile() {
           <DataSkills />
         </div>
         <div className="gap-5 lg:gap-12 grid-col">
-          <div className=" flex flex-row">
-            <div className="flex-col space-y-3 ">
-              <h1 className="mb-4">Avanzado</h1>
-              {devLanguage.map((element, id) => (
-                <div className=" md:flex lg:flex " key={id}>
-                  <div
-                    className="badge badge-outline border-light-purple p-1 pt-0 pb-0 rounded-md"
-                    id={id}
-                  >
-                    {element.name}
-                  </div>
-                </div>
-              ))}
-              <h1 className="mb-4">Experimentado</h1>
-              {database.map((element, id) => (
-                <div className="md:flex lg:flex " key={id}>
-                  <div
-                    className="badge badge-outline border-light-purple p-1 pt-0 pb-0 rounded-md"
-                    id={id}
-                  >
-                    {element.name}
-                  </div>
-                </div>
-              ))}
-              <h1 className=" mt-2">Principiante</h1>
-              {tools.map((element, id) => (
-                <div className="md:flex lg:flex" key={id}>
-                  <div
-                    className="badge badge-outline border border-light-purple p-1 pt-0 pb-0 rounded-md"
-                    id={id}
-                  >
-                    {element.name}
-                  </div>
-                </div>
-              ))}
+          <div className=" flex flex-col">
+            <h1 className="my-2">Avanzado</h1>
+            <div className="flex flex-wrap space-x-2">
+              {[devLanguage, database, tools].flatMap(category =>
+                category
+                  .filter(element => element.level === 3)
+                  .map(element => (
+                    <div className="md:flex lg:flex" key={element.id}>
+                      <div
+                        className="badge badge-outline border-light-purple p-1 pt-0 pb-0 h-fit w-fit rounded-md"
+                        id={element.id}
+                      >
+                        {element.name}
+                      </div>
+                    </div>
+                  ))
+              )}
+            </div>
+            <h1 className="my-2">Experimentado</h1>
+            <div className="flex flex-wrap space-x-2">
+              {[devLanguage, database, tools].flatMap(category =>
+                category
+                  .filter(element => element.level === 2)
+                  .map(element => (
+                    <div className="md:flex lg:flex" key={element.id}>
+                      <div
+                        className="badge badge-outline border-light-purple p-1 pt-0 pb-0 h-fit w-fit rounded-md"
+                        id={element.id}
+                      >
+                        {element.name}
+                      </div>
+                    </div>
+                  ))
+              )}
+            </div>
+            <h1 className=" my-2">Principiante</h1>
+            <div className="flex flex-wrap space-x-2">
+              {[devLanguage, database, tools].flatMap(category =>
+                category
+                  .filter(element => element.level === 1)
+                  .map(element => (
+                    <div className="md:flex lg:flex" key={element.id}>
+                      <div
+                        className="badge badge-outline border-light-purple p-1 pt-0 pb-0 h-fit w-fit rounded-md"
+                        id={element.id}
+                      >
+                        {element.name}
+                      </div>
+                    </div>
+                  ))
+              )}
             </div>
           </div>
         </div>
