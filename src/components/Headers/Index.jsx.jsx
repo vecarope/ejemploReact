@@ -27,26 +27,28 @@ export const Headers = () => {
 
       <ul className="hidden md:flex gap-3">
         {!userData && (
-          <li className="p-4">
-            <Link to="/login">Iniciar Sesión</Link>
-          </li>
+          <Link to="/login">
+            <li className="p-4">Iniciar Sesión</li>
+          </Link>
         )}
         {userData && userData.roleId === 1 ? (
-          <li className="p-4">
-            <Link to="/user">Ver perfil</Link>
-          </li>
+          <Link to="/user">
+            <li className="p-4">Ver perfil</li>
+          </Link>
         ) : userData && userData.roleId === 2 ? (
-          <li className="p-4">
-            <Link to="/admin">Administra la Pagina</Link>
-          </li>
+          <Link to="/admin">
+            <li className="p-4">Administra la Pagina</li>
+          </Link>
         ) : null}
         {!userData && (
-          <button
-            type="button"
-            className="p-4 bg-[#E2F2FE]] text-[#E2F2FE] border-2 border-sky-500] rounded-lg ..."
-          >
-            <Link to="/register">Registrate</Link>
-          </button>
+          <Link to="/register">
+            <li
+              type="button"
+              className="p-4 bg-[#E2F2FE]] text-[#E2F2FE] border-2 border-sky-500] rounded-lg ..."
+            >
+              Registrate
+            </li>
+          </Link>
         )}
         {userData && (
           <button
@@ -100,36 +102,47 @@ export const Headers = () => {
         </div>
 
         <ul className="pt-12 uppercase text-blue-500 p-4 justify-center ...">
-          <li className="p-4 border-b border-blue-600" onClick={handleNav}>
-            <Link to="/">Ir al inicio</Link>
-          </li>
-          {!userData && (
+          <Link to="/">
             <li className="p-4 border-b border-blue-600" onClick={handleNav}>
-              <Link to="/login">Iniciar Sesión</Link>
+              Ir al inicio
             </li>
+          </Link>
+
+          {!userData && (
+            <Link to="/login">
+              <li className="p-4 border-b border-blue-600" onClick={handleNav}>
+                Iniciar Sesión
+              </li>
+            </Link>
           )}
           {userData && userData.roleId === 1 ? (
-            <li className="p-4 border-b border-blue-600" onClick={handleNav}>
-              <Link to="/user">Ver perfil</Link>
-            </li>
+            <Link to="/user">
+              <li className="p-4 border-b border-blue-600" onClick={handleNav}>
+                Ver perfil
+              </li>
+            </Link>
           ) : userData && userData.roleId === 2 ? (
-            <li className="p-4 border-b border-blue-600" onClick={handleNav}>
-              <Link to="/admin">Administra la Pagina</Link>
-            </li>
+            <Link to="/admin">
+              <li className="p-4 border-b border-blue-600" onClick={handleNav}>
+                Administra la Pagina
+              </li>
+            </Link>
           ) : null}
           {!userData && (
-            <li className="p-4 border-b border-blue-600" onClick={handleNav}>
-              <Link to="/register">Registro</Link>
-            </li>
+            <Link to="/register">
+              <li className="p-4 border-b border-blue-600" onClick={handleNav}>
+                Registro
+              </li>
+            </Link>
           )}
           {userData && (
-            <button
-              onClick={handleCloseSesion}
-              type="button"
-              className="p-4 border-b border-blue-600"
-            >
-              CERRAR SESIÓN
-            </button>
+            <Link to="/">
+              <li className="p-4 border-b border-blue-600" onClick={handleNav}>
+                <button onClick={handleCloseSesion} type="button">
+                  CERRAR SESIÓN
+                </button>
+              </li>
+            </Link>
           )}
           {window.location.pathname === '/' ? (
             <li className="p-4 border-b border-blue-600">
