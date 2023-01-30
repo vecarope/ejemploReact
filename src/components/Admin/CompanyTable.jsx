@@ -12,18 +12,16 @@ const AdminCompanies = () => {
   }, []);
 
   return (
-    <div className="grid container  h-40 mx-auto m-5 w-80 mr-10 md:w-screen md:h-50 md:mt-3 lg:my-10 ml-3 lg:mx-20 lg:w-screen lg:h-80 lg:m-12">
-      <div className="grid container my-10 mr-1 md:mx-5 lg:mx-8 xl:mx-10">
-        <div className="grid grid-cols-8 sm:grid-cols-6 gap-4 ml-5">
-          <h1 className="font-bold text-lg md:text-xl lg:text-2xl mt-4 md:mb-2 lg:mb-4  col-start-1 col-end-3">
-            Empresas
-          </h1>
-          <div className="col-end-8 sm:col-end-6 lg:col-end-6 xl:col-end-7 col-span-1">
-            <ExportCompanies></ExportCompanies>
-          </div>
+    <div className="container mx-auto p-12 md:max-w-3xl xl:max-w-screen-lg 2xl:max-w-screen-2xl">
+      <div className="flex justify-between">
+        <h1 className="font-bold text-lg md:text-xl lg:text-2xl mt-4 md:mb-2 lg:mb-4">
+          Empresas
+        </h1>
+        <div>
+          <ExportCompanies></ExportCompanies>
         </div>
-        <div className="sm:max-w-screen-sm md:max-w-screen-sm lg:max-w-screen-sm xl:max-w-screen-lg">
-          <div className="relative overflow-x-auto ">
+      </div>
+      <div className="relative overflow-x-auto ">
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
               <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
@@ -82,8 +80,6 @@ const AdminCompanies = () => {
               </tbody>
             </table>
           </div>
-        </div>
-      </div>
     </div>
   );
 };
