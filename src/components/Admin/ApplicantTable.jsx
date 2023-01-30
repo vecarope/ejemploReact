@@ -93,7 +93,7 @@ const AdminApplicant = () => {
                   >
                     <th
                       scope="row"
-                      className="text-xs font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                      className="text-xs font-medium text-gray-900 whitespace-nowrap dark:text-white py-3"
                     >
                       {`${e.firstName} ${e.lastName}`}
                     </th>
