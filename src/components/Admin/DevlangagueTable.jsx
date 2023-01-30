@@ -1,35 +1,22 @@
 import { UpdateButton, DeleteButton } from './Buttons/Buttons';
+import { useEffect, useState } from 'react';
+import apiClient from '../../services/api.service';
 
 const DevlangagueTable = () => {
-  let langague = [
-    {
-      id: 1,
-      name: 'Python'
-    },
-    {
-      id: 2,
-      name: 'JavaScript'
-    },
-    {
-      id: 3,
-      name: 'HTML/CSS'
-    },
-    {
-      id: 4,
-      name: 'Java'
-    },
-    {
-      id: 5,
-      name: 'PHP'
-    }
-  ];
+  const [devlenguages, setDevlanguage] = useState(null);
+  const getAllDevlanguage = async () => {
+    setDevlanguage(await apiClient('admin/get-devlenguages'));
+  };
+  useEffect(() => {
+    getAllDevlanguage();
+  }, []);
 
   return (
     <div className="grid container  h-40 mx-auto m-5 w-80 mr-10 md:w-screen md:h-50 md:mt-3 lg:my-10 ml-3 lg:mx-20 lg:w-screen lg:h-80 lg:m-12">
       <div className="grid container my-10 mr-1 md:mx-5 lg:mx-5">
         <div className="grid grid-cols-8 sm:grid-cols-6 gap-4 ml-5">
-          <h1 className="font-bold text-lg md:text-xl lg:text-2xl mt-4 md:mb-2 lg:mb-4  col-start-1 col-end-3">
-            Lenguajes y Frameworks
+          <h1 className="font-bold text-lg md:text-xl lg:text-2xl mt-4 md:mb-2 lg:mb-4  col-start-1 col-end-6">
+            Lenguajes
           </h1>
           <div className="col-end-8 sm:col-end-6 lg:col-end-6 xl:col-end-7 col-span-1">
             <button className="btn bg-[#89CFD9] text-[#232323] border-white inline-flex items-center font-light  sm:btn-md btn-md">
@@ -52,7 +39,10 @@ const DevlangagueTable = () => {
           </div>
         </div>
         <div className="sm:max-w-screen-sm lg:max-w-screen-sm xl:max-w-screen-xl">
-          <div className="relative overflow-x-auto ">
+          <div
+            className="relative overflow-y-scroll mt-3"
+            style={{ height: '80vh' }}
+          >
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
               <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
@@ -67,26 +57,28 @@ const DevlangagueTable = () => {
                 </tr>
               </thead>
               <tbody>
-                {langague.map((e) => (
-                  <tr
-                    className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
-                    key={e.id}
-                  >
-                    <th
-                      scope="row"
-                      className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                    >
-                      {e.id}
-                    </th>
-                    <td className="sm:px-6 sm:py-4">{e.name}</td>
-                    <td>
-                      <UpdateButton></UpdateButton>
-                    </td>
-                    <td>
-                      <DeleteButton></DeleteButton>
-                    </td>
-                  </tr>
-                ))}
+                {devlenguages !== null
+                  ? devlenguages.data.map((e) => (
+                      <tr
+                        className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                        key={e.id}
+                      >
+                        <th
+                          scope="row"
+                          className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                        >
+                          {e.id}
+                        </th>
+                        <td className="sm:px-6 sm:py-4">{e.name}</td>
+                        <td>
+                          <UpdateButton></UpdateButton>
+                        </td>
+                        <td>
+                          <DeleteButton></DeleteButton>
+                        </td>
+                      </tr>
+                    ))
+                  : false}
               </tbody>
             </table>
           </div>
