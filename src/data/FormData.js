@@ -57,8 +57,6 @@ const visaStatus = [
   'Mi país de residencia actual',
   'Otros países'
 ];
-
-
 const workStatus = [
   'Cesante, busco empleo en TI por primera vez.',
   'Cesante, ya he trabajado antes en TI.',
@@ -77,10 +75,21 @@ const cargo = [
 ];
 
 const month = [
-  'Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'
+  'Enero',
+  'Febrero',
+  'Marzo',
+  'Abril',
+  'Mayo',
+  'Junio',
+  'Julio',
+  'Agosto',
+  'Septiembre',
+  'Octubre',
+  'Noviembre',
+  'Diciembre'
 ];
 
-export  { 
+export {
   availability,
   educationLevel,
   typeInstitution,
@@ -88,10 +97,10 @@ export  {
   englishLevel,
   yearsOfExperience,
   status,
-  visaStatus, 
+  visaStatus,
   gender,
   workStatus,
   cargo,
   month,
-  time,
-}
+  time
+};

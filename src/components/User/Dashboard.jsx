@@ -5,7 +5,7 @@ import { useAuth } from '../../context/authContext';
 export default function Dashboard() {
   const { userData } = useAuth();
 
-  const dashboard = (items) => {
+  const dashboard = items => {
     return items.map((item, index) => (
       <NavLink to={item.path} key={index}>
         {({ isActive }) => (
