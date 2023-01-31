@@ -1,6 +1,7 @@
-import * as Yup from 'yup'; 
+import * as Yup from 'yup';
 
-let validateURL = /(([\w]+:)?\/\/)?(([\d\w]|%[a-fA-f\d]{2,2})+(:([\d\w]|%[a-fA-f\d]{2,2})+)?@)?([\d\w][-\d\w]{0,253}[\d\w]\.)+[\w]{2,63}(:[\d]+)?(\/([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)*(\?(&?([-+_~.\d\w]|%[a-fA-f\d]{2,2})=?)*)?(#([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)?/;
+let validateURL =
+  /(([\w]+:)?\/\/)?(([\d\w]|%[a-fA-f\d]{2,2})+(:([\d\w]|%[a-fA-f\d]{2,2})+)?@)?([\d\w][-\d\w]{0,253}[\d\w]\.)+[\w]{2,63}(:[\d]+)?(\/([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)*(\?(&?([-+_~.\d\w]|%[a-fA-f\d]{2,2})=?)*)?(#([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)?/;
 let validateStrings = /^[A-ZÁÉÍÓÚ a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ a-zñáéíóú]+)?$/;
 let validateNumber = /^([0-9])*$/;
 
@@ -13,7 +14,6 @@ const validateAvailability = Yup.object().shape({
     .required('Este campo es requerido.')
 });
 
-
 const validateCV = Yup.object().shape({
   cvUrl: Yup.string()
     .trim()
@@ -24,8 +24,7 @@ const validateCV = Yup.object().shape({
     })
 });
 
-const year = 
-  Yup.string()
+const year = Yup.string()
   .trim()
   .required('Debe ingresar un año.')
   .matches(validateNumber, {
@@ -55,7 +54,7 @@ const validateEducation = Yup.object().shape({
   startMonth: Yup.string().required('Debes seleccionar un mes.'),
   endMonth: Yup.string().required('Debes seleccionar un mes.'),
   startYear: year,
-  endYear: year,
+  endYear: year
 });
 
 const validateNewEducation = Yup.object().shape({
@@ -101,9 +100,26 @@ const validateWorkExperience = Yup.object().shape({
   devExperience: Yup.string().required('Debes seleccionar una opción.')
 });
 
-export {validateAvailability,
-        validateCV,
-        validateEducation,
-        validateStackAndSalary,
-        validateWorkExperience,
-        validateNewEducation}  
+const validateDataSkillsLanguage = Yup.object().shape({
+  lenguage: Yup.array().required('Este campo es requerido.')
+});
+
+const validateDataSkillsDatabase = Yup.object().shape({
+  basesAndFrameworks: Yup.array().required('Este campo es requerido.')
+});
+
+const validateDataSkillsTools = Yup.object().shape({
+  tools: Yup.array().required('Este campo es requerido.')
+});
+
+export {
+  validateAvailability,
+  validateCV,
+  validateEducation,
+  validateStackAndSalary,
+  validateWorkExperience,
+  validateDataSkillsLanguage,
+  validateDataSkillsDatabase,
+  validateDataSkillsTools,
+  validateNewEducation
+};

@@ -4,26 +4,26 @@ export default function CardHomeUser() {
     const dataCard =[
         {
             number: 1,
-            b: "completa",
+            b: "Completa",
             text: "tu perfil usuario"
         },
         {
             number: 2,
-            b: "realiza",
+            b: "Realiza",
             text: "test técnicos"
         },
         {
             number: 3,
-            b: "participa",
+            b: "Participa",
             text: "en show the code"
         },
         {
             number: 4,
-            b: "recibe",
+            b: "Recibe",
             text: "ofertas de trabajo"
         }
     ]
-  return (
+    return (
         <>
             {dataCard.map((item, index)=>(
             <div className="shadow-lg h-44 bg-fill-light rounded-md p-5 mb-4" key={index}>

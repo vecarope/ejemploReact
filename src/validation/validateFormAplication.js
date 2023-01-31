@@ -51,7 +51,7 @@ export const validateSchemaAplicationForm = Yup.object().shape({
       message: 'El nombre debe ser solo texto.'
     })
     .min(2, 'El nombre debe tener al menos 2 letras.')
-    .max(25, 'El nombre debe ser más corto.'),
+    .max(90, 'El nombre debe ser más corto.'),
   institute_name: Yup.string()
     .required('Debes ingresar un nombre.')
     .matches(validateStrings, {
@@ -59,7 +59,7 @@ export const validateSchemaAplicationForm = Yup.object().shape({
       message: 'El nombre debe ser solo texto.'
     })
     .min(2, 'El nombre debe tener al menos 2 letras.')
-    .max(25, 'El nombre debe ser más corto.'),
+    .max(90, 'El nombre debe ser más corto.'),
   type: Yup.string().required('Debes seleccionar una opción.'),
   educationalLevel: Yup.string().required('Debes seleccionar una opción.'),
   educationStatusCurrent: Yup.string().required(
