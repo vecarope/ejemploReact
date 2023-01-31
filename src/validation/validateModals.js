@@ -57,6 +57,30 @@ const validateEducation = Yup.object().shape({
   endYear: year
 });
 
+const validateNewEducation = Yup.object().shape({
+  name: Yup.string()
+    .required('Debes ingresar un nombre.')
+    .matches(validateStrings, {
+      excludeEmptyString: true,
+      message: 'El nombre debe ser solo texto.'
+    })
+    .min(2, 'El nombre debe tener al menos 2 letras.')
+    .max(25, 'El nombre debe ser más corto.'),
+  instituteName: Yup.string()
+    .required('Debes ingresar un nombre.')
+    .matches(validateStrings, {
+      excludeEmptyString: true,
+      message: 'El nombre debe ser solo texto.'
+    })
+    .min(2, 'El nombre debe tener al menos 2 letras.')
+    .max(25, 'El nombre debe ser más corto.'),
+  type: Yup.string().required('Debes seleccionar una opción.'),
+  startMonth: Yup.string().required('Debes seleccionar un mes.'),
+  endMonth: Yup.string().required('Debes seleccionar un mes.'),
+  startYear: year,
+  endYear: year,
+});
+
 const validateStackAndSalary = Yup.object().shape({
   stack: Yup.array()
     .min(1, 'Debes elegir al menos 1 item')
@@ -96,5 +120,6 @@ export {
   validateWorkExperience,
   validateDataSkillsLanguage,
   validateDataSkillsDatabase,
-  validateDataSkillsTools
+  validateDataSkillsTools,
+  validateNewEducation
 };

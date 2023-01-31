@@ -5,18 +5,17 @@ import '../../assets/componentsCSS/button.css';
 import apiClient from '../../services/api.service';
 import Swal from 'sweetalert2';
 import { validateCV } from '../../validation/validateModals';
-import { valueCv } from '../../data/ModalInitialData';
-
 
 const CvModal = (props) => {
 
   const { updateProfile } = props; 
+  const {data} = props; 
 
   return (
     <Modal title="Sube tu Cv">
       {(props) => (
           <Formik
-            initialValues={valueCv}
+            initialValues={ { cvUrl: data.cvUrl ||'' }}
             validationSchema={validateCV}
             onSubmit={async values => {
               try {
@@ -42,7 +41,6 @@ const CvModal = (props) => {
                 name="cvUrl"
                 id="cvUrl"
                 required
-                placeholder="Link aquí"
                 touched={touched}
                 errors={errors}
               />

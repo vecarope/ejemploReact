@@ -6,32 +6,38 @@ import apiClient from '../../services/api.service';
 import Swal from 'sweetalert2';
 import { month } from '../../data/FormData';
 import { validateEducation } from '../../validation/validateModals';
-import { valueEducation } from '../../data/ModalInitialData';
-
 
 const EducationModal = (props) => {
 
-  const { updateEducation } = props;
+  const {updateEducation}= props; 
+  const {id}=props;
+  const {data}=props;
+
 
   return (
     <Modal title="Educación">
-      {(props) => (
+      {props => (
         <Formik
-          initialValues={valueEducation}
+          initialValues={{
+            name: data.name || '',
+            instituteName:data.instituteName || '',
+            startMonth: data.startMonth || '',
+            endMonth: data.endMonth || '',
+            startYear: data.startYear || '',
+            endYear:data.endYear ||  ''
+          }}
           validationSchema={validateEducation}
-          onSubmit = { async (values) => {
-            console.log(values); 
+          onSubmit={async values => {
+            console.log(values);
             try {
-              await apiClient.put('/users/education', 
-                values
-              );
+              await apiClient.put('/users/education', values );
               return Swal.fire({
-                title:'¡Datos modificados!',
+                title: '¡Datos modificados!',
                 confirmButtonText: 'Cerrar',
                 confirmButtonColor: '#2738F5'
               })
                 .then(() => props.setShowModal(false))
-                .then(updateEducation(values));
+                .then(updateEducation(values,id))
             } catch (error) {
               console.error(error);
             }
@@ -40,30 +46,28 @@ const EducationModal = (props) => {
           {({ errors, touched }) => (
             <Form>
               <div className="grid grid-cols-2 grid-rows-7 gap-x-2 gap-y-1 ">
-              <div className="col-span-2 row-span-1">
-                <FormField.InputField
-                  label="Nombre de la carrera, curso, bootcamp o certificación"
-                  type="text"
-                  name="name"
-                  id="name"
-                  required
-                  placeholder="Nombre de la carrera, curso, bootcamp o certificación"
-                  touched={touched}
-                  errors={errors}
-                />
-              </div>
-              <div className="col-span-2 row-span-1">
-                <FormField.InputField
-                  label="Nombre institución"
-                  type="text"
-                  name="instituteName"
-                  id="instituteName"
-                  required
-                  placeholder="Nombre institución"
-                  touched={touched}
-                  errors={errors}
-                />
-              </div>
+                <div className="col-span-2 row-span-1">
+                  <FormField.InputField
+                    label="Nombre de la carrera, curso, bootcamp o certificación"
+                    type="text"
+                    name="name"
+                    id="name"
+                    required
+                    touched={touched}
+                    errors={errors}
+                  />
+                </div>
+                <div className="col-span-2 row-span-1">
+                  <FormField.InputField
+                    label="Nombre institución"
+                    type="text"
+                    name="instituteName"
+                    id="instituteName"
+                    required
+                    touched={touched}
+                    errors={errors}
+                  />
+                </div>
                 <div className="row-span-3 col-start-1 col-end-2">
                   <FormField.InputSelect
                     label={'Mes ingreso'}
@@ -76,9 +80,9 @@ const EducationModal = (props) => {
                   />
                 </div>
                 <div className="row-span-3 col-start-2 col-end-3">
-                  <FormField.InputField 
+                  <FormField.InputField
                     label="Año ingreso"
-                    type='text'
+                    type="text"
                     touched={touched}
                     errors={errors}
                     name="startYear"
@@ -107,14 +111,14 @@ const EducationModal = (props) => {
                     id="endYear"
                     required
                   />
-                </div>       
-                </div>   
+                </div>
+              </div>
               <div className="container py-8 justify-center">
-            <button className="btn btn-blue" type="submit">
-              Guardar Cambios
-            </button>
-          </div>
-          </Form>
+                <button className="btn btn-blue" type="submit">
+                  Guardar Cambios
+                </button>
+              </div>
+            </Form>
           )}
         </Formik>
       )}

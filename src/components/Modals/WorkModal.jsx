@@ -6,18 +6,19 @@ import apiClient from '../../services/api.service';
 import Swal from 'sweetalert2';
 import { englishLevel, yearsOfExperience } from '../../data/FormData';
 import { validateWorkExperience } from '../../validation/validateModals';
-import { valueWorkExperience } from '../../data/ModalInitialData';
 
 
 const WorkModal = (props) => {
 
   const {updateProfile} = props; 
+  const {data}= props;
 
   return (
     <Modal title="Experiencia Laboral">
       {(props) => (
       <Formik
-        initialValues={valueWorkExperience}
+        initialValues={{ devExperience: data.devExperience ||'',
+                          englishLevel: data.englishLevel || '' }}
         validationSchema={validateWorkExperience}
         onSubmit={async values => {
           try {

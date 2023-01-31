@@ -6,20 +6,21 @@ import apiClient from '../../services/api.service';
 import Swal from 'sweetalert2';
 import { cargo } from '../../data/FormData';
 import { validateStackAndSalary } from '../../validation/validateModals';
-import { valueStackAndSalary } from '../../data/ModalInitialData';
 
-
-export const RoleAndCurrentSalary = (props) => {
-
-  const { updateProfile } = props; 
+export const RoleAndCurrentSalary = props => {
+  const { updateProfile } = props;
+  const { data } = props;
 
   return (
     <Modal title="Rol y salario:">
-      {(props) => (
+      {props => (
         <Formik
-          initialValues={valueStackAndSalary}
+          initialValues={{
+            stack:data.stack || '',
+            currentSalary: data.currentSalary || ''
+          }}
           validationSchema={validateStackAndSalary}
-          onSubmit={async (values) => {
+          onSubmit={async values => {
             try {
               await apiClient.put('/users/stack-salary', {
                 stack: values.stack.toString(),
@@ -31,7 +32,7 @@ export const RoleAndCurrentSalary = (props) => {
                 confirmButtonColor: '#2738F5'
               })
                 .then(() => props.setShowModal(false))
-                .then(updateProfile(values)); 
+                .then(updateProfile(values));
             } catch (error) {
               console.error(error);
             }

@@ -18,7 +18,7 @@ import WorkModal from '../../components/Modals/WorkModal';
 import EducationModal from '../../components/Modals/EducationModal';
 import DataSkills from '../../components/Modals/DataSkills';
 import DeleteEducation from '../../components/Modals/DeleteEducation';
-//import AddEducation from '../../components/Modals/AddEducation';
+import AddEducation from '../../components/Modals/AddEducation';
 
 export default function UserProfile() {
   const { userData, updateUser } = useAuth();
@@ -40,16 +40,25 @@ export default function UserProfile() {
     getData();
   }, []);
 
-  const updateProfile = newState => {
-    setProfile(prevState => ({ ...prevState, ...newState }));
+  const updateProfile = (newState) => {
+    setProfile((prevState) => ({ ...prevState, ...newState }));
   };
 
-  const updateEducation = newState => {
-    setEducation(prevState => [{ ...prevState, ...newState }]);
+  // const postEducation = (newState) =>{
+  //   console.log (setEducation(prevState =>(([...prevState, newState ]))))
+  // };
+
+  const updateEducation = (values, id) => {
+    setEducation((prevState) =>
+      prevState.map((e) => (e.id === id ? { ...e, ...values } : e))
+    );
   };
 
-  const removeEducation = id => {
-    setEducation(prevState => prevState.filter(element => element.id !== id));
+  //ok
+  const removeEducation = (id) => {
+    setEducation((prevState) =>
+      prevState.filter((element) => element.id !== id)
+    );
   };
 
   if (!userData)
@@ -90,7 +99,7 @@ export default function UserProfile() {
           <h2 className="text-sm">{profile.cvUrl}</h2>
         </div>
         <div>
-          <CvModal updateProfile={updateProfile} />
+          <CvModal updateProfile={updateProfile} data={profile} />
         </div>
       </div>
       <hr className=" border-black" />
@@ -109,7 +118,7 @@ export default function UserProfile() {
             updateProfile={updateProfile}
             data={profile}
             userData={userData}
-            updateUser={data => updateUser({ ...userData, ...data })}
+            updateUser={(data) => updateUser({ ...userData, ...data })}
           />
         </div>
       </div>
@@ -152,7 +161,7 @@ export default function UserProfile() {
             <h2>Nivel Ingles: {profile.englishLevel}</h2>
           </div>
           <div>
-            <WorkModal updateProfile={updateProfile} />
+            <WorkModal updateProfile={updateProfile} data={profile} />
           </div>
         </div>
       </div>
@@ -168,7 +177,7 @@ export default function UserProfile() {
             <h2>Posibilidad de ingreso: {profile.availabilityStatus}</h2>
           </div>
           <div>
-            <Availability updateProfile={updateProfile} />
+            <Availability updateProfile={updateProfile} data={profile} />
           </div>
         </div>
       </div>
@@ -184,7 +193,10 @@ export default function UserProfile() {
             <p> Salario actual: USD {profile.currentSalary}</p>
           </div>
           <div>
-            <RoleAndCurrentSalary updateProfile={updateProfile} />
+            <RoleAndCurrentSalary
+              updateProfile={updateProfile}
+              data={profile}
+            />
           </div>
         </div>
       </div>
@@ -198,10 +210,10 @@ export default function UserProfile() {
           <div className=" flex flex-col">
             <h1 className="my-2">Avanzado</h1>
             <div className="flex flex-wrap space-x-2">
-              {[devLanguage, database, tools].flatMap(category =>
+              {[devLanguage, database, tools].flatMap((category) =>
                 category
-                  .filter(element => element.level === 3)
-                  .map(element => (
+                  .filter((element) => element.level === 3)
+                  .map((element) => (
                     <div className="md:flex lg:flex" key={element.id}>
                       <div
                         className="badge badge-outline border-light-purple p-1 pt-0 pb-0 h-fit w-fit rounded-md"
@@ -215,10 +227,10 @@ export default function UserProfile() {
             </div>
             <h1 className="my-2">Experimentado</h1>
             <div className="flex flex-wrap space-x-2">
-              {[devLanguage, database, tools].flatMap(category =>
+              {[devLanguage, database, tools].flatMap((category) =>
                 category
-                  .filter(element => element.level === 2)
-                  .map(element => (
+                  .filter((element) => element.level === 2)
+                  .map((element) => (
                     <div className="md:flex lg:flex" key={element.id}>
                       <div
                         className="badge badge-outline border-light-purple p-1 pt-0 pb-0 h-fit w-fit rounded-md"
@@ -232,10 +244,10 @@ export default function UserProfile() {
             </div>
             <h1 className=" my-2">Principiante</h1>
             <div className="flex flex-wrap space-x-2">
-              {[devLanguage, database, tools].flatMap(category =>
+              {[devLanguage, database, tools].flatMap((category) =>
                 category
-                  .filter(element => element.level === 1)
-                  .map(element => (
+                  .filter((element) => element.level === 1)
+                  .map((element) => (
                     <div className="md:flex lg:flex" key={element.id}>
                       <div
                         className="badge badge-outline border-light-purple p-1 pt-0 pb-0 h-fit w-fit rounded-md"
@@ -252,12 +264,20 @@ export default function UserProfile() {
       </div>
       <hr className="border-black" />
       <div className="lg:flex-col p-1 mb-4 lg:mb-7 mt-4 lg:mt-10">
-        <h1 className=" text-2xl mb-10">Educación</h1>
-        <div className="text-end my-4">
-          {/* <AddEducation updateEducation={updateEducation}/> */}
+        <h1 className=" text-2xl mb-4">Educación</h1>
+        <div className="flex justify-end mb-4">
+          <AddEducation
+            setEducation={setEducation}
+            id={education.id}
+            data={education}
+          />
         </div>
-        {education.map((element, id) => (
-          <div className=" flex justify-between my-4" key={id}>
+        {education.map((element) => (
+          <div
+            className=" flex justify-between my-4"
+            value={element.id}
+            key={element.id}
+          >
             <div>
               <h1 className=" text-blue-700 text-sm font-bold">{`${element.startMonth} ${element.startYear} - ${element.endMonth} ${element.endYear}`}</h1>
               <h1 className="text-2xl">{element.name}</h1>
@@ -266,7 +286,11 @@ export default function UserProfile() {
               </h1>
             </div>
             <div className=" flex gap-5 justify-between">
-              <EducationModal updateEducation={updateEducation} />
+              <EducationModal
+                updateEducation={updateEducation}
+                id={element.id}
+                data={element}
+              />
               <DeleteEducation
                 removeEducation={removeEducation}
                 id={element.id}
