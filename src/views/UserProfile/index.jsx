@@ -289,7 +289,7 @@ export default function UserProfile() {
               <EducationModal
                 updateEducation={updateEducation}
                 id={element.id}
-                data={education}
+                data={element}
               />
               <DeleteEducation
                 removeEducation={removeEducation}
