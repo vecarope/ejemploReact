@@ -7,7 +7,7 @@ export const UpdateButton = () => {
   return (
     <button
       href="#"
-      className="btn inline-flex items-center font-light mx-1 btn-sm lg:btn-md border-white bg-[#89CFD9] text-[#232323]"
+      className="btn inline-flex items-center font-light mx-1 btn-sm lg:btn-md border-gray bg-[#89CFD9] text-[#232323]"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -31,7 +31,7 @@ export const DeleteButton = () => {
   return (
     <button
       href="#"
-      className="btn inline-flex items-center font-light mx-1 btn-sm lg:btn-md border-white bg-[#AC231B]"
+      className="btn inline-flex items-center font-light mx-1 btn-sm lg:btn-md border-gray bg-[#AC231B]"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

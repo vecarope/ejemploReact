@@ -25,8 +25,8 @@ const AdminApplicant = () => {
         </div>
       </div>
       <div className="relative overflow-x-auto ">
-        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <table className="w-full text-sm text-left text-gray-400">
+          <thead className="text-xs uppercase bg-gray-700 text-gray-400">
             <tr>
               <th scope="col" className="px-6 py-3">
                 Nombre
@@ -88,38 +88,38 @@ const AdminApplicant = () => {
             {applicant !== null
               ? applicant.data.map((e, index) => (
                   <tr
-                    className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                    className="bg-gray-800 border-gray-700"
                     key={index}
                   >
                     <th
                       scope="row"
-                      className="text-xs font-medium text-gray-900 whitespace-nowrap dark:text-white py-3"
+                      className="text-xs font-medium whitespace-nowrap text-white py-3"
                     >
                       {`${e.firstName} ${e.lastName}`}
                     </th>
-                    <td className="text-xs px-6">{e.email}</td>
-                    <td className="text-xs px-1">{e.phoneNumber}</td>
-                    <td className="text-xs px-1">{e.city}</td>
-                    <td className="text-xs px-1">{e.country}</td>
-                    <td className="text-xs px-2">
+                    <td className="text-xs text-white px-6">{e.email}</td>
+                    <td className="text-xs text-white px-1">{e.phoneNumber}</td>
+                    <td className="text-xs text-white px-1">{e.city}</td>
+                    <td className="text-xs text-white px-1">{e.country}</td>
+                    <td className="text-xs text-white px-2">
                       {e.employmentStatusCurrent}
                     </td>
-                    <td className="text-xs px-3">{e.stack}</td>
-                    <td className="text-xs px-6">{e.educationalLevel}</td>
-                    <td className="text-xs px-3">{e.educationStatusCurrent}</td>
-                    <td className="text-xs px-3">{e.englishLevel}</td>
-                    <td className="text-xs px-3">{e.additionalToolsComment}</td>
-                    <td className="text-xs px-6">{e.cvUrl}</td>
-                    <td className="text-xs px-1">{e.linkedinUrl}</td>
-                    <td className="text-xs px-1">{e.githubUrl}</td>
-                    <td className="text-xs px-1">{e.portfolioUrl}</td>
-                    <td className="text-xs px-6 whitespace-nowrap">
+                    <td className="text-xs text-white px-3">{e.stack}</td>
+                    <td className="text-xs text-white px-6">{e.educationalLevel}</td>
+                    <td className="text-xs text-white px-3">{e.educationStatusCurrent}</td>
+                    <td className="text-xs text-white px-3">{e.englishLevel}</td>
+                    <td className="text-xs text-white px-3">{e.additionalToolsComment}</td>
+                    <td className="text-xs text-sky-400 hover:text-blue-600 px-6"><a href={e.cvUrl}>{e.cvUrl}</a></td>
+                    <td className="text-xs text-sky-400 hover:text-blue-600 px-1"><a href={e.linkedinUrl}>{e.linkedinUrl}</a></td>
+                    <td className="text-xs text-sky-400 hover:text-blue-600 px-1"><a href={e.githubUrl}>{e.githubUrl}</a></td>
+                    <td className="text-xs text-sky-400 hover:text-blue-600 px-1"><a href={e.portfolioUrl}>{e.portfolioUrl}</a></td>
+                    <td className="text-xs text-white px-6 whitespace-nowrap">
                       {e.devExperience}
                     </td>
-                    <td className="text-xs px-6 whitespace-nowrap">
+                    <td className="text-xs text-white px-6 whitespace-nowrap">
                       {e.idealWorkComment}
                     </td>
-                    <td className="text-xs mx-6 whitespace-nowrap">
+                    <td className="text-xs text-white mx-6 whitespace-nowrap">
                       {e.workAvailability}
                     </td>
                   </tr>
