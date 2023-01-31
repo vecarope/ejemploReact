@@ -6,18 +6,21 @@ import apiClient from '../../services/api.service';
 import Swal from 'sweetalert2';
 import { time, availability } from '../../data/FormData';
 import { validateAvailability } from '../../validation/validateModals';
-import { valueAvailability } from '../../data/ModalInitialData';
 
 
 const Availability = (props) => {
 
   const { updateProfile } =props; 
+  const {data }= props; 
 
   return (
     <Modal title="Disponibilidad:">
       {(props) => (
         <Formik
-          initialValues={valueAvailability}
+          initialValues={{
+            workAvailability: data.workAvailability || '',
+            availabilityStatus: data.availabilityStatus || ''
+          }}
           validationSchema={validateAvailability}
           onSubmit={async (values) => {
             try {
