@@ -1,10 +1,9 @@
 import apiClient from '../services/api.service';
 import Swal from 'sweetalert2';
 export const postRegisterAxios = async (values) => {
-
   try {
     const { data } = await apiClient.post('/auth/register', values);
-    if(data !== null){
+    if (data !== null) {
       await apiClient.post('/auth/welcome-email', values);
       return data;
     }
@@ -44,7 +43,6 @@ export const postForgotPassAxios = async (values) => {
   }
 };
 
-
 export const postRestorePassword = async (values) => {
   try {
     const { data } = await apiClient.post('/auth/reset-password', values);
@@ -56,12 +54,12 @@ export const postRestorePassword = async (values) => {
       html: `Serás redirigido a <b>restablecer contraseña</b>`,
       showConfirmButton: false,
       timer: 3000,
-      timerProgressBar: true,
-    }).then(function(result){
-      console.log(result)
-      if(result.isDismissed === true){
-        window.location = '/forgot-password'
+      timerProgressBar: true
+    }).then(function (result) {
+      console.log(result);
+      if (result.isDismissed === true) {
+        window.location = '/forgot-password';
       }
-    })
+    });
   }
 };

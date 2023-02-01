@@ -61,6 +61,7 @@ export const InputSelectArray = ({
                       <option value={3}>Nivel 3</option>
                     </>
                   </Field>
+
                   {props.edit === 'true' ? (
                     <button
                       className="px-4"

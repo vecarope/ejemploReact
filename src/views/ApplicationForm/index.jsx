@@ -35,7 +35,7 @@ const ApplicationFormPage = () => {
               }
             }}
           >
-            {({ errors, touched, isSubmitting, values }) => (
+            {({ errors, touched, isSubmitting, values, setFieldValue }) => (
               <Form>
                 <ApplicationForm.PersonalInformation
                   errors={errors}
@@ -49,6 +49,7 @@ const ApplicationFormPage = () => {
                   errors={errors}
                   touched={touched}
                   values={values}
+                  setFieldValue={setFieldValue}
                 />
                 <ApplicationForm.ExperienceAndWork
                   errors={errors}

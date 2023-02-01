@@ -6,6 +6,18 @@ export const postApplicationForm = async (values) => {
 
   userForm.statusId = 2;
 
+  const filterLanguage = values.lenguage.filter(
+    (e) => e.level && parseInt(e.level) !== 0
+  );
+
+  const filterDatabase = values.basesAndFrameworks.filter(
+    (e) => e.level && parseInt(e.level) !== 0
+  );
+
+  const filterTools = values.tools.filter(
+    (e) => e.level && parseInt(e.level) !== 0
+  );
+
   const appicationData = [
     {
       phoneNumber: values.phoneNumber,
@@ -37,34 +49,20 @@ export const postApplicationForm = async (values) => {
         type: values.type
       }
     ],
-    values.lenguage.length > 1
-      ? values.lenguage.map((element) => ({
-          devLanguageId: parseInt(element.id),
-          level: parseInt(element.level)
-        }))
-      : {
-          devLanguageId: parseInt(values.lenguage[0].id),
-          level: parseInt(values.lenguage[0].level)
-        },
-    values.basesAndFrameworks[1]
-      ? values.basesAndFrameworks.map((element) => ({
-          databaseId: parseInt(element.id),
-          level: parseInt(element.level)
-        }))
-      : {
-          databaseId: parseInt(values.basesAndFrameworks[0].id),
-          level: parseInt(values.basesAndFrameworks.level)
-        },
+    filterLanguage.map((element) => ({
+      devLanguageId: parseInt(element.id),
+      level: parseInt(element.level)
+    })),
 
-    values.tools[1]
-      ? values.tools.map((element) => ({
-          toolsId: parseInt(element.id),
-          level: parseInt(element.level)
-        }))
-      : {
-          toolsId: parseInt(values.tools[0].id),
-          level: parseInt(values.tools[0].level)
-        },
+    filterDatabase.map((element) => ({
+      databaseId: parseInt(element.id),
+      level: parseInt(element.level)
+    })),
+
+    filterTools.map((element) => ({
+      toolsId: parseInt(element.id),
+      level: parseInt(element.level)
+    })),
 
     values.softSkills[1]
       ? values.softSkills.map((skill) => ({
@@ -76,10 +74,9 @@ export const postApplicationForm = async (values) => {
           name: values.softSkills[0].split(',')[0].trim()
         }
   ];
-  //   const token = localStorage.getItem('token');
+
   try {
     const { data } = await apiClient.post(`/users`, appicationData);
-    // console.log('EL DATA ES:', data);
     userForm.statusId = 2;
     localStorage.setItem('user', JSON.stringify(userForm));
     return data;
