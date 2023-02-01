@@ -1,8 +1,13 @@
 import apiClient from '../services/api.service';
 import Swal from 'sweetalert2';
 export const postRegisterAxios = async (values) => {
+
   try {
     const { data } = await apiClient.post('/auth/register', values);
+    if(data !== null){
+      await apiClient.post('/auth/welcome-email', values);
+      return data;
+    }
     return data;
   } catch (error) {
     throw Swal.fire({
