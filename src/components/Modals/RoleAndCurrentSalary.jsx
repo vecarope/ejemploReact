@@ -7,15 +7,13 @@ import Swal from 'sweetalert2';
 import { cargo } from '../../data/FormData';
 import { validateStackAndSalary } from '../../validation/validateModals';
 
-export const RoleAndCurrentSalary = props => {
-  const { updateProfile, data } = props;
-
+export const RoleAndCurrentSalary = ({ updateProfile, data }) => {
   return (
-    <Modal title="Rol y salario:">
+    <Modal title="Rol y salario">
       {props => (
         <Formik
           initialValues={{
-            stack:data.stack || '',
+            stack: data.stack || '',
             currentSalary: data.currentSalary || ''
           }}
           validationSchema={validateStackAndSalary}
@@ -29,10 +27,10 @@ export const RoleAndCurrentSalary = props => {
                 title: '¡Datos modificados!',
                 confirmButtonText: 'Cerrar',
                 confirmButtonColor: '#2738F5'
-              })
-                .then(() => {
-                  props.setShowModal(false)
-                  updateProfile(values)});
+              }).then(() => {
+                props.setShowModal(false);
+                updateProfile(values);
+              });
             } catch (error) {
               console.error(error);
             }

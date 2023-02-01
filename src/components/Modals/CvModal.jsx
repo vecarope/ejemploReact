@@ -6,33 +6,30 @@ import apiClient from '../../services/api.service';
 import Swal from 'sweetalert2';
 import { validateCV } from '../../validation/validateModals';
 
-const CvModal = (props) => {
-
-  const { updateProfile, data } = props;  
-
+const CvModal = ({ updateProfile, data }) => {
   return (
     <Modal title="Sube tu Cv">
-      {(props) => (
-          <Formik
-            initialValues={ { cvUrl: data.cvUrl ||'' }}
-            validationSchema={validateCV}
-            onSubmit={async values => {
-              try {
-                await apiClient.put('/users/cv', values);
-                return Swal.fire({
-                  title: '¡Datos modificados!',
-                  confirmButtonText: 'Cerrar',
-                  confirmButtonColor: '#2738F5'
-                })
-                  .then(() => { 
-                  props.setShowModal(false)
-                  updateProfile(values)}); 
-              } catch (error) {
-                console.error(error);
-              }
-            }}
-          >
-            {({ errors, touched }) => (
+      {props => (
+        <Formik
+          initialValues={{ cvUrl: data.cvUrl || '' }}
+          validationSchema={validateCV}
+          onSubmit={async values => {
+            try {
+              await apiClient.put('/users/cv', values);
+              return Swal.fire({
+                title: '¡Datos modificados!',
+                confirmButtonText: 'Cerrar',
+                confirmButtonColor: '#2738F5'
+              }).then(() => {
+                props.setShowModal(false);
+                updateProfile(values);
+              });
+            } catch (error) {
+              console.error(error);
+            }
+          }}
+        >
+          {({ errors, touched }) => (
             <Form>
               <div className="col-span-7 md:col-span-4 lg:col-span-4 md:mx-auto"></div>
               <FormField.InputField
@@ -40,7 +37,6 @@ const CvModal = (props) => {
                 type="text"
                 name="cvUrl"
                 id="cvUrl"
-                required
                 touched={touched}
                 errors={errors}
               />
@@ -53,8 +49,8 @@ const CvModal = (props) => {
                 </button>
               </div>
             </Form>
-            )}
-          </Formik>
+          )}
+        </Formik>
       )}
     </Modal>
   );

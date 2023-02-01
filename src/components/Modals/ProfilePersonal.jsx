@@ -4,15 +4,17 @@ import { Form, Formik } from 'formik';
 import '../../assets/componentsCSS/button.css';
 import apiClient from '../../services/api.service';
 import Swal from 'sweetalert2';
-import {validatePersonalInformation} from '../../validation/validateModals';
+import { validatePersonalInformation } from '../../validation/validateModals';
 
-export const ProfilePersonal = (props) => {
-
-  const { updateProfile, updateUser,data ,userData  } = props;
-
+export const ProfilePersonal = ({
+  updateProfile,
+  updateUser,
+  data,
+  userData
+}) => {
   return (
     <Modal title="Información Personal">
-      {(props) => (
+      {props => (
         <Formik
           initialValues={{
             phoneNumber: data.phoneNumber || '',
@@ -24,22 +26,21 @@ export const ProfilePersonal = (props) => {
             githubUrl: data.githubUrl || ''
           }}
           validationSchema={validatePersonalInformation}
-          onSubmit={async (values) => {
+          onSubmit={async values => {
             try {
               await apiClient.put('/users/personal-data', values);
               return Swal.fire({
                 title: '¡Datos modificados!',
                 confirmButtonText: 'Cerrar',
                 confirmButtonColor: '#2738F5'
-              })
-                .then(() => {
-                  props.setShowModal(false)
-                  updateProfile(values)
-                  updateUser({
-                    firstName: values.firstName,
-                    lastName: values.lastName,
-                  })
+              }).then(() => {
+                props.setShowModal(false);
+                updateProfile(values);
+                updateUser({
+                  firstName: values.firstName,
+                  lastName: values.lastName
                 });
+              });
             } catch (error) {
               console.error(error);
             }

@@ -7,7 +7,6 @@ import { useEffect, useState } from 'react';
 import apiClient from '../../services/api.service';
 
 const DataSkills = ({
-  props,
   updateLanguagues,
   updateDatabases,
   updateTools
