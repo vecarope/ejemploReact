@@ -46,14 +46,15 @@ export const ToolsModal = (props) => {
         initialValues={{ tools: userTool }}
         validationSchema={validateDataSkillsTools}
         onSubmit={async (values) => {
-          console.log('FORM TOOLS--<', values);
           try {
             await editTools(values.tools);
             return Swal.fire({
               title: '¡Datos modificados!',
               confirmButtonText: 'Cerrar',
               confirmButtonColor: '#2738F5'
-            }).then(() => props.setShowModal(false));
+            })
+              .then(() => props.updateTools())
+              .then(() => props.setShowModal(false));
           } catch (error) {
             console.error(error);
           }

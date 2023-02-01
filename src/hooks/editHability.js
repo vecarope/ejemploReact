@@ -27,11 +27,7 @@ export const editDatabases = async (values) => {
     level: parseInt(element.level)
   }));
   try {
-    const { data } = await apiClient.post(
-      '/users/edit-databases',
-      dataFrameworksValues
-    );
-    console.log(data);
+    await apiClient.post('/users/edit-databases', dataFrameworksValues);
   } catch (error) {
     throw Swal.fire({
       icon: 'error',
@@ -47,8 +43,7 @@ export const editTools = async (values) => {
     level: parseInt(element.level)
   }));
   try {
-    const { data } = await apiClient.post('/users/edit-tools', dataToolsValues);
-    console.log(data);
+    await apiClient.post('/users/edit-tools', dataToolsValues);
   } catch (error) {
     throw Swal.fire({
       icon: 'error',

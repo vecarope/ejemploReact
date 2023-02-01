@@ -61,6 +61,21 @@ export default function UserProfile() {
     );
   };
 
+  const updateLanguagues = async () => {
+    const res = await apiClient.get('/applicant');
+    setLanguage(res.data[2]);
+  };
+
+  const updateDatabases = async () => {
+    const res = await apiClient.get('/applicant');
+    setDataBase(res.data[3]);
+  };
+
+  const updateTools = async () => {
+    const res = await apiClient.get('/applicant');
+    setTools(res.data[4]);
+  };
+
   if (!userData)
     return (
       <div className="container m-8 ">
@@ -209,7 +224,11 @@ export default function UserProfile() {
       <div className="mb-4 p-1 lg:mb-7 mt-4 lg:mt-10">
         <div className="flex justify-between mb-8">
           <h1 className="text-2xl">Habilidades</h1>
-          <DataSkills />
+          <DataSkills
+            updateLanguagues={updateLanguagues}
+            updateDatabases={updateDatabases}
+            updateTools={updateTools}
+          />
         </div>
         <div className="gap-5 lg:gap-12 grid-col">
           <div className=" flex flex-col">

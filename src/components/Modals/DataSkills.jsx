@@ -6,7 +6,12 @@ import { ToolsModal } from './HabilitiesModal/Tools';
 import { useEffect, useState } from 'react';
 import apiClient from '../../services/api.service';
 
-const DataSkills = (props) => {
+const DataSkills = ({
+  props,
+  updateLanguagues,
+  updateDatabases,
+  updateTools
+}) => {
   const [devLanguage, setdevLanguage] = useState([]);
   const [database, setDatabase] = useState([]);
   const [tools, setTools] = useState([]);
@@ -87,7 +92,10 @@ const DataSkills = (props) => {
               role="tabpanel"
               aria-labelledby="tabs-home-tabJustify"
             >
-              <LanguageModal info={devLanguage} />
+              <LanguageModal
+                info={devLanguage}
+                updateLanguagues={updateLanguagues}
+              />
             </div>
             <div
               className="tab-pane fade"
@@ -95,7 +103,10 @@ const DataSkills = (props) => {
               role="tabpanel"
               aria-labelledby="tabs-profile-tabJustify"
             >
-              <DatabasesModal info={database} />
+              <DatabasesModal
+                info={database}
+                updateDatabases={updateDatabases}
+              />
             </div>
             <div
               className="tab-pane fade"
@@ -103,7 +114,7 @@ const DataSkills = (props) => {
               role="tabpanel"
               aria-labelledby="tabs-profile-tabJustify"
             >
-              <ToolsModal info={tools} />
+              <ToolsModal info={tools} updateTools={updateTools} />
             </div>
           </div>
         </div>

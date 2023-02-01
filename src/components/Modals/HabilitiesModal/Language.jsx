@@ -52,7 +52,9 @@ export const LanguageModal = (props) => {
               title: '¡Datos modificados!',
               confirmButtonText: 'Cerrar',
               confirmButtonColor: '#2738F5'
-            }).then(() => props.setShowModal(false));
+            })
+              .then(() => props.updateLanguagues())
+              .then(() => props.setShowModal(false));
           } catch (error) {
             console.error(error);
           }

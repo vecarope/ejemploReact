@@ -53,7 +53,9 @@ export const DatabasesModal = (props) => {
               title: '¡Datos modificados!',
               confirmButtonText: 'Cerrar',
               confirmButtonColor: '#2738F5'
-            }).then(() => props.setShowModal(false));
+            })
+              .then(() => props.updateDatabases())
+              .then(() => props.setShowModal(false));
           } catch (error) {
             console.error(error);
           }
