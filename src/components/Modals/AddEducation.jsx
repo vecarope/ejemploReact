@@ -8,10 +8,8 @@ import { month, typeInstitution } from '../../data/FormData';
 import { validateNewEducation } from '../../validation/validateModals';
 import { GrAddCircle } from 'react-icons/gr';
 
-const AddEducation = (props) => {
-  const [showModal, setShowModal] = useState(false)
-  const {setEducation, data}=props;
-
+const AddEducation = ({ setEducation, data }) => {
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <>
@@ -42,24 +40,27 @@ const AddEducation = (props) => {
                 <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
                   <Formik
                     initialValues={{
-                      name:'',
-                      instituteName:'',
+                      name: '',
+                      instituteName: '',
                       type: '',
                       startMonth: '',
-                      endMonth:  '',
+                      endMonth: '',
                       startYear: '',
                       endYear: ''
                     }}
                     validationSchema={validateNewEducation}
                     onSubmit={async values => {
                       try {
-                      const dataPost = await apiClient.post('/users/education', values)
-                        setEducation([...data, dataPost.data])
+                        const dataPost = await apiClient.post(
+                          '/users/education',
+                          values
+                        );
+                        setEducation([...data, dataPost.data]);
                         return Swal.fire({
                           title: '¡Datos Guardados!',
                           confirmButtonText: 'Cerrar',
                           confirmButtonColor: '#2738F5'
-                        }).then(() => setShowModal(false))
+                        }).then(() => setShowModal(false));
                       } catch (error) {
                         console.error(error);
                       }
@@ -151,7 +152,7 @@ const AddEducation = (props) => {
                           </div>
                         </div>
                         <div className="container py-8 justify-center">
-                          <button className="btn btn-blue" type="submit" >
+                          <button className="btn btn-blue" type="submit">
                             Guardar Cambios
                           </button>
                         </div>

@@ -7,21 +7,17 @@ import Swal from 'sweetalert2';
 import { time, availability } from '../../data/FormData';
 import { validateAvailability } from '../../validation/validateModals';
 
-
-const Availability = (props) => {
-
-  const { updateProfile, data } =props; 
-
+const Availability = ({ updateProfile, data }) => {
   return (
     <Modal title="Disponibilidad">
-      {(props) => (
+      {props => (
         <Formik
           initialValues={{
             workAvailability: data.workAvailability || '',
             availabilityStatus: data.availabilityStatus || ''
           }}
           validationSchema={validateAvailability}
-          onSubmit={async (values) => {
+          onSubmit={async values => {
             try {
               await apiClient.put('/users/availability', {
                 workAvailability: values.workAvailability.toString(),
@@ -31,16 +27,16 @@ const Availability = (props) => {
                 title: '¡Datos modificados!',
                 confirmButtonText: 'Cerrar',
                 confirmButtonColor: '#2738F5'
-              })
-                .then(() => {
-                props.setShowModal(false)
-                updateProfile(values)}); 
+              }).then(() => {
+                props.setShowModal(false);
+                updateProfile(values);
+              });
             } catch (error) {
               console.error(error);
             }
           }}
         >
-          {({ errors, touched}) => (
+          {({ errors, touched }) => (
             <Form>
               <div className="col-span-7 md:col-span-4 lg:col-span-4 mx-10">
                 <FormField.InputCheckbox

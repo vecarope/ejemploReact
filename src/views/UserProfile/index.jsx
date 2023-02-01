@@ -40,25 +40,18 @@ export default function UserProfile() {
     getData();
   }, []);
 
-  const updateProfile = (newState) => {
-    setProfile((prevState) => ({ ...prevState, ...newState }));
+  const updateProfile = newState => {
+    setProfile(prevState => ({ ...prevState, ...newState }));
   };
-
-  // const postEducation = (newState) =>{
-  //   console.log (setEducation(prevState =>(([...prevState, newState ]))))
-  // };
 
   const updateEducation = (values, id) => {
-    setEducation((prevState) =>
-      prevState.map((e) => (e.id === id ? { ...e, ...values } : e))
+    setEducation(prevState =>
+      prevState.map(e => (e.id === id ? { ...e, ...values } : e))
     );
   };
 
-  //ok
-  const removeEducation = (id) => {
-    setEducation((prevState) =>
-      prevState.filter((element) => element.id !== id)
-    );
+  const removeEducation = id => {
+    setEducation(prevState => prevState.filter(element => element.id !== id));
   };
 
   const updateLanguagues = async () => {
@@ -131,7 +124,7 @@ export default function UserProfile() {
             updateProfile={updateProfile}
             data={profile}
             userData={userData}
-            updateUser={(data) => updateUser({ ...userData, ...data })}
+            updateUser={data => updateUser({ ...userData, ...data })}
           />
         </div>
       </div>
@@ -234,10 +227,10 @@ export default function UserProfile() {
           <div className=" flex flex-col">
             <h1 className="my-2">Avanzado</h1>
             <div className="flex flex-wrap space-x-2">
-              {[devLanguage, database, tools].flatMap((category) =>
+              {[devLanguage, database, tools].flatMap(category =>
                 category
-                  .filter((element) => element.level === 3)
-                  .map((element) => (
+                  .filter(element => element.level === 3)
+                  .map(element => (
                     <div className="md:flex lg:flex" key={element.id}>
                       <div
                         className="badge badge-outline border-light-purple p-1 pt-0 pb-0 h-fit w-fit rounded-md"
@@ -251,10 +244,10 @@ export default function UserProfile() {
             </div>
             <h1 className="my-2">Experimentado</h1>
             <div className="flex flex-wrap space-x-2">
-              {[devLanguage, database, tools].flatMap((category) =>
+              {[devLanguage, database, tools].flatMap(category =>
                 category
-                  .filter((element) => element.level === 2)
-                  .map((element) => (
+                  .filter(element => element.level === 2)
+                  .map(element => (
                     <div className="md:flex lg:flex" key={element.id}>
                       <div
                         className="badge badge-outline border-light-purple p-1 pt-0 pb-0 h-fit w-fit rounded-md"
@@ -268,10 +261,10 @@ export default function UserProfile() {
             </div>
             <h1 className=" my-2">Principiante</h1>
             <div className="flex flex-wrap space-x-2">
-              {[devLanguage, database, tools].flatMap((category) =>
+              {[devLanguage, database, tools].flatMap(category =>
                 category
-                  .filter((element) => element.level === 1)
-                  .map((element) => (
+                  .filter(element => element.level === 1)
+                  .map(element => (
                     <div className="md:flex lg:flex" key={element.id}>
                       <div
                         className="badge badge-outline border-light-purple p-1 pt-0 pb-0 h-fit w-fit rounded-md"
@@ -296,7 +289,7 @@ export default function UserProfile() {
             data={education}
           />
         </div>
-        {education.map((element) => (
+        {education.map(element => (
           <div
             className=" flex justify-between my-4"
             value={element.id}
@@ -307,7 +300,7 @@ export default function UserProfile() {
                 <h1 className=" text-blue-700 text-sm font-bold">{`${element.startMonth} ${element.startYear} - ${element.endMonth} ${element.endYear}`}</h1>
               ) : (
                 <h1 className=" text-blue-700 text-sm font-bold">
-                  Edita los datos de inicio y fin de esta educación.
+                  Fecha ingreso - Fecha egreso
                 </h1>
               )}
               <h1 className="text-2xl">{element.name}</h1>
