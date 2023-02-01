@@ -1,7 +1,16 @@
-import { FacebookAuthProvider, GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import {
+  FacebookAuthProvider,
+  GithubAuthProvider,
+  GoogleAuthProvider,
+  signInWithPopup
+} from 'firebase/auth';
 import { createContext, useContext, useState } from 'react';
 import Swal from 'sweetalert2';
-import { postForgotPassAxios, postLoginAxios, postRestorePassword } from '../hooks/postAxios';
+import {
+  postForgotPassAxios,
+  postLoginAxios,
+  postRestorePassword
+} from '../hooks/postAxios';
 import { postLoginFirebase } from '../hooks/postFirebase';
 import { auth } from '../services/firebaseConfig';
 
@@ -30,7 +39,7 @@ export const AuthProvider = ({ children }) => {
   const updateUser = (data) => {
     setUserData(data);
     localStorage.setItem('user', JSON.stringify(data));
-  }
+  };
 
   const postLogin = async (values) => {
     const { user, token } = await postLoginAxios(values);
@@ -58,29 +67,27 @@ export const AuthProvider = ({ children }) => {
   };
 
   const loginWithGoogle = async () => {
-    try{
-    const googleProvider = new GoogleAuthProvider()
-    const sign = await signInWithPopup(auth, googleProvider)
-    const {user, token} = await postLoginFirebase(sign)
-    setUserData(user);
-    localStorage.setItem('user', JSON.stringify(user));
-    localStorage.setItem('token', token);
+    try {
+      const googleProvider = new GoogleAuthProvider();
+      const sign = await signInWithPopup(auth, googleProvider);
+      const { user, token } = await postLoginFirebase(sign);
+      setUserData(user);
+      localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem('token', token);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-    }catch(error){
-      console.log(error)
-    } 
-  }
-  
-  const loginWithFacebook = async ()=>{
-    const facebookProvider = new FacebookAuthProvider()
-    await signInWithPopup( auth, facebookProvider )
-  }
-  
-  const loginWithGithub = async ()=>{
-    const githubProvider = new GithubAuthProvider()
-    const sign = await signInWithPopup(auth,  githubProvider)
-  }
+  const loginWithFacebook = async () => {
+    const facebookProvider = new FacebookAuthProvider();
+    await signInWithPopup(auth, facebookProvider);
+  };
 
+  const loginWithGithub = async () => {
+    const githubProvider = new GithubAuthProvider();
+    await signInWithPopup(auth, githubProvider);
+  };
 
   const forgotPassword = async (values) => {
     await postForgotPassAxios(values);
@@ -103,8 +110,8 @@ export const AuthProvider = ({ children }) => {
   };
 
   const restorePassword = async (values) => {
-        await postRestorePassword(values);
-        let timerInterval;
+    await postRestorePassword(values);
+    let timerInterval;
     Swal.fire({
       title: 'Contraseña restaurada con éxito',
       timer: 3000,
@@ -119,12 +126,12 @@ export const AuthProvider = ({ children }) => {
       willClose: () => {
         clearInterval(timerInterval);
       }
-    }).then(function(result){
-      if(result.isDismissed === true){
-        window.location = '/login'
-      }})
+    }).then(function (result) {
+      if (result.isDismissed === true) {
+        window.location = '/login';
+      }
+    });
   };
-
 
   const data = {
     userData,
@@ -133,7 +140,7 @@ export const AuthProvider = ({ children }) => {
     postLogin,
     loginWithGoogle,
     loginWithFacebook,
-    loginWithGithub, 
+    loginWithGithub,
     forgotPassword,
     restorePassword
   };
