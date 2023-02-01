@@ -42,8 +42,8 @@ const AddEducation = (props) => {
                 <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
                   <Formik
                     initialValues={{
-                      name: '',
-                      instituteName:  '',
+                      name:'',
+                      instituteName:'',
                       type: '',
                       startMonth: '',
                       endMonth:  '',
@@ -53,8 +53,8 @@ const AddEducation = (props) => {
                     validationSchema={validateNewEducation}
                     onSubmit={async values => {
                       try {
-                        await apiClient.post('/users/education', values)
-                        setEducation([...data,values])
+                      const dataPost = await apiClient.post('/users/education', values)
+                        setEducation([...data, dataPost.data])
                         return Swal.fire({
                           title: '¡Datos Guardados!',
                           confirmButtonText: 'Cerrar',
