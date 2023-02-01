@@ -55,8 +55,7 @@ function App() {
               </ProtectedRoutes>
             }
           >
-            <Route index element={<Navigate to="welcome" />} />
-            <Route path="welcome" element={<UserHome />} />
+            <Route index element={<Navigate to="profile" />} />
             <Route path="profile" exact element={<AdminLayout />} />
             <Route path="test" element={<UserTest />} />
             <Route path="devlanguage" element={<DevlanguageTable />} />

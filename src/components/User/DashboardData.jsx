@@ -30,17 +30,7 @@ export const DashboardAdmin =[
   {
     title: 'Home',
     icon: <AiOutlineHome />,
-    path: 'welcome'
-  },
-  {
-    title: 'Perfil',
-    icon: <FiUserCheck />,
     path: 'profile'
-  },
-  {
-    title: 'Test técnicos', 
-    icon: <CgFileDocument />,
-    path: 'test'
   },
   {
     title: 'Postulaciones',
