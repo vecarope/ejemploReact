@@ -29,11 +29,11 @@ export default function Dashboard() {
     <div className=" flex text-light-purple md:w-54 lg:w-70 justify-center h-96 ">
       <div className=" w-16 md:w-32 mt-12 absolute">
         <div className="flex gap-x-2 p-1 justify-center items-center text-xl h-14 w-22 border-2 border-light-purple rounded-2xl bg-white font-bold mb-1">
-          <h1 className="hidden md:block md:text-lg lg:text-xl">JOB READY</h1>
-          <h1 className="sm:text-center sm:text-lg md:hidden lg:hidden">JR</h1>
+          <h1 className="hidden md:block md:text-lg lg:text-xl">{userData && userData.roleId === 1 ? 'JOB READY' : 'ADMIN'}</h1>
+          <h1 className="sm:text-center sm:text-lg md:hidden lg:hidden">{userData && userData.roleId === 1 ?'JR' : 'ADM'}</h1>
         </div>
       </div>
-      <div className=" w-16 md:w-48 mt-40 mb-0 mr-1">
+      <div className=" w-19 md:w-48 mt-40 mb-0 mr-1">
         {userData ? (
           <ul>
             {userData.roleId === 1
