@@ -27,6 +27,7 @@ const EducationModal = (props) => {
           onSubmit={async values => {
             console.log(values);
             try {
+              values["id"] = id
               await apiClient.put('/users/education', values );
               return Swal.fire({
                 title: '¡Datos modificados!',
