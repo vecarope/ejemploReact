@@ -1,20 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import * as FormField from '../../../components/Forms';
 import apiClient from '../../../services/api.service';
 
-export const JobProfile = ({ errors, touched, values }) => {
-  const [lenguage, setLenguage] = useState(null);
-  const [basesFrameworks, setBasesFrameworks] = useState(null);
-  const [tools, setTools] = useState(null);
-
+export const JobProfile = ({ errors, touched, values, setFieldValue }) => {
   const getAllData = async () => {
-    setLenguage(await apiClient('/dev-languages'));
-    setBasesFrameworks(await apiClient('/databases'));
-    setTools(await apiClient('/tools'));
+    const { data: lenguage } = await apiClient('/dev-languages');
+    const { data: databases } = await apiClient('/databases');
+    const { data: tools } = await apiClient('/tools');
+    setFieldValue('lenguage', lenguage);
+    setFieldValue('basesFrameworks', databases);
+    setFieldValue('tools', tools);
   };
 
   useEffect(() => {
     getAllData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -68,7 +68,7 @@ export const JobProfile = ({ errors, touched, values }) => {
             </div>
 
             <FormField.InputSelectArray
-              data={lenguage?.data}
+              data={values.lenguage}
               name="lenguage"
               id="lenguage"
               touched={touched}
@@ -87,7 +87,7 @@ export const JobProfile = ({ errors, touched, values }) => {
             </div>
 
             <FormField.InputSelectArray
-              data={basesFrameworks?.data}
+              data={values.basesFrameworks}
               name="basesAndFrameworks"
               id="basesAndFrameworks"
               touched={touched}
@@ -105,7 +105,7 @@ export const JobProfile = ({ errors, touched, values }) => {
               </p>
             </div>
             <FormField.InputSelectArray
-              data={tools?.data}
+              data={values.tools}
               name="tools"
               id="tools"
               touched={touched}
