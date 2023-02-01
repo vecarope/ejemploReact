@@ -14,7 +14,9 @@ TL: [José Campos](https://github.com/josecamposhz)
 FE: [Francisco D. Molina](https://github.com/TheFranciscoMolina)  
 FE: [Eliecer Calderon](https://github.com/eliecergonzalez2021)  
 FE: [Irani Romero](https://github.com/iranimromero)  
+FE: [Marcia Alegria](https://github.com/marciaalegria)  
 FS: [Daniela Hernández](https://github.com/DanyBeth-Dev)
+
 
 ### Backend
 
@@ -88,7 +90,7 @@ make enter
 
 - Definine database diagrams and business rules
 - Define Frontend & Backend architecture
-- Encryption of passwords with Bcript
+- Encryption of passwords with Bcrypt
 - User authentication with JWT.
 - Create API
 - Design propose using Figma
@@ -117,6 +119,3 @@ make enter
 - The user can demonstrate the level of his knowledge by means of tests.
 - The admin can see the list of all registered users.
 - The admin can export user data in an excel file.
-
-
-## 🔜 Points for improvement:
