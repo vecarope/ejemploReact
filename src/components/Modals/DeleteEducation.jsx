@@ -3,8 +3,8 @@ import apiClient from '../../services/api.service';
 import { RiDeleteBinLine } from 'react-icons/ri';
 
 const DeleteEducation = props => {
-  const {removeEducation}=props; 
-  const { id } = props; 
+  const {removeEducation, id }=props; 
+
 
   async function deleteItem(id) {
     try {

@@ -10,11 +10,10 @@ import { validateAvailability } from '../../validation/validateModals';
 
 const Availability = (props) => {
 
-  const { updateProfile } =props; 
-  const {data }= props; 
+  const { updateProfile, data } =props; 
 
   return (
-    <Modal title="Disponibilidad:">
+    <Modal title="Disponibilidad">
       {(props) => (
         <Formik
           initialValues={{
@@ -33,8 +32,9 @@ const Availability = (props) => {
                 confirmButtonText: 'Cerrar',
                 confirmButtonColor: '#2738F5'
               })
-                .then(() => props.setShowModal(false))
-                .then(updateProfile(values)); 
+                .then(() => {
+                props.setShowModal(false)
+                updateProfile(values)}); 
             } catch (error) {
               console.error(error);
             }
@@ -42,12 +42,11 @@ const Availability = (props) => {
         >
           {({ errors, touched}) => (
             <Form>
-              <div className="col-span-7 md:col-span-4 lg:col-span-4 md:mx-auto">
+              <div className="col-span-7 md:col-span-4 lg:col-span-4 mx-10">
                 <FormField.InputCheckbox
                   label="Indícanos tu disponibilidad laboral:"
                   touched={touched}
                   errors={errors}
-                  required
                   name="workAvailability"
                   id="workAvailability"
                   data={availability}
@@ -56,7 +55,6 @@ const Availability = (props) => {
                   label="Indicanos tu tipo incorporación:"
                   touched={touched}
                   errors={errors}
-                  required
                   name="availabilityStatus"
                   id="availabilityStatus"
                   data={time}

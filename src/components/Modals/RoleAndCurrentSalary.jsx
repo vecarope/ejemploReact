@@ -8,8 +8,7 @@ import { cargo } from '../../data/FormData';
 import { validateStackAndSalary } from '../../validation/validateModals';
 
 export const RoleAndCurrentSalary = props => {
-  const { updateProfile } = props;
-  const { data } = props;
+  const { updateProfile, data } = props;
 
   return (
     <Modal title="Rol y salario:">
@@ -31,8 +30,9 @@ export const RoleAndCurrentSalary = props => {
                 confirmButtonText: 'Cerrar',
                 confirmButtonColor: '#2738F5'
               })
-                .then(() => props.setShowModal(false))
-                .then(updateProfile(values));
+                .then(() => {
+                  props.setShowModal(false)
+                  updateProfile(values)});
             } catch (error) {
               console.error(error);
             }
@@ -46,7 +46,6 @@ export const RoleAndCurrentSalary = props => {
                     label="¿Cuál o cuáles cargos te gustaria optar?"
                     touched={touched}
                     errors={errors}
-                    required
                     name="stack"
                     data={cargo}
                     headText={
@@ -64,7 +63,6 @@ export const RoleAndCurrentSalary = props => {
                     label="Salario actual (USD):"
                     touched={touched}
                     errors={errors}
-                    required
                     name="currentSalary"
                     id="currentSalary"
                     className="w-50"

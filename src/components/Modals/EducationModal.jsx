@@ -9,10 +9,7 @@ import { validateEducation } from '../../validation/validateModals';
 
 const EducationModal = (props) => {
 
-  const {updateEducation}= props; 
-  const {id}=props;
-  const {data}=props;
-
+  const {updateEducation, id, data}= props; 
 
   return (
     <Modal title="Educación">
@@ -36,8 +33,9 @@ const EducationModal = (props) => {
                 confirmButtonText: 'Cerrar',
                 confirmButtonColor: '#2738F5'
               })
-                .then(() => props.setShowModal(false))
-                .then(updateEducation(values,id))
+                .then(() =>{
+                  props.setShowModal(false)
+                  updateEducation(values,id)})
             } catch (error) {
               console.error(error);
             }
@@ -52,7 +50,6 @@ const EducationModal = (props) => {
                     type="text"
                     name="name"
                     id="name"
-                    required
                     touched={touched}
                     errors={errors}
                   />
@@ -63,7 +60,6 @@ const EducationModal = (props) => {
                     type="text"
                     name="instituteName"
                     id="instituteName"
-                    required
                     touched={touched}
                     errors={errors}
                   />
@@ -76,7 +72,6 @@ const EducationModal = (props) => {
                     id="startMonth"
                     name="startMonth"
                     data={month}
-                    required
                   />
                 </div>
                 <div className="row-span-3 col-start-2 col-end-3">
@@ -87,7 +82,7 @@ const EducationModal = (props) => {
                     errors={errors}
                     name="startYear"
                     id="startYear"
-                    required
+                    
                   />
                 </div>
                 <div className="row-span-4 col-start-1 col-end-2">
@@ -98,7 +93,6 @@ const EducationModal = (props) => {
                     id="endMonth"
                     name="endMonth"
                     data={month}
-                    required
                   />
                 </div>
                 <div className="row-span-4 col-start-2 col-end-3">
@@ -109,7 +103,6 @@ const EducationModal = (props) => {
                     type="text"
                     name="endYear"
                     id="endYear"
-                    required
                   />
                 </div>
               </div>

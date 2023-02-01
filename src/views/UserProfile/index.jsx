@@ -40,8 +40,8 @@ export default function UserProfile() {
     getData();
   }, []);
 
-  const updateProfile = (newState) => {
-    setProfile((prevState) => ({ ...prevState, ...newState }));
+  const updateProfile = newState => {
+    setProfile(prevState => ({ ...prevState, ...newState }));
   };
 
   // const postEducation = (newState) =>{
@@ -96,10 +96,8 @@ export default function UserProfile() {
           <GrDocumentTransfer /> <h1 className="mr-2">sube tu Cv </h1>
         </div>
         <div className="flex ml-7 gap-8 justify-between">
-          <h2 className="text-sm">{profile.cvUrl}</h2>
-        </div>
-        <div>
-          <CvModal updateProfile={updateProfile} data={profile} />
+          <h2 className="text-sm mr-7">{profile.cvUrl}</h2>
+          <CvModal updateProfile={updateProfile} data={profile}/>
         </div>
       </div>
       <hr className=" border-black" />
@@ -118,21 +116,26 @@ export default function UserProfile() {
             updateProfile={updateProfile}
             data={profile}
             userData={userData}
-            updateUser={(data) => updateUser({ ...userData, ...data })}
+            updateUser={data => updateUser({ ...userData, ...data })}
           />
         </div>
       </div>
-
-      <div className="flex justify-start sm:justify-around md:justify-around gap-8 mb-2 mt-4 lg:mb-7">
-        <div className="flex gap-5">
-          <AiOutlineMail className=" text-xl" />
-          <p className="hidden md:block">{userData.email}</p>
-        </div>
-        <div className="flex gap-5">
-          <AiOutlinePhone className=" text-xl" />
+      <div className="flex justify-start sm:justify-around md:justify-around gap-8 mb-2 mt-4 lg:mb-7 ">
+      <div className="flex gap-5 mx-1 relative group ">
+        <AiOutlineMail className="cursor-pointer w-6 h-6" />
+        <span className="md:hidden item-center bg-gray-50 text-dark-text invisible transition-opacity duration-500 ease-in-out opacity-0 group-hover:opacity-100 group-hover:visible absolute  -top-6 rounded-md">
+          {userData.email}
+        </span>
+        <p className="hidden md:block">{userData.email}</p>
+      </div>
+      <div className="flex gap-5 mx-1 relative group " >
+          <AiOutlinePhone className="cursor-pointer  w-6 h-6" />
+          <span className="md:hidden  bg-gray-50 text-dark-text invisible transition-opacity duration-500 ease-in-out opacity-0 group-hover:opacity-100 group-hover:visible absolute -top-6 rounded-md">
+            {profile.phoneNumber}
+          </span>
           <p className="hidden md:block">{profile.phoneNumber}</p>
         </div>
-        <a
+        <a className='relative group'
           role="button"
           target="_blank"
           rel="noopener noreferrer"
@@ -141,6 +144,7 @@ export default function UserProfile() {
           <BsLinkedin className=" rounded-3xl w-6 h-6" />
         </a>
         <a
+        className='relative group'
           role="button"
           target="_blank"
           rel="noopener noreferrer"

@@ -10,8 +10,7 @@ import { GrAddCircle } from 'react-icons/gr';
 
 const AddEducation = (props) => {
   const [showModal, setShowModal] = useState(false)
-  const {setEducation}=props;
-  const {data} = props; 
+  const {setEducation, data}=props;
 
 
   return (
@@ -56,7 +55,6 @@ const AddEducation = (props) => {
                       try {
                         await apiClient.post('/users/education', values)
                         setEducation([...data,values])
-                        console.log(data); 
                         return Swal.fire({
                           title: '¡Datos Guardados!',
                           confirmButtonText: 'Cerrar',
@@ -94,9 +92,9 @@ const AddEducation = (props) => {
                               errors={errors}
                             />
                           </div>
-                          <div className="row-span-2 col-start-2 col-end-3">
+                          <div className="row-span-2 col-start-2 col-end-3 text-xs">
                             <FormField.InputSelect
-                              label={'Tipo institución'}
+                              label={'Tipo de institución'}
                               touched={touched}
                               errors={errors}
                               id="type"

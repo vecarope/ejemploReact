@@ -8,8 +8,7 @@ import { validateCV } from '../../validation/validateModals';
 
 const CvModal = (props) => {
 
-  const { updateProfile } = props; 
-  const {data} = props; 
+  const { updateProfile, data } = props;  
 
   return (
     <Modal title="Sube tu Cv">
@@ -25,8 +24,9 @@ const CvModal = (props) => {
                   confirmButtonText: 'Cerrar',
                   confirmButtonColor: '#2738F5'
                 })
-                  .then(() => props.setShowModal(false)) 
-                  .then(updateProfile(values)); 
+                  .then(() => { 
+                  props.setShowModal(false)
+                  updateProfile(values)}); 
               } catch (error) {
                 console.error(error);
               }

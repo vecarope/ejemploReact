@@ -10,8 +10,7 @@ import { validateWorkExperience } from '../../validation/validateModals';
 
 const WorkModal = (props) => {
 
-  const {updateProfile} = props; 
-  const {data}= props;
+  const {updateProfile, data} = props; 
 
   return (
     <Modal title="Experiencia Laboral">
@@ -31,8 +30,9 @@ const WorkModal = (props) => {
               title: '¡Datos modificados!',
               confirmButtonText: 'Cerrar',
               confirmButtonColor: '#2738F5'
-            }).then(()=>props.setShowModal(false))
-              .then(updateProfile(payload));
+            }).then(()=>{
+              props.setShowModal(false)
+              updateProfile(payload)});
           } catch (error) {
             console.error(error);
           }
@@ -47,7 +47,6 @@ const WorkModal = (props) => {
               errors={errors}
               id="devExperience"
               name="devExperience"
-              required
             >
               {yearsOfExperience}
             </FormField.InputRadio>
