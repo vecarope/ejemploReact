@@ -16,7 +16,7 @@ const LoginForm = () => {
       <Formik
         initialValues={initialCredentials}
         validationSchema={validateSchemaLogin}
-        onSubmit={async (values) => {
+        onSubmit={async values => {
           await postLogin(values);
         }}
       >
@@ -78,23 +78,31 @@ const LoginForm = () => {
                 Iniciar Sesión
               </button>
               {isSubmitting ? (
-                <div className='my-4'>
-                <h2>Ingresando</h2>
-                <progress className="animate-pulse progress w-56"></progress>
+                <div className="my-4">
+                  <h2>Ingresando</h2>
+                  <progress className="animate-pulse progress w-56"></progress>
                 </div>
               ) : null}
             </div>
-            <div className="flex flex-col md:flex-row max-w-xs md:max-w-lg mx-auto">
-              <Link to={'/register'}>
-                <span className=" flex py-3.5 text-sm text-white text-center font-medium  hover:md:text-mid-blue md:text-dark-purple font-sans">
-                  Crear cuenta
-                </span>
+            <div className="flex flex-col max-w-xs items-center md:max-w-lg mx-auto">
+              <Link
+                to={'/login'}
+                onClick={() => window.location.reaload()}
+                className="my-1 py-1 text-sm text-white  font-medium  hover:md:text-mid-blue md:text-dark-purple font-sans"
+              >
+                Ingresa con redes sociales
               </Link>
-              <span className="px-3 flex"></span>
-              <Link to={'/forgot-password'}>
-                <span className=" flex py-3.5 text-sm text-white text-center font-medium  hover:md:text-mid-blue md:text-dark-purple font-sans">
-                  Olvidé la contraseña
-                </span>
+              <Link
+                to={'/register'}
+                className="my-1 py-1 text-sm text-white font-medium  hover:md:text-mid-blue md:text-dark-purple font-sans"
+              >
+                Crear cuenta
+              </Link>
+              <Link
+                to={'/forgot-password'}
+                className="my-1 py-2 text-sm text-white font-medium  hover:md:text-mid-blue md:text-dark-purple font-sans"
+              >
+                Olvidé la contraseña
               </Link>
             </div>
           </Form>
