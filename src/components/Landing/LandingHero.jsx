@@ -10,7 +10,7 @@ const LandingHero = () => {
           <div className="container mx-auto py-3 lg:hidden">
             <img src={coverImage} alt="MujerDev" />
           </div>
-          <div className="">
+          <div>
             <div className="text-white lg:mr-20">
               <h1 className="px-0 sm:py-2 text-3xl sm:text-5xl ">
                 <strong>¿Buscas talento TI?</strong>
@@ -46,7 +46,7 @@ const LandingHero = () => {
             </div>
           </div>
         </div>
-        <div className="hidden lg:block -mx-8 -mb-64">
+        <div className="hidden lg:block -mx-8 ">
           <img src={coverImage2} alt="MujerDev" />
         </div>
       </div>
