@@ -17,8 +17,8 @@ const initialCredentials = {
 };
 
 const CustomInputComponent = ({
-  field, // { name, value, onChange, onBlur }
-  form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
+  field,
+  form: { touched, errors },
   ...props
 }) => (
   <div>
@@ -45,7 +45,7 @@ const ContactUs = () => {
   }, []);
   return (
     <section
-      className="animate__animated animate__fadeIn flex justify-center items-center min-h-screen
+      className="animate__animated animate__fadeIn flex justify-center items-center min-h-screen pb-6 md:pb-8
   md:h-5/6 md:py-11"
       id="contact-section"
     >
@@ -87,14 +87,12 @@ const ContactUs = () => {
             </a>
           </button>
         </div>
-        <div className="card bg-[#140B34] w-auto h-auto md:w-1/2 mx-auto items-center">
+        <div className="card bg-[#140B34] w-auto h-auto md:w-1/2 mx-auto items-center pb-2">
           <Formik
             initialValues={initialCredentials}
             validationSchema={validateSchemaContactCompany}
             onSubmit={async (e) => {
-              /* Quitamos las id con valor string */
               const { workAreaId, ...payload } = e;
-              /* Convertirmos string en número */
               function toNumber(value) {
                 return Number(value);
               }
@@ -257,6 +255,9 @@ const ContactUs = () => {
                       Cargando datos
                     </progress>
                   )}
+                  <label className="text-white font-sans px-5 mt-3">
+                    ¿Dudas? Déjalas acá!
+                  </label>
                   {errors.workAreaId && touched.workAreaId && (
                     <ErrorMessage
                       component="div"
@@ -265,9 +266,7 @@ const ContactUs = () => {
                     />
                   )}
                 </div>
-                <label className="text-white font-sans px-5 mt-3">
-                  ¿Dudas? Déjalas acá!
-                </label>
+
                 <div className="w-full mb-5 px-5  mt-3">
                   <Field name="doubts" component={CustomInputComponent} />
                 </div>
