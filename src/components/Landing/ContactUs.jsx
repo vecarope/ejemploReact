@@ -7,11 +7,11 @@ import apiClient from '../../../src/services/api.service';
 import Swal from 'sweetalert2';
 
 const initialCredentials = {
-  name: '',
-  lastName: '',
-  email: '',
-  phone: '',
-  companyName: '',
+  name: 'Sandra',
+  lastName: 'Perez',
+  email: 'sandra.per@devmail.com',
+  phone: '12347545678',
+  companyName: 'LatamDev',
   doubts: '',
   workAreaId: []
 };
