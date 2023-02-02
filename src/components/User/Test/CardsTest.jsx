@@ -27,7 +27,6 @@ const CardTest = ({ selectedSkills }) => {
               key={e.id}
               className="rounded-lg shadow-md hover:shadow-xl md:w-auto w-3/4 p-4 content-center m-3 "
             >
-              {console.log('name card', e.name)}
               <div className="flex justify-center">
                 <img
                   src={process.env.REACT_APP_API_URL + '/test/' + e.image}

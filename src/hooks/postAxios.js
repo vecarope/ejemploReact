@@ -56,7 +56,6 @@ export const postRestorePassword = async (values) => {
       timer: 3000,
       timerProgressBar: true
     }).then(function (result) {
-      console.log(result);
       if (result.isDismissed === true) {
         window.location = '/forgot-password';
       }

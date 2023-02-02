@@ -4,18 +4,15 @@ let validateURL =
   /(([\w]+:)?\/\/)?(([\d\w]|%[a-fA-f\d]{2,2})+(:([\d\w]|%[a-fA-f\d]{2,2})+)?@)?([\d\w][-\d\w]{0,253}[\d\w]\.)+[\w]{2,63}(:[\d]+)?(\/([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)*(\?(&?([-+_~.\d\w]|%[a-fA-f\d]{2,2})=?)*)?(#([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)?/;
 let validateStrings = /^[A-ZÁÉÍÓÚ a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ a-zñáéíóú]+)?$/;
 let validateNumber = /^([0-9])*$/;
-let validateLinkedinURL = /(https?)?:?(\/\/)?(([w]{3}||\w\w)\.)?linkedin.com(\w+:{0,1}\w*@)?(\S+)(:([0-9])+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/;
-let validateGithubURL = /(https?)?:?(\/\/)?(([w]{3}||\w\w)\.)?github.com(\w+:{0,1}\w*@)?(\S+)(:([0-9])+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/;
-
+let validateLinkedinURL =
+  /(https?)?:?(\/\/)?(([w]{3}||\w\w)\.)?linkedin.com(\w+:{0,1}\w*@)?(\S+)(:([0-9])+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/;
+let validateGithubURL =
+  /(https?)?:?(\/\/)?(([w]{3}||\w\w)\.)?github.com(\w+:{0,1}\w*@)?(\S+)(:([0-9])+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/;
 
 const validatePersonalInformation = Yup.object().shape({
   phoneNumber: Yup.string()
     .trim()
     .required('Debes ingresar un telefono.')
-    /* .matches(validateNumber, {
-      excludeEmptyString: true,
-      message: 'El telefono debe ser solo numeros.'
-    }) */
     .min(8, 'El telefono es muy corto.')
     .max(18, 'El numero de telefono debe ser más corto.'),
 
@@ -79,7 +76,7 @@ const validateAvailability = Yup.object().shape({
 const validateCV = Yup.object().shape({
   cvUrl: Yup.string()
     .trim()
-    .required('Este link es requerodo.')
+    .required('Este link es requerido.')
     .matches(validateURL, {
       excludeEmptyString: true,
       message: 'Debes ingresar un link válido.'
@@ -140,7 +137,7 @@ const validateNewEducation = Yup.object().shape({
   startMonth: Yup.string().required('Debes seleccionar un mes.'),
   endMonth: Yup.string().required('Debes seleccionar un mes.'),
   startYear: year,
-  endYear: year,
+  endYear: year
 });
 
 const validateStackAndSalary = Yup.object().shape({
