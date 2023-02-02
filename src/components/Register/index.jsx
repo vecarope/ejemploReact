@@ -7,11 +7,11 @@ import { postRegisterAxios } from '../../hooks/postAxios';
 import Swal from 'sweetalert2';
 
 const initialCredentials = {
-  firstName: '',
-  lastName: '',
-  email: '',
-  password: '',
-  passwordConfirm: ''
+  firstName: 'Devsafio',
+  lastName: 'Latam',
+  email: 'ctd5.devsafio@gmail.com',
+  password: 'Asdf12345',
+  passwordConfirm: 'Asdf12345'
 };
 
 const Register = () => {

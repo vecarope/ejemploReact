@@ -2,9 +2,6 @@ import { useEffect, useState } from 'react';
 import apiClient from '../../services/api.service';
 import { ExportApplicant } from './Buttons/Buttons';
 
-
-
-
 const AdminApplicant = () => {
   const [applicant, setApplicant] = useState(null);
   const getAllApplicant = async () => {
@@ -87,10 +84,7 @@ const AdminApplicant = () => {
           <tbody>
             {applicant !== null
               ? applicant.data.map((e, index) => (
-                  <tr
-                    className="bg-gray-800 border-gray-700"
-                    key={index}
-                  >
+                  <tr className="bg-gray-800 border-gray-700" key={index}>
                     <th
                       scope="row"
                       className="text-xs font-medium whitespace-nowrap text-white py-3"
@@ -105,14 +99,38 @@ const AdminApplicant = () => {
                       {e.employmentStatusCurrent}
                     </td>
                     <td className="text-xs text-white px-3">{e.stack}</td>
-                    <td className="text-xs text-white px-6">{e.educationalLevel}</td>
-                    <td className="text-xs text-white px-3">{e.educationStatusCurrent}</td>
-                    <td className="text-xs text-white px-3">{e.englishLevel}</td>
-                    <td className="text-xs text-white px-3">{e.additionalToolsComment}</td>
-                    <td className="text-xs text-sky-400 hover:text-blue-600 px-6"><a href={e.cvUrl}>{e.cvUrl}</a></td>
-                    <td className="text-xs text-sky-400 hover:text-blue-600 px-1"><a href={e.linkedinUrl}>{e.linkedinUrl}</a></td>
-                    <td className="text-xs text-sky-400 hover:text-blue-600 px-1"><a href={e.githubUrl}>{e.githubUrl}</a></td>
-                    <td className="text-xs text-sky-400 hover:text-blue-600 px-1"><a href={e.portfolioUrl}>{e.portfolioUrl}</a></td>
+                    <td className="text-xs text-white px-6">
+                      {e.educationalLevel}
+                    </td>
+                    <td className="text-xs text-white px-3">
+                      {e.educationStatusCurrent}
+                    </td>
+                    <td className="text-xs text-white px-3">
+                      {e.englishLevel}
+                    </td>
+                    <td className="text-xs text-white px-3">
+                      {e.additionalToolsComment}
+                    </td>
+                    <td className="text-xs text-sky-400 hover:text-blue-600 px-6">
+                      <a href={e.cvUrl} target="_blank" rel="noreferrer">
+                        {e.cvUrl}
+                      </a>
+                    </td>
+                    <td className="text-xs text-sky-400 hover:text-blue-600 px-1">
+                      <a href={e.linkedinUrl} target="_blank" rel="noreferrer">
+                        {e.linkedinUrl}
+                      </a>
+                    </td>
+                    <td className="text-xs text-sky-400 hover:text-blue-600 px-1">
+                      <a href={e.githubUrl} target="_blank" rel="noreferrer">
+                        {e.githubUrl}
+                      </a>
+                    </td>
+                    <td className="text-xs text-sky-400 hover:text-blue-600 px-1">
+                      <a href={e.portfolioUrl} target="_blank" rel="noreferrer">
+                        {e.portfolioUrl}
+                      </a>
+                    </td>
                     <td className="text-xs text-white px-6 whitespace-nowrap">
                       {e.devExperience}
                     </td>
