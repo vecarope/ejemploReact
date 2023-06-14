@@ -3,6 +3,20 @@
 Project for DLAB program - Desafio Latam.
 The project consists of an online platform oriented to the use of job search and recruitment in the IT industry. Based on the profile of each user, technical tests, surveys, code exhibits and support material. The website aims to connect thousands of applicants and companies
 
+
+## Deploy 
+https://ctd5-frontend.vercel.app/   
+
+### Credenciales    
+
+Usuario :                     
+email: doglover@gmail.com   
+password: Masterdog1234
+
+Admin:              
+ email: scaloneta@gmail.com          
+ password: Messirve1234
+
 ## 🤖 Team
 
 ### Technical Leader:
